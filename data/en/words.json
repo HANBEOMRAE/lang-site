@@ -1032,5 +1032,1064 @@
     "example_meaning": "가게가 닫혔어."
    }
   ]
+ },
+ {
+  "category": "위치·방향",
+  "emoji": "🧭",
+  "items": [
+   {
+    "text": "in",
+    "ko_pron": "인",
+    "meaning": "~안에",
+    "example": "The cat is in the box.",
+    "example_meaning": "고양이가 상자 안에 있어."
+   },
+   {
+    "text": "on",
+    "ko_pron": "온",
+    "meaning": "~위에",
+    "example": "The cup is on the table.",
+    "example_meaning": "컵이 식탁 위에 있어."
+   },
+   {
+    "text": "under",
+    "ko_pron": "언더",
+    "meaning": "~아래에, ~밑에",
+    "example": "The ball is under the bed.",
+    "example_meaning": "공이 침대 밑에 있어."
+   },
+   {
+    "text": "behind",
+    "ko_pron": "비하인드",
+    "meaning": "~뒤에",
+    "example": "Look behind you!",
+    "example_meaning": "네 뒤를 봐!"
+   },
+   {
+    "text": "in front of",
+    "ko_pron": "인 프런트 오브",
+    "meaning": "~앞에",
+    "example": "Stand in front of me.",
+    "example_meaning": "내 앞에 서."
+   },
+   {
+    "text": "next to",
+    "ko_pron": "넥스트 투",
+    "meaning": "~옆에",
+    "example": "Sit next to me.",
+    "example_meaning": "내 옆에 앉아."
+   },
+   {
+    "text": "near",
+    "ko_pron": "니어",
+    "meaning": "가까이, 가까운",
+    "example": "Stay near me.",
+    "example_meaning": "내 가까이 있어."
+   },
+   {
+    "text": "far",
+    "ko_pron": "파",
+    "meaning": "멀리, 먼",
+    "example": "Is it far?",
+    "example_meaning": "멀어요?"
+   },
+   {
+    "text": "left",
+    "ko_pron": "레프트",
+    "meaning": "왼쪽",
+    "example": "Turn left.",
+    "example_meaning": "왼쪽으로 돌아."
+   },
+   {
+    "text": "right",
+    "ko_pron": "라이트",
+    "meaning": "오른쪽",
+    "example": "It's on the right.",
+    "example_meaning": "오른쪽에 있어."
+   },
+   {
+    "text": "up",
+    "ko_pron": "업",
+    "meaning": "위로",
+    "example": "Look up!",
+    "example_meaning": "위를 봐!"
+   },
+   {
+    "text": "down",
+    "ko_pron": "다운",
+    "meaning": "아래로",
+    "example": "Sit down, please.",
+    "example_meaning": "앉아 주세요."
+   }
+  ]
+ },
+ {
+  "category": "질문 단어",
+  "emoji": "❓",
+  "items": [
+   {
+    "text": "what",
+    "ko_pron": "왓",
+    "meaning": "무엇",
+    "example": "What is your name?",
+    "example_meaning": "이름이 뭐야?"
+   },
+   {
+    "text": "where",
+    "ko_pron": "웨어",
+    "meaning": "어디",
+    "example": "Where is mom?",
+    "example_meaning": "엄마 어디 있어?"
+   },
+   {
+    "text": "who",
+    "ko_pron": "후",
+    "meaning": "누구",
+    "example": "Who is that?",
+    "example_meaning": "저 사람 누구야?"
+   },
+   {
+    "text": "when",
+    "ko_pron": "웬",
+    "meaning": "언제",
+    "example": "When do we go?",
+    "example_meaning": "우리 언제 가?"
+   },
+   {
+    "text": "why",
+    "ko_pron": "와이",
+    "meaning": "왜",
+    "example": "Why is it dark?",
+    "example_meaning": "왜 깜깜해?"
+   },
+   {
+    "text": "how",
+    "ko_pron": "하우",
+    "meaning": "어떻게",
+    "example": "How do you do that?",
+    "example_meaning": "그거 어떻게 해?"
+   },
+   {
+    "text": "which",
+    "ko_pron": "위치",
+    "meaning": "어느 것, 어떤",
+    "example": "Which one do you want?",
+    "example_meaning": "어느 거 갖고 싶어?"
+   },
+   {
+    "text": "how many",
+    "ko_pron": "하우 메니",
+    "meaning": "몇 개",
+    "example": "How many apples?",
+    "example_meaning": "사과 몇 개야?"
+   },
+   {
+    "text": "how much",
+    "ko_pron": "하우 머치",
+    "meaning": "얼마",
+    "example": "How much is this?",
+    "example_meaning": "이거 얼마예요?"
+   },
+   {
+    "text": "how old",
+    "ko_pron": "하우 올드",
+    "meaning": "몇 살",
+    "example": "How old are you?",
+    "example_meaning": "너 몇 살이야?"
+   },
+   {
+    "text": "what time",
+    "ko_pron": "왓 타임",
+    "meaning": "몇 시",
+    "example": "What time is it?",
+    "example_meaning": "지금 몇 시야?"
+   }
+  ]
+ },
+ {
+  "category": "숫자 2",
+  "emoji": "💯",
+  "items": [
+   {
+    "text": "eleven",
+    "ko_pron": "일레븐",
+    "meaning": "열하나, 11",
+    "example": "My brother is eleven.",
+    "example_meaning": "우리 형은 열한 살이야."
+   },
+   {
+    "text": "twelve",
+    "ko_pron": "트웰브",
+    "meaning": "열둘, 12",
+    "example": "A year has twelve months.",
+    "example_meaning": "1년은 열두 달이야."
+   },
+   {
+    "text": "thirteen",
+    "ko_pron": "써틴",
+    "meaning": "열셋, 13",
+    "example": "I see thirteen ducks.",
+    "example_meaning": "오리 열세 마리가 보여."
+   },
+   {
+    "text": "fourteen",
+    "ko_pron": "포틴",
+    "meaning": "열넷, 14",
+    "example": "I have fourteen crayons.",
+    "example_meaning": "나는 크레용이 열네 개 있어."
+   },
+   {
+    "text": "fifteen",
+    "ko_pron": "피프틴",
+    "meaning": "열다섯, 15",
+    "example": "Wait fifteen minutes.",
+    "example_meaning": "15분 기다려."
+   },
+   {
+    "text": "sixteen",
+    "ko_pron": "식스틴",
+    "meaning": "열여섯, 16",
+    "example": "Sixteen kids are in my class.",
+    "example_meaning": "우리 반에는 아이가 열여섯 명 있어."
+   },
+   {
+    "text": "seventeen",
+    "ko_pron": "세븐틴",
+    "meaning": "열일곱, 17",
+    "example": "Take bus number seventeen.",
+    "example_meaning": "17번 버스를 타."
+   },
+   {
+    "text": "eighteen",
+    "ko_pron": "에이틴",
+    "meaning": "열여덟, 18",
+    "example": "My cousin is eighteen.",
+    "example_meaning": "내 사촌은 열여덟 살이야."
+   },
+   {
+    "text": "nineteen",
+    "ko_pron": "나인틴",
+    "meaning": "열아홉, 19",
+    "example": "Nineteen, twenty! Here I come!",
+    "example_meaning": "열아홉, 스물! 찾으러 간다!"
+   },
+   {
+    "text": "twenty",
+    "ko_pron": "트웬티",
+    "meaning": "스물, 20",
+    "example": "I have twenty fingers and toes.",
+    "example_meaning": "나는 손가락 발가락이 스무 개야."
+   },
+   {
+    "text": "thirty",
+    "ko_pron": "써티",
+    "meaning": "서른, 30",
+    "example": "A month has thirty days.",
+    "example_meaning": "한 달은 30일이야."
+   },
+   {
+    "text": "fifty",
+    "ko_pron": "피프티",
+    "meaning": "쉰, 50",
+    "example": "I have fifty stickers.",
+    "example_meaning": "나는 스티커가 50개 있어."
+   },
+   {
+    "text": "one hundred",
+    "ko_pron": "원 헌드레드",
+    "meaning": "백, 100",
+    "example": "I can count to one hundred!",
+    "example_meaning": "나는 100까지 셀 수 있어!"
+   }
+  ]
+ },
+ {
+  "category": "요일·계절",
+  "emoji": "📅",
+  "items": [
+   {
+    "text": "Monday",
+    "ko_pron": "먼데이",
+    "meaning": "월요일",
+    "example": "I go to school on Monday.",
+    "example_meaning": "나는 월요일에 학교에 가."
+   },
+   {
+    "text": "Tuesday",
+    "ko_pron": "튜즈데이",
+    "meaning": "화요일",
+    "example": "Today is Tuesday.",
+    "example_meaning": "오늘은 화요일이야."
+   },
+   {
+    "text": "Wednesday",
+    "ko_pron": "웬즈데이",
+    "meaning": "수요일",
+    "example": "See you on Wednesday.",
+    "example_meaning": "수요일에 봐."
+   },
+   {
+    "text": "Thursday",
+    "ko_pron": "써즈데이",
+    "meaning": "목요일",
+    "example": "I swim on Thursday.",
+    "example_meaning": "나는 목요일에 수영해."
+   },
+   {
+    "text": "Friday",
+    "ko_pron": "프라이데이",
+    "meaning": "금요일",
+    "example": "Yay, it's Friday!",
+    "example_meaning": "야호, 금요일이다!"
+   },
+   {
+    "text": "Saturday",
+    "ko_pron": "새러데이",
+    "meaning": "토요일",
+    "example": "Let's play on Saturday.",
+    "example_meaning": "토요일에 놀자."
+   },
+   {
+    "text": "Sunday",
+    "ko_pron": "선데이",
+    "meaning": "일요일",
+    "example": "We rest on Sunday.",
+    "example_meaning": "우리는 일요일에 쉬어."
+   },
+   {
+    "text": "spring",
+    "ko_pron": "스프링",
+    "meaning": "봄",
+    "example": "Flowers come out in spring.",
+    "example_meaning": "봄에는 꽃이 피어."
+   },
+   {
+    "text": "summer",
+    "ko_pron": "써머",
+    "meaning": "여름",
+    "example": "Summer is hot.",
+    "example_meaning": "여름은 더워."
+   },
+   {
+    "text": "fall",
+    "ko_pron": "폴",
+    "meaning": "가을",
+    "example": "The leaves turn red in fall.",
+    "example_meaning": "가을에는 나뭇잎이 빨개져."
+   },
+   {
+    "text": "winter",
+    "ko_pron": "윈터",
+    "meaning": "겨울",
+    "example": "It snows in winter.",
+    "example_meaning": "겨울에는 눈이 와."
+   }
+  ]
+ },
+ {
+  "category": "과일·채소",
+  "emoji": "🍓",
+  "items": [
+   {
+    "text": "banana",
+    "ko_pron": "바나나",
+    "meaning": "바나나",
+    "example": "Monkeys love bananas.",
+    "example_meaning": "원숭이는 바나나를 좋아해."
+   },
+   {
+    "text": "strawberry",
+    "ko_pron": "스트로베리",
+    "meaning": "딸기",
+    "example": "This strawberry is sweet.",
+    "example_meaning": "이 딸기 달아."
+   },
+   {
+    "text": "grapes",
+    "ko_pron": "그레입스",
+    "meaning": "포도",
+    "example": "I want some grapes.",
+    "example_meaning": "포도 먹고 싶어."
+   },
+   {
+    "text": "watermelon",
+    "ko_pron": "워터멜론",
+    "meaning": "수박",
+    "example": "Watermelon is so big.",
+    "example_meaning": "수박은 정말 커."
+   },
+   {
+    "text": "peach",
+    "ko_pron": "피치",
+    "meaning": "복숭아",
+    "example": "The peach is soft.",
+    "example_meaning": "복숭아가 말랑해."
+   },
+   {
+    "text": "cherry",
+    "ko_pron": "체리",
+    "meaning": "체리",
+    "example": "Cherries are red.",
+    "example_meaning": "체리는 빨개."
+   },
+   {
+    "text": "lemon",
+    "ko_pron": "레몬",
+    "meaning": "레몬",
+    "example": "Lemons are sour.",
+    "example_meaning": "레몬은 셔."
+   },
+   {
+    "text": "carrot",
+    "ko_pron": "캐럿",
+    "meaning": "당근",
+    "example": "Rabbits eat carrots.",
+    "example_meaning": "토끼는 당근을 먹어."
+   },
+   {
+    "text": "potato",
+    "ko_pron": "포테이토",
+    "meaning": "감자",
+    "example": "I like potatoes.",
+    "example_meaning": "나는 감자가 좋아."
+   },
+   {
+    "text": "tomato",
+    "ko_pron": "토메이토",
+    "meaning": "토마토",
+    "example": "The tomato is red.",
+    "example_meaning": "토마토가 빨개."
+   },
+   {
+    "text": "corn",
+    "ko_pron": "콘",
+    "meaning": "옥수수",
+    "example": "Corn is yellow.",
+    "example_meaning": "옥수수는 노래."
+   },
+   {
+    "text": "cucumber",
+    "ko_pron": "큐컴버",
+    "meaning": "오이",
+    "example": "I don't like cucumbers.",
+    "example_meaning": "나는 오이가 싫어."
+   }
+  ]
+ },
+ {
+  "category": "음료",
+  "emoji": "🥤",
+  "items": [
+   {
+    "text": "tea",
+    "ko_pron": "티",
+    "meaning": "차",
+    "example": "Grandma drinks tea.",
+    "example_meaning": "할머니는 차를 마셔."
+   },
+   {
+    "text": "coffee",
+    "ko_pron": "커피",
+    "meaning": "커피",
+    "example": "Dad drinks coffee.",
+    "example_meaning": "아빠는 커피를 마셔."
+   },
+   {
+    "text": "hot chocolate",
+    "ko_pron": "핫 초콜릿",
+    "meaning": "코코아",
+    "example": "Hot chocolate, please.",
+    "example_meaning": "코코아 주세요."
+   },
+   {
+    "text": "lemonade",
+    "ko_pron": "레모네이드",
+    "meaning": "레모네이드",
+    "example": "I want lemonade.",
+    "example_meaning": "레모네이드 마시고 싶어."
+   },
+   {
+    "text": "soda",
+    "ko_pron": "소다",
+    "meaning": "탄산음료",
+    "example": "No soda before bed.",
+    "example_meaning": "자기 전에는 탄산음료 안 돼."
+   },
+   {
+    "text": "smoothie",
+    "ko_pron": "스무디",
+    "meaning": "스무디",
+    "example": "A banana smoothie, please.",
+    "example_meaning": "바나나 스무디 주세요."
+   },
+   {
+    "text": "milkshake",
+    "ko_pron": "밀크셰이크",
+    "meaning": "밀크셰이크",
+    "example": "This milkshake is cold.",
+    "example_meaning": "이 밀크셰이크 차가워."
+   },
+   {
+    "text": "ice",
+    "ko_pron": "아이스",
+    "meaning": "얼음",
+    "example": "Can I have some ice?",
+    "example_meaning": "얼음 좀 주실래요?"
+   },
+   {
+    "text": "straw",
+    "ko_pron": "스트로",
+    "meaning": "빨대",
+    "example": "Can I have a straw?",
+    "example_meaning": "빨대 주실래요?"
+   },
+   {
+    "text": "glass",
+    "ko_pron": "글래스",
+    "meaning": "유리잔, 잔",
+    "example": "A glass of milk, please.",
+    "example_meaning": "우유 한 잔 주세요."
+   },
+   {
+    "text": "bottle",
+    "ko_pron": "바틀",
+    "meaning": "병",
+    "example": "Where is my water bottle?",
+    "example_meaning": "내 물병 어디 있어?"
+   }
+  ]
+ },
+ {
+  "category": "운동·놀이",
+  "emoji": "⚽",
+  "items": [
+   {
+    "text": "ball",
+    "ko_pron": "볼",
+    "meaning": "공",
+    "example": "Throw the ball!",
+    "example_meaning": "공 던져!"
+   },
+   {
+    "text": "soccer",
+    "ko_pron": "사커",
+    "meaning": "축구",
+    "example": "I play soccer.",
+    "example_meaning": "나는 축구를 해."
+   },
+   {
+    "text": "basketball",
+    "ko_pron": "배스킷볼",
+    "meaning": "농구",
+    "example": "My brother plays basketball.",
+    "example_meaning": "우리 형은 농구를 해."
+   },
+   {
+    "text": "swim",
+    "ko_pron": "스윔",
+    "meaning": "수영하다",
+    "example": "I can swim.",
+    "example_meaning": "나는 수영할 수 있어."
+   },
+   {
+    "text": "jump",
+    "ko_pron": "점프",
+    "meaning": "뛰다, 점프하다",
+    "example": "Jump high!",
+    "example_meaning": "높이 뛰어!"
+   },
+   {
+    "text": "slide",
+    "ko_pron": "슬라이드",
+    "meaning": "미끄럼틀",
+    "example": "Let's go down the slide.",
+    "example_meaning": "미끄럼틀 타자."
+   },
+   {
+    "text": "swing",
+    "ko_pron": "스윙",
+    "meaning": "그네",
+    "example": "Push me on the swing.",
+    "example_meaning": "그네 밀어 줘."
+   },
+   {
+    "text": "hide-and-seek",
+    "ko_pron": "하이드 앤 시크",
+    "meaning": "숨바꼭질",
+    "example": "Let's play hide-and-seek.",
+    "example_meaning": "숨바꼭질하자."
+   },
+   {
+    "text": "tag",
+    "ko_pron": "태그",
+    "meaning": "술래잡기",
+    "example": "Tag, you're it!",
+    "example_meaning": "잡았다, 네가 술래야!"
+   },
+   {
+    "text": "toy",
+    "ko_pron": "토이",
+    "meaning": "장난감",
+    "example": "This is my toy.",
+    "example_meaning": "이건 내 장난감이야."
+   },
+   {
+    "text": "blocks",
+    "ko_pron": "블락스",
+    "meaning": "블록, 쌓기 나무",
+    "example": "Let's build with blocks.",
+    "example_meaning": "블록으로 만들자."
+   },
+   {
+    "text": "kite",
+    "ko_pron": "카이트",
+    "meaning": "연",
+    "example": "My kite is flying!",
+    "example_meaning": "내 연이 날고 있어!"
+   }
+  ]
+ },
+ {
+  "category": "학교·학용품",
+  "emoji": "✏️",
+  "items": [
+   {
+    "text": "teacher",
+    "ko_pron": "티처",
+    "meaning": "선생님",
+    "example": "My teacher is kind.",
+    "example_meaning": "우리 선생님은 친절해."
+   },
+   {
+    "text": "class",
+    "ko_pron": "클래스",
+    "meaning": "반, 수업",
+    "example": "Class is over.",
+    "example_meaning": "수업 끝났어."
+   },
+   {
+    "text": "book",
+    "ko_pron": "북",
+    "meaning": "책",
+    "example": "Read me a book.",
+    "example_meaning": "책 읽어 줘."
+   },
+   {
+    "text": "pencil",
+    "ko_pron": "펜슬",
+    "meaning": "연필",
+    "example": "Can I use your pencil?",
+    "example_meaning": "네 연필 써도 돼?"
+   },
+   {
+    "text": "eraser",
+    "ko_pron": "이레이서",
+    "meaning": "지우개",
+    "example": "I need an eraser.",
+    "example_meaning": "지우개가 필요해."
+   },
+   {
+    "text": "crayon",
+    "ko_pron": "크레이언",
+    "meaning": "크레용",
+    "example": "I draw with crayons.",
+    "example_meaning": "나는 크레용으로 그려."
+   },
+   {
+    "text": "paper",
+    "ko_pron": "페이퍼",
+    "meaning": "종이",
+    "example": "Give me some paper.",
+    "example_meaning": "종이 좀 줘."
+   },
+   {
+    "text": "scissors",
+    "ko_pron": "시저스",
+    "meaning": "가위",
+    "example": "Cut it with scissors.",
+    "example_meaning": "가위로 잘라."
+   },
+   {
+    "text": "glue",
+    "ko_pron": "글루",
+    "meaning": "풀",
+    "example": "Put glue here.",
+    "example_meaning": "여기에 풀 발라."
+   },
+   {
+    "text": "desk",
+    "ko_pron": "데스크",
+    "meaning": "책상",
+    "example": "Sit at your desk.",
+    "example_meaning": "네 책상에 앉아."
+   },
+   {
+    "text": "backpack",
+    "ko_pron": "백팩",
+    "meaning": "책가방",
+    "example": "My backpack is heavy.",
+    "example_meaning": "내 책가방이 무거워."
+   },
+   {
+    "text": "notebook",
+    "ko_pron": "노트북",
+    "meaning": "공책",
+    "example": "Write it in your notebook.",
+    "example_meaning": "공책에 써."
+   }
+  ]
+ },
+ {
+  "category": "직업",
+  "emoji": "🧑‍🚒",
+  "items": [
+   {
+    "text": "doctor",
+    "ko_pron": "닥터",
+    "meaning": "의사",
+    "example": "The doctor helps sick people.",
+    "example_meaning": "의사는 아픈 사람을 도와줘."
+   },
+   {
+    "text": "nurse",
+    "ko_pron": "널스",
+    "meaning": "간호사",
+    "example": "The nurse is nice.",
+    "example_meaning": "간호사 선생님이 친절해."
+   },
+   {
+    "text": "police officer",
+    "ko_pron": "폴리스 오피서",
+    "meaning": "경찰관",
+    "example": "Ask a police officer.",
+    "example_meaning": "경찰관에게 물어봐."
+   },
+   {
+    "text": "firefighter",
+    "ko_pron": "파이어파이터",
+    "meaning": "소방관",
+    "example": "Firefighters are brave.",
+    "example_meaning": "소방관은 용감해."
+   },
+   {
+    "text": "chef",
+    "ko_pron": "셰프",
+    "meaning": "요리사",
+    "example": "The chef makes pizza.",
+    "example_meaning": "요리사가 피자를 만들어."
+   },
+   {
+    "text": "farmer",
+    "ko_pron": "파머",
+    "meaning": "농부",
+    "example": "The farmer has cows.",
+    "example_meaning": "농부는 소가 있어."
+   },
+   {
+    "text": "pilot",
+    "ko_pron": "파일럿",
+    "meaning": "조종사",
+    "example": "The pilot flies the plane.",
+    "example_meaning": "조종사가 비행기를 조종해."
+   },
+   {
+    "text": "bus driver",
+    "ko_pron": "버스 드라이버",
+    "meaning": "버스 기사",
+    "example": "Say hi to the bus driver.",
+    "example_meaning": "버스 기사님께 인사해."
+   },
+   {
+    "text": "singer",
+    "ko_pron": "싱어",
+    "meaning": "가수",
+    "example": "I want to be a singer.",
+    "example_meaning": "나는 가수가 되고 싶어."
+   },
+   {
+    "text": "dentist",
+    "ko_pron": "덴티스트",
+    "meaning": "치과 의사",
+    "example": "I see the dentist today.",
+    "example_meaning": "오늘 치과에 가."
+   },
+   {
+    "text": "baker",
+    "ko_pron": "베이커",
+    "meaning": "제빵사",
+    "example": "The baker makes bread.",
+    "example_meaning": "제빵사가 빵을 만들어."
+   },
+   {
+    "text": "vet",
+    "ko_pron": "벳",
+    "meaning": "수의사",
+    "example": "The vet helps animals.",
+    "example_meaning": "수의사는 동물을 도와줘."
+   }
+  ]
+ },
+ {
+  "category": "몸 상태",
+  "emoji": "🤒",
+  "items": [
+   {
+    "text": "sick",
+    "ko_pron": "씩",
+    "meaning": "아픈",
+    "example": "I feel sick.",
+    "example_meaning": "나 몸이 안 좋아."
+   },
+   {
+    "text": "hurt",
+    "ko_pron": "헐트",
+    "meaning": "아프다, 다치다",
+    "example": "I hurt my knee.",
+    "example_meaning": "무릎을 다쳤어."
+   },
+   {
+    "text": "ouch",
+    "ko_pron": "아우치",
+    "meaning": "아야",
+    "example": "Ouch! That hurts.",
+    "example_meaning": "아야! 아파."
+   },
+   {
+    "text": "fever",
+    "ko_pron": "피버",
+    "meaning": "열",
+    "example": "I have a fever.",
+    "example_meaning": "나 열이 나."
+   },
+   {
+    "text": "cough",
+    "ko_pron": "코프",
+    "meaning": "기침",
+    "example": "I have a cough.",
+    "example_meaning": "나 기침이 나."
+   },
+   {
+    "text": "sneeze",
+    "ko_pron": "스니즈",
+    "meaning": "재채기, 재채기하다",
+    "example": "Cover your mouth when you sneeze.",
+    "example_meaning": "재채기할 때 입을 가려."
+   },
+   {
+    "text": "headache",
+    "ko_pron": "헤데이크",
+    "meaning": "두통, 머리 아픔",
+    "example": "I have a headache.",
+    "example_meaning": "나 머리가 아파."
+   },
+   {
+    "text": "stomachache",
+    "ko_pron": "스터먹에이크",
+    "meaning": "배 아픔, 복통",
+    "example": "I have a stomachache.",
+    "example_meaning": "나 배가 아파."
+   },
+   {
+    "text": "toothache",
+    "ko_pron": "투쓰에이크",
+    "meaning": "이 아픔, 치통",
+    "example": "I have a toothache.",
+    "example_meaning": "나 이가 아파."
+   },
+   {
+    "text": "itchy",
+    "ko_pron": "이치",
+    "meaning": "가려운",
+    "example": "My arm is itchy.",
+    "example_meaning": "팔이 가려워."
+   },
+   {
+    "text": "bandage",
+    "ko_pron": "밴디지",
+    "meaning": "반창고, 붕대",
+    "example": "I need a bandage.",
+    "example_meaning": "반창고가 필요해."
+   },
+   {
+    "text": "medicine",
+    "ko_pron": "메디슨",
+    "meaning": "약",
+    "example": "Take your medicine.",
+    "example_meaning": "약 먹어."
+   }
+  ]
+ },
+ {
+  "category": "돈·쇼핑",
+  "emoji": "💰",
+  "items": [
+   {
+    "text": "money",
+    "ko_pron": "머니",
+    "meaning": "돈",
+    "example": "I have no money.",
+    "example_meaning": "나 돈 없어."
+   },
+   {
+    "text": "coin",
+    "ko_pron": "코인",
+    "meaning": "동전",
+    "example": "I found a coin!",
+    "example_meaning": "동전 찾았다!"
+   },
+   {
+    "text": "dollar",
+    "ko_pron": "달러",
+    "meaning": "달러",
+    "example": "It's one dollar.",
+    "example_meaning": "1달러예요."
+   },
+   {
+    "text": "wallet",
+    "ko_pron": "월릿",
+    "meaning": "지갑",
+    "example": "Dad's wallet is black.",
+    "example_meaning": "아빠 지갑은 검은색이야."
+   },
+   {
+    "text": "piggy bank",
+    "ko_pron": "피기 뱅크",
+    "meaning": "돼지 저금통",
+    "example": "I put coins in my piggy bank.",
+    "example_meaning": "돼지 저금통에 동전을 넣어."
+   },
+   {
+    "text": "card",
+    "ko_pron": "카드",
+    "meaning": "카드",
+    "example": "Can I pay by card?",
+    "example_meaning": "카드로 계산해도 돼요?"
+   },
+   {
+    "text": "cart",
+    "ko_pron": "카트",
+    "meaning": "카트",
+    "example": "Can I push the cart?",
+    "example_meaning": "내가 카트 밀어도 돼?"
+   },
+   {
+    "text": "cheap",
+    "ko_pron": "칩",
+    "meaning": "싼",
+    "example": "This is cheap.",
+    "example_meaning": "이거 싸다."
+   },
+   {
+    "text": "expensive",
+    "ko_pron": "익스펜시브",
+    "meaning": "비싼",
+    "example": "That's too expensive.",
+    "example_meaning": "그건 너무 비싸."
+   },
+   {
+    "text": "sale",
+    "ko_pron": "세일",
+    "meaning": "할인",
+    "example": "Shoes are on sale.",
+    "example_meaning": "신발이 할인 중이야."
+   },
+   {
+    "text": "change",
+    "ko_pron": "체인지",
+    "meaning": "거스름돈",
+    "example": "Here's your change.",
+    "example_meaning": "거스름돈 여기 있어요."
+   }
+  ]
+ },
+ {
+  "category": "집안일",
+  "emoji": "🧹",
+  "items": [
+   {
+    "text": "clean up",
+    "ko_pron": "클린 업",
+    "meaning": "치우다, 정리하다",
+    "example": "Let's clean up.",
+    "example_meaning": "같이 치우자."
+   },
+   {
+    "text": "dishes",
+    "ko_pron": "디쉬즈",
+    "meaning": "설거지, 그릇들",
+    "example": "Dad does the dishes.",
+    "example_meaning": "아빠가 설거지를 해."
+   },
+   {
+    "text": "laundry",
+    "ko_pron": "런드리",
+    "meaning": "빨래",
+    "example": "Mom does the laundry.",
+    "example_meaning": "엄마가 빨래를 해."
+   },
+   {
+    "text": "trash",
+    "ko_pron": "트래시",
+    "meaning": "쓰레기",
+    "example": "Throw it in the trash.",
+    "example_meaning": "쓰레기통에 버려."
+   },
+   {
+    "text": "vacuum",
+    "ko_pron": "배큠",
+    "meaning": "청소기, 청소기를 돌리다",
+    "example": "Mom vacuums the floor.",
+    "example_meaning": "엄마가 바닥을 청소기로 밀어."
+   },
+   {
+    "text": "broom",
+    "ko_pron": "브룸",
+    "meaning": "빗자루",
+    "example": "Sweep with a broom.",
+    "example_meaning": "빗자루로 쓸어."
+   },
+   {
+    "text": "mop",
+    "ko_pron": "맙",
+    "meaning": "대걸레, 걸레질하다",
+    "example": "I help mop the floor.",
+    "example_meaning": "나는 바닥 걸레질을 도와."
+   },
+   {
+    "text": "make the bed",
+    "ko_pron": "메이크 더 베드",
+    "meaning": "이불을 정리하다",
+    "example": "Make your bed, please.",
+    "example_meaning": "이불 정리해 줘."
+   },
+   {
+    "text": "set the table",
+    "ko_pron": "셋 더 테이블",
+    "meaning": "상을 차리다",
+    "example": "I can set the table.",
+    "example_meaning": "나는 상을 차릴 수 있어."
+   },
+   {
+    "text": "fold",
+    "ko_pron": "폴드",
+    "meaning": "개다, 접다",
+    "example": "Fold your clothes.",
+    "example_meaning": "옷을 개."
+   },
+   {
+    "text": "water the plants",
+    "ko_pron": "워터 더 플랜츠",
+    "meaning": "화분에 물을 주다",
+    "example": "I water the plants.",
+    "example_meaning": "나는 화분에 물을 줘."
+   },
+   {
+    "text": "put away",
+    "ko_pron": "풋 어웨이",
+    "meaning": "제자리에 두다",
+    "example": "Put away your toys.",
+    "example_meaning": "장난감 제자리에 둬."
+   }
+  ]
  }
 ]
