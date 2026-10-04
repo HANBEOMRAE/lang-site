@@ -11,7 +11,8 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASIC = ["text", "ko_pron", "meaning"]
 HIRAGANA = re.compile(r"^[ぁ-ゟ]+$")
-KANA = re.compile(r"^[ぁ-ゟ゠-ヿ]+$")            # 히라가나·가타카나(ー 포함)
+# 히라가나·가타카나(ー 포함). 긴 표현은 단어 사이 한 칸 띄어쓰기 허용 (ありがとう ございます)
+KANA = re.compile(r"^[ぁ-ゟ゠-ヿ]+( [ぁ-ゟ゠-ヿ]+)*$")
 KANA_SENTENCE = re.compile(r"^[ぁ-ゟ゠-ヿ 、。？！]+$")
 KANJI = re.compile(r"[一-鿿]")
 problems = []

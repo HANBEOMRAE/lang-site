@@ -122,21 +122,27 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   bindHideToggle(() => viewCards(lang, sec, catIdx, i));
 }
 
-// ── 큰 글자 한 줄 맞춤 ───────────────────────────
-// 단어(띄어쓰기 단위)마다 줄이 안 바뀌게 감싸고, 카드 폭을 넘치면 들어갈 때까지 글자를 줄인다.
-// 여러 단어로 된 말(in front of)은 띄어쓰기에서만 줄이 바뀐다.
+// ── 큰 글자 맞춤 ─────────────────────────────────
+// 단어(띄어쓰기 단위)마다 줄이 안 바뀌게 감싼다. 먼저 한 줄로 두고 WORD_MIN까지 줄여 보고,
+// 그래도 넘치면 띄어쓰기 자리에서 줄을 바꾼 뒤 다시 맞춘다 (in front of, ありがとう ございます).
+const WORD_MIN = 36;  // px. 360px 화면에서 띄어쓰기 없는 단어가 모두 이 크기 이상으로 들어간다
 function wordHTML(text) {
   return String(text).split(" ").map(w => `<span class="nobr">${esc(w)}</span>`).join(" ");
 }
 function fitWord() {
   const el = app.querySelector(".word");
   if (!el) return;
-  el.style.fontSize = "";
-  let fs = parseFloat(getComputedStyle(el).fontSize);
-  while (el.scrollWidth > el.clientWidth + 1 && fs > 24) {
-    fs -= 2;
-    el.style.fontSize = `${fs}px`;
-  }
+  const fits = () => el.scrollWidth <= el.clientWidth + 1;
+  const shrink = floor => {
+    el.style.fontSize = "";
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (!fits() && fs - 1 >= floor) { fs -= 1; el.style.fontSize = `${fs}px`; }
+  };
+  el.classList.add("one-line");
+  shrink(WORD_MIN);
+  if (fits()) return;
+  el.classList.remove("one-line");  // 띄어쓰기 자리에서 줄바꿈 허용
+  shrink(24);
 }
 window.addEventListener("resize", fitWord);
 

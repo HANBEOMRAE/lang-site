@@ -123,7 +123,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
   font-size: clamp(56px, 18vw, 92px); line-height: 1.05;
   color: var(--accent); margin: 0; word-break: break-word;
   max-width: 100%;  /* 넘치면 카드 폭 안에서 재서 줄인다 (views.js fitWord) */
-}.pron { font-size: 22px; font-weight: 700; margin: 10px 0 2px; }
+}
+.word.one-line { white-space: nowrap; }.pron { font-size: 22px; font-weight: 700; margin: 10px 0 2px; }
 .meaning { font-size: 18px; color: var(--muted); margin: 0 0 20px; }
 .speak {
   width: 84px; height: 84px; border-radius: 50%; border: 0; cursor: pointer;

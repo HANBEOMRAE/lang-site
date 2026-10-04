@@ -140,12 +140,12 @@
     "example_meaning": "실례합니다, 화장실 어디예요?"
    },
    {
-    "text": "ありがとうございます",
+    "text": "ありがとう ございます",
     "kanji": null,
-    "ko_pron": "아리가토-고자이마스",
+    "ko_pron": "아리가토- 고자이마스",
     "meaning": "감사합니다",
-    "example": "いつも ありがとうございます。",
-    "example_ko_pron": "이츠모 아리가토-고자이마스.",
+    "example": "いつも ありがとう ございます。",
+    "example_ko_pron": "이츠모 아리가토- 고자이마스.",
     "example_meaning": "늘 고맙습니다."
    }
   ]
