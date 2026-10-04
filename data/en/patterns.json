@@ -1,0 +1,587 @@
+[
+ {
+  "group": "바람·취향",
+  "pattern": "I want to ___",
+  "ko_pron": "아이 원 투 ___",
+  "meaning": "~하고 싶어",
+  "tip": "to 뒤에는 동사가 와요.",
+  "fills": [
+   {
+    "text": "eat",
+    "ko_pron": "잇",
+    "meaning": "먹고 싶어"
+   },
+   {
+    "text": "go home",
+    "ko_pron": "고 홈",
+    "meaning": "집에 가고 싶어"
+   },
+   {
+    "text": "sleep",
+    "ko_pron": "슬립",
+    "meaning": "자고 싶어"
+   },
+   {
+    "text": "play",
+    "ko_pron": "플레이",
+    "meaning": "놀고 싶어"
+   },
+   {
+    "text": "buy this",
+    "ko_pron": "바이 디스",
+    "meaning": "이거 사고 싶어"
+   },
+   {
+    "text": "see the sea",
+    "ko_pron": "씨 더 씨",
+    "meaning": "바다 보고 싶어"
+   }
+  ]
+ },
+ {
+  "group": "바람·취향",
+  "pattern": "I like ___",
+  "ko_pron": "아이 라이크 ___",
+  "meaning": "~이 좋아",
+  "tip": "좋아하는 것을 말할 때.",
+  "fills": [
+   {
+    "text": "dogs",
+    "ko_pron": "도그즈",
+    "meaning": "나는 개가 좋아"
+   },
+   {
+    "text": "apples",
+    "ko_pron": "애플즈",
+    "meaning": "나는 사과가 좋아"
+   },
+   {
+    "text": "music",
+    "ko_pron": "뮤직",
+    "meaning": "나는 음악이 좋아"
+   },
+   {
+    "text": "summer",
+    "ko_pron": "써머",
+    "meaning": "나는 여름이 좋아"
+   },
+   {
+    "text": "this color",
+    "ko_pron": "디스 컬러",
+    "meaning": "이 색이 좋아"
+   },
+   {
+    "text": "you",
+    "ko_pron": "유",
+    "meaning": "나는 네가 좋아"
+   }
+  ]
+ },
+ {
+  "group": "바람·취향",
+  "pattern": "I don't like ___",
+  "ko_pron": "아이 돈 라이크 ___",
+  "meaning": "~이 싫어",
+  "tip": "like 앞에 don't를 붙이면 반대말.",
+  "fills": [
+   {
+    "text": "bugs",
+    "ko_pron": "벅즈",
+    "meaning": "벌레 싫어"
+   },
+   {
+    "text": "coffee",
+    "ko_pron": "커피",
+    "meaning": "커피 싫어"
+   },
+   {
+    "text": "the rain",
+    "ko_pron": "더 레인",
+    "meaning": "비 오는 거 싫어"
+   },
+   {
+    "text": "spicy food",
+    "ko_pron": "스파이시 푸드",
+    "meaning": "매운 음식 싫어"
+   },
+   {
+    "text": "waiting",
+    "ko_pron": "웨이팅",
+    "meaning": "기다리는 거 싫어"
+   },
+   {
+    "text": "this",
+    "ko_pron": "디스",
+    "meaning": "이거 싫어"
+   }
+  ]
+ },
+ {
+  "group": "바람·취향",
+  "pattern": "I'd like ___",
+  "ko_pron": "아이드 라이크 ___",
+  "meaning": "~주세요 (공손하게)",
+  "tip": "가게·식당·호텔에서 want 대신 쓰면 공손해요.",
+  "fills": [
+   {
+    "text": "a coffee",
+    "ko_pron": "어 커피",
+    "meaning": "커피 한 잔 주세요"
+   },
+   {
+    "text": "some water",
+    "ko_pron": "썸 워터",
+    "meaning": "물 좀 주세요"
+   },
+   {
+    "text": "the menu",
+    "ko_pron": "더 메뉴",
+    "meaning": "메뉴판 주세요"
+   },
+   {
+    "text": "a window seat",
+    "ko_pron": "어 윈도우 씻",
+    "meaning": "창가 자리로 주세요"
+   },
+   {
+    "text": "to order",
+    "ko_pron": "투 오더",
+    "meaning": "주문할게요"
+   },
+   {
+    "text": "to check in",
+    "ko_pron": "투 체크 인",
+    "meaning": "체크인할게요"
+   }
+  ]
+ },
+ {
+  "group": "능력·소유·상태",
+  "pattern": "I can ___",
+  "ko_pron": "아이 캔 ___",
+  "meaning": "~할 수 있어",
+  "tip": "can 뒤에는 동사가 그대로 와요.",
+  "fills": [
+   {
+    "text": "swim",
+    "ko_pron": "스윔",
+    "meaning": "수영할 수 있어"
+   },
+   {
+    "text": "run fast",
+    "ko_pron": "런 패스트",
+    "meaning": "빨리 달릴 수 있어"
+   },
+   {
+    "text": "read this",
+    "ko_pron": "리드 디스",
+    "meaning": "이거 읽을 수 있어"
+   },
+   {
+    "text": "do it",
+    "ko_pron": "두 잇",
+    "meaning": "할 수 있어"
+   },
+   {
+    "text": "speak English",
+    "ko_pron": "스픽 잉글리시",
+    "meaning": "영어 할 수 있어"
+   },
+   {
+    "text": "help you",
+    "ko_pron": "헬프 유",
+    "meaning": "도와줄 수 있어"
+   }
+  ]
+ },
+ {
+  "group": "능력·소유·상태",
+  "pattern": "I have ___",
+  "ko_pron": "아이 해브 ___",
+  "meaning": "~이 있어",
+  "tip": "가진 것, 예약, 아픈 곳까지 말할 수 있어요.",
+  "fills": [
+   {
+    "text": "a dog",
+    "ko_pron": "어 도그",
+    "meaning": "개가 있어"
+   },
+   {
+    "text": "a question",
+    "ko_pron": "어 퀘스천",
+    "meaning": "질문이 있어요"
+   },
+   {
+    "text": "a reservation",
+    "ko_pron": "어 레저베이션",
+    "meaning": "예약했어요"
+   },
+   {
+    "text": "two tickets",
+    "ko_pron": "투 티킷츠",
+    "meaning": "표가 두 장 있어"
+   },
+   {
+    "text": "a headache",
+    "ko_pron": "어 헤데이크",
+    "meaning": "머리가 아파요"
+   },
+   {
+    "text": "time",
+    "ko_pron": "타임",
+    "meaning": "시간 있어"
+   }
+  ]
+ },
+ {
+  "group": "능력·소유·상태",
+  "pattern": "I am ___",
+  "ko_pron": "아이 엠 ___",
+  "meaning": "나는 ~야",
+  "tip": "기분, 상태, 출신을 말할 때.",
+  "fills": [
+   {
+    "text": "happy",
+    "ko_pron": "해피",
+    "meaning": "나 기뻐"
+   },
+   {
+    "text": "hungry",
+    "ko_pron": "헝그리",
+    "meaning": "나 배고파"
+   },
+   {
+    "text": "tired",
+    "ko_pron": "타이어드",
+    "meaning": "나 피곤해"
+   },
+   {
+    "text": "lost",
+    "ko_pron": "로스트",
+    "meaning": "나 길을 잃었어"
+   },
+   {
+    "text": "ready",
+    "ko_pron": "레디",
+    "meaning": "나 준비됐어"
+   },
+   {
+    "text": "from Korea",
+    "ko_pron": "프롬 코리아",
+    "meaning": "한국에서 왔어요"
+   }
+  ]
+ },
+ {
+  "group": "능력·소유·상태",
+  "pattern": "I need ___",
+  "ko_pron": "아이 니드 ___",
+  "meaning": "~이 필요해",
+  "tip": "급할 때 가장 빨리 쓰는 틀.",
+  "fills": [
+   {
+    "text": "water",
+    "ko_pron": "워터",
+    "meaning": "물이 필요해"
+   },
+   {
+    "text": "help",
+    "ko_pron": "헬프",
+    "meaning": "도움이 필요해요"
+   },
+   {
+    "text": "a taxi",
+    "ko_pron": "어 택시",
+    "meaning": "택시가 필요해요"
+   },
+   {
+    "text": "a bag",
+    "ko_pron": "어 백",
+    "meaning": "봉투가 필요해요"
+   },
+   {
+    "text": "more time",
+    "ko_pron": "모어 타임",
+    "meaning": "시간이 더 필요해"
+   },
+   {
+    "text": "a doctor",
+    "ko_pron": "어 닥터",
+    "meaning": "의사가 필요해요"
+   }
+  ]
+ },
+ {
+  "group": "능력·소유·상태",
+  "pattern": "I'm going to ___",
+  "ko_pron": "아임 고잉 투 ___",
+  "meaning": "~할 거야",
+  "tip": "곧 할 일을 말할 때.",
+  "fills": [
+   {
+    "text": "eat",
+    "ko_pron": "잇",
+    "meaning": "먹을 거야"
+   },
+   {
+    "text": "sleep",
+    "ko_pron": "슬립",
+    "meaning": "잘 거야"
+   },
+   {
+    "text": "take a bus",
+    "ko_pron": "테이크 어 버스",
+    "meaning": "버스 탈 거야"
+   },
+   {
+    "text": "stay here",
+    "ko_pron": "스테이 히어",
+    "meaning": "여기 있을 거야"
+   },
+   {
+    "text": "buy it",
+    "ko_pron": "바이 잇",
+    "meaning": "그거 살 거야"
+   },
+   {
+    "text": "call mom",
+    "ko_pron": "콜 맘",
+    "meaning": "엄마한테 전화할 거야"
+   }
+  ]
+ },
+ {
+  "group": "질문·부탁",
+  "pattern": "Can I ___?",
+  "ko_pron": "캔 아이 ___?",
+  "meaning": "~해도 돼요?",
+  "tip": "허락을 구하거나 부탁할 때.",
+  "fills": [
+   {
+    "text": "go",
+    "ko_pron": "고",
+    "meaning": "가도 돼요?"
+   },
+   {
+    "text": "eat this",
+    "ko_pron": "잇 디스",
+    "meaning": "이거 먹어도 돼요?"
+   },
+   {
+    "text": "sit here",
+    "ko_pron": "싯 히어",
+    "meaning": "여기 앉아도 돼요?"
+   },
+   {
+    "text": "try this on",
+    "ko_pron": "트라이 디스 온",
+    "meaning": "이거 입어 봐도 돼요?"
+   },
+   {
+    "text": "pay by card",
+    "ko_pron": "페이 바이 카드",
+    "meaning": "카드로 내도 돼요?"
+   },
+   {
+    "text": "have the bill",
+    "ko_pron": "해브 더 빌",
+    "meaning": "계산서 주시겠어요?"
+   }
+  ]
+ },
+ {
+  "group": "질문·부탁",
+  "pattern": "Can you help me ___?",
+  "ko_pron": "캔 유 헬프 미 ___?",
+  "meaning": "~ 좀 도와줄래요?",
+  "tip": "도움을 청할 때.",
+  "fills": [
+   {
+    "text": "find it",
+    "ko_pron": "파인드 잇",
+    "meaning": "그거 찾는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "with this",
+    "ko_pron": "위드 디스",
+    "meaning": "이것 좀 도와줄래요?"
+   },
+   {
+    "text": "carry this",
+    "ko_pron": "캐리 디스",
+    "meaning": "이거 드는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "buy a ticket",
+    "ko_pron": "바이 어 티킷",
+    "meaning": "표 사는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "read this",
+    "ko_pron": "리드 디스",
+    "meaning": "이거 읽는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "find my hotel",
+    "ko_pron": "파인드 마이 호텔",
+    "meaning": "제 호텔 찾는 것 좀 도와줄래요?"
+   }
+  ]
+ },
+ {
+  "group": "질문·부탁",
+  "pattern": "Where is ___?",
+  "ko_pron": "웨어 이즈 ___?",
+  "meaning": "~ 어디예요?",
+  "tip": "여행에서 제일 많이 쓰는 질문.",
+  "fills": [
+   {
+    "text": "the bathroom",
+    "ko_pron": "더 배스룸",
+    "meaning": "화장실 어디예요?"
+   },
+   {
+    "text": "the station",
+    "ko_pron": "더 스테이션",
+    "meaning": "역 어디예요?"
+   },
+   {
+    "text": "my mom",
+    "ko_pron": "마이 맘",
+    "meaning": "엄마 어디 있어?"
+   },
+   {
+    "text": "the exit",
+    "ko_pron": "디 엑싯",
+    "meaning": "출구 어디예요?"
+   },
+   {
+    "text": "the bus stop",
+    "ko_pron": "더 버스 스탑",
+    "meaning": "버스 정류장 어디예요?"
+   },
+   {
+    "text": "my room",
+    "ko_pron": "마이 룸",
+    "meaning": "제 방 어디예요?"
+   }
+  ]
+ },
+ {
+  "group": "질문·부탁",
+  "pattern": "What is ___?",
+  "ko_pron": "왓 이즈 ___?",
+  "meaning": "~이 뭐예요?",
+  "tip": "모르는 것을 물을 때.",
+  "fills": [
+   {
+    "text": "this",
+    "ko_pron": "디스",
+    "meaning": "이게 뭐예요?"
+   },
+   {
+    "text": "that",
+    "ko_pron": "댓",
+    "meaning": "저게 뭐예요?"
+   },
+   {
+    "text": "your name",
+    "ko_pron": "유어 네임",
+    "meaning": "이름이 뭐예요?"
+   },
+   {
+    "text": "the price",
+    "ko_pron": "더 프라이스",
+    "meaning": "가격이 얼마예요?"
+   },
+   {
+    "text": "the password",
+    "ko_pron": "더 패스워드",
+    "meaning": "비밀번호가 뭐예요?"
+   },
+   {
+    "text": "it",
+    "ko_pron": "잇",
+    "meaning": "그게 뭐예요?"
+   }
+  ]
+ },
+ {
+  "group": "질문·부탁",
+  "pattern": "Do you like ___?",
+  "ko_pron": "두 유 라이크 ___?",
+  "meaning": "~ 좋아해?",
+  "tip": "상대 취향을 물을 때.",
+  "fills": [
+   {
+    "text": "dogs",
+    "ko_pron": "도그즈",
+    "meaning": "개 좋아해?"
+   },
+   {
+    "text": "coffee",
+    "ko_pron": "커피",
+    "meaning": "커피 좋아해?"
+   },
+   {
+    "text": "this",
+    "ko_pron": "디스",
+    "meaning": "이거 좋아해?"
+   },
+   {
+    "text": "sushi",
+    "ko_pron": "스시",
+    "meaning": "초밥 좋아해?"
+   },
+   {
+    "text": "music",
+    "ko_pron": "뮤직",
+    "meaning": "음악 좋아해?"
+   },
+   {
+    "text": "it",
+    "ko_pron": "잇",
+    "meaning": "마음에 들어?"
+   }
+  ]
+ },
+ {
+  "group": "질문·부탁",
+  "pattern": "How much ___?",
+  "ko_pron": "하우 머치 ___?",
+  "meaning": "얼마예요?",
+  "tip": "쇼핑과 표 살 때 필수.",
+  "fills": [
+   {
+    "text": "is this",
+    "ko_pron": "이즈 디스",
+    "meaning": "이거 얼마예요?"
+   },
+   {
+    "text": "is it",
+    "ko_pron": "이즈 잇",
+    "meaning": "그거 얼마예요?"
+   },
+   {
+    "text": "are these",
+    "ko_pron": "아 디즈",
+    "meaning": "이것들 얼마예요?"
+   },
+   {
+    "text": "is the ticket",
+    "ko_pron": "이즈 더 티킷",
+    "meaning": "표는 얼마예요?"
+   },
+   {
+    "text": "is one night",
+    "ko_pron": "이즈 원 나잇",
+    "meaning": "1박에 얼마예요?"
+   },
+   {
+    "text": "is it in total",
+    "ko_pron": "이즈 잇 인 토털",
+    "meaning": "전부 얼마예요?"
+   }
+  ]
+ }
+]

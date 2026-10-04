@@ -1,0 +1,35 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## 프로젝트 개요
+
+영어·일본어 기초 회화 학습 사이트("첫말"). 빌드 도구 없는 정적 사이트(HTML + 순수 JS + JSON)다. 데이터 형식별 예시는 `README.md`에 있다.
+
+## 명령
+
+```
+python -m http.server 5500      # 사이트 실행 → http://localhost:5500 (index.html 직접 열면 JSON fetch 실패)
+python tools/validate.py        # 데이터 검사 (테스트 대신 이것)
+python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서버 없이 열림)
+```
+
+## 구조
+
+- `js/core.js`의 `LANGS`가 언어·섹션 목록의 기준이다. 섹션마다 `id`(= `data/<언어>/<id>.json`), `type`, `ready`가 있다.
+- `js/app.js`가 `#/<언어>/<섹션>/<a>/<b>` 주소를 읽고 섹션 `type`에 따라 `views.js`의 화면 함수를 고른다.
+  type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표).
+- 스크립트는 모듈 없이 `core.js → views.js → app.js` 순서로 불러오는 전역 함수 방식이다.
+- `loadData`는 `window.EMBEDDED_DATA`(미리보기 파일)가 있으면 그걸 쓰고, 없으면 `data/…json`을 fetch한다.
+- 새 섹션 열기: JSON 만들기 → `LANGS`에서 `ready: true` → `validate.py`. 새 `type`이면 `app.js`의 switch와 `views.js` 화면도 추가한다.
+- `validate.py`는 파일 이름(`CHECKERS`)으로 검사기를 고르고, 같은 이름인데 언어별로 형식이 다르면 `CHECKERS_BY_LANG`(예: `ja/verbs`)이 우선한다.
+  같은 `verbs.json`이라도 `en`은 카드 목록, `ja`는 `{groups, forms, verbs}`다.
+- 색은 `css/style.css` 맨 위 `:root` 변수만 쓴다(다크 모드 포함). 일본어 화면은 `body.lang-ja`에서 `--accent`가 빨강이 된다.
+
+## 작업 규칙
+
+1. 모든 단어와 문장에는 한글 발음(`ko_pron`)과 뜻(`meaning`)을 반드시 넣는다.
+2. 다섯 살 원어민 아이 수준의 쉽고 자주 쓰는 표현으로 만든다.
+3. 데이터를 고친 뒤에는 항상 `python tools/validate.py`를 실행해서 문제가 없는지 확인한다.
+4. 코드를 바꿀 때는 무엇을 왜 바꾸는지 먼저 설명한다.
+5. 큰 작업이 하나 끝나서 검사(`validate.py`)를 통과하면, 커밋할지 사용자에게 먼저 묻는다. 묻지 않고 커밋하지 않는다.

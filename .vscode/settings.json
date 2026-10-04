@@ -1,0 +1,9 @@
+{
+  "files.encoding": "utf8",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "liveServer.settings.root": "/",
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.host": "0.0.0.0",
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+}

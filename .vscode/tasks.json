@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "사이트 실행 (로컬 서버)",
+      "type": "shell",
+      "command": "python -m http.server 5500",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "데이터 검사",
+      "type": "shell",
+      "command": "python tools/validate.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "미리보기 한 파일 만들기",
+      "type": "shell",
+      "command": "python tools/validate.py && python tools/build_preview.py",
+      "problemMatcher": []
+    }
+  ]
+}

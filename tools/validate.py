@@ -1,0 +1,120 @@
+"""데이터 파일 검사.
+단어·문장을 늘린 뒤 실행하면 빠진 칸, 중복, 형식 오류를 알려준다.
+
+실행: python tools/validate.py
+"""
+import json
+import pathlib
+import re
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+BASIC = ["text", "ko_pron", "meaning"]
+HIRAGANA = re.compile(r"^[ぁ-ゟ]+$")
+problems = []
+
+def need(obj, keys, where):
+    for k in keys:
+        if not str(obj.get(k, "")).strip():
+            problems.append(f"{where}: '{k}' 칸이 비어 있어요")
+
+def check_cards(data, name):
+    for c in data:
+        need(c, ["category"], f"{name} 주제")
+        seen = set()
+        for i, it in enumerate(c.get("items", [])):
+            where = f"{name} > {c.get('category')} > {i + 1}번 ({it.get('text', '?')})"
+            need(it, BASIC, where)
+            if it.get("example") and not it.get("example_meaning"):
+                problems.append(f"{where}: 예문 뜻(example_meaning)이 없어요")
+            key = it.get("text", "").lower()
+            if key in seen:
+                problems.append(f"{where}: 같은 주제 안에 중복된 단어예요")
+            seen.add(key)
+
+def check_patterns(data, name):
+    for i, p in enumerate(data):
+        where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
+        need(p, ["group", "pattern", "ko_pron", "meaning"], where)
+        if "___" not in p.get("pattern", ""):
+            problems.append(f"{where}: pattern에 빈칸 ___ 이 없어요")
+        if "___" not in p.get("ko_pron", ""):
+            problems.append(f"{where}: ko_pron에 빈칸 ___ 이 없어요")
+        for j, f in enumerate(p.get("fills", [])):
+            need(f, BASIC, f"{where} > 바꿔 넣을 말 {j + 1}번")
+
+def check_situations(data, name):
+    for s in data:
+        need(s, ["scene"], f"{name} 장면")
+        for d in s.get("dialogues", []):
+            for k, l in enumerate(d.get("lines", [])):
+                need(l, ["who"] + BASIC, f"{name} > {s.get('scene')} > {d.get('title')} > {k + 1}번 줄")
+        for k, ph in enumerate(s.get("phrases", [])):
+            need(ph, BASIC, f"{name} > {s.get('scene')} > 핵심 문장 {k + 1}번")
+
+def check_conjugation(data, name):
+    gids = {g.get("id") for g in data.get("groups", [])}
+    forms = data.get("forms", [])
+    for i, f in enumerate(forms):
+        need(f, ["id", "name"], f"{name} > 활용형 {i + 1}번")
+    fids = [f.get("id") for f in forms]
+    seen = set()
+    for i, v in enumerate(data.get("verbs", [])):
+        where = f"{name} > {i + 1}번 ({v.get('text', '?')})"
+        need(v, ["id"] + BASIC, where)
+        if v.get("id") in seen:
+            problems.append(f"{where}: 중복된 id예요")
+        seen.add(v.get("id"))
+        if v.get("group") not in gids:
+            problems.append(f"{where}: group '{v.get('group')}'이 groups에 없어요")
+        if "kanji" not in v:
+            problems.append(f"{where}: 'kanji' 칸이 없어요 (한자가 없으면 null)")
+        if v.get("text") and not HIRAGANA.match(v["text"]):
+            problems.append(f"{where}: text는 히라가나로만 써요")
+        vf = v.get("forms", {})
+        for fid in fids:
+            if fid not in vf:
+                problems.append(f"{where}: 활용형 '{fid}'이 없어요")
+                continue
+            need(vf[fid], BASIC, f"{where} > {fid}")
+            t = vf[fid].get("text")
+            if t and not HIRAGANA.match(t):
+                problems.append(f"{where} > {fid}: text는 히라가나로만 써요")
+        if "example" not in v:
+            problems.append(f"{where}: 예문(example)이 없어요")
+        else:
+            need(v["example"], BASIC, f"{where} > 예문")
+
+CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
+            "patterns": check_patterns, "situations": check_situations}
+# 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
+CHECKERS_BY_LANG = {"ja/verbs": check_conjugation}
+# 검사기마다 기대하는 맨 바깥 모양
+SHAPES = {check_conjugation: dict}
+
+def main():
+    files = sorted((ROOT / "data").rglob("*.json"))
+    for f in files:
+        name = f"{f.parent.name}/{f.name}"
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            problems.append(f"{name}: JSON 형식 오류 — {e.msg} ({e.lineno}번째 줄)")
+            continue
+        checker = CHECKERS_BY_LANG.get(f"{f.parent.name}/{f.stem}") or CHECKERS.get(f.stem)
+        if checker:
+            shape = SHAPES.get(checker, list)
+            if not isinstance(data, shape):
+                problems.append(f"{name}: 형식이 달라요 — 맨 바깥이 {'{ }' if shape is dict else '[ ]'}여야 해요")
+                continue
+            checker(data, name)
+            print(f"검사함: {name}")
+    if problems:
+        print(f"\n문제 {len(problems)}개:")
+        for p in problems:
+            print(" -", p)
+        sys.exit(1)
+    print("\n문제 없어요.")
+
+if __name__ == "__main__":
+    main()

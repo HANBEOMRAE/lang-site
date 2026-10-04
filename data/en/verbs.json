@@ -1,0 +1,326 @@
+[
+ {
+  "category": "기본 동작",
+  "emoji": "🏃",
+  "items": [
+   {
+    "text": "go",
+    "ko_pron": "고",
+    "meaning": "가다",
+    "example": "Let's go.",
+    "example_meaning": "가자."
+   },
+   {
+    "text": "come",
+    "ko_pron": "컴",
+    "meaning": "오다",
+    "example": "Come here.",
+    "example_meaning": "이리 와."
+   },
+   {
+    "text": "sit",
+    "ko_pron": "싯",
+    "meaning": "앉다",
+    "example": "Sit down, please.",
+    "example_meaning": "앉으세요."
+   },
+   {
+    "text": "stand",
+    "ko_pron": "스탠드",
+    "meaning": "서다",
+    "example": "Stand up.",
+    "example_meaning": "일어서."
+   },
+   {
+    "text": "walk",
+    "ko_pron": "워크",
+    "meaning": "걷다",
+    "example": "I walk to school.",
+    "example_meaning": "나는 학교에 걸어가."
+   },
+   {
+    "text": "run",
+    "ko_pron": "런",
+    "meaning": "달리다",
+    "example": "Don't run.",
+    "example_meaning": "뛰지 마."
+   },
+   {
+    "text": "stop",
+    "ko_pron": "스탑",
+    "meaning": "멈추다",
+    "example": "Stop here, please.",
+    "example_meaning": "여기서 세워 주세요."
+   },
+   {
+    "text": "wait",
+    "ko_pron": "웨이트",
+    "meaning": "기다리다",
+    "example": "Wait a minute.",
+    "example_meaning": "잠깐만 기다려."
+   }
+  ]
+ },
+ {
+  "category": "먹고 자고 씻기",
+  "emoji": "🍚",
+  "items": [
+   {
+    "text": "eat",
+    "ko_pron": "잇",
+    "meaning": "먹다",
+    "example": "Let's eat.",
+    "example_meaning": "먹자."
+   },
+   {
+    "text": "drink",
+    "ko_pron": "드링크",
+    "meaning": "마시다",
+    "example": "I drink water.",
+    "example_meaning": "나는 물을 마셔."
+   },
+   {
+    "text": "sleep",
+    "ko_pron": "슬립",
+    "meaning": "자다",
+    "example": "I want to sleep.",
+    "example_meaning": "자고 싶어."
+   },
+   {
+    "text": "wake up",
+    "ko_pron": "웨이크 업",
+    "meaning": "일어나다, 깨다",
+    "example": "Wake up!",
+    "example_meaning": "일어나!"
+   },
+   {
+    "text": "wash",
+    "ko_pron": "워시",
+    "meaning": "씻다",
+    "example": "Wash your hands.",
+    "example_meaning": "손 씻어."
+   },
+   {
+    "text": "cook",
+    "ko_pron": "쿡",
+    "meaning": "요리하다",
+    "example": "Mom cooks dinner.",
+    "example_meaning": "엄마가 저녁을 요리해."
+   },
+   {
+    "text": "brush",
+    "ko_pron": "브러시",
+    "meaning": "닦다, 빗다",
+    "example": "Brush your teeth.",
+    "example_meaning": "이 닦아."
+   },
+   {
+    "text": "rest",
+    "ko_pron": "레스트",
+    "meaning": "쉬다",
+    "example": "Let's rest here.",
+    "example_meaning": "여기서 쉬자."
+   }
+  ]
+ },
+ {
+  "category": "마음과 생각",
+  "emoji": "💭",
+  "items": [
+   {
+    "text": "want",
+    "ko_pron": "원트",
+    "meaning": "원하다",
+    "example": "I want a cookie.",
+    "example_meaning": "쿠키 갖고 싶어."
+   },
+   {
+    "text": "like",
+    "ko_pron": "라이크",
+    "meaning": "좋아하다",
+    "example": "I like cats.",
+    "example_meaning": "나는 고양이가 좋아."
+   },
+   {
+    "text": "love",
+    "ko_pron": "러브",
+    "meaning": "사랑하다",
+    "example": "I love you.",
+    "example_meaning": "사랑해."
+   },
+   {
+    "text": "need",
+    "ko_pron": "니드",
+    "meaning": "필요하다",
+    "example": "I need help.",
+    "example_meaning": "도움이 필요해."
+   },
+   {
+    "text": "know",
+    "ko_pron": "노우",
+    "meaning": "알다",
+    "example": "I know that.",
+    "example_meaning": "그거 알아."
+   },
+   {
+    "text": "think",
+    "ko_pron": "띵크",
+    "meaning": "생각하다",
+    "example": "I think so.",
+    "example_meaning": "나도 그렇게 생각해."
+   },
+   {
+    "text": "feel",
+    "ko_pron": "필",
+    "meaning": "느끼다",
+    "example": "I feel good.",
+    "example_meaning": "기분 좋아."
+   },
+   {
+    "text": "hope",
+    "ko_pron": "호프",
+    "meaning": "바라다",
+    "example": "I hope so.",
+    "example_meaning": "그러면 좋겠다."
+   }
+  ]
+ },
+ {
+  "category": "보고 듣고 말하기",
+  "emoji": "👀",
+  "items": [
+   {
+    "text": "see",
+    "ko_pron": "씨",
+    "meaning": "보다, 보이다",
+    "example": "I see a bird.",
+    "example_meaning": "새가 보여."
+   },
+   {
+    "text": "look",
+    "ko_pron": "룩",
+    "meaning": "바라보다",
+    "example": "Look at me.",
+    "example_meaning": "나를 봐."
+   },
+   {
+    "text": "watch",
+    "ko_pron": "와치",
+    "meaning": "지켜보다, 시청하다",
+    "example": "I watch TV.",
+    "example_meaning": "나는 TV를 봐."
+   },
+   {
+    "text": "hear",
+    "ko_pron": "히어",
+    "meaning": "들리다",
+    "example": "I can't hear you.",
+    "example_meaning": "잘 안 들려요."
+   },
+   {
+    "text": "listen",
+    "ko_pron": "리슨",
+    "meaning": "귀 기울여 듣다",
+    "example": "Listen to me.",
+    "example_meaning": "내 말 들어 봐."
+   },
+   {
+    "text": "say",
+    "ko_pron": "세이",
+    "meaning": "말하다",
+    "example": "Say it again, please.",
+    "example_meaning": "다시 말해 주세요."
+   },
+   {
+    "text": "tell",
+    "ko_pron": "텔",
+    "meaning": "말해 주다",
+    "example": "Tell me your name.",
+    "example_meaning": "이름을 말해 줘."
+   },
+   {
+    "text": "ask",
+    "ko_pron": "애스크",
+    "meaning": "묻다",
+    "example": "Can I ask you something?",
+    "example_meaning": "뭐 좀 물어봐도 돼요?"
+   }
+  ]
+ },
+ {
+  "category": "주고받기·하기",
+  "emoji": "🤲",
+  "items": [
+   {
+    "text": "have",
+    "ko_pron": "해브",
+    "meaning": "가지다, 있다",
+    "example": "I have a dog.",
+    "example_meaning": "나는 개가 있어."
+   },
+   {
+    "text": "give",
+    "ko_pron": "기브",
+    "meaning": "주다",
+    "example": "Give me that.",
+    "example_meaning": "그거 줘."
+   },
+   {
+    "text": "take",
+    "ko_pron": "테이크",
+    "meaning": "가져가다, 타다",
+    "example": "I'll take it.",
+    "example_meaning": "그걸로 할게요."
+   },
+   {
+    "text": "buy",
+    "ko_pron": "바이",
+    "meaning": "사다",
+    "example": "I want to buy this.",
+    "example_meaning": "이거 사고 싶어요."
+   },
+   {
+    "text": "pay",
+    "ko_pron": "페이",
+    "meaning": "돈을 내다",
+    "example": "Can I pay by card?",
+    "example_meaning": "카드로 내도 돼요?"
+   },
+   {
+    "text": "open",
+    "ko_pron": "오픈",
+    "meaning": "열다",
+    "example": "Open the box.",
+    "example_meaning": "상자 열어."
+   },
+   {
+    "text": "close",
+    "ko_pron": "클로즈",
+    "meaning": "닫다",
+    "example": "Close the door.",
+    "example_meaning": "문 닫아."
+   },
+   {
+    "text": "help",
+    "ko_pron": "헬프",
+    "meaning": "돕다",
+    "example": "Can you help me?",
+    "example_meaning": "도와주실래요?"
+   },
+   {
+    "text": "find",
+    "ko_pron": "파인드",
+    "meaning": "찾다",
+    "example": "I can't find it.",
+    "example_meaning": "못 찾겠어."
+   },
+   {
+    "text": "play",
+    "ko_pron": "플레이",
+    "meaning": "놀다",
+    "example": "Let's play.",
+    "example_meaning": "놀자."
+   }
+  ]
+ }
+]
