@@ -1,0 +1,854 @@
+[
+ {
+  "category": "꼭 쓰는 말",
+  "emoji": "💬",
+  "items": [
+   {
+    "text": "はい",
+    "kanji": null,
+    "ko_pron": "하이",
+    "meaning": "네",
+    "example": "はい、げんきです。",
+    "example_ko_pron": "하이, 겐키데스.",
+    "example_meaning": "네, 잘 지내요."
+   },
+   {
+    "text": "いいえ",
+    "kanji": null,
+    "ko_pron": "이-에",
+    "meaning": "아니요",
+    "example": "いいえ、ちがいます。",
+    "example_ko_pron": "이-에, 치가이마스.",
+    "example_meaning": "아니요, 아니에요."
+   },
+   {
+    "text": "ありがとう",
+    "kanji": null,
+    "ko_pron": "아리가토-",
+    "meaning": "고마워",
+    "example": "どうも ありがとう。",
+    "example_ko_pron": "도-모 아리가토-.",
+    "example_meaning": "정말 고마워."
+   },
+   {
+    "text": "ごめんなさい",
+    "kanji": null,
+    "ko_pron": "고멘나사이",
+    "meaning": "미안해요",
+    "example": "ごめんなさい、もう しません。",
+    "example_ko_pron": "고멘나사이, 모- 시마센.",
+    "example_meaning": "미안해요, 다시는 안 할게요."
+   },
+   {
+    "text": "おはよう",
+    "kanji": null,
+    "ko_pron": "오하요-",
+    "meaning": "좋은 아침(아침 인사)",
+    "example": "おはよう、おかあさん。",
+    "example_ko_pron": "오하요-, 오카-산.",
+    "example_meaning": "엄마, 좋은 아침."
+   },
+   {
+    "text": "こんにちは",
+    "kanji": null,
+    "ko_pron": "콘니치와",
+    "meaning": "안녕하세요(낮 인사)",
+    "example": "こんにちは、げんき？",
+    "example_ko_pron": "콘니치와, 겐키?",
+    "example_meaning": "안녕, 잘 지내?"
+   },
+   {
+    "text": "おやすみ",
+    "kanji": null,
+    "ko_pron": "오야스미",
+    "meaning": "잘 자",
+    "example": "おやすみ、また あした。",
+    "example_ko_pron": "오야스미, 마타 아시타.",
+    "example_meaning": "잘 자, 내일 봐."
+   },
+   {
+    "text": "またね",
+    "kanji": null,
+    "ko_pron": "마타네",
+    "meaning": "또 봐(헤어질 때)",
+    "example": "バイバイ、またね！",
+    "example_ko_pron": "바이바이, 마타네!",
+    "example_meaning": "안녕, 또 봐!"
+   },
+   {
+    "text": "いただきます",
+    "kanji": null,
+    "ko_pron": "이타다키마스",
+    "meaning": "잘 먹겠습니다",
+    "example": "みんなで いただきます！",
+    "example_ko_pron": "민나데 이타다키마스!",
+    "example_meaning": "다 같이 잘 먹겠습니다!"
+   },
+   {
+    "text": "ちょうだい",
+    "kanji": null,
+    "ko_pron": "초-다이",
+    "meaning": "줘, 주세요",
+    "example": "それ ちょうだい。",
+    "example_ko_pron": "소레 초-다이.",
+    "example_meaning": "그거 줘."
+   },
+   {
+    "text": "これ",
+    "kanji": null,
+    "ko_pron": "코레",
+    "meaning": "이것",
+    "example": "これ なあに？",
+    "example_ko_pron": "코레 나-니?",
+    "example_meaning": "이게 뭐야?"
+   },
+   {
+    "text": "もっと",
+    "kanji": null,
+    "ko_pron": "못토",
+    "meaning": "더",
+    "example": "もっと あそびたい！",
+    "example_ko_pron": "못토 아소비타이!",
+    "example_meaning": "더 놀고 싶어!"
+   }
+  ]
+ },
+ {
+  "category": "사람·가족",
+  "emoji": "👨‍👩‍👧",
+  "items": [
+   {
+    "text": "おかあさん",
+    "kanji": "お母さん",
+    "ko_pron": "오카-산",
+    "meaning": "엄마",
+    "example": "おかあさん だいすき。",
+    "example_ko_pron": "오카-산 다이스키.",
+    "example_meaning": "엄마 정말 좋아."
+   },
+   {
+    "text": "おとうさん",
+    "kanji": "お父さん",
+    "ko_pron": "오토-산",
+    "meaning": "아빠",
+    "example": "おとうさんは せが たかい。",
+    "example_ko_pron": "오토-산와 세가 타카이.",
+    "example_meaning": "아빠는 키가 커."
+   },
+   {
+    "text": "あかちゃん",
+    "kanji": "赤ちゃん",
+    "ko_pron": "아카찬",
+    "meaning": "아기",
+    "example": "あかちゃんが ねて いる。",
+    "example_ko_pron": "아카찬가 네테 이루.",
+    "example_meaning": "아기가 자고 있어."
+   },
+   {
+    "text": "おにいちゃん",
+    "kanji": "お兄ちゃん",
+    "ko_pron": "오니-찬",
+    "meaning": "형, 오빠",
+    "example": "おにいちゃんと あそぶ。",
+    "example_ko_pron": "오니-찬토 아소부.",
+    "example_meaning": "형(오빠)이랑 놀아."
+   },
+   {
+    "text": "おねえちゃん",
+    "kanji": "お姉ちゃん",
+    "ko_pron": "오네-찬",
+    "meaning": "언니, 누나",
+    "example": "おねえちゃんは やさしい。",
+    "example_ko_pron": "오네-찬와 야사시-.",
+    "example_meaning": "언니(누나)는 다정해."
+   },
+   {
+    "text": "いもうと",
+    "kanji": "妹",
+    "ko_pron": "이모-토",
+    "meaning": "여동생",
+    "example": "いもうとは にさい。",
+    "example_ko_pron": "이모-토와 니사이.",
+    "example_meaning": "여동생은 두 살이야."
+   },
+   {
+    "text": "おとうと",
+    "kanji": "弟",
+    "ko_pron": "오토-토",
+    "meaning": "남동생",
+    "example": "おとうとが ないて いる。",
+    "example_ko_pron": "오토-토가 나이테 이루.",
+    "example_meaning": "남동생이 울고 있어."
+   },
+   {
+    "text": "おじいちゃん",
+    "kanji": null,
+    "ko_pron": "오지-찬",
+    "meaning": "할아버지",
+    "example": "おじいちゃんの いえに いく。",
+    "example_ko_pron": "오지-찬노 이에니 이쿠.",
+    "example_meaning": "할아버지 집에 가."
+   },
+   {
+    "text": "おばあちゃん",
+    "kanji": null,
+    "ko_pron": "오바-찬",
+    "meaning": "할머니",
+    "example": "おばあちゃんが クッキーを やいた。",
+    "example_ko_pron": "오바-찬가 쿳키-오 야이타.",
+    "example_meaning": "할머니가 쿠키를 구웠어."
+   },
+   {
+    "text": "ともだち",
+    "kanji": "友達",
+    "ko_pron": "토모다치",
+    "meaning": "친구",
+    "example": "ともだちに なろう。",
+    "example_ko_pron": "토모다치니 나로-.",
+    "example_meaning": "친구 하자."
+   }
+  ]
+ },
+ {
+  "category": "숫자",
+  "emoji": "🔢",
+  "items": [
+   {
+    "text": "いち",
+    "kanji": "一",
+    "ko_pron": "이치",
+    "meaning": "하나, 1",
+    "example": "いちばん だよ！",
+    "example_ko_pron": "이치반 다요!",
+    "example_meaning": "1등이야!"
+   },
+   {
+    "text": "に",
+    "kanji": "二",
+    "ko_pron": "니",
+    "meaning": "둘, 2",
+    "example": "にこ ちょうだい。",
+    "example_ko_pron": "니코 초-다이.",
+    "example_meaning": "두 개 줘."
+   },
+   {
+    "text": "さん",
+    "kanji": "三",
+    "ko_pron": "산",
+    "meaning": "셋, 3",
+    "example": "さんにんで あそぼう。",
+    "example_ko_pron": "산닌데 아소보-.",
+    "example_meaning": "셋이서 놀자."
+   },
+   {
+    "text": "よん",
+    "kanji": "四",
+    "ko_pron": "욘",
+    "meaning": "넷, 4",
+    "example": "いぬは あしが よんほん。",
+    "example_ko_pron": "이누와 아시가 욘혼.",
+    "example_meaning": "개는 다리가 네 개야."
+   },
+   {
+    "text": "ご",
+    "kanji": "五",
+    "ko_pron": "고",
+    "meaning": "다섯, 5",
+    "example": "ごさいです。",
+    "example_ko_pron": "고사이데스.",
+    "example_meaning": "다섯 살이에요."
+   },
+   {
+    "text": "ろく",
+    "kanji": "六",
+    "ko_pron": "로쿠",
+    "meaning": "여섯, 6",
+    "example": "ろくじに おきる。",
+    "example_ko_pron": "로쿠지니 오키루.",
+    "example_meaning": "여섯 시에 일어나."
+   },
+   {
+    "text": "なな",
+    "kanji": "七",
+    "ko_pron": "나나",
+    "meaning": "일곱, 7",
+    "example": "なないろの にじ。",
+    "example_ko_pron": "나나이로노 니지.",
+    "example_meaning": "일곱 빛깔 무지개."
+   },
+   {
+    "text": "はち",
+    "kanji": "八",
+    "ko_pron": "하치",
+    "meaning": "여덟, 8",
+    "example": "はちじに ねる。",
+    "example_ko_pron": "하치지니 네루.",
+    "example_meaning": "여덟 시에 자."
+   },
+   {
+    "text": "きゅう",
+    "kanji": "九",
+    "ko_pron": "큐-",
+    "meaning": "아홉, 9",
+    "example": "きゅうひきの ねこ。",
+    "example_ko_pron": "큐-히키노 네코.",
+    "example_meaning": "고양이 아홉 마리."
+   },
+   {
+    "text": "じゅう",
+    "kanji": "十",
+    "ko_pron": "주-",
+    "meaning": "열, 10",
+    "example": "じゅうまで かぞえよう。",
+    "example_ko_pron": "주-마데 카조에요-.",
+    "example_meaning": "열까지 세자."
+   }
+  ]
+ },
+ {
+  "category": "색깔",
+  "emoji": "🎨",
+  "items": [
+   {
+    "text": "あか",
+    "kanji": "赤",
+    "ko_pron": "아카",
+    "meaning": "빨간색",
+    "example": "あかが すき。",
+    "example_ko_pron": "아카가 스키.",
+    "example_meaning": "빨간색이 좋아."
+   },
+   {
+    "text": "あお",
+    "kanji": "青",
+    "ko_pron": "아오",
+    "meaning": "파란색",
+    "example": "そらは あおいね。",
+    "example_ko_pron": "소라와 아오이네.",
+    "example_meaning": "하늘이 파랗네."
+   },
+   {
+    "text": "きいろ",
+    "kanji": "黄色",
+    "ko_pron": "키-로",
+    "meaning": "노란색",
+    "example": "きいろの ぼうし。",
+    "example_ko_pron": "키-로노 보-시.",
+    "example_meaning": "노란 모자."
+   },
+   {
+    "text": "みどり",
+    "kanji": "緑",
+    "ko_pron": "미도리",
+    "meaning": "초록색",
+    "example": "みどりの はっぱ。",
+    "example_ko_pron": "미도리노 핫파.",
+    "example_meaning": "초록 잎."
+   },
+   {
+    "text": "くろ",
+    "kanji": "黒",
+    "ko_pron": "쿠로",
+    "meaning": "검은색",
+    "example": "くろい ねこ。",
+    "example_ko_pron": "쿠로이 네코.",
+    "example_meaning": "까만 고양이."
+   },
+   {
+    "text": "しろ",
+    "kanji": "白",
+    "ko_pron": "시로",
+    "meaning": "하얀색",
+    "example": "ゆきは しろい。",
+    "example_ko_pron": "유키와 시로이.",
+    "example_meaning": "눈은 하얘."
+   },
+   {
+    "text": "ピンク",
+    "kanji": null,
+    "ko_pron": "핀쿠",
+    "meaning": "분홍색",
+    "example": "ピンクの ふく。",
+    "example_ko_pron": "핀쿠노 후쿠.",
+    "example_meaning": "분홍 옷."
+   },
+   {
+    "text": "オレンジ",
+    "kanji": null,
+    "ko_pron": "오렌지",
+    "meaning": "주황색, 오렌지",
+    "example": "オレンジいろの ボール。",
+    "example_ko_pron": "오렌지이로노 보-루.",
+    "example_meaning": "주황색 공."
+   }
+  ]
+ },
+ {
+  "category": "몸",
+  "emoji": "🖐️",
+  "items": [
+   {
+    "text": "あたま",
+    "kanji": "頭",
+    "ko_pron": "아타마",
+    "meaning": "머리",
+    "example": "あたまが いたい。",
+    "example_ko_pron": "아타마가 이타이.",
+    "example_meaning": "머리가 아파."
+   },
+   {
+    "text": "め",
+    "kanji": "目",
+    "ko_pron": "메",
+    "meaning": "눈",
+    "example": "めを つぶって。",
+    "example_ko_pron": "메오 츠붓테.",
+    "example_meaning": "눈 감아."
+   },
+   {
+    "text": "みみ",
+    "kanji": "耳",
+    "ko_pron": "미미",
+    "meaning": "귀",
+    "example": "うさぎは みみが ながい。",
+    "example_ko_pron": "우사기와 미미가 나가이.",
+    "example_meaning": "토끼는 귀가 길어."
+   },
+   {
+    "text": "はな",
+    "kanji": "鼻",
+    "ko_pron": "하나",
+    "meaning": "코",
+    "example": "はなを さわって。",
+    "example_ko_pron": "하나오 사왓테.",
+    "example_meaning": "코를 만져 봐."
+   },
+   {
+    "text": "くち",
+    "kanji": "口",
+    "ko_pron": "쿠치",
+    "meaning": "입",
+    "example": "くちを あけて。",
+    "example_ko_pron": "쿠치오 아케테.",
+    "example_meaning": "입을 벌려."
+   },
+   {
+    "text": "て",
+    "kanji": "手",
+    "ko_pron": "테",
+    "meaning": "손",
+    "example": "てを あらおう。",
+    "example_ko_pron": "테오 아라오-.",
+    "example_meaning": "손 씻자."
+   },
+   {
+    "text": "あし",
+    "kanji": "足",
+    "ko_pron": "아시",
+    "meaning": "발, 다리",
+    "example": "あしが つめたい。",
+    "example_ko_pron": "아시가 츠메타이.",
+    "example_meaning": "발이 차가워."
+   },
+   {
+    "text": "おなか",
+    "kanji": "お腹",
+    "ko_pron": "오나카",
+    "meaning": "배",
+    "example": "おなか すいた。",
+    "example_ko_pron": "오나카 스이타.",
+    "example_meaning": "배고파."
+   }
+  ]
+ },
+ {
+  "category": "음식",
+  "emoji": "🍎",
+  "items": [
+   {
+    "text": "みず",
+    "kanji": "水",
+    "ko_pron": "미즈",
+    "meaning": "물",
+    "example": "おみず のみたい。",
+    "example_ko_pron": "오미즈 노미타이.",
+    "example_meaning": "물 마시고 싶어."
+   },
+   {
+    "text": "ぎゅうにゅう",
+    "kanji": "牛乳",
+    "ko_pron": "규-뉴-",
+    "meaning": "우유",
+    "example": "ぎゅうにゅうを のむ。",
+    "example_ko_pron": "규-뉴-오 노무.",
+    "example_meaning": "우유를 마셔."
+   },
+   {
+    "text": "パン",
+    "kanji": null,
+    "ko_pron": "판",
+    "meaning": "빵",
+    "example": "パンが すき。",
+    "example_ko_pron": "판가 스키.",
+    "example_meaning": "빵이 좋아."
+   },
+   {
+    "text": "りんご",
+    "kanji": null,
+    "ko_pron": "린고",
+    "meaning": "사과",
+    "example": "りんごを たべる。",
+    "example_ko_pron": "린고오 타베루.",
+    "example_meaning": "사과를 먹어."
+   },
+   {
+    "text": "たまご",
+    "kanji": "卵",
+    "ko_pron": "타마고",
+    "meaning": "달걀",
+    "example": "たまごやき おいしい。",
+    "example_ko_pron": "타마고야키 오이시-.",
+    "example_meaning": "달걀말이 맛있어."
+   },
+   {
+    "text": "ごはん",
+    "kanji": "ご飯",
+    "ko_pron": "고한",
+    "meaning": "밥",
+    "example": "ごはんだよ！",
+    "example_ko_pron": "고한다요!",
+    "example_meaning": "밥 먹자!"
+   },
+   {
+    "text": "ジュース",
+    "kanji": null,
+    "ko_pron": "주-스",
+    "meaning": "주스",
+    "example": "ジュース のみたい。",
+    "example_ko_pron": "주-스 노미타이.",
+    "example_meaning": "주스 마시고 싶어."
+   },
+   {
+    "text": "おかし",
+    "kanji": "お菓子",
+    "ko_pron": "오카시",
+    "meaning": "과자, 간식",
+    "example": "おかし たべても いい？",
+    "example_ko_pron": "오카시 타베테모 이-?",
+    "example_meaning": "과자 먹어도 돼?"
+   }
+  ]
+ },
+ {
+  "category": "동물",
+  "emoji": "🐶",
+  "items": [
+   {
+    "text": "いぬ",
+    "kanji": "犬",
+    "ko_pron": "이누",
+    "meaning": "개",
+    "example": "いぬが ほえた。",
+    "example_ko_pron": "이누가 호에타.",
+    "example_meaning": "개가 짖었어."
+   },
+   {
+    "text": "ねこ",
+    "kanji": "猫",
+    "ko_pron": "네코",
+    "meaning": "고양이",
+    "example": "ねこが ねて いる。",
+    "example_ko_pron": "네코가 네테 이루.",
+    "example_meaning": "고양이가 자고 있어."
+   },
+   {
+    "text": "とり",
+    "kanji": "鳥",
+    "ko_pron": "토리",
+    "meaning": "새",
+    "example": "とりが とんで いる。",
+    "example_ko_pron": "토리가 톤데 이루.",
+    "example_meaning": "새가 날고 있어."
+   },
+   {
+    "text": "さかな",
+    "kanji": "魚",
+    "ko_pron": "사카나",
+    "meaning": "물고기, 생선",
+    "example": "さかなが およいで いる。",
+    "example_ko_pron": "사카나가 오요이데 이루.",
+    "example_meaning": "물고기가 헤엄치고 있어."
+   },
+   {
+    "text": "くま",
+    "kanji": "熊",
+    "ko_pron": "쿠마",
+    "meaning": "곰",
+    "example": "くまは おおきい。",
+    "example_ko_pron": "쿠마와 오-키-.",
+    "example_meaning": "곰은 커."
+   },
+   {
+    "text": "うさぎ",
+    "kanji": null,
+    "ko_pron": "우사기",
+    "meaning": "토끼",
+    "example": "うさぎは はやい。",
+    "example_ko_pron": "우사기와 하야이.",
+    "example_meaning": "토끼는 빨라."
+   },
+   {
+    "text": "うま",
+    "kanji": "馬",
+    "ko_pron": "우마",
+    "meaning": "말",
+    "example": "うまに のりたい。",
+    "example_ko_pron": "우마니 노리타이.",
+    "example_meaning": "말 타고 싶어."
+   },
+   {
+    "text": "あひる",
+    "kanji": null,
+    "ko_pron": "아히루",
+    "meaning": "오리",
+    "example": "あひるが ガーガー なく。",
+    "example_ko_pron": "아히루가 가-가- 나쿠.",
+    "example_meaning": "오리가 꽥꽥 울어."
+   }
+  ]
+ },
+ {
+  "category": "감정·상태",
+  "emoji": "😊",
+  "items": [
+   {
+    "text": "うれしい",
+    "kanji": "嬉しい",
+    "ko_pron": "우레시-",
+    "meaning": "기쁜",
+    "example": "すごく うれしい！",
+    "example_ko_pron": "스고쿠 우레시-!",
+    "example_meaning": "너무 기뻐!"
+   },
+   {
+    "text": "かなしい",
+    "kanji": "悲しい",
+    "ko_pron": "카나시-",
+    "meaning": "슬픈",
+    "example": "どうして かなしいの？",
+    "example_ko_pron": "도-시테 카나시-노?",
+    "example_meaning": "왜 슬퍼?"
+   },
+   {
+    "text": "はらぺこ",
+    "kanji": null,
+    "ko_pron": "하라페코",
+    "meaning": "배고픔, 배고픈",
+    "example": "もう はらぺこだよ。",
+    "example_ko_pron": "모- 하라페코다요.",
+    "example_meaning": "벌써 배고파 죽겠어."
+   },
+   {
+    "text": "つかれた",
+    "kanji": "疲れた",
+    "ko_pron": "츠카레타",
+    "meaning": "피곤해, 지쳤어",
+    "example": "あー、つかれた。",
+    "example_ko_pron": "아-, 츠카레타.",
+    "example_meaning": "아, 피곤해."
+   },
+   {
+    "text": "あつい",
+    "kanji": "暑い",
+    "ko_pron": "아츠이",
+    "meaning": "더운",
+    "example": "きょうは あついね。",
+    "example_ko_pron": "쿄-와 아츠이네.",
+    "example_meaning": "오늘 덥다."
+   },
+   {
+    "text": "さむい",
+    "kanji": "寒い",
+    "ko_pron": "사무이",
+    "meaning": "추운",
+    "example": "さむい！",
+    "example_ko_pron": "사무이!",
+    "example_meaning": "추워!"
+   },
+   {
+    "text": "ねむい",
+    "kanji": "眠い",
+    "ko_pron": "네무이",
+    "meaning": "졸린",
+    "example": "もう ねむい。",
+    "example_ko_pron": "모- 네무이.",
+    "example_meaning": "이제 졸려."
+   },
+   {
+    "text": "こわい",
+    "kanji": "怖い",
+    "ko_pron": "코와이",
+    "meaning": "무서운",
+    "example": "こわく ないよ。",
+    "example_ko_pron": "코와쿠 나이요.",
+    "example_meaning": "안 무서워."
+   }
+  ]
+ },
+ {
+  "category": "옷",
+  "emoji": "👕",
+  "items": [
+   {
+    "text": "シャツ",
+    "kanji": null,
+    "ko_pron": "샤츠",
+    "meaning": "셔츠",
+    "example": "この シャツ かわいい。",
+    "example_ko_pron": "코노 샤츠 카와이-.",
+    "example_meaning": "이 셔츠 예쁘다."
+   },
+   {
+    "text": "ズボン",
+    "kanji": null,
+    "ko_pron": "즈본",
+    "meaning": "바지",
+    "example": "ズボンを はく。",
+    "example_ko_pron": "즈본오 하쿠.",
+    "example_meaning": "바지를 입어."
+   },
+   {
+    "text": "くつ",
+    "kanji": "靴",
+    "ko_pron": "쿠츠",
+    "meaning": "신발",
+    "example": "くつを はいて。",
+    "example_ko_pron": "쿠츠오 하이테.",
+    "example_meaning": "신발 신어."
+   },
+   {
+    "text": "くつした",
+    "kanji": "靴下",
+    "ko_pron": "쿠츠시타",
+    "meaning": "양말",
+    "example": "くつしたが ぬれた。",
+    "example_ko_pron": "쿠츠시타가 누레타.",
+    "example_meaning": "양말이 젖었어."
+   },
+   {
+    "text": "ぼうし",
+    "kanji": "帽子",
+    "ko_pron": "보-시",
+    "meaning": "모자",
+    "example": "ぼうしを かぶって。",
+    "example_ko_pron": "보-시오 카붓테.",
+    "example_meaning": "모자 써."
+   },
+   {
+    "text": "コート",
+    "kanji": null,
+    "ko_pron": "코-토",
+    "meaning": "외투, 코트",
+    "example": "コートを きて。",
+    "example_ko_pron": "코-토오 키테.",
+    "example_meaning": "외투 입어."
+   },
+   {
+    "text": "ワンピース",
+    "kanji": null,
+    "ko_pron": "완피-스",
+    "meaning": "원피스",
+    "example": "あかい ワンピース。",
+    "example_ko_pron": "아카이 완피-스.",
+    "example_meaning": "빨간 원피스."
+   },
+   {
+    "text": "かばん",
+    "kanji": null,
+    "ko_pron": "카반",
+    "meaning": "가방",
+    "example": "かばんは どこ？",
+    "example_ko_pron": "카반와 도코?",
+    "example_meaning": "가방 어디 있어?"
+   }
+  ]
+ },
+ {
+  "category": "자연·날씨",
+  "emoji": "🌤️",
+  "items": [
+   {
+    "text": "おひさま",
+    "kanji": null,
+    "ko_pron": "오히사마",
+    "meaning": "해, 해님",
+    "example": "おひさまが でた。",
+    "example_ko_pron": "오히사마가 데타.",
+    "example_meaning": "해가 떴어."
+   },
+   {
+    "text": "つき",
+    "kanji": "月",
+    "ko_pron": "츠키",
+    "meaning": "달",
+    "example": "おつきさま みて。",
+    "example_ko_pron": "오츠키사마 미테.",
+    "example_meaning": "달님 봐."
+   },
+   {
+    "text": "ほし",
+    "kanji": "星",
+    "ko_pron": "호시",
+    "meaning": "별",
+    "example": "ほしが きれい。",
+    "example_ko_pron": "호시가 키레-.",
+    "example_meaning": "별이 예뻐."
+   },
+   {
+    "text": "き",
+    "kanji": "木",
+    "ko_pron": "키",
+    "meaning": "나무",
+    "example": "おおきな き。",
+    "example_ko_pron": "오-키나 키.",
+    "example_meaning": "큰 나무."
+   },
+   {
+    "text": "はな",
+    "kanji": "花",
+    "ko_pron": "하나",
+    "meaning": "꽃",
+    "example": "はなが さいた。",
+    "example_ko_pron": "하나가 사이타.",
+    "example_meaning": "꽃이 피었어."
+   },
+   {
+    "text": "あめ",
+    "kanji": "雨",
+    "ko_pron": "아메",
+    "meaning": "비",
+    "example": "あめが ふって きた。",
+    "example_ko_pron": "아메가 훗테 키타.",
+    "example_meaning": "비가 오기 시작했어."
+   },
+   {
+    "text": "ゆき",
+    "kanji": "雪",
+    "ko_pron": "유키",
+    "meaning": "눈(내리는 눈)",
+    "example": "ゆきで あそぼう。",
+    "example_ko_pron": "유키데 아소보-.",
+    "example_meaning": "눈으로 놀자."
+   },
+   {
+    "text": "かぜ",
+    "kanji": "風",
+    "ko_pron": "카제",
+    "meaning": "바람",
+    "example": "かぜが つよい。",
+    "example_ko_pron": "카제가 츠요이.",
+    "example_meaning": "바람이 세."
+   }
+  ]
+ }
+]

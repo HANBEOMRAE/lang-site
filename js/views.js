@@ -81,13 +81,17 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   const i = Math.min(Math.max(itemIdx || 0, 0), n - 1);
   const it = cat.items[i];
   const base = `#/${lang}/${sec.id}/${catIdx}`;
+  // 일본어 긴 단어(5글자 이상)는 한 줄에 들어가게 글자 수만큼 줄인다
+  const len = [...it.text].length;
+  const fit = lang === "ja" && len > 4 ? ` style="--n:${len}"` : "";
   setHeader(cat.category, `#/${lang}/${sec.id}`);
 
   app.innerHTML = `
     <div class="viewer">
       <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
       <article class="card" id="card">
-        <p class="word" lang="${lang}">${esc(it.text)}</p>
+        <p class="word" lang="${lang}"${fit}>${esc(it.text)}</p>
+        ${it.kanji ? `<p class="kanji-big" lang="${lang}">${esc(it.kanji)}</p>` : ""}
         <div class="${H()}">
           <p class="pron">${esc(it.ko_pron)}</p>
           <p class="meaning">${esc(it.meaning)}</p>
@@ -96,6 +100,7 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
         ${it.example ? `
           <div class="example">
             <p><span class="en-line" lang="${lang}">${esc(it.example)}</span><br>
+               ${it.example_ko_pron ? `<span class="pron-s ${H()}">${esc(it.example_ko_pron)}</span>` : ""}
                <span class="ko-line ${H()}">${esc(it.example_meaning)}</span></p>
             <button class="mini-speak" id="speakEx" aria-label="예문 듣기">🔊</button>
           </div>` : ""}

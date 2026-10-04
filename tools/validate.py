@@ -11,6 +11,9 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASIC = ["text", "ko_pron", "meaning"]
 HIRAGANA = re.compile(r"^[ぁ-ゟ]+$")
+KANA = re.compile(r"^[ぁ-ゟ゠-ヿ]+$")            # 히라가나·가타카나(ー 포함)
+KANA_SENTENCE = re.compile(r"^[ぁ-ゟ゠-ヿ 、。？！]+$")
+KANJI = re.compile(r"[一-鿿]")
 problems = []
 
 def need(obj, keys, where):
@@ -31,6 +34,24 @@ def check_cards(data, name):
             if key in seen:
                 problems.append(f"{where}: 같은 주제 안에 중복된 단어예요")
             seen.add(key)
+
+def check_ja_cards(data, name):
+    """일본어 카드: 카드 검사 + kanji 칸, 가나 여부, 예문 발음."""
+    check_cards(data, name)
+    for c in data:
+        for i, it in enumerate(c.get("items", [])):
+            where = f"{name} > {c.get('category')} > {i + 1}번 ({it.get('text', '?')})"
+            if "kanji" not in it:
+                problems.append(f"{where}: 'kanji' 칸이 없어요 (한자로 안 쓰면 null)")
+            elif it["kanji"] is not None and not KANJI.search(str(it["kanji"])):
+                problems.append(f"{where}: kanji에 한자가 없어요 (한자로 안 쓰면 null)")
+            if it.get("text") and not KANA.match(it["text"]):
+                problems.append(f"{where}: text는 히라가나·가타카나로만 써요")
+            if it.get("example"):
+                if not KANA_SENTENCE.match(it["example"]):
+                    problems.append(f"{where}: 예문은 가나로만 써요")
+                if not str(it.get("example_ko_pron", "")).strip():
+                    problems.append(f"{where}: 예문 발음(example_ko_pron)이 없어요")
 
 def check_patterns(data, name):
     for i, p in enumerate(data):
@@ -88,7 +109,7 @@ def check_conjugation(data, name):
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
             "patterns": check_patterns, "situations": check_situations}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
-CHECKERS_BY_LANG = {"ja/verbs": check_conjugation}
+CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards}
 # 검사기마다 기대하는 맨 바깥 모양
 SHAPES = {check_conjugation: dict}
 

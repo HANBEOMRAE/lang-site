@@ -31,6 +31,7 @@ lang-site/
     patterns.json       패턴 영어
     situations.json     상황별 회화
   data/ja/              일본어 데이터
+    words.json          기초 단어 (주제별, kanji·예문 발음 포함)
     verbs.json          동사 변형 (1·2·3형 × 활용형 표)
     situations.json     상황별 회화 (영어와 같은 형식)
   tools/validate.py     데이터 검사
@@ -59,6 +60,17 @@ python tools/validate.py
 ```
 
 새 주제는 배열에 `{ category, emoji, items }`를 하나 더 넣는다. `example`은 없어도 된다.
+
+일본어 기초 단어(`ja/words.json`)는 같은 형식에 두 칸이 더 있다.
+
+```json
+{ "text": "おかあさん", "kanji": "お母さん", "ko_pron": "오카-산", "meaning": "엄마",
+  "example": "おかあさん だいすき。", "example_ko_pron": "오카-산 다이스키.", "example_meaning": "엄마 정말 좋아." }
+```
+
+- `text`와 `example`은 히라가나(외래어는 가타카나)로만 쓴다.
+- `kanji`는 보통 한자로 쓰는 단어만 넣고, 아니면 `null`. 화면에서 히라가나 아래에 작게 보인다.
+- 예문이 있으면 `example_ko_pron`도 꼭 넣는다. 한글 발음은 CLAUDE.md의 표기 규칙을 따른다.
 
 ### 패턴 영어 (patterns.json)
 
@@ -135,5 +147,6 @@ python tools/build_preview.py
 | 영어 동사 | 5개 주제, 42개 |
 | 패턴 영어 | 15개 틀, 문장 90개 |
 | 상황별 회화 | 6개 장면, 대화 12개(65줄), 핵심 문장 36개 |
+| 일본어 기초 단어 | 10개 주제, 88개 (영어 주제 순서의 첫 10개) |
 | 일본어 동사 변형 | 동사 15개 (1형 10·2형 3·3형 2) × 활용형 5개 |
 | 일본어 상황별 회화 | 6개 장면, 대화 12개(65줄), 핵심 문장 36개 |

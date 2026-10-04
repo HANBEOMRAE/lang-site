@@ -18,7 +18,7 @@ const LANGS = {
     name: "일본어", big: "あ", desc: "기초 단어, 조사, 동사 변형까지",
     voice: "ja-JP",
     sections: [
-      { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: false },
+      { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "particles",  type: "cards",      name: "조사",       desc: "は・が・を・に・で…", ready: false },
       { id: "verbs",      type: "conjugation", name: "동사 변형",  desc: "1·2·3형 × ます·て·た·ない·たい형", ready: true },
       { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·티켓·호텔·식당·쇼핑·길찾기", ready: true }
