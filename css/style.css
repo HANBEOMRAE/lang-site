@@ -37,6 +37,8 @@ body {
 }
 body.lang-en { --accent: var(--en); }
 body.lang-ja { --accent: var(--ja); }
+/* 일본어 문장은 띄어쓰기·、 에서만 줄바꿈 (단어 중간에서 끊기지 않게) */
+[lang="ja"] { word-break: keep-all; overflow-wrap: break-word; }
 
 /* 상단 바 */
 .topbar {

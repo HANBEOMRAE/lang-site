@@ -44,7 +44,7 @@
         "nai":  { "text": "またない", "ko_pron": "마타나이", "meaning": "안 기다린다" },
         "tai":  { "text": "まちたい", "ko_pron": "마치타이", "meaning": "기다리고 싶다" }
       },
-      "example": { "text": "ちょっと まって。", "ko_pron": "춋토 맛테.", "meaning": "잠깐 기다려." }
+      "example": { "text": "ちょっと まって。", "ko_pron": "촛토 맛테.", "meaning": "잠깐 기다려." }
     },
     {
       "id": "kaeru",
@@ -146,7 +146,7 @@
         "nai":  { "text": "いかない", "ko_pron": "이카나이", "meaning": "안 간다" },
         "tai":  { "text": "いきたい", "ko_pron": "이키타이", "meaning": "가고 싶다" }
       },
-      "example": { "text": "がっこうに いきます。", "ko_pron": "각코니 이키마스.", "meaning": "학교에 가요." }
+      "example": { "text": "がっこうに いきます。", "ko_pron": "갓코-니 이키마스.", "meaning": "학교에 가요." }
     },
     {
       "id": "oyogu",
@@ -197,7 +197,7 @@
         "nai":  { "text": "たべない", "ko_pron": "타베나이", "meaning": "안 먹는다" },
         "tai":  { "text": "たべたい", "ko_pron": "타베타이", "meaning": "먹고 싶다" }
       },
-      "example": { "text": "りんごを たべます。", "ko_pron": "링고오 타베마스.", "meaning": "사과를 먹어요." }
+      "example": { "text": "りんごを たべます。", "ko_pron": "린고오 타베마스.", "meaning": "사과를 먹어요." }
     },
     {
       "id": "miru",
@@ -248,7 +248,7 @@
         "nai":  { "text": "しない", "ko_pron": "시나이", "meaning": "안 한다" },
         "tai":  { "text": "したい", "ko_pron": "시타이", "meaning": "하고 싶다" }
       },
-      "example": { "text": "サッカーを します。", "ko_pron": "삿카오 시마스.", "meaning": "축구를 해요." }
+      "example": { "text": "サッカーを します。", "ko_pron": "삿카-오 시마스.", "meaning": "축구를 해요." }
     },
     {
       "id": "kuru",

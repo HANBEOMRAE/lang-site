@@ -32,6 +32,7 @@ lang-site/
     situations.json     상황별 회화
   data/ja/              일본어 데이터
     verbs.json          동사 변형 (1·2·3형 × 활용형 표)
+    situations.json     상황별 회화 (영어와 같은 형식)
   tools/validate.py     데이터 검사
   tools/build_preview.py 한 파일 미리보기 만들기 → dist/preview.html
 ```
@@ -135,3 +136,4 @@ python tools/build_preview.py
 | 패턴 영어 | 15개 틀, 문장 90개 |
 | 상황별 회화 | 6개 장면, 대화 12개(65줄), 핵심 문장 36개 |
 | 일본어 동사 변형 | 동사 15개 (1형 10·2형 3·3형 2) × 활용형 5개 |
+| 일본어 상황별 회화 | 6개 장면, 대화 12개(65줄), 핵심 문장 36개 |
