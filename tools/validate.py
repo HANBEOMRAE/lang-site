@@ -30,6 +30,8 @@ def check_cards(data, name):
             need(it, BASIC, where)
             if it.get("example") and not it.get("example_meaning"):
                 problems.append(f"{where}: 예문 뜻(example_meaning)이 없어요")
+            if "note" in it and not str(it["note"] or "").strip():
+                problems.append(f"{where}: note 칸이 비어 있어요 (필요 없으면 칸을 지워요)")
             key = it.get("text", "").lower()
             if key in seen:
                 problems.append(f"{where}: 같은 주제 안에 중복된 단어예요")

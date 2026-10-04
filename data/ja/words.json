@@ -89,6 +89,7 @@
     "kanji": null,
     "ko_pron": "초-다이",
     "meaning": "줘, 주세요",
+    "note": "아이·친한 사이에서 쓰는 말",
     "example": "それ ちょうだい。",
     "example_ko_pron": "소레 초-다이.",
     "example_meaning": "그거 줘."
@@ -110,6 +111,42 @@
     "example": "もっと あそびたい！",
     "example_ko_pron": "못토 아소비타이!",
     "example_meaning": "더 놀고 싶어!"
+   },
+   {
+    "text": "ください",
+    "kanji": null,
+    "ko_pron": "쿠다사이",
+    "meaning": "주세요",
+    "example": "これ ください。",
+    "example_ko_pron": "코레 쿠다사이.",
+    "example_meaning": "이거 주세요."
+   },
+   {
+    "text": "おねがいします",
+    "kanji": "お願いします",
+    "ko_pron": "오네가이시마스",
+    "meaning": "부탁해요, 주세요",
+    "example": "おみず おねがいします。",
+    "example_ko_pron": "오미즈 오네가이시마스.",
+    "example_meaning": "물 부탁해요."
+   },
+   {
+    "text": "すみません",
+    "kanji": null,
+    "ko_pron": "스미마센",
+    "meaning": "실례합니다, 죄송해요(사람 부를 때도)",
+    "example": "すみません、トイレは どこですか。",
+    "example_ko_pron": "스미마센, 토이레와 도코데스카?",
+    "example_meaning": "실례합니다, 화장실 어디예요?"
+   },
+   {
+    "text": "ありがとうございます",
+    "kanji": null,
+    "ko_pron": "아리가토-고자이마스",
+    "meaning": "감사합니다",
+    "example": "いつも ありがとうございます。",
+    "example_ko_pron": "이츠모 아리가토-고자이마스.",
+    "example_meaning": "늘 고맙습니다."
    }
   ]
  },
@@ -644,6 +681,7 @@
     "kanji": null,
     "ko_pron": "하라페코",
     "meaning": "배고픔, 배고픈",
+    "note": "아이·친한 사이에서 쓰는 말",
     "example": "もう はらぺこだよ。",
     "example_ko_pron": "모- 하라페코다요.",
     "example_meaning": "벌써 배고파 죽겠어."

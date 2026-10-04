@@ -81,22 +81,20 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   const i = Math.min(Math.max(itemIdx || 0, 0), n - 1);
   const it = cat.items[i];
   const base = `#/${lang}/${sec.id}/${catIdx}`;
-  // 일본어 긴 단어(5글자 이상)는 한 줄에 들어가게 글자 수만큼 줄인다
-  const len = [...it.text].length;
-  const fit = lang === "ja" && len > 4 ? ` style="--n:${len}"` : "";
   setHeader(cat.category, `#/${lang}/${sec.id}`);
 
   app.innerHTML = `
     <div class="viewer">
       <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
       <article class="card" id="card">
-        <p class="word" lang="${lang}"${fit}>${esc(it.text)}</p>
+        <p class="word" lang="${lang}">${wordHTML(it.text)}</p>
         ${it.kanji ? `<p class="kanji-big" lang="${lang}">${esc(it.kanji)}</p>` : ""}
         <div class="${H()}">
           <p class="pron">${esc(it.ko_pron)}</p>
           <p class="meaning">${esc(it.meaning)}</p>
         </div>
         <button class="speak" id="speakWord" aria-label="${esc(it.text)} 발음 듣기">🔊</button>
+        ${it.note ? `<p class="note">${noBreakJa(it.note)}</p>` : ""}
         ${it.example ? `
           <div class="example">
             <p><span class="en-line" lang="${lang}">${esc(it.example)}</span><br>
@@ -120,8 +118,27 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
+  fitWord();
   bindHideToggle(() => viewCards(lang, sec, catIdx, i));
 }
+
+// ── 큰 글자 한 줄 맞춤 ───────────────────────────
+// 단어(띄어쓰기 단위)마다 줄이 안 바뀌게 감싸고, 카드 폭을 넘치면 들어갈 때까지 글자를 줄인다.
+// 여러 단어로 된 말(in front of)은 띄어쓰기에서만 줄이 바뀐다.
+function wordHTML(text) {
+  return String(text).split(" ").map(w => `<span class="nobr">${esc(w)}</span>`).join(" ");
+}
+function fitWord() {
+  const el = app.querySelector(".word");
+  if (!el) return;
+  el.style.fontSize = "";
+  let fs = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > el.clientWidth + 1 && fs > 24) {
+    fs -= 2;
+    el.style.fontSize = `${fs}px`;
+  }
+}
+window.addEventListener("resize", fitWord);
 
 // ── 패턴: 목록 ──────────────────────────────────
 async function viewPatternList(lang, sec) {
@@ -320,7 +337,7 @@ async function viewVerb(lang, sec, vIdx) {
     <div class="tools">${progressBar(vIdx, n)}${hideToggle()}</div>
     <article class="card" id="card">
       ${g ? `<span class="badge">${esc(g.name)}</span>` : ""}
-      <p class="word" lang="${lang}">${esc(v.text)}</p>
+      <p class="word" lang="${lang}">${wordHTML(v.text)}</p>
       ${v.kanji ? `<p class="kanji-big" lang="${lang}">${esc(v.kanji)}</p>` : ""}
       <div class="${H()}">
         <p class="pron">${esc(v.ko_pron)}</p>
@@ -365,5 +382,6 @@ async function viewVerb(lang, sec, vIdx) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
+  fitWord();
   bindHideToggle(() => viewVerb(lang, sec, vIdx));
 }
