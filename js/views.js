@@ -532,3 +532,137 @@ async function viewVerb(lang, sec, vIdx) {
   fitWord();
   bindHideToggle(() => viewVerb(lang, sec, vIdx));
 }
+
+// ── 조사 ─────────────────────────────────────────
+// 예문의 [조사]는 화면에서는 강조로, 발음 듣기에는 괄호를 뺀 문장으로 넘긴다.
+const plainText = s => String(s).replace(/[[\]]/g, "");
+const markParticle = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="fill">$1</span>');
+
+// 예문 한 줄 (누르면 괄호를 뺀 문장을 읽는다)
+function exampleRow(lang, ex, extra = "") {
+  return `
+    <button class="row phrase particle-ex" data-say="${esc(plainText(ex.text))}">
+      <span class="label">${extra}<strong lang="${lang}">${markParticle(ex.text)}</strong>
+        <small class="${H()}">${esc(ex.ko_pron)} · ${esc(ex.meaning)}</small>
+        ${ex.why ? `<small class="why">${esc(ex.why)}</small>` : ""}</span>
+      <span class="mini-speak" aria-hidden="true">🔊</span>
+    </button>`;
+}
+function bindSay(lang) {
+  app.querySelectorAll("[data-say]").forEach(b =>
+    b.addEventListener("click", () => tts.speak(b.dataset.say, LANGS[lang].voice)));
+}
+
+// 목록: 단계별 조사 → 맨 끝에 헷갈리는 조사 비교
+async function viewParticleList(lang, sec) {
+  setHeader(sec.name, `#/${lang}`);
+  app.innerHTML = `<p class="lead">불러오는 중…</p>`;
+  let data;
+  try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  app.innerHTML = `
+    <p class="lead">단계 순서대로 익히고, 마지막에 헷갈리는 조사를 비교해요.</p>
+    ${data.stages.map(st => `
+      <h2 class="group">${esc(st.name)} <small class="group-desc">${esc(st.desc || "")}</small></h2>
+      <div class="list">
+        ${data.particles.map((p, i) => p.stage !== st.id ? "" : `
+          <button class="row" data-go="#/${lang}/${sec.id}/${i}">
+            <span class="em kana" lang="${lang}" aria-hidden="true">${esc(p.text)}</span>
+            <span class="label"><strong>${esc(p.meaning)}</strong><small>소리: ${esc(p.ko_pron)} · ${esc(p.role)}</small></span>
+          </button>`).join("")}
+      </div>`).join("")}
+    <h2 class="group">헷갈리는 조사</h2>
+    <div class="list">
+      ${data.compare.map((c, k) => `
+        <button class="row" data-go="#/${lang}/${sec.id}/vs/${k}">
+          <span class="em" aria-hidden="true">⚖️</span>
+          <span class="label"><strong>${esc(c.title)}</strong>
+            <small>${c.pair.map(id => `${esc(particleById(data, id).text)}: ${esc(c.points[id])}`).join(" / ")}</small></span>
+        </button>`).join("")}
+    </div>`;
+}
+const particleById = (data, id) => data.particles.find(p => p.id === id) || { text: "?" };
+
+// 조사 하나: 큰 글자 카드 + 쓰임별로 묶인 예문 + 관련 비교
+async function viewParticle(lang, sec, idx) {
+  const L = LANGS[lang];
+  let data;
+  try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const p = data.particles[idx];
+  if (!p) { location.hash = `#/${lang}/${sec.id}`; return; }
+  const n = data.particles.length;
+  const base = `#/${lang}/${sec.id}`;
+  setHeader(`조사 ${p.text}`, base);
+  remember(lang, `${base}/${idx}`, `${L.name} · ${sec.name} · ${p.text} ${idx + 1}/${n}`);
+  const multi = p.uses.length > 1;
+  const related = data.compare.map((c, k) => [c, k]).filter(([c]) => c.pair.includes(p.id));
+
+  app.innerHTML = `
+    <div class="tools">${progressBar(idx, n)}${hideToggle()}</div>
+    <article class="card" id="card">
+      <p class="word" lang="${lang}">${wordHTML(p.text)}</p>
+      <div class="${H()}">
+        <p class="pron">${esc(p.ko_pron)}</p>
+        <p class="meaning">${esc(p.meaning)}</p>
+      </div>
+      <button class="speak" id="speakWord" aria-label="${esc(p.text)} 발음 듣기">🔊</button>
+      <p class="role">${esc(p.role)}</p>
+      ${p.note ? `<p class="note">${noBreakJa(p.note)}</p>` : ""}
+    </article>
+    ${p.uses.map(u => `
+      ${multi ? `<h2 class="group">${esc(u.name)} <small class="group-desc">${esc(u.desc || "")}</small></h2>`
+              : `<h2 class="group">예문</h2>`}
+      <div class="list">${u.examples.map(ex => exampleRow(lang, ex)).join("")}</div>`).join("")}
+    ${related.length ? `
+      <div class="chips related">
+        ${related.map(([c, k]) => `<button class="chip" data-go="${base}/vs/${k}">${esc(c.title)} 비교하기</button>`).join("")}
+      </div>` : ""}
+    <div class="nav">
+      <button id="prev" ${idx === 0 ? "disabled" : ""}>이전</button>
+      <button id="next" class="primary">${idx === n - 1 ? "비교하러 가기" : "다음"}</button>
+    </div>`;
+
+  const next = () => { location.hash = idx === n - 1 ? `${base}/vs/0` : `${base}/${idx + 1}`; };
+  const prev = () => { if (idx > 0) location.hash = `${base}/${idx - 1}`; };
+  document.getElementById("speakWord").onclick = e => tts.speak(p.text, L.voice, e.currentTarget);
+  document.getElementById("prev").onclick = prev;
+  document.getElementById("next").onclick = next;
+  addSwipe(document.getElementById("card"), next, prev);
+  bindSay(lang);
+  fitWord();
+  bindHideToggle(() => viewParticle(lang, sec, idx));
+}
+
+// 헷갈리는 조사 비교: 두 조사를 나란히 + 꼬리표 달린 예문
+async function viewCompare(lang, sec, k) {
+  const L = LANGS[lang];
+  let data;
+  try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const c = data.compare[k];
+  const base = `#/${lang}/${sec.id}`;
+  if (!c) { location.hash = base; return; }
+  setHeader(c.title, base);
+  remember(lang, `${base}/vs/${k}`, `${L.name} · ${sec.name} · ${c.title} 비교`);
+  const last = k === data.compare.length - 1;
+
+  app.innerHTML = `
+    <div class="tools">${hideToggle()}</div>
+    <div class="pair">
+      ${c.pair.map(id => {
+        const p = particleById(data, id);
+        return `<div class="pair-side">
+          <p class="pair-kana" lang="${lang}">${esc(p.text)}</p>
+          <p class="pair-point">${esc(c.points[id])}</p>
+        </div>`;
+      }).join("")}
+    </div>
+    <h2 class="group">예문</h2>
+    <div class="list">
+      ${c.examples.map(ex => exampleRow(lang, ex,
+        `<span class="tag" lang="${lang}">${esc(particleById(data, ex.particle).text)}</span>`)).join("")}
+    </div>
+    <div class="nav">
+      <button class="primary" data-go="${last ? base : `${base}/vs/${k + 1}`}">${last ? "조사 목록으로" : `다음 비교: ${esc(data.compare[k + 1].title)}`}</button>
+    </div>`;
+  bindSay(lang);
+  bindHideToggle(() => viewCompare(lang, sec, k));
+}

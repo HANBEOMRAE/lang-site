@@ -184,6 +184,26 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* 조사 */
+.group-desc { font-family: "Noto Sans KR", sans-serif; font-size: 13px; color: var(--muted); margin-left: 6px; }
+.row .em.kana { font-family: "Noto Sans JP", sans-serif; font-weight: 700; font-size: 26px; color: var(--accent); }
+.card .role { margin: 18px 0 0; font-size: 15px; word-break: keep-all; }
+.particle-ex .label strong { font-size: 18px; }
+.particle-ex small { word-break: keep-all; }
+.particle-ex .why { display: block; margin-top: 2px; color: var(--accent); font-size: 13px; }
+.related { margin: 16px 0 0; }
+.tag {
+  display: inline-block; margin-bottom: 4px; padding: 0 10px; border-radius: 999px;
+  background: var(--accent); color: #fff; font-family: "Noto Sans JP", sans-serif; font-weight: 700; font-size: 14px;
+}
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pair-side {
+  padding: 14px 12px; text-align: center; border-radius: 16px;
+  background: var(--surface); border: 2px solid var(--line);
+}
+.pair-kana { margin: 0; font-family: "Noto Sans JP", sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2; color: var(--accent); }
+.pair-point { margin: 6px 0 0; font-size: 14px; word-break: keep-all; }
+
 /* 새 버전 알림 (오프라인 PWA) */
 .update-bar {   /* 상단 바 바로 아래: 아래쪽 이전/다음 버튼을 가리지 않게 */
   position: fixed; left: 50%; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 10;

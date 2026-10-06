@@ -18,7 +18,9 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 
 - `js/core.js`의 `LANGS`가 언어·섹션 목록의 기준이다. 섹션마다 `id`(= `data/<언어>/<id>.json`), `type`, `ready`가 있다.
 - `js/app.js`가 `#/<언어>/<섹션>/<a>/<b>` 주소를 읽고 섹션 `type`에 따라 `views.js`의 화면 함수를 고른다.
-  type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표).
+  type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표), `particles`(일본어 조사, `#/ja/particles/vs/<n>`은 비교).
+- 조사 예문의 `[조사]` 표시는 화면에서 강조(`markParticle`)로, 발음 듣기·검사에서는 괄호를 뺀 문장(`plainText`)으로 쓴다.
+  `uses`는 쓰임별 묶음, `words`는 예문에 쓴 `ja/words.json` 단어 목록이다.
 - 스크립트는 모듈 없이 `core.js → views.js → app.js` 순서로 불러오는 전역 함수 방식이다.
 - `loadData`는 `window.EMBEDDED_DATA`(미리보기 파일)가 있으면 그걸 쓰고, 없으면 `data/…json`을 fetch한다.
 - 새 섹션 열기: JSON 만들기 → `LANGS`에서 `ready: true` → `validate.py`. 새 `type`이면 `app.js`의 switch와 `views.js` 화면도 추가한다.

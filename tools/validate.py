@@ -70,6 +70,84 @@ def check_ja_cards(data, name):
                 if not str(it.get("example_ko_pron", "")).strip():
                     problems.append(f"{where}: 예문 발음(example_ko_pron)이 없어요")
 
+def ja_word_texts():
+    try:
+        words = json.loads((ROOT / "data/ja/words.json").read_text(encoding="utf-8"))
+        return {it["text"] for c in words for it in c.get("items", [])}
+    except Exception:
+        return set()
+
+def check_particles(data, name):
+    """일본어 조사: 쓰임(uses)별 예문, [조사] 표시, 예문 단어(words)가 words.json에 있는지, 비교·퀴즈."""
+    known = ja_word_texts()
+    plain = lambda t: str(t).replace("[", "").replace("]", "")
+    def sentence(ex, where, mark):
+        need(ex, BASIC, where)
+        t = ex.get("text", "")
+        if mark not in t:
+            problems.append(f"{where}: 예문에 {mark} 표시가 없어요")
+        if t and not KANA_SENTENCE.match(plain(t)):
+            problems.append(f"{where}: 예문은 가나로만 써요 (괄호를 뺀 문장 기준)")
+        ws = ex.get("words")
+        if not ws:
+            problems.append(f"{where}: 예문에 쓴 words.json 단어(words)가 없어요")
+        for w in ws or []:
+            if w not in known:
+                problems.append(f"{where}: '{w}'는 words.json에 없는 단어예요")
+            elif w not in plain(t):
+                problems.append(f"{where}: '{w}'가 예문에 안 들어 있어요")
+    stages = {s.get("id") for s in data.get("stages", [])}
+    pts = {}
+    for i, p in enumerate(data.get("particles", [])):
+        where = f"{name} > {i + 1}번 ({p.get('text', '?')})"
+        need(p, ["id", "role"] + BASIC, where)
+        if p.get("id") in pts:
+            problems.append(f"{where}: 중복된 id예요")
+        pts[p.get("id")] = p.get("text")
+        if p.get("stage") not in stages:
+            problems.append(f"{where}: stage '{p.get('stage')}'이 stages에 없어요")
+        uses = p.get("uses") or []
+        if not uses:
+            problems.append(f"{where}: 쓰임(uses)이 없어요")
+        for u in uses:
+            n = len(u.get("examples", []))
+            if not str(u.get("name", "")).strip():
+                problems.append(f"{where}: 쓰임 이름(name)이 없어요")
+            lo, hi = (3, 4) if len(uses) == 1 else (2, 3)
+            if not lo <= n <= hi:
+                problems.append(f"{where} > {u.get('name')}: 예문이 {n}개예요 ({lo}~{hi}개)")
+            for k, ex in enumerate(u.get("examples", [])):
+                sentence(ex, f"{where} > {u.get('name')} {k + 1}번", f"[{p.get('text')}]")
+    for i, c in enumerate(data.get("compare", [])):
+        where = f"{name} > 비교 {i + 1}번 ({c.get('title', '?')})"
+        pair = c.get("pair", [])
+        if len(pair) != 2 or any(x not in pts for x in pair):
+            problems.append(f"{where}: pair가 조사 id 두 개가 아니에요")
+            continue
+        for x in pair:
+            if not str(c.get("points", {}).get(x, "")).strip():
+                problems.append(f"{where}: points에 '{x}' 설명이 없어요")
+        for k, ex in enumerate(c.get("examples", [])):
+            w = f"{where} > 예문 {k + 1}번"
+            if ex.get("particle") not in pair:
+                problems.append(f"{w}: particle이 pair에 없어요")
+                continue
+            need(ex, ["why"], w)
+            sentence(ex, w, f"[{pts[ex['particle']]}]")
+        choices_ok = sorted(pts[x] for x in pair)
+        for k, q in enumerate(c.get("quiz", [])):
+            w = f"{where} > 퀴즈 {k + 1}번"
+            if q.get("text", "").count("[___]") != 1:
+                problems.append(f"{w}: 빈칸 [___]이 하나여야 해요")
+            if sorted(q.get("choices", [])) != choices_ok:
+                problems.append(f"{w}: choices가 비교하는 두 조사가 아니에요")
+            ans = q.get("answers") or []
+            if not ans or any(a not in q.get("choices", []) for a in ans):
+                problems.append(f"{w}: answers가 choices 안에 없어요")
+            need(q, ["why"], w)
+            filled = dict(q, text=q.get("text", "").replace("[___]", f"[{ans[0]}]" if ans else ""))
+            sentence(filled, w, f"[{ans[0]}]" if ans else "[?]")
+
 def check_patterns(data, name):
     for i, p in enumerate(data):
         where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
@@ -127,9 +205,9 @@ def check_conjugation(data, name):
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
             "patterns": check_patterns, "situations": check_situations}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
-CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards}
+CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict}
+SHAPES = {check_conjugation: dict, check_particles: dict}
 
 def check_offline():
     """sw.js의 오프라인 저장 목록(PRECACHE)이 실제 파일과 맞는지, 글꼴 주소가 index.html과 같은지."""

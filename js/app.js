@@ -6,6 +6,7 @@
 //  #/en/situations          장면 목록        #/en/situations/3 장면 3
 //  #/ja/verbs               동사 변형 표     #/ja/verbs/4      5번째 동사 상세
 //  #/ja/stars               헷갈린 단어(☆) 모아 보기   #/ja/stars/2  3번째 카드
+//  #/ja/particles           조사 목록        #/ja/particles/4  5번째 조사   #/ja/particles/vs/1  2번째 비교
 
 function route() {
   tts.stop();
@@ -26,6 +27,8 @@ function route() {
     case "patterns":   return A === undefined ? viewPatternList(lang, sec) : viewPattern(lang, sec, A, B);
     case "situations": return A === undefined ? viewSceneList(lang, sec)  : viewScene(lang, sec, A);
     case "conjugation": return A === undefined ? viewConjTable(lang, sec) : viewVerb(lang, sec, A);
+    case "particles":  return A === undefined ? viewParticleList(lang, sec)
+                            : a === "vs" ? viewCompare(lang, sec, B) : viewParticle(lang, sec, A);
     default:           return viewLang(lang);
   }
 }

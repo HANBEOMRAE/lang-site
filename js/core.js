@@ -2,7 +2,7 @@
 
 // ── 언어·섹션 정의 ──────────────────────────────
 // 새 섹션을 열려면: data/<언어>/<id>.json을 만들고 ready를 true로 바꾼다.
-// type: cards(단어 카드) | patterns(패턴) | situations(상황별 회화) | conjugation(동사 변형 표)
+// type: cards(단어 카드) | patterns(패턴) | situations(상황별 회화) | conjugation(동사 변형 표) | particles(조사)
 const LANGS = {
   en: {
     name: "영어", big: "Aa", desc: "다섯 살 아이처럼, 소리와 단어부터",
@@ -19,7 +19,7 @@ const LANGS = {
     voice: "ja-JP",
     sections: [
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
-      { id: "particles",  type: "cards",      name: "조사",       desc: "は・が・を・に・で…", ready: false },
+      { id: "particles",  type: "particles",  name: "조사",       desc: "は·の·も → を·に·で·へ → と·が, 헷갈리는 조사 비교", ready: true },
       { id: "verbs",      type: "conjugation", name: "동사 변형",  desc: "1·2·3형 × ます·て·た·ない·たい형", ready: true },
       { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·호텔·식당·교통·카페·병원 등 12개 장면", ready: true }
     ]
