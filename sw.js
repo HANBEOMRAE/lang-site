@@ -19,6 +19,7 @@ const PRECACHE = [
   "manifest.webmanifest",
   "css/style.css",
   "js/core.js",
+  "js/speech.js",
   "js/views.js",
   "js/app.js",
   "icons/icon-192.png",

@@ -30,6 +30,23 @@ def warn_long_chunk(text, where):
         if len(chunk) >= LONG_CHUNK:
             warnings.append(f"{where}: 띄어쓰기 없는 {len(chunk)}글자 '{chunk}' — 띄어 쓸 수 있는 말인지 확인해 주세요")
 
+KANA_RUN = re.compile(r"[ぁ-ゟ゠-ヿ]+")
+
+def check_kanji_text(hira, kanji, where, field="kanji_text"):
+    """한자 섞인 표기가 비지 않았는지, 그 가나 부분(조사·어미)이 히라가나 문장에 같은 순서로 들어 있는지.
+    예: 'くうこうに いきます' ↔ '空港に行きます' 의 に, きます 가 순서대로 있어야 한다. 띄어쓰기·문장부호·[ ]는 무시."""
+    if not str(kanji or "").strip():
+        problems.append(f"{where}: '{field}'(한자 섞인 표기)가 비어 있어요")
+        return
+    squash = lambda t: re.sub(r"[\s、。？！?!,.\[\]]", "", str(t))
+    h, pos = squash(hira), 0
+    for run in KANA_RUN.findall(squash(kanji)):
+        i = h.find(run, pos)
+        if i < 0:
+            problems.append(f"{where}: {field}의 가나 '{run}'가 히라가나 문장에 (같은 순서로) 없어요 — '{kanji}'")
+            return
+        pos = i + len(run)
+
 def need(obj, keys, where):
     for k in keys:
         if not str(obj.get(k, "")).strip():
@@ -67,6 +84,7 @@ def check_ja_cards(data, name):
             if it.get("example"):
                 if not KANA_SENTENCE.match(it["example"]):
                     problems.append(f"{where}: 예문은 가나로만 써요")
+                check_kanji_text(it["example"], it.get("example_kanji_text"), f"{where} > 예문", "example_kanji_text")
                 if not str(it.get("example_ko_pron", "")).strip():
                     problems.append(f"{where}: 예문 발음(example_ko_pron)이 없어요")
 
@@ -81,9 +99,11 @@ def check_particles(data, name):
     """일본어 조사: 쓰임(uses)별 예문, [조사] 표시, 예문 단어(words)가 words.json에 있는지, 비교·퀴즈."""
     known = ja_word_texts()
     plain = lambda t: str(t).replace("[", "").replace("]", "")
-    def sentence(ex, where, mark):
+    def sentence(ex, where, mark, kanji=True):
         need(ex, BASIC, where)
         t = ex.get("text", "")
+        if kanji:
+            check_kanji_text(t, ex.get("kanji_text"), where)
         if mark not in t:
             problems.append(f"{where}: 예문에 {mark} 표시가 없어요")
         if t and not KANA_SENTENCE.match(plain(t)):
@@ -146,7 +166,7 @@ def check_particles(data, name):
                 problems.append(f"{w}: answers가 choices 안에 없어요")
             need(q, ["why"], w)
             filled = dict(q, text=q.get("text", "").replace("[___]", f"[{ans[0]}]" if ans else ""))
-            sentence(filled, w, f"[{ans[0]}]" if ans else "[?]")
+            sentence(filled, w, f"[{ans[0]}]" if ans else "[?]", kanji=False)   # 퀴즈는 🎤가 없어 한자 표기 없음
 
 def pattern_prefix(pattern):
     """'Can I ___?' → 'Can I' : 비교 예문의 [ ] 안에 들어가는 틀 앞부분."""
@@ -257,9 +277,15 @@ def check_situations(data, name):
         need(s, ["scene"], f"{name} 장면")
         for d in s.get("dialogues", []):
             for k, l in enumerate(d.get("lines", [])):
-                need(l, ["who"] + BASIC, f"{name} > {s.get('scene')} > {d.get('title')} > {k + 1}번 줄")
+                w = f"{name} > {s.get('scene')} > {d.get('title')} > {k + 1}번 줄"
+                need(l, ["who"] + BASIC, w)
+                if name.startswith("ja/"):
+                    check_kanji_text(l.get("text"), l.get("kanji_text"), w)
         for k, ph in enumerate(s.get("phrases", [])):
-            need(ph, BASIC, f"{name} > {s.get('scene')} > 핵심 문장 {k + 1}번")
+            w = f"{name} > {s.get('scene')} > 핵심 문장 {k + 1}번"
+            need(ph, BASIC, w)
+            if name.startswith("ja/"):
+                check_kanji_text(ph.get("text"), ph.get("kanji_text"), w)
 
 def check_conjugation(data, name):
     gids = {g.get("id") for g in data.get("groups", [])}
@@ -294,6 +320,7 @@ def check_conjugation(data, name):
             problems.append(f"{where}: 예문(example)이 없어요")
         else:
             need(v["example"], BASIC, f"{where} > 예문")
+            check_kanji_text(v["example"].get("text"), v["example"].get("kanji_text"), f"{where} > 예문")
 
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
             "patterns": check_patterns, "situations": check_situations}

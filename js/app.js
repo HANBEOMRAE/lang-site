@@ -10,6 +10,7 @@
 
 function route() {
   tts.stop();
+  speech.stop();
   window.scrollTo(0, 0);
   const [lang, secId, a, b] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (!lang || !LANGS[lang]) return viewHome();

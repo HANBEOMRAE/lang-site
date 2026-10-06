@@ -27,7 +27,7 @@
         "nai":  { "text": "かわない", "ko_pron": "카와나이", "meaning": "안 산다" },
         "tai":  { "text": "かいたい", "ko_pron": "카이타이", "meaning": "사고 싶다" }
       },
-      "example": { "text": "パンを かいます。", "ko_pron": "판오 카이마스.", "meaning": "빵을 사요." }
+      "example": { "text": "パンを かいます。", "kanji_text": "パンを買います。", "ko_pron": "판오 카이마스.", "meaning": "빵을 사요." }
     },
     {
       "id": "matsu",
@@ -44,7 +44,7 @@
         "nai":  { "text": "またない", "ko_pron": "마타나이", "meaning": "안 기다린다" },
         "tai":  { "text": "まちたい", "ko_pron": "마치타이", "meaning": "기다리고 싶다" }
       },
-      "example": { "text": "ちょっと まって。", "ko_pron": "촛토 맛테.", "meaning": "잠깐 기다려." }
+      "example": { "text": "ちょっと まって。", "kanji_text": "ちょっと待って。", "ko_pron": "촛토 맛테.", "meaning": "잠깐 기다려." }
     },
     {
       "id": "kaeru",
@@ -61,7 +61,7 @@
         "nai":  { "text": "かえらない", "ko_pron": "카에라나이", "meaning": "안 돌아간다" },
         "tai":  { "text": "かえりたい", "ko_pron": "카에리타이", "meaning": "돌아가고 싶다" }
       },
-      "example": { "text": "いえに かえります。", "ko_pron": "이에니 카에리마스.", "meaning": "집에 돌아가요." }
+      "example": { "text": "いえに かえります。", "kanji_text": "家に帰ります。", "ko_pron": "이에니 카에리마스.", "meaning": "집에 돌아가요." }
     },
     {
       "id": "nomu",
@@ -78,7 +78,7 @@
         "nai":  { "text": "のまない", "ko_pron": "노마나이", "meaning": "안 마신다" },
         "tai":  { "text": "のみたい", "ko_pron": "노미타이", "meaning": "마시고 싶다" }
       },
-      "example": { "text": "みずを のみます。", "ko_pron": "미즈오 노미마스.", "meaning": "물을 마셔요." }
+      "example": { "text": "みずを のみます。", "kanji_text": "水を飲みます。", "ko_pron": "미즈오 노미마스.", "meaning": "물을 마셔요." }
     },
     {
       "id": "yomu",
@@ -95,7 +95,7 @@
         "nai":  { "text": "よまない", "ko_pron": "요마나이", "meaning": "안 읽는다" },
         "tai":  { "text": "よみたい", "ko_pron": "요미타이", "meaning": "읽고 싶다" }
       },
-      "example": { "text": "えほんを よみます。", "ko_pron": "에혼오 요미마스.", "meaning": "그림책을 읽어요." }
+      "example": { "text": "えほんを よみます。", "kanji_text": "絵本を読みます。", "ko_pron": "에혼오 요미마스.", "meaning": "그림책을 읽어요." }
     },
     {
       "id": "asobu",
@@ -112,7 +112,7 @@
         "nai":  { "text": "あそばない", "ko_pron": "아소바나이", "meaning": "안 논다" },
         "tai":  { "text": "あそびたい", "ko_pron": "아소비타이", "meaning": "놀고 싶다" }
       },
-      "example": { "text": "ともだちと あそびます。", "ko_pron": "토모다치토 아소비마스.", "meaning": "친구랑 놀아요." }
+      "example": { "text": "ともだちと あそびます。", "kanji_text": "友達と遊びます。", "ko_pron": "토모다치토 아소비마스.", "meaning": "친구랑 놀아요." }
     },
     {
       "id": "kaku",
@@ -129,7 +129,7 @@
         "nai":  { "text": "かかない", "ko_pron": "카카나이", "meaning": "안 쓴다" },
         "tai":  { "text": "かきたい", "ko_pron": "카키타이", "meaning": "쓰고 싶다" }
       },
-      "example": { "text": "なまえを かきます。", "ko_pron": "나마에오 카키마스.", "meaning": "이름을 써요." }
+      "example": { "text": "なまえを かきます。", "kanji_text": "名前を書きます。", "ko_pron": "나마에오 카키마스.", "meaning": "이름을 써요." }
     },
     {
       "id": "iku",
@@ -146,7 +146,7 @@
         "nai":  { "text": "いかない", "ko_pron": "이카나이", "meaning": "안 간다" },
         "tai":  { "text": "いきたい", "ko_pron": "이키타이", "meaning": "가고 싶다" }
       },
-      "example": { "text": "がっこうに いきます。", "ko_pron": "갓코-니 이키마스.", "meaning": "학교에 가요." }
+      "example": { "text": "がっこうに いきます。", "kanji_text": "学校に行きます。", "ko_pron": "갓코-니 이키마스.", "meaning": "학교에 가요." }
     },
     {
       "id": "oyogu",
@@ -163,7 +163,7 @@
         "nai":  { "text": "およがない", "ko_pron": "오요가나이", "meaning": "안 헤엄친다" },
         "tai":  { "text": "およぎたい", "ko_pron": "오요기타이", "meaning": "헤엄치고 싶다" }
       },
-      "example": { "text": "うみで およぎたい。", "ko_pron": "우미데 오요기타이.", "meaning": "바다에서 헤엄치고 싶어." }
+      "example": { "text": "うみで およぎたい。", "kanji_text": "海で泳ぎたい。", "ko_pron": "우미데 오요기타이.", "meaning": "바다에서 헤엄치고 싶어." }
     },
     {
       "id": "hanasu",
@@ -180,7 +180,7 @@
         "nai":  { "text": "はなさない", "ko_pron": "하나사나이", "meaning": "말 안 한다" },
         "tai":  { "text": "はなしたい", "ko_pron": "하나시타이", "meaning": "말하고 싶다" }
       },
-      "example": { "text": "にほんごで はなします。", "ko_pron": "니혼고데 하나시마스.", "meaning": "일본어로 말해요." }
+      "example": { "text": "にほんごで はなします。", "kanji_text": "日本語で話します。", "ko_pron": "니혼고데 하나시마스.", "meaning": "일본어로 말해요." }
     },
     {
       "id": "taberu",
@@ -197,7 +197,7 @@
         "nai":  { "text": "たべない", "ko_pron": "타베나이", "meaning": "안 먹는다" },
         "tai":  { "text": "たべたい", "ko_pron": "타베타이", "meaning": "먹고 싶다" }
       },
-      "example": { "text": "りんごを たべます。", "ko_pron": "린고오 타베마스.", "meaning": "사과를 먹어요." }
+      "example": { "text": "りんごを たべます。", "kanji_text": "りんごを食べます。", "ko_pron": "린고오 타베마스.", "meaning": "사과를 먹어요." }
     },
     {
       "id": "miru",
@@ -214,7 +214,7 @@
         "nai":  { "text": "みない", "ko_pron": "미나이", "meaning": "안 본다" },
         "tai":  { "text": "みたい", "ko_pron": "미타이", "meaning": "보고 싶다" }
       },
-      "example": { "text": "テレビを みます。", "ko_pron": "테레비오 미마스.", "meaning": "텔레비전을 봐요." }
+      "example": { "text": "テレビを みます。", "kanji_text": "テレビを見ます。", "ko_pron": "테레비오 미마스.", "meaning": "텔레비전을 봐요." }
     },
     {
       "id": "neru",
@@ -231,7 +231,7 @@
         "nai":  { "text": "ねない", "ko_pron": "네나이", "meaning": "안 잔다" },
         "tai":  { "text": "ねたい", "ko_pron": "네타이", "meaning": "자고 싶다" }
       },
-      "example": { "text": "はやく ねます。", "ko_pron": "하야쿠 네마스.", "meaning": "일찍 자요." }
+      "example": { "text": "はやく ねます。", "kanji_text": "早く寝ます。", "ko_pron": "하야쿠 네마스.", "meaning": "일찍 자요." }
     },
     {
       "id": "suru",
@@ -248,7 +248,7 @@
         "nai":  { "text": "しない", "ko_pron": "시나이", "meaning": "안 한다" },
         "tai":  { "text": "したい", "ko_pron": "시타이", "meaning": "하고 싶다" }
       },
-      "example": { "text": "サッカーを します。", "ko_pron": "삿카-오 시마스.", "meaning": "축구를 해요." }
+      "example": { "text": "サッカーを します。", "kanji_text": "サッカーをします。", "ko_pron": "삿카-오 시마스.", "meaning": "축구를 해요." }
     },
     {
       "id": "kuru",
@@ -265,7 +265,7 @@
         "nai":  { "text": "こない", "ko_pron": "코나이", "meaning": "안 온다" },
         "tai":  { "text": "きたい", "ko_pron": "키타이", "meaning": "오고 싶다" }
       },
-      "example": { "text": "ここに きて。", "ko_pron": "코코니 키테.", "meaning": "여기로 와." }
+      "example": { "text": "ここに きて。", "kanji_text": "ここに来て。", "ko_pron": "코코니 키테.", "meaning": "여기로 와." }
     }
   ]
 }

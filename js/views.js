@@ -195,6 +195,7 @@ function cardHTML(lang, it, key) {
           <p class="meaning">${esc(it.meaning)}</p>
         </div>
         <button class="speak" id="speakWord" aria-label="${esc(it.text)} 발음 듣기">🔊</button>
+        ${sayToolsHTML("sayWord")}
         ${it.note ? `<p class="note">${noBreakJa(it.note)}</p>` : ""}
         ${it.example ? `
           <div class="example">
@@ -202,7 +203,8 @@ function cardHTML(lang, it, key) {
                ${it.example_ko_pron ? `<span class="pron-s ${H()}">${esc(it.example_ko_pron)}</span>` : ""}
                <span class="ko-line ${H()}">${esc(it.example_meaning)}</span></p>
             <button class="mini-speak" id="speakEx" aria-label="예문 듣기">🔊</button>
-          </div>` : ""}
+          </div>
+          ${sayToolsHTML("sayEx", true)}` : ""}
       </article>`;
 }
 function navHTML(i, n) {
@@ -220,8 +222,85 @@ function bindCard(lang, it, key, next, prev) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
+  bindSayTools(document.getElementById("sayWord"), lang, [it.text, it.kanji]);
+  bindSayTools(document.getElementById("sayEx"), lang, [it.example, it.example_kanji_text]);
   bindStar(key);
   fitWord();
+}
+
+// ── 따라 말하기 🎤 ─────────────────────────────────
+// 정답 표기(일본어는 히라가나·한자 둘 다)와 인식 결과를 띄어쓰기·문장부호·대소문자 무시하고 비교한다(speech.js).
+function sayToolsHTML(id, compact = false, label = compact ? "예문 따라 말하기" : "따라 말하기") {
+  if (!speech.supported()) return "";      // 인식기가 없는 브라우저: 🎤를 숨긴다
+  return `<div class="say-tools${compact ? " compact" : ""}" id="${id}">
+      <button class="chip mic" aria-label="${label}">🎤 ${label}</button>
+      <p class="say-result" aria-live="polite"></p>
+    </div>`;
+}
+function bindSayTools(box, lang, answers) {
+  if (!box) return;
+  const btn = box.querySelector(".mic"), out = box.querySelector(".say-result");
+  const ans = answers.filter(Boolean).map(plainText);
+  btn.onclick = e => { e.stopPropagation(); runMic(btn, out, lang, ans); };
+}
+const MIC_ERRORS = {
+  "not-allowed": "마이크 사용을 허락해야 해요 (브라우저 설정에서 바꿀 수 있어요).",
+  "service-not-allowed": "이 브라우저에서는 음성 인식을 쓸 수 없어요.",
+  "audio-capture": "마이크를 찾을 수 없어요.",
+  "network": "인터넷이 필요해요. 음성 인식은 온라인에서만 돼요.",
+  "no-speech": "소리가 안 들렸어요. 다시 해 봐요.",
+  "unsupported": "이 브라우저는 음성 인식을 지원하지 않아요."
+};
+const LEVELS = { ok: "맞았어요!", close: "거의 맞았어요", retry: "다시 해 봐요" };
+async function runMic(btn, out, lang, answers) {
+  if (btn.classList.contains("listening")) { speech.stop(); return; }
+  if (!navigator.onLine) { out.textContent = MIC_ERRORS.network; return; }
+  if (!(await speechNotice())) return;
+  tts.stop();
+  btn.classList.add("listening");
+  out.textContent = "듣는 중… 말해 보세요";
+  try {
+    const alts = await speech.listen(LANGS[lang].voice);
+    const j = speech.judge(lang, alts, answers);
+    out.innerHTML = `<span class="lv lv-${j.level}">${LEVELS[j.level]}</span>
+      이렇게 들렸어요: “<span lang="${lang}">${esc(j.heard)}</span>”`;
+  } catch (e) {
+    out.textContent = e.message === "aborted" ? "" : (MIC_ERRORS[e.message] || "다시 해 봐요.");
+  } finally {
+    btn.classList.remove("listening");
+  }
+}
+// 처음 한 번: 음성이 서버로 간다는 안내
+function speechNotice() {
+  if (store.get("speechNotice", false)) return Promise.resolve(true);
+  return new Promise(resolve => {
+    const back = document.createElement("div");
+    back.className = "modal-back";
+    back.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+        <h2 id="noticeTitle">따라 말하기 안내</h2>
+        <p>따라 말하기는 브라우저에 들어 있는 음성 인식을 써요. 말한 소리가 <strong>Google 서버로 전송</strong>돼서 글자로 바뀌어요.
+           그래서 인터넷이 있어야 해요. (⏺ 녹음은 휴대폰 밖으로 나가지 않아요.)</p>
+        <div class="nav"><button id="noticeNo">취소</button><button class="primary" id="noticeOk">알겠어요</button></div>
+      </div>`;
+    document.body.appendChild(back);
+    const close = ok => { back.remove(); if (ok) store.set("speechNotice", true); resolve(ok); };
+    back.querySelector("#noticeOk").onclick = () => close(true);
+    back.querySelector("#noticeNo").onclick = () => close(false);
+    back.querySelector("#noticeOk").focus();
+  });
+}
+// 목록(대화·핵심 문장·조사 예문)에서는 누른 문장 바로 아래에만 도구를 붙인다
+function attachInlineTools(afterEl, lang, answers, alignEnd = false) {
+  speech.stop();
+  document.querySelectorAll(".say-tools.inline").forEach(t => t.remove());
+  if (!speech.supported()) return;
+  const wrap = document.createElement("div");
+  wrap.innerHTML = sayToolsHTML("sayInline", true, "따라 말하기");
+  const box = wrap.firstElementChild;
+  box.classList.add("inline");
+  if (alignEnd) box.classList.add("end");
+  afterEl.after(box);
+  bindSayTools(box, lang, answers);
 }
 
 // ── 헷갈린 단어 ☆ ─────────────────────────────────
@@ -276,7 +355,7 @@ async function viewStars(lang, idx) {
     } else if (data && sec.type === "conjugation") {
       const v = data.verbs.find(x => x.text === text);
       if (v) found = { src: sec.name, it: { text: v.text, kanji: v.kanji, ko_pron: v.ko_pron, meaning: v.meaning, note: v.note,
-        example: v.example?.text, example_ko_pron: v.example?.ko_pron, example_meaning: v.example?.meaning } };
+        example: v.example?.text, example_ko_pron: v.example?.ko_pron, example_kanji_text: v.example?.kanji_text, example_meaning: v.example?.meaning } };
     }
     if (found) cards.push({ key, ...found }); else missing.push(key);
   }
@@ -398,6 +477,7 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
           <p class="meaning">${esc(f.meaning)}</p>
         </div>
         <button class="speak" id="speak" aria-label="문장 듣기">🔊</button>
+        ${sayToolsHTML("saySentence")}
       </article>
       <div class="chips" aria-label="바꿔 넣을 말">
         ${p.fills.map((x, j) => `<button class="chip ${j === i ? "on" : ""}" data-go="${base}/${j}" lang="${lang}">${esc(x.text)}</button>`).join("")}
@@ -418,6 +498,7 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
   bindWordGloss(lang, p, f);
+  bindSayTools(document.getElementById("saySentence"), lang, [sentence]);
   bindHideToggle(() => viewPattern(lang, sec, pIdx, i));
 }
 
@@ -541,7 +622,9 @@ async function viewScene(lang, sec, sIdx) {
   const clearActive = () => app.querySelectorAll(".bubble.active").forEach(b => b.classList.remove("active"));
   app.querySelectorAll(".bubble").forEach(b => b.addEventListener("click", () => {
     clearActive(); b.classList.add("active");
-    tts.speak(s.dialogues[b.dataset.d].lines[b.dataset.k].text, L.voice);
+    const ln = s.dialogues[b.dataset.d].lines[b.dataset.k];
+    tts.speak(ln.text, L.voice);
+    attachInlineTools(b, lang, [ln.text, ln.kanji_text], b.classList.contains("me"));
   }));
   app.querySelectorAll("[data-play]").forEach(b => b.addEventListener("click", () => {
     const di = Number(b.dataset.play);
@@ -550,8 +633,11 @@ async function viewScene(lang, sec, sIdx) {
       k => { clearActive(); bubbles[k].classList.add("active"); bubbles[k].scrollIntoView({ block: "nearest", behavior: "smooth" }); },
       clearActive);
   }));
-  app.querySelectorAll("[data-ph]").forEach(b => b.addEventListener("click", () =>
-    tts.speak(s.phrases[b.dataset.ph].text, L.voice)));
+  app.querySelectorAll("[data-ph]").forEach(b => b.addEventListener("click", () => {
+    const ph = s.phrases[b.dataset.ph];
+    tts.speak(ph.text, L.voice);
+    attachInlineTools(b, lang, [ph.text, ph.kanji_text]);
+  }));
   bindHideToggle(() => viewScene(lang, sec, sIdx));
 }
 
@@ -668,7 +754,7 @@ const markParticle = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="fill">$1
 // 예문 한 줄 (누르면 괄호를 뺀 문장을 읽는다)
 function exampleRow(lang, ex, extra = "") {
   return `
-    <button class="row phrase particle-ex" data-say="${esc(plainText(ex.text))}">
+    <button class="row phrase particle-ex" data-say="${esc(plainText(ex.text))}" data-kanji="${esc(ex.kanji_text || "")}">
       <span class="label">${extra}<strong lang="${lang}">${markParticle(ex.text)}</strong>
         <small class="${H()}">${esc(ex.ko_pron)} · ${esc(ex.meaning)}</small>
         ${ex.why ? `<small class="why">${esc(ex.why)}</small>` : ""}</span>
@@ -677,7 +763,10 @@ function exampleRow(lang, ex, extra = "") {
 }
 function bindSay(lang) {
   app.querySelectorAll("[data-say]").forEach(b =>
-    b.addEventListener("click", () => tts.speak(b.dataset.say, LANGS[lang].voice)));
+    b.addEventListener("click", () => {
+      tts.speak(b.dataset.say, LANGS[lang].voice);
+      attachInlineTools(b, lang, [b.dataset.say, b.dataset.kanji]);
+    }));
 }
 
 // 목록: 단계별 조사 → 맨 끝에 헷갈리는 조사 비교

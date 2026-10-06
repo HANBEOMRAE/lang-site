@@ -8,6 +8,7 @@
   --ja: #E5484D;
   --accent: var(--en);
   --speak: #FFC531;
+  --ok: #1F9D55;
   --speak-ink: #3A2A00;
   --shadow: 0 2px 0 #DDE3EF;
   box-sizing: border-box;
@@ -116,6 +117,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 
 /* 헷갈린 단어 ☆ */
 .card { position: relative; }
+.card:has(.star-btn) { padding-top: 56px; }   /* ☆(위 10px + 44px) 자리를 비워 큰 글자와 겹치지 않게 */
 .star-btn {
   position: absolute; top: 10px; right: 10px; width: 44px; height: 44px;
   border: 0; border-radius: 50%; background: transparent; cursor: pointer;
@@ -205,6 +207,25 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 .pair-point { margin: 6px 0 0; font-size: 14px; word-break: keep-all; }
 .pair-label { margin: 0; font-family: "Jua", sans-serif; font-size: 20px; line-height: 1.25; color: var(--accent); word-break: keep-all; }
 .pair-side .practice { margin-top: 10px; }
+
+/* 따라 말하기 🎤 */
+.say-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; }
+.say-tools.compact { margin-top: 4px; }
+.say-tools.inline { justify-content: flex-start; margin: -2px 0 4px; }
+.say-tools.inline.end { justify-content: flex-end; }
+.say-tools .mic.listening { background: var(--speak); border-color: var(--speak); color: var(--speak-ink); animation: pulse .8s ease-in-out infinite alternate; }
+.say-result { width: 100%; margin: 0; min-height: 0; font-size: 14px; color: var(--muted); text-align: center; word-break: keep-all; }
+.say-tools.inline .say-result { text-align: left; }
+.say-tools.inline.end .say-result { text-align: right; }
+.say-result:empty { display: none; }
+.lv { display: inline-block; margin-right: 4px; padding: 0 8px; border-radius: 999px; font-weight: 700; color: #fff; }
+.lv-ok { background: var(--ok); }
+.lv-close { background: var(--speak); color: var(--speak-ink); }
+.lv-retry { background: var(--muted); }
+.modal-back { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: 16px; background: rgba(0, 0, 0, .45); }
+.modal { width: min(400px, 100%); padding: 18px; border-radius: 18px; background: var(--surface); color: var(--ink); word-break: keep-all; }
+.modal h2 { margin: 0 0 8px; font-family: "Jua", sans-serif; font-weight: 400; font-size: 20px; }
+.modal p { margin: 0; font-size: 15px; }
 
 /* 새 버전 알림 (오프라인 PWA) */
 .update-bar {   /* 상단 바 바로 아래: 아래쪽 이전/다음 버튼을 가리지 않게 */
