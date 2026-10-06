@@ -28,6 +28,9 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   새 일본어 문장에는 `kanji_text`도 넣는다(README "일본어 문장의 한자 표기").
 - ⏺ 녹음: `speech.js`의 `recorder`(MediaRecorder). 녹음은 blob URL로 메모리에만 두고 한 번에 하나만 가진다.
   화면 이동(app.js `route`), 다른 문장 선택(`attachInlineTools`), 페이지 닫기(`pagehide`) 때 `recorder.clear()`로 지우고 마이크를 끈다. 녹음을 서버나 저장소로 보내는 코드를 넣지 않는다.
+- 🔊 설명 듣기: `core.js`의 `tts.speakAll`이 문자열 또는 `{lang, text}` 조각 목록을 받아 조각마다 목소리를 바꿔 읽는다(`VOICE_OF`).
+  `onDone(결과)`: 끝까지 true, 오류 "error", 멈춤 false. `tts.stop()`은 쉬는 틈에 멈춰도 다음 조각을 읽지 않고 끝났다고 알린다.
+  화면 쪽은 views.js `listenHTML`/`bindListen`. 한글 발음(ko_pron)은 읽지 않는다. 필요한 언어 음성이 기기에 없으면(`tts.has`가 false) 버튼을 숨기고 안내한다.
 - `loadData`는 `window.EMBEDDED_DATA`(미리보기 파일)가 있으면 그걸 쓰고, 없으면 `data/…json`을 fetch한다.
 - 새 섹션 열기: JSON 만들기 → `LANGS`에서 `ready: true` → `validate.py`. 새 `type`이면 `app.js`의 switch와 `views.js` 화면도 추가한다.
 - `validate.py`는 파일 이름(`CHECKERS`)으로 검사기를 고르고, 같은 이름인데 언어별로 형식이 다르면 `CHECKERS_BY_LANG`(예: `ja/verbs`)이 우선한다.

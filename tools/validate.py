@@ -380,6 +380,7 @@ def check_tips(data, name):
         for k, ex in enumerate(exs):
             w = f"{where} > 예문 {k + 1}번 ({ex.get('text', '?')})"
             need(ex, BASIC, w)
+            spoken_meaning(ex, w)
             text = ex.get("text", "")
             if not re.fullmatch(r"[^\[\]]*(\[[^\[\]]+\][^\[\]]*)+", text):
                 problems.append(f"{w}: 강조할 부분을 [ ]로 한 번 이상 감싸야 해요 (괄호 짝도 맞게)")
@@ -425,6 +426,11 @@ def check_chunks(lines, where, count=None):
             elif c["lang"] == "ko" and LATIN.search(t):
                 problems.append(f"{w}: 한국어 조각에 알파벳이 있어요 (한국어 목소리가 읽어요) — '{t}' → {{\"lang\": \"en\"}} 조각으로 나눠요")
 
+def spoken_meaning(ex, where):
+    """🔊 설명 듣기가 예문 뜻(meaning)을 한국어 목소리로 읽으므로 알파벳이 있으면 안 된다."""
+    if LATIN.search(str(ex.get("meaning", ""))):
+        problems.append(f"{where}: 뜻(meaning)에 알파벳이 있어요 (설명 듣기에서 한국어 목소리가 읽어요) — '{ex.get('meaning')}'")
+
 def en_vocab():
     """영어 기초 단어·동사 text (소문자). 작은 말 예문의 words가 여기 있어야 한다."""
     out = set()
@@ -443,6 +449,7 @@ def check_function_words(data, name):
     stages = {s.get("id") for s in data.get("stages", [])}
     def sentence(ex, where, marks):
         need(ex, BASIC, where)
+        spoken_meaning(ex, where)
         t = ex.get("text", "")
         found = [m.lower() for m in re.findall(r"\[([^\]]+)\]", t)]
         if not found:

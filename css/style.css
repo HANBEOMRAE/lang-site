@@ -216,6 +216,15 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 .ex-line { display: block; }
 .ex-line + .ex-line { margin-top: 4px; }
 .ex-line [lang], .tip-body [lang] { white-space: nowrap; }   /* 짧은 영어 조각은 중간에서 줄바꿈하지 않게 */
+/* 🔊 설명 듣기: 버튼, 기기에 음성이 없을 때 안내, 읽는 줄 강조 */
+.listen { display: block; }
+.note .listen, .tip-box .listen { margin-top: 10px; }
+.listen-btn.playing { background: var(--speak); border-color: var(--speak); color: var(--speak-ink); }
+.listen-note { display: block; font-size: 13px; color: var(--muted); }
+.listen-note[hidden], .listen-btn[hidden] { display: none; }
+.tools .listen { flex: 1; }
+.ex-line.reading, .tip-body li.reading { background: color-mix(in srgb, var(--speak) 40%, transparent); border-radius: 6px; }
+.row.reading, .pair-side.reading, .tip-ex.reading { outline: 3px solid var(--speak); outline-offset: 1px; }
 
 /* 따라 말하기 🎤 */
 .say-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; }

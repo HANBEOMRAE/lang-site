@@ -46,12 +46,18 @@ async function loadData(lang, section) {
 }
 
 // ── 발음 듣기 (브라우저 내장 음성) ──────────────
+// 설명 조각의 lang → 목소리
+const VOICE_OF = { ko: "ko-KR", en: "en-US", ja: "ja-JP" };
+const LANG_NAME = { ko: "한국어", en: "영어", ja: "일본어" };
+
 const tts = {
   voices: [],
   rate: 0.85,
+  run: null,        // 지금 읽는 speakAll (멈추면 null, 끝났다고 알린다)
+  watchers: [],     // 음성 목록이 늦게 도착하면 부를 함수들 (화면을 바꿀 때 app.js route가 비운다)
   init() {
     if (!("speechSynthesis" in window)) return;
-    const load = () => (this.voices = speechSynthesis.getVoices());
+    const load = () => { this.voices = speechSynthesis.getVoices(); this.watchers.forEach(f => f()); };
     load();
     speechSynthesis.onvoiceschanged = load;
   },
@@ -60,7 +66,18 @@ const tts = {
     return this.voices.find(v => v.lang === langTag) ||
            this.voices.find(v => v.lang && v.lang.replace("_", "-").startsWith(base));
   },
-  stop() { window.speechSynthesis?.cancel(); },
+  // 이 기기에 그 언어 음성이 있는지: true / false / null(아직 목록을 못 받아 모름)
+  has(langTag) {
+    if (!("speechSynthesis" in window)) return false;
+    return this.voices.length ? !!this.pick(langTag) : null;
+  },
+  watch(fn) { this.watchers.push(fn); },
+  stop() {
+    const run = this.run;
+    this.run = null;
+    window.speechSynthesis?.cancel();
+    run?.done();
+  },
   utter(text, langTag) {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = langTag;
@@ -81,17 +98,25 @@ const tts = {
     }
     speechSynthesis.speak(u);
   },
-  // 여러 문장을 차례로 읽기 (대화 전체 듣기)
-  speakAll(texts, langTag, onLine, onDone) {
+  // 여러 문장을 차례로 읽기 (대화 전체 듣기, 설명 듣기)
+  // items: 문자열(langTag 목소리) 또는 { lang: "ko"|"en"|"ja", text, silent?, gap? } 조각 — 조각마다 그 언어 목소리로 바꿔 읽는다.
+  // gap: 다음 조각까지 쉬는 시간(ms, 기본 350). silent 조각은 건너뛴다. onLine(i)은 읽기 시작하는 조각 번호.
+  speakAll(items, langTag, onLine, onDone) {
     if (!("speechSynthesis" in window)) { toast("이 브라우저는 발음 듣기를 지원하지 않아요"); return; }
     this.stop();
+    // onDone(결과): 끝까지 읽음 true, 읽기 오류 "error", 멈춤(tts.stop·다른 읽기 시작) false
+    const run = { done: (finished = false) => { if (run.over) return; run.over = true; onDone && onDone(finished); } };
+    this.run = run;
     let i = 0;
     const next = () => {
-      if (i >= texts.length) { onDone && onDone(); return; }
+      if (this.run !== run) return;                                  // 멈췄거나 다른 읽기가 시작됨
+      while (i < items.length && items[i] && items[i].silent) i++;
+      if (i >= items.length) { this.run = null; run.done(true); return; }
+      const it = typeof items[i] === "string" ? { text: items[i] } : items[i];
       onLine && onLine(i);
-      const u = this.utter(texts[i], langTag);
-      u.onend = () => { i++; setTimeout(next, 350); };
-      u.onerror = () => onDone && onDone();
+      const u = this.utter(it.text, VOICE_OF[it.lang] || it.lang || langTag);
+      u.onend = () => { const gap = it.gap ?? 350; i++; setTimeout(next, gap); };
+      u.onerror = () => { if (this.run === run) { this.run = null; run.done("error"); } };
       speechSynthesis.speak(u);
     };
     next();

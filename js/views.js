@@ -307,7 +307,8 @@ function bindRecorder(box, rec, out, lang, nativeText) {
     e.stopPropagation();
     recorder.stopPlayback();
     if (!("speechSynthesis" in window)) { recorder.play(); return; }
-    tts.speakAll([nativeText], LANGS[lang].voice, null, () => setTimeout(() => recorder.play(), 300));
+    // 원어민 소리가 끝나면(또는 읽기 오류면) 내 녹음. 다른 버튼·화면 이동으로 멈췄으면 틀지 않는다.
+    tts.speakAll([nativeText], LANGS[lang].voice, null, r => { if (r !== false) setTimeout(() => recorder.play(), 300); });
   };
 }
 const MIC_ERRORS = {
@@ -727,6 +728,7 @@ function tipHTML(lang, t, k, open = true) {
     <details class="tip-box" data-t="${k}" ${open ? "open" : ""}>
       <summary class="tip-title">💡 ${esc(t.title)}</summary>
       <ul class="tip-body">${t.body.map(ln => `<li>${chunkLineHTML(ln)}</li>`).join("")}</ul>
+      ${listenHTML(`listenTip${k}`)}
       <div class="tip-exs">
         ${t.examples.map((ex, x) => `
           <div class="tip-ex" data-x="${x}">
@@ -748,6 +750,10 @@ function bindTips(lang, tips, fwIdx = null) {
     }, fwIdx);
     box.querySelectorAll("[data-speak]").forEach(b =>
       b.onclick = e => { e.stopPropagation(); tts.speak(b.dataset.speak, LANGS[lang].voice, e.currentTarget); });
+    // 🔊 설명 듣기: 설명 줄 → 예문(영어 → 뜻)
+    const lis = [...box.querySelectorAll(".tip-body li")], exEls = [...box.querySelectorAll(".tip-ex")];
+    bindListen(`listenTip${box.dataset.t}`, [...t.body.map((ln, i) => ({ el: lis[i], chunks: ln })),
+                                             ...t.examples.map((ex, i) => ({ el: exEls[i], chunks: exampleChunks(ex) }))]);
   });
 }
 
@@ -1016,6 +1022,45 @@ const chunkLineHTML = ln => ln.map(c => c.lang === "ko" ? esc(c.text) : `<span l
 const chunksHTML = lines => (lines || []).map(ln => `<span class="ex-line">${chunkLineHTML(ln)}</span>`).join("");
 const chunksText = lines => (lines || []).map(ln => ln.map(c => c.text).join("")).join(" ");
 
+// ── 🔊 설명 듣기: 설명 조각은 조각마다 그 언어 목소리로, 예문은 영어 문장(en) → 뜻(ko) ──
+// 한글 발음(ko_pron)은 읽지 않는다(원어민 발음과 겹쳐 헷갈림). 읽는 줄은 .reading으로 강조한다.
+// parts: [{ el, chunks: [{lang, text, silent?}] }] — 같은 줄의 조각은 짧게, 줄과 줄 사이는 조금 길게 쉰다.
+function listenHTML(id) {
+  return `<span class="listen"><button class="chip listen-btn" id="${id}" hidden aria-label="설명 듣기">🔊 설명 듣기</button>
+    <small class="listen-note" id="${id}Note" hidden></small></span>`;
+}
+const exampleChunks = ex => [{ lang: "en", text: plainText(ex.text) }, { lang: "ko", text: ex.meaning }];
+function bindListen(id, parts) {
+  const btn = document.getElementById(id), note = document.getElementById(`${id}Note`);
+  if (!btn || !parts.length) return;
+  const langs = [...new Set(parts.flatMap(p => p.chunks.filter(c => !c.silent).map(c => c.lang)))];
+  // 그 언어 음성이 기기에 없으면(다른 목소리가 읽게 되면) 버튼을 숨기고 짧게 알린다. 목록을 아직 못 받았으면(null) 보여 둔다.
+  const update = () => {
+    if (!btn.isConnected) return;
+    const missing = !("speechSynthesis" in window) ? null : langs.filter(l => tts.has(VOICE_OF[l]) === false);
+    btn.hidden = !missing || missing.length > 0;
+    note.hidden = !btn.hidden;
+    note.textContent = !missing ? "이 브라우저는 소리 내어 읽기를 지원하지 않아요"
+      : `이 기기에 ${missing.map(l => LANG_NAME[l]).join("·")} 음성이 없어 설명 듣기를 쓸 수 없어요`;
+  };
+  update();
+  tts.watch(update);
+  const unmark = () => app.querySelectorAll(".reading").forEach(x => x.classList.remove("reading"));
+  btn.onclick = e => {
+    e.stopPropagation();
+    if (btn.classList.contains("playing")) { tts.stop(); return; }
+    const items = parts.flatMap(p => {
+      const cs = p.chunks.filter(c => !c.silent);
+      return cs.map((c, j) => ({ lang: c.lang, text: c.text, el: p.el, gap: j === cs.length - 1 ? 450 : 80 }));
+    });
+    app.querySelectorAll(".listen-btn.playing").forEach(b => { b.classList.remove("playing"); b.textContent = "🔊 설명 듣기"; });
+    tts.speakAll(items, null, i => { unmark(); items[i].el?.classList.add("reading"); }, () => {
+      btn.classList.remove("playing"); btn.textContent = "🔊 설명 듣기"; unmark();
+    });
+    btn.classList.add("playing"); btn.textContent = "■ 그만 듣기";
+  };
+}
+
 // 비교 한 쪽씩: [{ label, entry, pointHTML, pointText }]
 function compareSides(data, c) {
   if (c.sides) return c.sides.map(s => ({ label: s.label, entry: s.entry, pointHTML: chunksHTML(s.point), pointText: chunksText(s.point) }));
@@ -1081,7 +1126,7 @@ async function viewParticle(lang, sec, idx) {
       <button class="speak" id="speakWord" aria-label="${esc(p.text)} 발음 듣기">🔊</button>
       ${p.role ? `<p class="role">${esc(p.role)}</p>` : ""}
       ${p.note ? `<p class="note">${noBreakJa(p.note)}</p>` : ""}
-      ${p.explain ? `<div class="note explain" id="explain">${chunksHTML(p.explain)}</div>` : ""}
+      ${p.explain ? `<div class="note explain" id="explain">${chunksHTML(p.explain)}${listenHTML("listenExplain")}</div>` : ""}
     </article>
     ${p.uses.map(u => `
       ${multi ? `<h2 class="group">${esc(u.name)} <small class="group-desc">${esc(u.desc || "")}</small></h2>`
@@ -1103,6 +1148,13 @@ async function viewParticle(lang, sec, idx) {
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
   bindSay(lang);
+  if (p.explain) {
+    // 설명 줄 → 쓰임별 예문(영어 → 뜻) 차례로
+    const lines = [...app.querySelectorAll("#explain .ex-line")], rows = [...app.querySelectorAll(".particle-ex")];
+    const exs = p.uses.flatMap(u => u.examples);
+    bindListen("listenExplain", [...p.explain.map((ln, i) => ({ el: lines[i], chunks: ln })),
+                                 ...exs.map((ex, i) => ({ el: rows[i], chunks: exampleChunks(ex) }))]);
+  }
   fitWord();
   bindHideToggle(() => viewParticle(lang, sec, idx));
 }
@@ -1110,9 +1162,9 @@ async function viewParticle(lang, sec, idx) {
 // ── 비교 화면 (조사·패턴이 함께 쓴다) ──────────────
 // sides: [{ label, point | pointHTML, big?, practice?, practiceLabel? }]  examples: [{ tag, text, ko_pron, meaning, why }]
 // 쪽이 셋이면(in·on·at) 세 칸으로 나눈다.
-function renderCompare({ lang, sides, examples, next }) {
+function renderCompare({ lang, sides, examples, next, listen = false }) {
   app.innerHTML = `
-    <div class="tools">${hideToggle()}</div>
+    <div class="tools">${listen ? listenHTML("listenCompare") : ""}${hideToggle()}</div>
     <div class="pair ${sides.length === 3 ? "three" : ""}" id="pair">
       ${sides.map(s => `<div class="pair-side">
           <p class="${s.big ? "pair-kana" : "pair-label"}" lang="${lang}">${esc(s.label)}</p>
@@ -1150,8 +1202,16 @@ async function viewCompare(lang, sec, k) {
                practice: c.sides && i >= 0 && first ? `${base}/${i}` : null, practiceLabel: "자세히" };
     }),
     examples: c.examples.map(ex => ({ ...ex, tag: sides[exampleSide(c, ex)]?.label })),
-    next: last ? { hash: base, label: `${unitOf(sec)} 목록으로` } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${data.compare[k + 1].title}` }
+    next: last ? { hash: base, label: `${unitOf(sec)} 목록으로` } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${data.compare[k + 1].title}` },
+    listen: !!c.sides     // 설명이 조각으로 된 작은 말 비교만
   });
+  if (c.sides) {
+    // 쪽마다 이름(영어) → 설명, 그다음 예문(영어 → 뜻)
+    const boxes = [...app.querySelectorAll(".pair-side")], rows = [...app.querySelectorAll(".particle-ex")];
+    bindListen("listenCompare", [
+      ...c.sides.map((s, i) => ({ el: boxes[i], chunks: [{ lang: lang, text: s.label }, ...s.point.flat()] })),
+      ...c.examples.map((ex, i) => ({ el: rows[i], chunks: exampleChunks(ex) }))]);
+  }
   bindHideToggle(() => viewCompare(lang, sec, k));
 }
 

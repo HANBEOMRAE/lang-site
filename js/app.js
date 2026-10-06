@@ -13,6 +13,7 @@
 
 function route() {
   tts.stop();
+  tts.watchers = [];     // 앞 화면의 "설명 듣기" 버튼 확인 함수는 버린다
   speech.stop();
   recorder.clear();      // 화면을 떠나면 녹음을 지우고 마이크를 끈다
   window.scrollTo(0, 0);
