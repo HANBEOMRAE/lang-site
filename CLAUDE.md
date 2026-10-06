@@ -72,7 +72,8 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 
 - 설명은 `tips.json` 한 곳에만 쓰고, 패턴은 `tip_ids`로 가리킨다. 관련 패턴 목록은 따로 적지 않는다(views.js `viewTips`가 `tip_ids`를 거꾸로 찾는다).
   패턴의 `tip`(틀 아래 한 줄)과 `tip_ids`(💡로 펼치는 설명)는 다른 칸이다.
-- `body` 3~5줄, 예문 2~5개, 예문마다 `[강조]` 한 번 이상. 예문 단어 뜻 찾는 순서: 예문 `words`의 `단어@n`(n번째로 나온 그 단어) → 예문 `words` → 설명 `words`
+- 작은 말 하나에 대한 설명(to의 두 뜻, a/the 등)은 tips에 쓰지 않는다. 작은 말 쪽에 쓰고, tips에는 `"see": {"item"|"compare": id}` 연결만 둔다.
+- `body`는 `{lang, text}` 조각 줄로 3~5줄, 예문 2~5개, 예문마다 `[강조]` 한 번 이상. 예문 단어 뜻 찾는 순서: 예문 `words`의 `단어@n`(n번째로 나온 그 단어) → 예문 `words` → 설명 `words`
   (views.js `bindTips`, validate.py `check_tips`가 같은 규칙). 어느 패턴도 가리키지 않는 설명은 경고.
 - "빨리 말하면" 설명의 예문 `text`는 원래 모양(want to)으로 쓰고, `ko_pron`에 들리는 소리(워너)를 쓴다(🔊·검사는 원래 모양으로).
 

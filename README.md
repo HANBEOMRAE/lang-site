@@ -247,14 +247,19 @@ python tools/validate.py
 
 ```json
 { "tips": [
-  { "id": "to-two", "title": "to의 두 가지 뜻",
-    "body": ["동사 앞의 to는 '~하기를'이에요.", "장소 앞의 to는 '~로, ~에'예요.", "구분 요령: to 바로 뒤를 봐요."],
+  { "id": "want-thing", "title": "want + 물건 vs want to + 동작",
+    "body": [ [ {"lang": "en", "text": "want"}, {"lang": "ko", "text": " 뒤에 물건이 오면 '그걸 갖고 싶어'예요. "}, {"lang": "en", "text": "I want water."} ], … ],
     "words": { "i": { "ko_pron": "아이", "meaning": "나" } },
     "examples": [
-      { "text": "I want [to] go [to] school.", "ko_pron": "아이 원 투 고 투 스쿨.", "meaning": "학교에 가고 싶어.",
-        "words": { "to@1": { "ko_pron": "투", "meaning": "~하기를" }, "to@2": { "ko_pron": "투", "meaning": "~로, ~에" },
-                   "want": { … }, "go": { … }, "school": { … } } } ] } ] }
+      { "text": "I want [to drink] water.", "ko_pron": "아이 원 투 드링크 워터.", "meaning": "물 마시고 싶어.",
+        "words": { "drink": { "ko_pron": "드링크", "meaning": "마시다" } } } ] },
+  { "id": "to-two", "title": "to의 두 가지 뜻", "see": { "item": "to" } },
+  { "id": "a-the",  "title": "a와 the 구분",    "see": { "compare": "a-the" } } ] }
 ```
+
+- 작은 말 하나에 대한 설명(to의 두 뜻, a와 the)은 여기 쓰지 않고 `see`로 작은 말 화면을 가리킨다(`item`: 작은 말 id, `compare`: 비교 id).
+  `see` 항목에는 `body`·`examples`를 쓰지 않는다. 패턴의 `tip_ids`는 그대로 이 id를 가리키고, 💡 패널과 모음에서 "작은 말: to에서 보기 →" 버튼으로 보인다.
+- `body`는 `{lang, text}` 조각 줄(README "설명 조각")이다.
 
 패턴 쪽: `{ "pattern": "I want to ___", "tip": "to 뒤에는 동사가 와요.", "tip_ids": ["to-two", "fast-speech"], … }`
 (`tip`은 틀 아래 한 줄 설명, `tip_ids`는 💡 버튼으로 펼치는 긴 설명.)
@@ -343,7 +348,7 @@ python tools/build_preview.py
 | 영어 작은 말 | 5개 묶음, 36개, 예문 129개, 비교 5개(예문 22개, 퀴즈 15개) |
 | 패턴 영어 | 33개 틀, 문장 396개 (틀마다 12개) |
 | 비슷한 패턴 비교 | 5개 짝, 예문 20개, 퀴즈 15개 |
-| 💡 알아두기 (영어) | 설명 6개, 예문 25개, 패턴 15개에 연결 |
+| 💡 알아두기 (영어) | 설명 4개(예문 17개) + 작은 말 연결 2개, 패턴 15개에 연결 |
 | 발음 연습 (영어) | 5개 짝, 26쌍 |
 | 발음 연습 (일본어) | 4개 짝, 19쌍 |
 | 상황별 회화 | 12개 장면, 대화 24개(134줄), 핵심 문장 72개 |

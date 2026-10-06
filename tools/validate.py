@@ -329,7 +329,15 @@ def check_word_glosses(p, where):
 # 패턴마다 바꿔 넣을 말 개수
 FILL_COUNTS = (12,)
 
-TIP_BODY = (3, 5)       # 설명 줄 수
+TIP_BODY = (3, 5)       # 설명 줄 수 ({lang, text} 조각 줄, check_chunks)
+
+def function_words_ids():
+    """작은 말 항목·비교 id (알아두기의 see 연결 검사용)."""
+    try:
+        d = json.loads((ROOT / "data/en/function_words.json").read_text(encoding="utf-8"))
+        return {"items": {x.get("id") for x in d.get("items", [])}, "compare": {x.get("id") for x in d.get("compare", [])}}
+    except Exception:
+        return {"items": set(), "compare": set()}
 TIP_EXAMPLES = (2, 5)   # 예문 개수
 
 def check_tips(data, name):
@@ -351,9 +359,20 @@ def check_tips(data, name):
         ids.add(t.get("id"))
         if t.get("id") not in used:
             warnings.append(f"{where}: 이 설명을 가리키는 패턴(tip_ids)이 없어요 — 모음에서만 보여요")
-        body = t.get("body", [])
-        if not isinstance(body, list) or not TIP_BODY[0] <= len(body) <= TIP_BODY[1] or not all(str(x).strip() for x in body):
-            problems.append(f"{where}: body(설명)는 {TIP_BODY[0]}~{TIP_BODY[1]}줄이어야 해요")
+        if "see" in t:
+            # 작은 말 하나에 대한 설명은 tips에 쓰지 않고 작은 말 화면을 가리킨다
+            see = t["see"] if isinstance(t["see"], dict) else {}
+            fw = function_words_ids()
+            if set(see) not in ({"item"}, {"compare"}):
+                problems.append(f"{where}: see는 {{\"item\": 작은 말 id}} 또는 {{\"compare\": 비교 id}} 하나예요")
+            elif see.get("item") is not None and see["item"] not in fw["items"]:
+                problems.append(f"{where}: see의 '{see['item']}'가 작은 말(items)에 없어요")
+            elif see.get("compare") is not None and see["compare"] not in fw["compare"]:
+                problems.append(f"{where}: see의 '{see['compare']}'가 작은 말 비교(compare)에 없어요")
+            if "body" in t or "examples" in t:
+                problems.append(f"{where}: see(연결) 설명에는 body·examples를 쓰지 않아요 — 설명은 작은 말 쪽에")
+            continue
+        check_chunks(t.get("body"), f"{where} > body", TIP_BODY)
         tw = {k.lower(): v for k, v in (t.get("words") or {}).items()}
         exs = t.get("examples", [])
         if not TIP_EXAMPLES[0] <= len(exs) <= TIP_EXAMPLES[1]:

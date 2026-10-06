@@ -215,6 +215,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 .note.explain { text-align: left; }
 .ex-line { display: block; }
 .ex-line + .ex-line { margin-top: 4px; }
+.ex-line [lang], .tip-body [lang] { white-space: nowrap; }   /* 짧은 영어 조각은 중간에서 줄바꿈하지 않게 */
 
 /* 따라 말하기 🎤 */
 .say-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; }
@@ -356,6 +357,9 @@ mark.diff { padding: 0 2px; border-radius: 4px; color: inherit; background: colo
 .tip-title::after { content: "▾"; margin-left: auto; color: var(--muted); transition: transform .15s; }
 .tip-box:not([open]) .tip-title::after { transform: rotate(-90deg); }
 .tip-box[open] .tip-title { margin-bottom: 6px; }
+/* 작은 말로 가는 연결 (설명은 작은 말 화면에) */
+.tip-see .tip-title { margin: 0 0 8px; cursor: default; }
+.tip-see .tip-title::after { content: none; }
 .tip-body { margin: 0; padding-left: 18px; font-size: 15px; word-break: keep-all; }
 .tip-body li + li { margin-top: 3px; }
 .tip-exs { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }

@@ -543,7 +543,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
         ${p.tip ? `<small>${esc(p.tip)}</small>` : ""}</p>
       ${tips.length ? `
         <button class="chip tip-toggle ${tipOpen ? "on" : ""}" id="tipToggle" aria-expanded="${tipOpen}" aria-controls="tipPanel">💡 알아두기</button>
-        <div class="tip-panel" id="tipPanel" ${tipOpen ? "" : "hidden"}>${tips.map((t, k) => tipHTML(lang, t, k, k === 0)).join("")}</div>` : ""}
+        <div class="tip-panel" id="tipPanel" ${tipOpen ? "" : "hidden"}>${tips.map((t, k) => tipHTML(lang, t, k, k === tips.findIndex(x => !x.see))).join("")}</div>` : ""}
       <article class="card" id="card">
         <p class="sentence" lang="${lang}">${sentenceHTML(p.pattern, f.text)}</p>
         <div class="${H()}">
@@ -674,9 +674,22 @@ function bindWordGloss(lang, card, lookup, fwIdx = null) {
 
 // ── 💡 알아두기 (data/<언어>/tips.json) ─────────────
 // 설명은 한 곳에 두고, 패턴은 tip_ids로 가리킨다. 관련 패턴 목록은 tip_ids를 거꾸로 찾아 만든다.
+// 작은 말 하나에 대한 설명(to, a/the)은 tips에 쓰지 않고 see로 작은 말 화면을 가리킨다 → seeHash·seeLabel을 붙여 돌려준다.
 async function loadTips(lang) {
   if (!LANGS[lang].tips) return [];
-  try { return (await loadData(lang, "tips")).tips; } catch { return []; }
+  let tips;
+  try { tips = (await loadData(lang, "tips")).tips; } catch { return []; }
+  const sec = LANGS[lang].sections.find(s => s.id === "function_words" && s.ready);
+  let fw = null;
+  if (sec) try { fw = await loadData(lang, sec.id); } catch {}
+  return tips.map(t => {
+    if (!t.see) return t;
+    const i = fw && t.see.item ? fw.items.findIndex(x => x.id === t.see.item) : -1;
+    const k = fw && t.see.compare ? fw.compare.findIndex(x => x.id === t.see.compare) : -1;
+    if (i < 0 && k < 0) return { ...t, seeHash: null };
+    return { ...t, seeHash: i >= 0 ? `#/${lang}/${sec.id}/${i}` : `#/${lang}/${sec.id}/vs/${k}`,
+             seeLabel: i >= 0 ? `${sec.name}: ${fw.items[i].text}` : `${sec.name}: ${fw.compare[k].title} 비교` };
+  });
 }
 async function tipsFor(lang, p) {
   if (!p.tip_ids || !p.tip_ids.length) return [];
@@ -705,10 +718,15 @@ function tipSentenceHTML(text) {
 }
 // 설명 하나 = 접고 펼 수 있는 상자. 패턴에 설명이 여러 개면 첫 번째만 펼쳐 둔다(나머지는 제목만).
 function tipHTML(lang, t, k, open = true) {
+  if (t.see) return `
+    <div class="tip-box tip-see" data-t="${k}">
+      <p class="tip-title">💡 ${esc(t.title)}</p>
+      ${t.seeHash ? `<button class="chip tip-go" data-go="${esc(t.seeHash)}">${esc(t.seeLabel)}에서 보기 →</button>` : ""}
+    </div>`;
   return `
     <details class="tip-box" data-t="${k}" ${open ? "open" : ""}>
       <summary class="tip-title">💡 ${esc(t.title)}</summary>
-      <ul class="tip-body">${t.body.map(line => `<li>${esc(line)}</li>`).join("")}</ul>
+      <ul class="tip-body">${t.body.map(ln => `<li>${chunkLineHTML(ln)}</li>`).join("")}</ul>
       <div class="tip-exs">
         ${t.examples.map((ex, x) => `
           <div class="tip-ex" data-x="${x}">
@@ -723,6 +741,7 @@ function tipHTML(lang, t, k, open = true) {
 function bindTips(lang, tips, fwIdx = null) {
   app.querySelectorAll(".tip-box").forEach(box => {
     const t = tips[box.dataset.t], tw = t.words || {};
+    if (!t.examples) return;                                 // see(작은 말 연결)는 예문이 없다
     bindWordGloss(lang, box, el => {
       const ew = t.examples[el.closest(".tip-ex").dataset.x].words || {};
       return ew[`${el.dataset.k}@${el.dataset.n}`] || ew[el.dataset.k] || tw[el.dataset.k];
@@ -746,9 +765,10 @@ async function viewTips(lang, idx) {
       <p class="lead">헷갈리기 쉬운 규칙을 짧게 모았어요. 패턴 화면의 💡에서도 볼 수 있어요.</p>
       <div class="list">
         ${tips.map((t, k) => `
-          <button class="row" data-go="${base}/${k}">
+          <button class="row" data-go="${t.see && t.seeHash ? esc(t.seeHash) : `${base}/${k}`}">
             <span class="em" aria-hidden="true">💡</span>
-            <span class="label"><strong>${esc(t.title)}</strong><small>관련 패턴 ${related(t).length}개</small></span>
+            <span class="label"><strong>${esc(t.title)}</strong>
+              <small>${t.see && t.seeHash ? `${esc(t.seeLabel)}에서 보기 · ` : ""}관련 패턴 ${related(t).length}개</small></span>
           </button>`).join("")}
       </div>`;
     return;
@@ -992,10 +1012,8 @@ const particleById = (data, id) => entriesOf(data).find(p => p.id === id) || { t
 const josa = (word, a, b) => { const c = word.charCodeAt(word.length - 1) - 0xAC00; return c >= 0 && c <= 11171 && c % 28 ? a : b; };
 
 // 설명 조각 [{lang, text}] 줄 목록 → 화면. 영어·일본어 조각에는 lang을 붙인다.
-function chunksHTML(lines, cls = "ex-line") {
-  return (lines || []).map(ln => `<span class="${cls}">${ln.map(c =>
-    c.lang === "ko" ? esc(c.text) : `<span lang="${c.lang}">${esc(c.text)}</span>`).join("")}</span>`).join("");
-}
+const chunkLineHTML = ln => ln.map(c => c.lang === "ko" ? esc(c.text) : `<span lang="${c.lang}">${esc(c.text)}</span>`).join("");
+const chunksHTML = lines => (lines || []).map(ln => `<span class="ex-line">${chunkLineHTML(ln)}</span>`).join("");
 const chunksText = lines => (lines || []).map(ln => ln.map(c => c.text).join("")).join(" ");
 
 // 비교 한 쪽씩: [{ label, entry, pointHTML, pointText }]
