@@ -311,9 +311,9 @@ mark.diff { padding: 0 2px; border-radius: 4px; color: inherit; background: colo
 .fill { color: var(--accent); border-bottom: 4px solid var(--speak); }
 
 /* 단어별 뜻: 누를 수 있는 단어는 점선 밑줄, 누르면 작은 말풍선 */
-.sentence .w { cursor: pointer; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
-.sentence .fill .w { border-bottom: 0; }
-.sentence .w:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
+.sentence .w, .tip-sent .w { cursor: pointer; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
+.sentence .fill .w, .tip-sent .fill .w { border-bottom: 0; }
+.sentence .w:focus-visible, .tip-sent .w:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
 .gloss {
   position: absolute; z-index: 3; max-width: calc(100% - 16px);
   display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 14px;
@@ -325,6 +325,33 @@ mark.diff { padding: 0 2px; border-radius: 4px; color: inherit; background: colo
 .gloss .g-pron { font-weight: 700; font-size: 15px; }
 .gloss .g-mean { font-size: 14px; opacity: .85; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+/* 💡 알아두기: 누를 때만 펼치는 짧은 설명 + 예문 */
+.tip-toggle { display: block; margin: 0 0 12px; }
+.tip-panel { display: flex; flex-direction: column; gap: 12px; margin: 0 0 14px; }
+.tip-panel[hidden] { display: none; }
+.tip-box {
+  position: relative; padding: 14px 16px; border-radius: 16px;
+  background: color-mix(in srgb, var(--speak) 14%, var(--surface)); border: 1px solid var(--line);
+}
+.tip-title {
+  display: flex; align-items: center; gap: 6px; cursor: pointer; list-style: none;
+  font-family: "Jua", sans-serif; font-weight: 400; font-size: 19px;
+}
+.tip-title::-webkit-details-marker { display: none; }
+.tip-title::after { content: "▾"; margin-left: auto; color: var(--muted); transition: transform .15s; }
+.tip-box:not([open]) .tip-title::after { transform: rotate(-90deg); }
+.tip-box[open] .tip-title { margin-bottom: 6px; }
+.tip-body { margin: 0; padding-left: 18px; font-size: 15px; word-break: keep-all; }
+.tip-body li + li { margin-top: 3px; }
+.tip-exs { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.tip-ex {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 10px;
+  padding: 10px 12px; border-radius: 12px; background: var(--surface);
+}
+.tip-ex .mini-speak { grid-row: span 2; }
+.tip-sent { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.6; }
+.tip-ex small { font-size: 14px; color: var(--muted); }
 
 /* 상황별 회화 */
 .d-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }

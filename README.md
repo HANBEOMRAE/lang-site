@@ -31,6 +31,7 @@ lang-site/
     verbs.json          동사 (주제별)
     patterns.json       패턴 영어
     pattern_compare.json 비슷한 패턴 비교 (I want to/I need to 등)
+    tips.json           💡 알아두기 (to의 두 뜻, a/the 등 짧은 설명)
     pairs.json          발음 연습: 헷갈리는 짝 (r/l, f/p, v/b, th/s, i/ee)
     situations.json     상황별 회화
   data/ja/              일본어 데이터
@@ -180,6 +181,31 @@ python tools/validate.py
                "words": { "to": { "ko_pron": "투", "meaning": "~로, ~에" }, "park": { "ko_pron": "파크", "meaning": "공원" } } } ] }
 ```
 
+### 💡 알아두기 (tips.json)
+
+헷갈리기 쉬운 규칙을 짧게 설명한다. 설명은 이 파일 한 곳에 두고, 패턴은 `tip_ids`로 가리킨다(여러 패턴이 같은 설명을 같이 쓴다).
+
+```json
+{ "tips": [
+  { "id": "to-two", "title": "to의 두 가지 뜻",
+    "body": ["동사 앞의 to는 '~하기를'이에요.", "장소 앞의 to는 '~로, ~에'예요.", "구분 요령: to 바로 뒤를 봐요."],
+    "words": { "i": { "ko_pron": "아이", "meaning": "나" } },
+    "examples": [
+      { "text": "I want [to] go [to] school.", "ko_pron": "아이 원 투 고 투 스쿨.", "meaning": "학교에 가고 싶어.",
+        "words": { "to@1": { "ko_pron": "투", "meaning": "~하기를" }, "to@2": { "ko_pron": "투", "meaning": "~로, ~에" },
+                   "want": { … }, "go": { … }, "school": { … } } } ] } ] }
+```
+
+패턴 쪽: `{ "pattern": "I want to ___", "tip": "to 뒤에는 동사가 와요.", "tip_ids": ["to-two", "fast-speech"], … }`
+(`tip`은 틀 아래 한 줄 설명, `tip_ids`는 💡 버튼으로 펼치는 긴 설명.)
+
+- `body`는 3~5줄, `examples`는 2~5개. 예문에는 `ko_pron`·`meaning`이 꼭 있어야 한다.
+- 예문의 `[ ]`는 설명의 핵심 부분 강조다. 화면에서 색으로 보이고, 🔊에는 괄호를 뺀 문장이 간다. 예문마다 한 번 이상 쓴다.
+- 예문의 모든 단어에 뜻이 있어야 한다. 찾는 순서: 예문 `words`의 `"단어@몇번째"` → 예문 `words` → 설명 `words`.
+  같은 문장에 같은 단어가 다른 뜻으로 두 번 나오면 `to@1`, `to@2`처럼 적는다.
+- 화면: 패턴 화면의 "💡 알아두기"를 누르면 펼쳐진다(설명이 여러 개면 첫 번째만 펼친 상태). 언어 홈 "알아두기 모음"(`#/en/tips`)에서는 설명마다 관련 패턴으로 바로 간다. 관련 패턴은 `tip_ids`를 거꾸로 찾아 만든다.
+- 설명을 쓰는 언어는 `core.js` `LANGS`에서 `tips: true`.
+
 ### 비슷한 패턴 비교 (pattern_compare.json)
 
 ```json
@@ -256,6 +282,7 @@ python tools/build_preview.py
 | 영어 동사 | 5개 주제, 42개 |
 | 패턴 영어 | 33개 틀, 문장 396개 (틀마다 12개) |
 | 비슷한 패턴 비교 | 5개 짝, 예문 20개, 퀴즈 15개 |
+| 💡 알아두기 (영어) | 설명 6개, 예문 25개, 패턴 15개에 연결 |
 | 발음 연습 (영어) | 5개 짝, 26쌍 |
 | 발음 연습 (일본어) | 4개 짝, 19쌍 |
 | 상황별 회화 | 12개 장면, 대화 24개(134줄), 핵심 문장 72개 |

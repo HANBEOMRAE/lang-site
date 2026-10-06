@@ -143,6 +143,11 @@ function viewLang(lang) {
         <span class="label"><strong>내 발음 약점</strong>
           <small>연습한 짝 ${Object.keys(pairStats()).filter(k => k.startsWith(`${lang}/`)).length}개</small></span>
       </button>` : ""}
+      ${L.tips ? `
+      <button class="row tips-row" data-go="#/${lang}/tips">
+        <span class="em" aria-hidden="true">💡</span>
+        <span class="label"><strong>알아두기 모음</strong><small>헷갈리기 쉬운 규칙과 관련 패턴</small></span>
+      </button>` : ""}
     </div>`;
   fillContinue(lang);
 }
@@ -510,12 +515,14 @@ async function viewPatternList(lang, sec) {
 }
 
 // ── 패턴: 문장 연습 ─────────────────────────────
-async function viewPattern(lang, sec, pIdx, fIdx) {
+// tipOpen: 뜻 가리기를 눌러 다시 그릴 때만 💡 알아두기를 펼친 채로 둔다 (다른 문장으로 넘기면 접힌다)
+async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
   const L = LANGS[lang];
   let data;
   try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
   const p = data[pIdx];
   if (!p) { location.hash = `#/${lang}/${sec.id}`; return; }
+  const tips = await tipsFor(lang, p);
   const n = p.fills.length;
   const i = Math.min(Math.max(fIdx || 0, 0), n - 1);
   const f = p.fills[i];
@@ -533,6 +540,9 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
       <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
       <p class="frame" lang="${lang}">${esc(before)}<span class="slot">?</span>${esc(after)}
         ${p.tip ? `<small>${esc(p.tip)}</small>` : ""}</p>
+      ${tips.length ? `
+        <button class="chip tip-toggle ${tipOpen ? "on" : ""}" id="tipToggle" aria-expanded="${tipOpen}" aria-controls="tipPanel">💡 알아두기</button>
+        <div class="tip-panel" id="tipPanel" ${tipOpen ? "" : "hidden"}>${tips.map((t, k) => tipHTML(lang, t, k, k === 0)).join("")}</div>` : ""}
       <article class="card" id="card">
         <p class="sentence" lang="${lang}">${sentenceHTML(p.pattern, f.text)}</p>
         <div class="${H()}">
@@ -560,9 +570,22 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
-  bindWordGloss(lang, p, f);
+  const pw = p.words || {}, fw = f.words || {};
+  bindWordGloss(lang, document.getElementById("card"),
+    el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k]);
   bindSayTools(document.getElementById("saySentence"), lang, [sentence]);
-  bindHideToggle(() => viewPattern(lang, sec, pIdx, i));
+  const panel = document.getElementById("tipPanel");
+  if (panel) {
+    const btn = document.getElementById("tipToggle");
+    btn.onclick = () => {
+      panel.hidden = !panel.hidden;
+      btn.classList.toggle("on", !panel.hidden);
+      btn.setAttribute("aria-expanded", String(!panel.hidden));
+      closeGloss();
+    };
+    bindTips(lang, tips);
+  }
+  bindHideToggle(() => viewPattern(lang, sec, pIdx, i, !!panel && !panel.hidden));
 }
 
 // ── 단어별 뜻 (누를 때만 보인다) ───────────────────
@@ -593,22 +616,18 @@ function sentenceHTML(pattern, fillText) {
 function closeGloss() { document.querySelectorAll(".gloss").forEach(g => g.remove()); }
 document.addEventListener("click", e => { if (!e.target.closest(".w, .gloss")) closeGloss(); });
 
-function bindWordGloss(lang, p, f) {
-  const card = document.getElementById("card");
-  const lookup = (k, inFill) => {
-    const pw = p.words || {}, fw = f.words || {};
-    return inFill ? (fw[k] || pw[k]) : pw[k];
-  };
+// card: 말풍선을 넣을 상자(position: relative). lookup(단어 요소) → { ko_pron, meaning } — 찾는 규칙은 화면마다 다르다.
+function bindWordGloss(lang, card, lookup) {
   card.querySelectorAll(".w").forEach(el => {
     const open = e => {
       e.stopPropagation();
-      const wasOpen = card.querySelector(`.gloss[data-k="${el.dataset.k}"][data-f="${el.dataset.f}"]`);
+      const wasOpen = [...card.querySelectorAll(".gloss")].some(g => g.from === el);
       closeGloss();
       if (wasOpen) return;                                   // 같은 단어를 다시 누르면 닫기
-      const g = lookup(el.dataset.k, el.dataset.f === "1");
+      const g = lookup(el);
       if (!g) return;
       const box = document.createElement("div");
-      box.className = "gloss"; box.dataset.k = el.dataset.k; box.dataset.f = el.dataset.f;
+      box.className = "gloss"; box.from = el;
       box.innerHTML = `<span class="g-text"><b lang="${lang}">${esc(el.dataset.word)}</b>
           <span class="g-pron">${esc(g.ko_pron)}</span><span class="g-mean">${esc(g.meaning)}</span></span>
         <button class="mini-speak" aria-label="${esc(el.dataset.word)} 발음 듣기">🔊</button>`;
@@ -624,6 +643,110 @@ function bindWordGloss(lang, p, f) {
     el.addEventListener("click", open);
     el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); } });
   });
+}
+
+// ── 💡 알아두기 (data/<언어>/tips.json) ─────────────
+// 설명은 한 곳에 두고, 패턴은 tip_ids로 가리킨다. 관련 패턴 목록은 tip_ids를 거꾸로 찾아 만든다.
+async function loadTips(lang) {
+  if (!LANGS[lang].tips) return [];
+  try { return (await loadData(lang, "tips")).tips; } catch { return []; }
+}
+async function tipsFor(lang, p) {
+  if (!p.tip_ids || !p.tip_ids.length) return [];
+  const all = await loadTips(lang);
+  return p.tip_ids.map(id => all.find(t => t.id === id)).filter(Boolean);
+}
+
+// 예문: [ ]는 설명의 핵심 부분 강조. 단어마다 몇 번째로 나왔는지(data-n)를 붙여
+// "I want to go to school"처럼 같은 단어의 뜻이 다를 때 "to@2"로 따로 적을 수 있게 한다.
+function tipSentenceHTML(text) {
+  const seen = {};
+  return String(text).split(/(\[[^\]]*\])/).map(seg => {
+    const mark = seg.startsWith("[");
+    const s = mark ? seg.slice(1, -1) : seg;
+    let out = "", pos = 0;
+    for (const m of s.matchAll(WORD_RE)) {
+      const k = m[0].toLowerCase();
+      seen[k] = (seen[k] || 0) + 1;
+      out += esc(s.slice(pos, m.index)) + `<span class="w" role="button" tabindex="0" data-k="${esc(k)}" data-n="${seen[k]}"
+        data-word="${esc(m[0])}">${esc(m[0])}</span>`;
+      pos = m.index + m[0].length;
+    }
+    out += esc(s.slice(pos));
+    return mark ? `<span class="fill">${out}</span>` : out;
+  }).join("");
+}
+// 설명 하나 = 접고 펼 수 있는 상자. 패턴에 설명이 여러 개면 첫 번째만 펼쳐 둔다(나머지는 제목만).
+function tipHTML(lang, t, k, open = true) {
+  return `
+    <details class="tip-box" data-t="${k}" ${open ? "open" : ""}>
+      <summary class="tip-title">💡 ${esc(t.title)}</summary>
+      <ul class="tip-body">${t.body.map(line => `<li>${esc(line)}</li>`).join("")}</ul>
+      <div class="tip-exs">
+        ${t.examples.map((ex, x) => `
+          <div class="tip-ex" data-x="${x}">
+            <p class="tip-sent" lang="${lang}">${tipSentenceHTML(ex.text)}</p>
+            <button class="mini-speak" data-speak="${esc(plainText(ex.text))}" aria-label="예문 듣기">🔊</button>
+            <small class="${H()}">${esc(ex.ko_pron)} · ${esc(ex.meaning)}</small>
+          </div>`).join("")}
+      </div>
+    </details>`;
+}
+// 단어 뜻 찾는 순서: 예문 words의 "단어@몇번째" → 예문 words → 설명 words (validate.py check_tips와 같은 규칙)
+function bindTips(lang, tips) {
+  app.querySelectorAll(".tip-box").forEach(box => {
+    const t = tips[box.dataset.t], tw = t.words || {};
+    bindWordGloss(lang, box, el => {
+      const ew = t.examples[el.closest(".tip-ex").dataset.x].words || {};
+      return ew[`${el.dataset.k}@${el.dataset.n}`] || ew[el.dataset.k] || tw[el.dataset.k];
+    });
+    box.querySelectorAll("[data-speak]").forEach(b =>
+      b.onclick = e => { e.stopPropagation(); tts.speak(b.dataset.speak, LANGS[lang].voice, e.currentTarget); });
+  });
+}
+
+// 알아두기 모음: #/en/tips 목록, #/en/tips/2 설명 하나 + 관련 패턴
+async function viewTips(lang, idx) {
+  const base = `#/${lang}/tips`;
+  const tips = await loadTips(lang);
+  const psec = LANGS[lang].sections.find(s => s.type === "patterns" && s.ready);
+  let patterns = [];
+  try { if (psec) patterns = await loadData(lang, psec.id); } catch {}
+  const related = t => patterns.map((p, i) => [p, i]).filter(([p]) => (p.tip_ids || []).includes(t.id));
+  if (idx === undefined) {
+    setHeader("알아두기 모음", `#/${lang}`);
+    app.innerHTML = `
+      <p class="lead">헷갈리기 쉬운 규칙을 짧게 모았어요. 패턴 화면의 💡에서도 볼 수 있어요.</p>
+      <div class="list">
+        ${tips.map((t, k) => `
+          <button class="row" data-go="${base}/${k}">
+            <span class="em" aria-hidden="true">💡</span>
+            <span class="label"><strong>${esc(t.title)}</strong><small>관련 패턴 ${related(t).length}개</small></span>
+          </button>`).join("")}
+      </div>`;
+    return;
+  }
+  const t = tips[idx];
+  if (!t) { location.hash = base; return; }
+  const n = tips.length;
+  setHeader("알아두기", base);
+  const rel = related(t);
+  app.innerHTML = `
+    <div class="tools">${progressBar(idx, n)}${hideToggle()}</div>
+    <div class="tip-panel">${tipHTML(lang, t, 0)}</div>
+    ${rel.length ? `
+      <h2 class="group">관련 패턴</h2>
+      <div class="chips related">
+        ${rel.map(([p, i]) => `<button class="chip" lang="${lang}" data-go="#/${lang}/${psec.id}/${i}/0">${esc(p.pattern)}</button>`).join("")}
+      </div>` : ""}
+    <div class="nav">
+      <button id="prev" ${idx === 0 ? "disabled" : ""}>이전</button>
+      <button id="next" class="primary">${idx === n - 1 ? "모음으로" : "다음"}</button>
+    </div>`;
+  document.getElementById("prev").onclick = () => { if (idx > 0) location.hash = `${base}/${idx - 1}`; };
+  document.getElementById("next").onclick = () => { location.hash = idx === n - 1 ? base : `${base}/${idx + 1}`; };
+  bindTips(lang, [t]);
+  bindHideToggle(() => viewTips(lang, idx));
 }
 
 // ── 상황별 회화: 장면 목록 ───────────────────────

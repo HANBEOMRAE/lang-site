@@ -1,0 +1,326 @@
+{
+ "tips": [
+  {
+   "id": "to-two",
+   "title": "to의 두 가지 뜻",
+   "body": [
+    "동사 앞의 to는 '~하기를'이에요. want to eat = 먹기를 원해 → 먹고 싶어.",
+    "장소 앞의 to는 '~로, ~에'예요. go to the park = 공원에 가.",
+    "구분 요령: to 바로 뒤를 봐요.",
+    "뒤에 동작(eat, go, sleep)이 오면 '~하기를', 장소(the park, school)가 오면 '~로'."
+   ],
+   "words": {
+    "i": { "ko_pron": "아이", "meaning": "나" },
+    "want": { "ko_pron": "원트", "meaning": "원하다" },
+    "go": { "ko_pron": "고", "meaning": "가다" }
+   },
+   "examples": [
+    {
+     "text": "I want [to] eat.",
+     "ko_pron": "아이 원 투 잇.",
+     "meaning": "먹고 싶어.",
+     "words": {
+      "to": { "ko_pron": "투", "meaning": "~하기를 (뒤에 동작 eat)" },
+      "eat": { "ko_pron": "잇", "meaning": "먹다" }
+     }
+    },
+    {
+     "text": "I need [to] sleep.",
+     "ko_pron": "아이 니드 투 슬립.",
+     "meaning": "자야 해.",
+     "words": {
+      "need": { "ko_pron": "니드", "meaning": "필요하다" },
+      "to": { "ko_pron": "투", "meaning": "~하기를 (뒤에 동작 sleep)" },
+      "sleep": { "ko_pron": "슬립", "meaning": "자다" }
+     }
+    },
+    {
+     "text": "Let's go [to] the park.",
+     "ko_pron": "렛츠 고 투 더 파크.",
+     "meaning": "공원에 가자.",
+     "words": {
+      "let's": { "ko_pron": "렛츠", "meaning": "~하자" },
+      "to": { "ko_pron": "투", "meaning": "~로, ~에 (뒤에 장소 the park)" },
+      "the": { "ko_pron": "더", "meaning": "그 (정해진 것 앞에)" },
+      "park": { "ko_pron": "파크", "meaning": "공원" }
+     }
+    },
+    {
+     "text": "I want [to] go [to] school.",
+     "ko_pron": "아이 원 투 고 투 스쿨.",
+     "meaning": "학교에 가고 싶어.",
+     "words": {
+      "to@1": { "ko_pron": "투", "meaning": "~하기를 (뒤에 동작 go)" },
+      "to@2": { "ko_pron": "투", "meaning": "~로, ~에 (뒤에 장소 school)" },
+      "school": { "ko_pron": "스쿨", "meaning": "학교" }
+     }
+    }
+   ]
+  },
+  {
+   "id": "want-thing",
+   "title": "want + 물건 vs want to + 동작",
+   "body": [
+    "want 뒤에 물건이 오면 '그걸 갖고 싶어'예요. I want water.",
+    "want to 뒤에 동작이 오면 '그걸 하고 싶어'예요. I want to drink.",
+    "to가 있으면 동작, 없으면 물건이라고 기억해요."
+   ],
+   "words": {
+    "i": { "ko_pron": "아이", "meaning": "나" },
+    "want": { "ko_pron": "원트", "meaning": "원하다" },
+    "to": { "ko_pron": "투", "meaning": "~하기를 (want to = ~하고 싶다)" },
+    "water": { "ko_pron": "워터", "meaning": "물" },
+    "a": { "ko_pron": "어", "meaning": "하나의 (셀 수 있는 것 앞에)" },
+    "cookie": { "ko_pron": "쿠키", "meaning": "쿠키" }
+   },
+   "examples": [
+    {
+     "text": "I want [water].",
+     "ko_pron": "아이 원트 워터.",
+     "meaning": "물 줘. (물을 원해)"
+    },
+    {
+     "text": "I want [to drink] water.",
+     "ko_pron": "아이 원 투 드링크 워터.",
+     "meaning": "물 마시고 싶어.",
+     "words": {
+      "drink": { "ko_pron": "드링크", "meaning": "마시다" }
+     }
+    },
+    {
+     "text": "I want [a cookie].",
+     "ko_pron": "아이 원트 어 쿠키.",
+     "meaning": "쿠키 갖고 싶어."
+    },
+    {
+     "text": "I want [to eat] a cookie.",
+     "ko_pron": "아이 원 투 잇 어 쿠키.",
+     "meaning": "쿠키 먹고 싶어.",
+     "words": {
+      "eat": { "ko_pron": "잇", "meaning": "먹다" }
+     }
+    }
+   ]
+  },
+  {
+   "id": "fast-speech",
+   "title": "빨리 말하면 이렇게 들려요",
+   "body": [
+    "원어민은 붙은 말을 빨리 이어서 말해요. 글자는 그대로예요.",
+    "want to → 워너 (wanna), going to → 고너 (gonna)",
+    "have to → 해프터 (hafta), got to → 가러 (gotta)",
+    "Could you → 쿠쥬. d와 y가 만나 '쥬' 소리가 나요.",
+    "wanna·gonna는 말할 때만 쓰고, 글로 쓸 때는 원래 모양으로 써요."
+   ],
+   "words": {
+    "i": { "ko_pron": "아이", "meaning": "나" },
+    "to": { "ko_pron": "투 (빨리 말하면 '터, 너')", "meaning": "~하기를" },
+    "go": { "ko_pron": "고", "meaning": "가다" }
+   },
+   "examples": [
+    {
+     "text": "I [want to] go home.",
+     "ko_pron": "아이 워너 고 홈.",
+     "meaning": "집에 가고 싶어.",
+     "words": {
+      "want": { "ko_pron": "원트", "meaning": "원하다 (want to → 워너)" },
+      "home": { "ko_pron": "홈", "meaning": "집으로" }
+     }
+    },
+    {
+     "text": "I'm [going to] eat.",
+     "ko_pron": "아임 고너 잇.",
+     "meaning": "먹을 거야.",
+     "words": {
+      "i'm": { "ko_pron": "아임", "meaning": "나는 ~이다 (I am의 줄임)" },
+      "going": { "ko_pron": "고잉", "meaning": "~할 거야 (going to → 고너)" },
+      "eat": { "ko_pron": "잇", "meaning": "먹다" }
+     }
+    },
+    {
+     "text": "I [have to] go.",
+     "ko_pron": "아이 해프터 고.",
+     "meaning": "가야 해.",
+     "words": {
+      "have": { "ko_pron": "해브", "meaning": "~해야 한다 (have to → 해프터)" }
+     }
+    },
+    {
+     "text": "I've [got to] go.",
+     "ko_pron": "아이브 가러 고.",
+     "meaning": "가야 해.",
+     "words": {
+      "i've": { "ko_pron": "아이브", "meaning": "나는 ~했다 (I have의 줄임)" },
+      "got": { "ko_pron": "갓", "meaning": "~해야 한다 (got to → 가러)" }
+     }
+    },
+    {
+     "text": "[Could you] help me?",
+     "ko_pron": "쿠쥬 헬프 미?",
+     "meaning": "도와주실 수 있어요?",
+     "words": {
+      "could": { "ko_pron": "쿠드", "meaning": "~해 줄 수 있다 (공손하게)" },
+      "you": { "ko_pron": "유", "meaning": "너, 당신 (Could you → 쿠쥬)" },
+      "help": { "ko_pron": "헬프", "meaning": "돕다" },
+      "me": { "ko_pron": "미", "meaning": "나를" }
+     }
+    }
+   ]
+  },
+  {
+   "id": "a-the",
+   "title": "a와 the 구분",
+   "body": [
+    "a는 '아무거나 하나', the는 '바로 그것'이에요.",
+    "처음 꺼내는 것, 여러 개 중 아무거나 하나면 a.",
+    "서로 아는 것, 하나뿐인 것이면 the.",
+    "모음 소리(아·에·이·오·우) 앞에서는 a 대신 an을 써요. an apple."
+   ],
+   "words": {
+    "i": { "ko_pron": "아이", "meaning": "나" },
+    "a": { "ko_pron": "어", "meaning": "하나의 (아무거나 하나)" },
+    "the": { "ko_pron": "더", "meaning": "그 (바로 그것)" },
+    "dog": { "ko_pron": "도그", "meaning": "개, 강아지" },
+    "is": { "ko_pron": "이즈", "meaning": "~이다, ~에 있다" }
+   },
+   "examples": [
+    {
+     "text": "I have [a] dog.",
+     "ko_pron": "아이 해브 어 도그.",
+     "meaning": "나는 강아지가 한 마리 있어.",
+     "words": {
+      "have": { "ko_pron": "해브", "meaning": "가지고 있다" }
+     }
+    },
+    {
+     "text": "[The] dog is big.",
+     "ko_pron": "더 도그 이즈 빅.",
+     "meaning": "그 강아지는 커.",
+     "words": {
+      "big": { "ko_pron": "빅", "meaning": "큰" }
+     }
+    },
+    {
+     "text": "Where is [the] bathroom?",
+     "ko_pron": "웨어 이즈 더 배스룸?",
+     "meaning": "화장실이 어디예요?",
+     "words": {
+      "where": { "ko_pron": "웨어", "meaning": "어디" },
+      "bathroom": { "ko_pron": "배스룸", "meaning": "화장실" }
+     }
+    },
+    {
+     "text": "I want [an] apple.",
+     "ko_pron": "아이 원트 언 애플.",
+     "meaning": "사과 하나 먹고 싶어.",
+     "words": {
+      "want": { "ko_pron": "원트", "meaning": "원하다" },
+      "an": { "ko_pron": "언", "meaning": "하나의 (모음 소리 앞에서 a 대신)" },
+      "apple": { "ko_pron": "애플", "meaning": "사과" }
+     }
+    }
+   ]
+  },
+  {
+   "id": "polite",
+   "title": "공손함 정도: Can I < Could I < May I",
+   "body": [
+    "부탁하는 말도 공손한 정도가 달라요.",
+    "Can I < Could I < May I 순서로 더 공손해요.",
+    "Can I는 친구·가족에게, Could I는 가게·식당에서, May I는 아주 정중하게.",
+    "남에게 해 달라고 할 때도 같아요. Can you < Could you."
+   ],
+   "words": {
+    "i": { "ko_pron": "아이", "meaning": "나" },
+    "have": { "ko_pron": "해브", "meaning": "받다, 먹다" },
+    "water": { "ko_pron": "워터", "meaning": "물" }
+   },
+   "examples": [
+    {
+     "text": "[Can I] have water?",
+     "ko_pron": "캔 아이 해브 워터?",
+     "meaning": "물 좀 줄래?",
+     "words": {
+      "can": { "ko_pron": "캔", "meaning": "~해도 되다 (편하게)" }
+     }
+    },
+    {
+     "text": "[Could I] have water?",
+     "ko_pron": "쿠드 아이 해브 워터?",
+     "meaning": "물 좀 주시겠어요?",
+     "words": {
+      "could": { "ko_pron": "쿠드", "meaning": "~해도 될까요 (Can보다 공손)" }
+     }
+    },
+    {
+     "text": "[May I] have water?",
+     "ko_pron": "메이 아이 해브 워터?",
+     "meaning": "물을 주실 수 있을까요?",
+     "words": {
+      "may": { "ko_pron": "메이", "meaning": "~해도 될까요 (가장 공손)" }
+     }
+    },
+    {
+     "text": "[Could you] help me?",
+     "ko_pron": "쿠드 유 헬프 미?",
+     "meaning": "도와주시겠어요?",
+     "words": {
+      "could": { "ko_pron": "쿠드", "meaning": "~해 주시겠어요 (Can you보다 공손)" },
+      "you": { "ko_pron": "유", "meaning": "당신" },
+      "help": { "ko_pron": "헬프", "meaning": "돕다" },
+      "me": { "ko_pron": "미", "meaning": "나를" }
+     }
+    }
+   ]
+  },
+  {
+   "id": "ing-now",
+   "title": "I'm ___ing는 지금 하는 중",
+   "body": [
+    "I'm + 동작ing는 '지금 ~하는 중이야'예요.",
+    "I eat은 '나는 (평소에) 먹어', I'm eating은 '지금 먹는 중이야'.",
+    "전화나 문자로 지금 뭐 하는지 말할 때 많이 써요.",
+    "동작 끝에 -ing를 붙여요. eat → eating, play → playing."
+   ],
+   "words": {
+    "i": { "ko_pron": "아이", "meaning": "나" },
+    "i'm": { "ko_pron": "아임", "meaning": "나는 ~하는 중이다 (I am의 줄임)" },
+    "rice": { "ko_pron": "라이스", "meaning": "밥, 쌀" }
+   },
+   "examples": [
+    {
+     "text": "I [eat] rice.",
+     "ko_pron": "아이 잇 라이스.",
+     "meaning": "나는 (평소에) 밥을 먹어.",
+     "words": {
+      "eat": { "ko_pron": "잇", "meaning": "먹다" }
+     }
+    },
+    {
+     "text": "I'm [eating] rice.",
+     "ko_pron": "아임 이팅 라이스.",
+     "meaning": "지금 밥 먹는 중이야.",
+     "words": {
+      "eating": { "ko_pron": "이팅", "meaning": "먹는 중 (eat + ing)" }
+     }
+    },
+    {
+     "text": "I'm [playing].",
+     "ko_pron": "아임 플레잉.",
+     "meaning": "지금 노는 중이야.",
+     "words": {
+      "playing": { "ko_pron": "플레잉", "meaning": "노는 중 (play + ing)" }
+     }
+    },
+    {
+     "text": "I'm [coming]!",
+     "ko_pron": "아임 커밍!",
+     "meaning": "지금 가고 있어!",
+     "words": {
+      "coming": { "ko_pron": "커밍", "meaning": "가는 중 (상대 쪽으로 갈 때는 come)" }
+     }
+    }
+   ]
+  }
+ ]
+}

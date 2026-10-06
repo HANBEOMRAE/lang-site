@@ -5,6 +5,7 @@
   "ko_pron": "아이 원 투 ___",
   "meaning": "~하고 싶어",
   "tip": "to 뒤에는 동사가 와요.",
+  "tip_ids": ["to-two", "want-thing", "fast-speech"],
   "words": {
    "i": {
     "ko_pron": "아이",
@@ -206,6 +207,7 @@
   "ko_pron": "아이 원트 ___",
   "meaning": "~을 원해, ~ 갖고 싶어",
   "tip": "갖고 싶은 것을 말할 때. 뒤에 물건이 와요. to가 붙으면 하고 싶은 동작.",
+  "tip_ids": ["want-thing", "a-the"],
   "words": {
    "i": {
     "ko_pron": "아이",
@@ -775,6 +777,7 @@
   "ko_pron": "아이드 라이크 ___",
   "meaning": "~주세요 (공손하게)",
   "tip": "가게·식당·호텔에서 want 대신 쓰면 공손해요.",
+  "tip_ids": ["polite"],
   "words": {
    "i'd": {
     "ko_pron": "아이드",
@@ -1205,6 +1208,7 @@
   "ko_pron": "아이 해브 ___",
   "meaning": "~이 있어",
   "tip": "가진 것, 예약, 아픈 곳까지 말할 수 있어요.",
+  "tip_ids": ["a-the"],
   "words": {
    "i": {
     "ko_pron": "아이",
@@ -1559,6 +1563,7 @@
   "ko_pron": "아이 니드 ___",
   "meaning": "~이 필요해",
   "tip": "급할 때 가장 빨리 쓰는 틀.",
+  "tip_ids": ["a-the"],
   "words": {
    "i": {
     "ko_pron": "아이",
@@ -1730,6 +1735,7 @@
   "ko_pron": "아이 니드 투 ___",
   "meaning": "~해야 해 (필요해서)",
   "tip": "내가 필요해서 해야 할 때. 뒤에 동사가 와요.",
+  "tip_ids": ["to-two"],
   "words": {
    "i": {
     "ko_pron": "아이",
@@ -1961,6 +1967,7 @@
   "ko_pron": "아임 고잉 투 ___",
   "meaning": "~할 거야",
   "tip": "곧 할 일을 말할 때.",
+  "tip_ids": ["to-two", "fast-speech"],
   "words": {
    "i'm": {
     "ko_pron": "아임",
@@ -2407,6 +2414,7 @@
   "ko_pron": "아이 해브 투 ___",
   "meaning": "~해야 해",
   "tip": "꼭 해야 하는 일을 말할 때.",
+  "tip_ids": ["to-two", "fast-speech"],
   "words": {
    "i": {
     "ko_pron": "아이",
@@ -2626,6 +2634,7 @@
   "ko_pron": "아임 ___",
   "meaning": "~하는 중이야",
   "tip": "지금 하고 있는 일. 동사 뒤에 -ing를 붙여요.",
+  "tip_ids": ["ing-now"],
   "words": {
    "i'm": {
     "ko_pron": "아임",
@@ -2956,6 +2965,7 @@
   "ko_pron": "캔 아이 ___?",
   "meaning": "~해도 돼요?",
   "tip": "허락을 구하거나 부탁할 때.",
+  "tip_ids": ["polite"],
   "words": {
    "can": {
     "ko_pron": "캔",
@@ -3385,6 +3395,7 @@
   "ko_pron": "웨어 이즈 ___?",
   "meaning": "~ 어디예요?",
   "tip": "여행에서 제일 많이 쓰는 질문.",
+  "tip_ids": ["a-the"],
   "words": {
    "where": {
     "ko_pron": "웨어",
@@ -4123,6 +4134,7 @@
   "ko_pron": "캔 아이 해브 ___?",
   "meaning": "~ 주실래요?",
   "tip": "가게·식당에서 무언가를 달라고 할 때.",
+  "tip_ids": ["a-the", "polite"],
   "words": {
    "can": {
     "ko_pron": "캔",
@@ -4308,6 +4320,7 @@
   "ko_pron": "쿠드 유 ___?",
   "meaning": "~해 주실 수 있어요?",
   "tip": "Can you보다 더 공손하게 부탁할 때.",
+  "tip_ids": ["polite", "fast-speech"],
   "words": {
    "could": {
     "ko_pron": "쿠드",
@@ -4729,6 +4742,7 @@
   "ko_pron": "이즈 데어 ___?",
   "meaning": "~ 있어요?",
   "tip": "근처에 있는지 물을 때. 뒤에 a/an이 자주 와요.",
+  "tip_ids": ["a-the"],
   "words": {
    "is": {
     "ko_pron": "이즈",
@@ -4944,6 +4958,7 @@
   "ko_pron": "하우 두 아이 겟 투 ___?",
   "meaning": "~에 어떻게 가요?",
   "tip": "길을 물을 때. 가고 싶은 곳을 넣어요.",
+  "tip_ids": ["to-two"],
   "words": {
    "how": {
     "ko_pron": "하우",

@@ -55,8 +55,16 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 - 같은 단어라도 문장에 따라 뜻이 다르면 바꿔 넣는 말 쪽에 적는다. 그쪽이 우선하고, 패턴 쪽은 기본값으로만 쓴다.
   예: "I want to eat"의 to(~하기를)와 "go to the beach"의 to(~로). for, on, in, at, by, take, have, get도 같은 규칙.
 - 찾는 순서는 문장 속 자리로 정한다: 틀 자리 단어 → 패턴 `words`, 바꿔 넣는 말 자리 단어 → 그 말 `words` → 패턴 `words`.
-  (views.js `bindWordGloss`, validate.py `check_word_glosses`가 같은 규칙. 문장의 모든 단어에 뜻이 있어야 검사를 통과한다.)
+  (views.js `viewPattern`이 `bindWordGloss`에 넘기는 찾기 함수, validate.py `check_word_glosses`가 같은 규칙. 문장의 모든 단어에 뜻이 있어야 검사를 통과한다.)
 - 단어 키는 소문자. 문장부호는 떼고, I'm·don't·kids' 같은 말은 한 단어로 본다. `I'm ___ing`은 문장에 나오는 형태(eating)로 적는다.
+
+## 💡 알아두기 (`data/en/tips.json`)
+
+- 설명은 `tips.json` 한 곳에만 쓰고, 패턴은 `tip_ids`로 가리킨다. 관련 패턴 목록은 따로 적지 않는다(views.js `viewTips`가 `tip_ids`를 거꾸로 찾는다).
+  패턴의 `tip`(틀 아래 한 줄)과 `tip_ids`(💡로 펼치는 설명)는 다른 칸이다.
+- `body` 3~5줄, 예문 2~5개, 예문마다 `[강조]` 한 번 이상. 예문 단어 뜻 찾는 순서: 예문 `words`의 `단어@n`(n번째로 나온 그 단어) → 예문 `words` → 설명 `words`
+  (views.js `bindTips`, validate.py `check_tips`가 같은 규칙). 어느 패턴도 가리키지 않는 설명은 경고.
+- "빨리 말하면" 설명의 예문 `text`는 원래 모양(want to)으로 쓰고, `ko_pron`에 들리는 소리(워너)를 쓴다(🔊·검사는 원래 모양으로).
 
 ## 일본어 띄어쓰기
 

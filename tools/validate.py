@@ -251,10 +251,27 @@ def check_pairs(data, name):
             if (pr.get("a") or {}).get("text") == (pr.get("b") or {}).get("text"):
                 problems.append(f"{w}: 두 단어가 같아요")
 
+def tip_ids(lang):
+    """data/<언어>/tips.json의 설명 id 목록 (파일이 없으면 빈 집합)."""
+    try:
+        return {t.get("id") for t in json.loads((ROOT / f"data/{lang}/tips.json").read_text(encoding="utf-8"))["tips"]}
+    except Exception:
+        return set()
+
 def check_patterns(data, name):
+    known_tips = tip_ids(name.split("/")[0])
     for i, p in enumerate(data):
         where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
         need(p, ["group", "pattern", "ko_pron", "meaning"], where)
+        ids = p.get("tip_ids", [])
+        if not isinstance(ids, list):
+            problems.append(f"{where}: tip_ids는 [ ] 목록이어야 해요")
+            ids = []
+        for t in ids:
+            if t not in known_tips:
+                problems.append(f"{where}: tip_ids의 '{t}'가 tips.json에 없어요 (💡 설명이 안 보여요)")
+        if len(ids) != len(set(ids)):
+            problems.append(f"{where}: tip_ids에 같은 id가 두 번 있어요")
         if "___" not in p.get("pattern", ""):
             problems.append(f"{where}: pattern에 빈칸 ___ 이 없어요")
         if "___" not in p.get("ko_pron", ""):
@@ -303,6 +320,52 @@ def check_word_glosses(p, where):
 
 # 패턴마다 바꿔 넣을 말 개수
 FILL_COUNTS = (12,)
+
+TIP_BODY = (3, 5)       # 설명 줄 수
+TIP_EXAMPLES = (2, 5)   # 예문 개수
+
+def check_tips(data, name):
+    """💡 알아두기: 설명 줄 수·예문 개수, 예문의 ko_pron·meaning, [강조] 괄호, 예문의 모든 단어 뜻,
+    어느 패턴에서도 가리키지 않는 설명(경고).
+    단어 뜻 찾는 순서는 views.js bindTips와 같다: 예문 words의 '단어@몇번째' → 예문 words → 설명 words."""
+    lang = name.split("/")[0]
+    try:
+        used = {t for p in json.loads((ROOT / f"data/{lang}/patterns.json").read_text(encoding="utf-8"))
+                for t in (p.get("tip_ids") or [])}
+    except Exception:
+        used = set()
+    ids = set()
+    for i, t in enumerate(data.get("tips", [])):
+        where = f"{name} > {i + 1}번 ({t.get('title', '?')})"
+        need(t, ["id", "title"], where)
+        if t.get("id") in ids:
+            problems.append(f"{where}: 중복된 id예요")
+        ids.add(t.get("id"))
+        if t.get("id") not in used:
+            warnings.append(f"{where}: 이 설명을 가리키는 패턴(tip_ids)이 없어요 — 모음에서만 보여요")
+        body = t.get("body", [])
+        if not isinstance(body, list) or not TIP_BODY[0] <= len(body) <= TIP_BODY[1] or not all(str(x).strip() for x in body):
+            problems.append(f"{where}: body(설명)는 {TIP_BODY[0]}~{TIP_BODY[1]}줄이어야 해요")
+        tw = {k.lower(): v for k, v in (t.get("words") or {}).items()}
+        exs = t.get("examples", [])
+        if not TIP_EXAMPLES[0] <= len(exs) <= TIP_EXAMPLES[1]:
+            problems.append(f"{where}: 예문이 {len(exs)}개예요 ({TIP_EXAMPLES[0]}~{TIP_EXAMPLES[1]}개)")
+        for k, ex in enumerate(exs):
+            w = f"{where} > 예문 {k + 1}번 ({ex.get('text', '?')})"
+            need(ex, BASIC, w)
+            text = ex.get("text", "")
+            if not re.fullmatch(r"[^\[\]]*(\[[^\[\]]+\][^\[\]]*)+", text):
+                problems.append(f"{w}: 강조할 부분을 [ ]로 한 번 이상 감싸야 해요 (괄호 짝도 맞게)")
+            ew = {k2.lower(): v for k2, v in (ex.get("words") or {}).items()}
+            seen = {}
+            for m in WORD.finditer(text.replace("[", "").replace("]", "")):
+                tok = m.group().lower()
+                seen[tok] = seen.get(tok, 0) + 1
+                g = ew.get(f"{tok}@{seen[tok]}") or ew.get(tok) or tw.get(tok)
+                if not g:
+                    problems.append(f"{w}: '{m.group()}' 뜻이 없어요 (예문 words나 설명 words에)")
+                elif not str(g.get("meaning", "")).strip() or not str(g.get("ko_pron", "")).strip():
+                    problems.append(f"{w}: '{m.group()}'의 ko_pron·meaning이 비어 있어요")
 
 def check_situations(data, name):
     for s in data:
@@ -358,9 +421,9 @@ CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards
             "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
-                    "en/pattern_compare": check_pattern_compare}
+                    "en/pattern_compare": check_pattern_compare, "en/tips": check_tips}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict}
+SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict}
 
 def check_offline():
     """sw.js의 오프라인 저장 목록(PRECACHE)이 실제 파일과 맞는지, 글꼴 주소가 index.html과 같은지."""
