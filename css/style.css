@@ -106,6 +106,14 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 .row[disabled] .step { background: var(--muted); }
 .lead { color: var(--muted); margin: 0 0 16px; }
 
+/* 이어서 하기 */
+.continue-list { margin: 0 0 20px; }
+.row.continue {
+  border: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+.row.continue .em { color: var(--accent); font-size: 22px; }
+
 /* 단어 카드 */
 .viewer { display: flex; flex-direction: column; min-height: calc(100dvh - 56px - 60px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); }
 .progress { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; color: var(--muted); font-size: 14px; }

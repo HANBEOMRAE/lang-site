@@ -112,6 +112,17 @@ function esc(s) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+// 휴대폰 브라우저 저장소(localStorage). 시크릿 창 등에서 막혀 있으면 기록 없이 동작한다.
+const store = {
+  get(key, fallback) {
+    try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); }
+    catch { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+  }
+};
+
 let toastTimer;
 function toast(msg) {
   const t = document.getElementById("toast");

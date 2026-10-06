@@ -19,12 +19,34 @@ function bindHideToggle(rerender) {
 }
 const H = () => (settings.hide ? "hideable" : "");
 
+// ── 이어서 하기: 언어별 마지막으로 본 공부 화면 ──────
+// 저장: { en: { hash, label, time }, ja: {...} }
+function remember(lang, hash, label) {
+  const all = store.get("lastPlace", {});
+  all[lang] = { hash, label, time: Date.now() };
+  store.set("lastPlace", all);
+}
+function lastPlaces() {
+  const all = store.get("lastPlace", {});
+  return Object.entries(all && typeof all === "object" ? all : {})
+    .filter(([lang, p]) => LANGS[lang] && p && typeof p.hash === "string" && p.hash.startsWith(`#/${lang}/`))
+    .sort((a, b) => (b[1].time || 0) - (a[1].time || 0));
+}
+function continueRow(lang, p) {
+  return `<button class="row continue" style="--accent: var(--${lang})" data-go="${esc(p.hash)}">
+      <span class="em" aria-hidden="true">▶</span>
+      <span class="label"><strong>이어서 하기</strong><small>${esc(p.label)}</small></span>
+    </button>`;
+}
+
 // ── 첫 화면: 언어 고르기 ─────────────────────────
 function viewHome() {
   document.body.className = "";
   setHeader("첫말", null);
+  const places = lastPlaces();
   app.innerHTML = `
     <p class="hello">오늘은 어떤 말을<br>배워 볼까요?</p>
+    ${places.length ? `<div class="list continue-list">${places.map(([lang, p]) => continueRow(lang, p)).join("")}</div>` : ""}
     <p class="hello-sub">언어를 고르면 그 언어만 보여요.</p>
     <div class="lang-pick">
       ${Object.entries(LANGS).map(([id, L]) => `
@@ -40,7 +62,9 @@ function viewLang(lang) {
   const L = LANGS[lang];
   document.body.className = `lang-${lang}`;
   setHeader(L.name, "#/");
+  const place = lastPlaces().find(([l]) => l === lang);
   app.innerHTML = `
+    ${place ? `<div class="list continue-list">${continueRow(lang, place[1])}</div>` : ""}
     <p class="lead">위에서부터 차례로 공부해요.</p>
     <div class="list">
       ${L.sections.map((s, i) => `
@@ -82,6 +106,7 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   const it = cat.items[i];
   const base = `#/${lang}/${sec.id}/${catIdx}`;
   setHeader(cat.category, `#/${lang}/${sec.id}`);
+  remember(lang, `${base}/${i}`, `${L.name} · ${sec.name} · ${cat.category} ${i + 1}/${n}`);
 
   app.innerHTML = `
     <div class="viewer">
@@ -185,6 +210,7 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
   const last = i === n - 1;
   const hasNextPattern = pIdx < data.length - 1;
   setHeader(p.meaning, `#/${lang}/${sec.id}`);
+  remember(lang, `${base}/${i}`, `${L.name} · ${sec.name} · ${p.pattern} ${i + 1}/${n}`);
 
   app.innerHTML = `
     <div class="viewer">
@@ -245,6 +271,7 @@ async function viewScene(lang, sec, sIdx) {
   const s = data[sIdx];
   if (!s) { location.hash = `#/${lang}/${sec.id}`; return; }
   setHeader(s.scene, `#/${lang}/${sec.id}`);
+  remember(lang, `#/${lang}/${sec.id}/${sIdx}`, `${L.name} · ${sec.name} · ${s.scene}`);
 
   const line = (l, d, k) => `
     <button class="bubble ${l.who === "나" ? "me" : ""}" data-d="${d}" data-k="${k}">
@@ -340,6 +367,7 @@ async function viewVerb(lang, sec, vIdx) {
   const g = data.groups.find(x => x.id === v.group);
   const base = `#/${lang}/${sec.id}`;
   setHeader(v.text, base);
+  remember(lang, `${base}/${vIdx}`, `${L.name} · ${sec.name} · ${v.text} ${vIdx + 1}/${n}`);
 
   app.innerHTML = `
     <div class="tools">${progressBar(vIdx, n)}${hideToggle()}</div>
