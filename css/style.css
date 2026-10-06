@@ -213,6 +213,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 .say-tools.compact { margin-top: 4px; }
 .say-tools.inline { justify-content: flex-start; margin: -2px 0 4px; }
 .say-tools.inline.end { justify-content: flex-end; }
+.say-tools .chip:disabled { opacity: .4; cursor: default; }
+.say-tools .rec.recording { background: var(--ja); border-color: var(--ja); color: #fff; animation: pulse .8s ease-in-out infinite alternate; }
 .say-tools .mic.listening { background: var(--speak); border-color: var(--speak); color: var(--speak-ink); animation: pulse .8s ease-in-out infinite alternate; }
 .say-result { width: 100%; margin: 0; min-height: 0; font-size: 14px; color: var(--muted); text-align: center; word-break: keep-all; }
 .say-tools.inline .say-result { text-align: left; }

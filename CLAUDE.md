@@ -25,6 +25,8 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 - 🎤 따라 말하기: `speech.js`가 인식·비교(띄어쓰기·문장부호·대소문자 무시, 일본어 가타카나→히라가나, 영어 숫자→단어)를 하고,
   `views.js`의 `sayToolsHTML`/`bindSayTools`/`attachInlineTools`가 화면에 붙인다. 일본어 문장은 `text`와 `kanji_text`(단어 카드 예문은 `example_kanji_text`)를 둘 다 정답으로 쓴다.
   새 일본어 문장에는 `kanji_text`도 넣는다(README "일본어 문장의 한자 표기").
+- ⏺ 녹음: `speech.js`의 `recorder`(MediaRecorder). 녹음은 blob URL로 메모리에만 두고 한 번에 하나만 가진다.
+  화면 이동(app.js `route`), 다른 문장 선택(`attachInlineTools`), 페이지 닫기(`pagehide`) 때 `recorder.clear()`로 지우고 마이크를 끈다. 녹음을 서버나 저장소로 보내는 코드를 넣지 않는다.
 - `loadData`는 `window.EMBEDDED_DATA`(미리보기 파일)가 있으면 그걸 쓰고, 없으면 `data/…json`을 fetch한다.
 - 새 섹션 열기: JSON 만들기 → `LANGS`에서 `ready: true` → `validate.py`. 새 `type`이면 `app.js`의 switch와 `views.js` 화면도 추가한다.
 - `validate.py`는 파일 이름(`CHECKERS`)으로 검사기를 고르고, 같은 이름인데 언어별로 형식이 다르면 `CHECKERS_BY_LANG`(예: `ja/verbs`)이 우선한다.

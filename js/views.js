@@ -240,18 +240,70 @@ function bindCard(lang, it, key, next, prev) {
 
 // ── 따라 말하기 🎤 ─────────────────────────────────
 // 정답 표기(일본어는 히라가나·한자 둘 다)와 인식 결과를 띄어쓰기·문장부호·대소문자 무시하고 비교한다(speech.js).
+// 도구 줄: [🎤 따라 말하기] [⏺ 녹음] [▶ 내 목소리] [🔁 번갈아]. 지원하지 않는 것은 숨긴다.
 function sayToolsHTML(id, compact = false, label = compact ? "예문 따라 말하기" : "따라 말하기") {
-  if (!speech.supported()) return "";      // 인식기가 없는 브라우저: 🎤를 숨긴다
+  const mic = speech.supported() ? `<button class="chip mic" aria-label="${label}">🎤 ${label}</button>` : "";
+  const rec = recorder.supported() ? `
+      <button class="chip rec" aria-label="내 목소리 녹음">⏺ 녹음</button>
+      <button class="chip play" aria-label="내 녹음 듣기" disabled>▶ 내 목소리</button>
+      <button class="chip both" aria-label="원어민과 내 녹음 번갈아 듣기" disabled>🔁 번갈아</button>` : "";
+  if (!mic && !rec) return "";
   return `<div class="say-tools${compact ? " compact" : ""}" id="${id}">
-      <button class="chip mic" aria-label="${label}">🎤 ${label}</button>
+      ${mic}${rec}
       <p class="say-result" aria-live="polite"></p>
     </div>`;
 }
 function bindSayTools(box, lang, answers) {
   if (!box) return;
-  const btn = box.querySelector(".mic"), out = box.querySelector(".say-result");
+  const out = box.querySelector(".say-result");
   const ans = answers.filter(Boolean).map(plainText);
-  btn.onclick = e => { e.stopPropagation(); runMic(btn, out, lang, ans); };
+  const mic = box.querySelector(".mic");
+  if (mic) mic.onclick = e => {
+    e.stopPropagation();
+    if (recorder.recording()) recorder.stop();   // 마이크를 함께 쓰지 않게
+    recorder.stopPlayback();
+    runMic(mic, out, lang, ans);
+  };
+  const rec = box.querySelector(".rec");
+  if (rec) bindRecorder(box, rec, out, lang, ans[0]);
+}
+
+// ⏺ 녹음 → ▶ 내 목소리 / 🔁 원어민 🔊 다음에 내 녹음. 녹음은 한 번에 하나만 (다른 문장에서 녹음하면 앞의 것은 지워진다).
+const REC_ERRORS = {
+  NotAllowedError: "마이크 사용을 허락해야 해요 (브라우저 설정에서 바꿀 수 있어요).",
+  NotFoundError: "마이크를 찾을 수 없어요.",
+  NotReadableError: "다른 앱이 마이크를 쓰고 있어요."
+};
+function bindRecorder(box, rec, out, lang, nativeText) {
+  const play = box.querySelector(".play"), both = box.querySelector(".both");
+  const setHas = has => { play.disabled = both.disabled = !has; };
+  const idle = () => { rec.classList.remove("recording"); rec.textContent = recorder.url && recorder.owner === box ? "⏺ 다시 녹음" : "⏺ 녹음"; };
+  rec.onclick = async e => {
+    e.stopPropagation();
+    if (recorder.recording() && recorder.owner === box) { recorder.stop(); return; }
+    // 다른 도구 줄의 녹음은 지운다
+    document.querySelectorAll(".say-tools .play, .say-tools .both").forEach(b => { b.disabled = true; });
+    document.querySelectorAll(".say-tools .rec").forEach(b => { b.classList.remove("recording"); b.textContent = "⏺ 녹음"; });
+    tts.stop(); speech.stop();
+    try {
+      await recorder.start(box, has => {
+        idle(); setHas(has);
+        out.textContent = has ? "녹음했어요. ▶ 내 목소리 또는 🔁 번갈아로 들어 보세요." : "";
+      });
+      rec.classList.add("recording"); rec.textContent = "■ 멈추기";
+      out.textContent = `녹음 중… 말해 보세요 (최대 ${recorder.MAX_MS / 1000}초)`;
+    } catch (err) {
+      recorder.clear(); idle();
+      out.textContent = REC_ERRORS[err && err.name] || "녹음을 시작하지 못했어요.";
+    }
+  };
+  play.onclick = e => { e.stopPropagation(); tts.stop(); recorder.play(); };
+  both.onclick = e => {
+    e.stopPropagation();
+    recorder.stopPlayback();
+    if (!("speechSynthesis" in window)) { recorder.play(); return; }
+    tts.speakAll([nativeText], LANGS[lang].voice, null, () => setTimeout(() => recorder.play(), 300));
+  };
 }
 const MIC_ERRORS = {
   "not-allowed": "마이크 사용을 허락해야 해요 (브라우저 설정에서 바꿀 수 있어요).",
@@ -303,7 +355,8 @@ function speechNotice() {
 function attachInlineTools(afterEl, lang, answers, alignEnd = false) {
   speech.stop();
   document.querySelectorAll(".say-tools.inline").forEach(t => t.remove());
-  if (!speech.supported()) return;
+  recorder.clear();                          // 다른 문장으로 바꾸면 앞 문장 녹음은 지운다
+  if (!speech.supported() && !recorder.supported()) return;
   const wrap = document.createElement("div");
   wrap.innerHTML = sayToolsHTML("sayInline", true, "따라 말하기");
   const box = wrap.firstElementChild;

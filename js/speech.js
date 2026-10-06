@@ -65,6 +65,64 @@ const speech = {
   }
 };
 
+// ── ⏺ 녹음 (MediaRecorder) ───────────────────────
+// 녹음은 휴대폰 메모리(blob URL)에만 둔다. 서버로 보내지도, 저장소에 저장하지도 않는다.
+// 화면을 떠나거나 다른 문장으로 바꾸면 clear()로 지우고 마이크를 끈다. 네트워크를 쓰지 않아 오프라인에서도 된다.
+const recorder = {
+  MAX_MS: 6000,
+  stream: null, rec: null, url: null, timer: null, audio: null, owner: null, discard: false, lastSize: 0,
+  supported() { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); },
+  recording() { return !!(this.rec && this.rec.state === "recording"); },
+
+  // 녹음을 시작한다. 끝나면 onDone(true) (녹음 있음), 지워졌으면 onDone(false). 실패하면 Error(name).
+  async start(owner, onDone) {
+    this.clear();
+    this.owner = owner;
+    this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const type = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"]
+      .find(t => window.MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t));
+    const rec = new MediaRecorder(this.stream, type ? { mimeType: type } : undefined);
+    const chunks = [];
+    this.discard = false;
+    rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop = () => {
+      clearTimeout(this.timer);
+      this.releaseMic();
+      if (this.discard || !chunks.length) { onDone(false); return; }
+      const blob = new Blob(chunks, { type: rec.mimeType || type || "audio/webm" });
+      this.lastSize = blob.size;
+      this.url = URL.createObjectURL(blob);
+      onDone(true);
+    };
+    this.rec = rec;
+    rec.start();
+    this.timer = setTimeout(() => this.stop(), this.MAX_MS);
+  },
+  stop() { if (this.recording()) this.rec.stop(); },
+  releaseMic() { this.stream?.getTracks().forEach(t => t.stop()); this.stream = null; },
+  play() {
+    return new Promise(resolve => {
+      if (!this.url) return resolve();
+      this.stopPlayback();
+      this.audio = new Audio(this.url);
+      this.audio.onended = this.audio.onerror = () => resolve();
+      this.audio.play().catch(() => resolve());
+    });
+  },
+  stopPlayback() { if (this.audio) { this.audio.pause(); this.audio = null; } },
+  // 녹음·재생을 멈추고, 녹음을 지우고, 마이크를 끈다
+  clear() {
+    clearTimeout(this.timer);
+    if (this.recording()) { this.discard = true; this.rec.stop(); }
+    this.rec = null;
+    this.releaseMic();
+    this.stopPlayback();
+    if (this.url) { URL.revokeObjectURL(this.url); this.url = null; }
+    this.owner = null;
+  }
+};
+addEventListener("pagehide", () => recorder.clear());
+
 // 0~100 영어 숫자 (인식기가 "2 dollars"처럼 숫자로 돌려줄 때 "two"와 맞추려고)
 function numberWords(n) {
   const ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",

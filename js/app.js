@@ -12,6 +12,7 @@
 function route() {
   tts.stop();
   speech.stop();
+  recorder.clear();      // 화면을 떠나면 녹음을 지우고 마이크를 끈다
   window.scrollTo(0, 0);
   const [lang, secId, a, b] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (!lang || !LANGS[lang]) return viewHome();
