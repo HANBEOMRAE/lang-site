@@ -2,7 +2,7 @@
 //  #/                       언어 고르기
 //  #/en                     섹션 목록
 //  #/en/words               주제 목록        #/en/words/2/5   주제 2의 6번째 카드
-//  #/en/patterns            패턴 목록        #/en/patterns/0/3 패턴 0의 4번째 문장
+//  #/en/patterns            패턴 목록        #/en/patterns/0/3 패턴 0의 4번째 문장   #/en/patterns/vs/1  2번째 비교
 //  #/en/situations          장면 목록        #/en/situations/3 장면 3
 //  #/ja/verbs               동사 변형 표     #/ja/verbs/4      5번째 동사 상세
 //  #/ja/stars               헷갈린 단어(☆) 모아 보기   #/ja/stars/2  3번째 카드
@@ -24,7 +24,8 @@ function route() {
 
   switch (sec.type) {
     case "cards":      return A === undefined ? viewCategories(lang, sec) : viewCards(lang, sec, A, B);
-    case "patterns":   return A === undefined ? viewPatternList(lang, sec) : viewPattern(lang, sec, A, B);
+    case "patterns":   return A === undefined ? viewPatternList(lang, sec)
+                            : a === "vs" ? viewPatternCompare(lang, sec, B) : viewPattern(lang, sec, A, B);
     case "situations": return A === undefined ? viewSceneList(lang, sec)  : viewScene(lang, sec, A);
     case "conjugation": return A === undefined ? viewConjTable(lang, sec) : viewVerb(lang, sec, A);
     case "particles":  return A === undefined ? viewParticleList(lang, sec)

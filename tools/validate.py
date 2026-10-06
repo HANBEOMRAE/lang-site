@@ -148,6 +148,57 @@ def check_particles(data, name):
             filled = dict(q, text=q.get("text", "").replace("[___]", f"[{ans[0]}]" if ans else ""))
             sentence(filled, w, f"[{ans[0]}]" if ans else "[?]")
 
+def pattern_prefix(pattern):
+    """'Can I ___?' → 'Can I' : 비교 예문의 [ ] 안에 들어가는 틀 앞부분."""
+    return pattern.replace("___", "").replace("?", "").strip()
+
+def check_pattern_compare(data, name):
+    """비슷한 패턴 비교: pair가 patterns.json에 있는 틀인지, 예문의 [틀], 퀴즈 보기·정답·상황."""
+    try:
+        known = {p["pattern"] for p in json.loads((ROOT / "data/en/patterns.json").read_text(encoding="utf-8"))}
+    except Exception:
+        known = set()
+    ids = set()
+    for i, c in enumerate(data.get("compare", [])):
+        where = f"{name} > {i + 1}번 ({c.get('title', '?')})"
+        need(c, ["id", "title"], where)
+        if c.get("id") in ids:
+            problems.append(f"{where}: 중복된 id예요")
+        ids.add(c.get("id"))
+        pair = c.get("pair", [])
+        if len(pair) != 2:
+            problems.append(f"{where}: pair는 틀 두 개여야 해요")
+            continue
+        for x in pair:
+            if x not in known:
+                problems.append(f"{where}: '{x}'가 patterns.json에 없어요 (연습하기 링크가 끊겨요)")
+        pts = c.get("points", [])
+        if len(pts) != 2 or not all(str(x).strip() for x in pts):
+            problems.append(f"{where}: points(언제 쓰는지)가 두 개여야 해요")
+        prefixes = [pattern_prefix(x) for x in pair]
+        sides = set()
+        for k, ex in enumerate(c.get("examples", [])):
+            w = f"{where} > 예문 {k + 1}번"
+            need(ex, BASIC + ["why"], w)
+            if ex.get("side") not in (0, 1):
+                problems.append(f"{w}: side는 0 또는 1이에요")
+                continue
+            sides.add(ex["side"])
+            if f"[{prefixes[ex['side']]}]" not in ex.get("text", ""):
+                problems.append(f"{w}: 예문에 [{prefixes[ex['side']]}] 표시가 없어요")
+        if sides != {0, 1}:
+            problems.append(f"{where}: 두 틀 모두 예문이 있어야 해요")
+        for k, q in enumerate(c.get("quiz", [])):
+            w = f"{where} > 퀴즈 {k + 1}번"
+            need(q, BASIC + ["why", "context"], w)
+            if q.get("text", "").count("[___]") != 1:
+                problems.append(f"{w}: 빈칸 [___]이 하나여야 해요")
+            if sorted(q.get("choices", [])) != sorted(prefixes):
+                problems.append(f"{w}: choices가 비교하는 두 틀이 아니에요")
+            ans = q.get("answers") or []
+            if not ans or any(a not in q.get("choices", []) for a in ans):
+                problems.append(f"{w}: answers가 choices 안에 없어요")
+
 def check_patterns(data, name):
     for i, p in enumerate(data):
         where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
@@ -218,9 +269,10 @@ def check_conjugation(data, name):
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
             "patterns": check_patterns, "situations": check_situations}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
-CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles}
+CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
+                    "en/pattern_compare": check_pattern_compare}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict, check_particles: dict}
+SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict}
 
 def check_offline():
     """sw.js의 오프라인 저장 목록(PRECACHE)이 실제 파일과 맞는지, 글꼴 주소가 index.html과 같은지."""

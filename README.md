@@ -29,6 +29,7 @@ lang-site/
     words.json          기초 단어 (주제별)
     verbs.json          동사 (주제별)
     patterns.json       패턴 영어
+    pattern_compare.json 비슷한 패턴 비교 (I want to/I need to 등)
     situations.json     상황별 회화
   data/ja/              일본어 데이터
     words.json          기초 단어 (주제별, kanji·예문 발음 포함)
@@ -130,6 +131,23 @@ python tools/validate.py
 ```
 
 `___` 자리에 `fills`의 말이 들어가 문장이 된다. `fills.meaning`은 완성된 문장의 뜻을 쓴다.
+틀마다 `fills`는 12개. 동작·장소·사람·물건·시간, 짧은 말과 긴 말이 섞이게 고른다.
+
+### 비슷한 패턴 비교 (pattern_compare.json)
+
+```json
+{ "compare": [
+  { "id": "need-have", "pair": ["I need to ___", "I have to ___"], "title": "I need to와 I have to",
+    "points": ["내가 필요해서 해야 할 때", "규칙·약속 때문에 꼭 해야 할 때"],
+    "examples": [ { "side": 1, "text": "[I have to] go to school.", "ko_pron": "아이 해브 투 고 투 스쿨",
+                    "meaning": "학교에 가야 해.", "why": "학교는 정해진 규칙" } ],
+    "quiz": [ { "context": "도서관 규칙을 말할 때", "text": "[___] be quiet in the library.",
+                "choices": ["I need to", "I have to"], "answers": ["I have to"], "ko_pron": "…", "meaning": "…", "why": "…" } ] } ] }
+```
+
+- `pair`는 `patterns.json`에 있는 틀이어야 한다(화면의 "이 패턴 연습하기"가 그 틀로 간다).
+- 예문은 `[틀 앞부분]`을 괄호로 표시한다(`side` 0·1). 화면은 조사 비교와 같은 화면(`renderCompare`)을 쓴다.
+- 퀴즈는 `context`(상황)가 있어야 정답이 갈린다. 둘 다 맞으면 `answers`에 둘 다 넣는다. 퀴즈 화면은 아직 없다.
 
 ### 상황별 회화 (situations.json)
 
@@ -190,6 +208,7 @@ python tools/build_preview.py
 | 영어 기초 단어 | 36개 주제, 370개 |
 | 영어 동사 | 5개 주제, 42개 |
 | 패턴 영어 | 33개 틀, 문장 396개 (틀마다 12개) |
+| 비슷한 패턴 비교 | 5개 짝, 예문 20개, 퀴즈 15개 |
 | 상황별 회화 | 12개 장면, 대화 24개(134줄), 핵심 문장 72개 |
 | 일본어 기초 단어 | 19개 주제, 177개 (영어 주제 순서의 1~19번) |
 | 일본어 동사 변형 | 동사 15개 (1형 10·2형 3·3형 2) × 활용형 5개 |

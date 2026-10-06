@@ -203,6 +203,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 }
 .pair-kana { margin: 0; font-family: "Noto Sans JP", sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2; color: var(--accent); }
 .pair-point { margin: 6px 0 0; font-size: 14px; word-break: keep-all; }
+.pair-label { margin: 0; font-family: "Jua", sans-serif; font-size: 20px; line-height: 1.25; color: var(--accent); word-break: keep-all; }
+.pair-side .practice { margin-top: 10px; }
 
 /* 새 버전 알림 (오프라인 PWA) */
 .update-bar {   /* 상단 바 바로 아래: 아래쪽 이전/다음 버튼을 가리지 않게 */

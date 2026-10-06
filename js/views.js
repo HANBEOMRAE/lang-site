@@ -288,6 +288,8 @@ async function viewPatternList(lang, sec) {
   app.innerHTML = `<p class="lead">불러오는 중…</p>`;
   let data;
   try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  let cmp = null;   // 비슷한 패턴 비교 (없는 언어면 건너뜀)
+  try { cmp = await loadData(lang, "pattern_compare"); } catch {}
   const groups = [...new Set(data.map(p => p.group))];
   app.innerHTML = `
     <p class="lead">틀 하나에 말을 바꿔 넣으며 반복해요.</p>
@@ -299,7 +301,16 @@ async function viewPatternList(lang, sec) {
             <span class="label"><strong lang="${lang}">${esc(p.pattern)}</strong><small>${esc(p.meaning)}</small></span>
             <span class="count">${p.fills.length}문장</span>
           </button>`).join("")}
-      </div>`).join("")}`;
+      </div>`).join("")}
+    ${cmp ? `
+      <h2 class="group">비슷한 패턴 비교</h2>
+      <div class="list">
+        ${cmp.compare.map((c, k) => `
+          <button class="row" data-go="#/${lang}/${sec.id}/vs/${k}">
+            <span class="em" aria-hidden="true">⚖️</span>
+            <span class="label"><strong lang="${lang}">${esc(c.title)}</strong><small>${c.points.map(esc).join(" / ")}</small></span>
+          </button>`).join("")}
+      </div>` : ""}`;
 }
 
 // ── 패턴: 문장 연습 ─────────────────────────────
@@ -632,7 +643,27 @@ async function viewParticle(lang, sec, idx) {
   bindHideToggle(() => viewParticle(lang, sec, idx));
 }
 
-// 헷갈리는 조사 비교: 두 조사를 나란히 + 꼬리표 달린 예문
+// ── 비교 화면 (조사·패턴이 함께 쓴다) ──────────────
+// sides: [{ label, point, big?, practice? }]  examples: [{ tag, text, ko_pron, meaning, why }]
+function renderCompare({ lang, sides, examples, next }) {
+  app.innerHTML = `
+    <div class="tools">${hideToggle()}</div>
+    <div class="pair">
+      ${sides.map(s => `<div class="pair-side">
+          <p class="${s.big ? "pair-kana" : "pair-label"}" lang="${lang}">${esc(s.label)}</p>
+          <p class="pair-point">${esc(s.point)}</p>
+          ${s.practice ? `<button class="chip practice" data-go="${s.practice}">이 패턴 연습하기</button>` : ""}
+        </div>`).join("")}
+    </div>
+    <h2 class="group">예문</h2>
+    <div class="list">
+      ${examples.map(ex => exampleRow(lang, ex, `<span class="tag" lang="${lang}">${esc(ex.tag)}</span>`)).join("")}
+    </div>
+    <div class="nav"><button class="primary" data-go="${next.hash}">${esc(next.label)}</button></div>`;
+  bindSay(lang);
+}
+
+// 헷갈리는 조사 비교
 async function viewCompare(lang, sec, k) {
   const L = LANGS[lang];
   let data;
@@ -643,26 +674,35 @@ async function viewCompare(lang, sec, k) {
   setHeader(c.title, base);
   remember(lang, `${base}/vs/${k}`, `${L.name} · ${sec.name} · ${c.title} 비교`);
   const last = k === data.compare.length - 1;
-
-  app.innerHTML = `
-    <div class="tools">${hideToggle()}</div>
-    <div class="pair">
-      ${c.pair.map(id => {
-        const p = particleById(data, id);
-        return `<div class="pair-side">
-          <p class="pair-kana" lang="${lang}">${esc(p.text)}</p>
-          <p class="pair-point">${esc(c.points[id])}</p>
-        </div>`;
-      }).join("")}
-    </div>
-    <h2 class="group">예문</h2>
-    <div class="list">
-      ${c.examples.map(ex => exampleRow(lang, ex,
-        `<span class="tag" lang="${lang}">${esc(particleById(data, ex.particle).text)}</span>`)).join("")}
-    </div>
-    <div class="nav">
-      <button class="primary" data-go="${last ? base : `${base}/vs/${k + 1}`}">${last ? "조사 목록으로" : `다음 비교: ${esc(data.compare[k + 1].title)}`}</button>
-    </div>`;
-  bindSay(lang);
+  renderCompare({
+    lang,
+    sides: c.pair.map(id => ({ label: particleById(data, id).text, point: c.points[id], big: true })),
+    examples: c.examples.map(ex => ({ ...ex, tag: particleById(data, ex.particle).text })),
+    next: last ? { hash: base, label: "조사 목록으로" } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${data.compare[k + 1].title}` }
+  });
   bindHideToggle(() => viewCompare(lang, sec, k));
+}
+
+// 비슷한 패턴 비교 (data/<언어>/pattern_compare.json)
+const patternPrefix = pt => pt.replace("___", "").replace("?", "").trim();
+async function viewPatternCompare(lang, sec, k) {
+  const L = LANGS[lang];
+  let data, cmp;
+  try { data = await loadData(lang, sec.id); cmp = await loadData(lang, "pattern_compare"); } catch (e) { return errorView(e); }
+  const c = cmp.compare[k];
+  const base = `#/${lang}/${sec.id}`;
+  if (!c) { location.hash = base; return; }
+  setHeader(c.title, base);
+  remember(lang, `${base}/vs/${k}`, `${L.name} · ${sec.name} · ${c.title} 비교`);
+  const last = k === cmp.compare.length - 1;
+  renderCompare({
+    lang,
+    sides: c.pair.map((pt, i) => {
+      const idx = data.findIndex(p => p.pattern === pt);
+      return { label: pt, point: c.points[i], practice: idx >= 0 ? `${base}/${idx}/0` : null };
+    }),
+    examples: c.examples.map(ex => ({ ...ex, tag: patternPrefix(c.pair[ex.side]) })),
+    next: last ? { hash: base, label: "패턴 목록으로" } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${cmp.compare[k + 1].title}` }
+  });
+  bindHideToggle(() => viewPatternCompare(lang, sec, k));
 }
