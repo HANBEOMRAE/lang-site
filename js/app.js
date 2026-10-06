@@ -44,3 +44,35 @@ document.addEventListener("keydown", e => {
 window.addEventListener("hashchange", route);
 tts.init();
 route();
+
+// ── 오프라인(PWA) ────────────────────────────────
+// 서버로 열었을 때만(GitHub Pages·로컬 서버) 등록한다. 더블클릭으로 연 미리보기 파일에서는 건너뛴다.
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
+  let hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register("sw.js").then(() => navigator.serviceWorker.ready).then(reg => {
+    reg.active.postMessage("check-update");   // 뒤에서 새 버전 확인
+    reg.active.postMessage("warm-fonts");     // 글꼴 조각 저장
+  }).catch(() => {});
+  navigator.serviceWorker.addEventListener("message", e => {
+    if (e.data && e.data.type === "updated") showUpdateBar();
+  });
+  // sw.js 자체가 바뀌어 새 서비스 워커가 자리 잡은 경우 (첫 설치 때는 알리지 않는다)
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (hadController) showUpdateBar();
+    hadController = true;
+  });
+}
+
+function showUpdateBar() {
+  if (document.getElementById("updateBar")) return;
+  const bar = document.createElement("div");
+  bar.id = "updateBar";
+  bar.className = "update-bar";
+  bar.setAttribute("role", "status");
+  bar.innerHTML = `<span>새 버전으로 업데이트됐어요</span>
+    <button class="chip on" id="updateReload">새로 보기</button>
+    <button class="update-close" id="updateClose" aria-label="닫기">×</button>`;
+  document.body.appendChild(bar);
+  document.getElementById("updateReload").onclick = () => location.reload();
+  document.getElementById("updateClose").onclick = () => bar.remove();
+}

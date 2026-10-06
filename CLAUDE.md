@@ -25,6 +25,12 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 - `validate.py`는 파일 이름(`CHECKERS`)으로 검사기를 고르고, 같은 이름인데 언어별로 형식이 다르면 `CHECKERS_BY_LANG`(예: `ja/verbs`)이 우선한다.
   같은 `verbs.json`이라도 `en`은 카드 목록, `ja`는 `{groups, forms, verbs}`다.
 - 색은 `css/style.css` 맨 위 `:root` 변수만 쓴다(다크 모드 포함). 일본어 화면은 `body.lang-ja`에서 `--accent`가 빨강이 된다.
+- 기록은 `localStorage`에 둔다. `core.js`의 `store.get/set`(JSON, try/catch로 막힌 환경에서도 동작)을 쓴다.
+  키: `lastPlace`(이어서 하기, 언어별 `{hash,label,time}`), `stars`(헷갈린 단어, `"언어/섹션/주제/단어"` 목록 — 동사 변형은 주제 자리에 `-`), `hideMeaning`.
+  ☆는 카드 번호가 아니라 내용으로 저장한다. 주제 이름이나 단어 `text`를 바꾸면 그 표시는 "찾을 수 없는 표시"가 된다.
+- 오프라인(PWA): `sw.js`가 `PRECACHE`(화면 파일·데이터 전체)를 저장하고 저장본을 먼저 쓴다. 페이지를 열 때마다 뒤에서 새 버전을 확인해
+  `chotmal-app-next`에 전부 받아 두고 알림을 띄운 뒤, 다음 페이지 열기(navigate) 때 한꺼번에 바꾼다(옛 코드 + 새 데이터가 섞이지 않게).
+  `data/`·`js/`·`css/`·`icons/`에 파일을 추가하면 `PRECACHE`에도 넣는다(`validate.py`가 검사). 서비스 워커는 `http(s)`로 열 때만 등록된다(미리보기 파일 제외).
 
 ## 작업 규칙
 

@@ -131,6 +131,28 @@ CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards}
 # 검사기마다 기대하는 맨 바깥 모양
 SHAPES = {check_conjugation: dict}
 
+def check_offline():
+    """sw.js의 오프라인 저장 목록(PRECACHE)이 실제 파일과 맞는지, 글꼴 주소가 index.html과 같은지."""
+    sw = (ROOT / "sw.js").read_text(encoding="utf-8")
+    m = re.search(r"const PRECACHE = \[(.*?)\];", sw, re.S)
+    if not m:
+        problems.append("sw.js: PRECACHE 목록을 찾지 못했어요")
+        return
+    listed = set(re.findall(r'"([^"]+)"', m.group(1)))
+    need = {"index.html", "manifest.webmanifest"}
+    for pattern in ("data/**/*.json", "js/*.js", "css/*.css", "icons/*.png"):
+        need |= {p.relative_to(ROOT).as_posix() for p in ROOT.glob(pattern)}
+    for p in sorted(need - listed):
+        problems.append(f"sw.js: '{p}'가 PRECACHE에 없어요 (오프라인에서 안 열려요)")
+    for p in sorted(listed - {"./"}):
+        if not (ROOT / p).exists():
+            problems.append(f"sw.js: PRECACHE의 '{p}' 파일이 없어요")
+    font = re.search(r'const FONT_CSS = "([^"]+)"', sw)
+    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    if not font or f'href="{font.group(1)}"' not in html:
+        problems.append("sw.js: FONT_CSS가 index.html의 Google 글꼴 주소와 달라요")
+    print("검사함: sw.js 오프라인 목록")
+
 def main():
     files = sorted((ROOT / "data").rglob("*.json"))
     for f in files:
@@ -148,6 +170,7 @@ def main():
                 continue
             checker(data, name)
             print(f"검사함: {name}")
+    check_offline()
     if warnings:
         print(f"\n경고 {len(warnings)}개 (검사는 멈추지 않아요):")
         for w in warnings:

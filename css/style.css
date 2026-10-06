@@ -184,6 +184,21 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+/* 새 버전 알림 (오프라인 PWA) */
+.update-bar {   /* 상단 바 바로 아래: 아래쪽 이전/다음 버튼을 가리지 않게 */
+  position: fixed; left: 50%; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 10;
+  word-break: keep-all;
+  transform: translateX(-50%); width: min(528px, calc(100vw - 32px));
+  display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 16px;
+  border-radius: 16px; background: var(--ink); color: var(--paper); font-size: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+}
+.update-bar span { flex: 1; }
+.update-close {
+  width: 36px; height: 36px; border: 0; border-radius: 50%; cursor: pointer;
+  background: transparent; color: var(--paper); font-size: 22px; line-height: 1;
+}
+
 /* 도구 줄: 진행 막대 + 뜻 가리기 */
 .tools { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .tools .progress { flex: 1; margin: 0; }
