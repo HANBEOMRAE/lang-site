@@ -169,8 +169,8 @@ def check_patterns(data, name):
             if p.get("pattern", "").endswith("?") != f.get("meaning", "").endswith("?"):
                 problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번: 묻는 틀이면 뜻도 ?로 끝나요")
 
-# 패턴마다 바꿔 넣을 말 개수. 6개 → 12개로 늘리는 중 (앞 15개만 12개).
-FILL_COUNTS = (6, 12)
+# 패턴마다 바꿔 넣을 말 개수
+FILL_COUNTS = (12,)
 
 def check_situations(data, name):
     for s in data:
