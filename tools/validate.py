@@ -156,8 +156,21 @@ def check_patterns(data, name):
             problems.append(f"{where}: pattern에 빈칸 ___ 이 없어요")
         if "___" not in p.get("ko_pron", ""):
             problems.append(f"{where}: ko_pron에 빈칸 ___ 이 없어요")
-        for j, f in enumerate(p.get("fills", [])):
+        fills = p.get("fills", [])
+        if len(fills) not in FILL_COUNTS:
+            problems.append(f"{where}: 바꿔 넣을 말이 {len(fills)}개예요 ({' 또는 '.join(map(str, FILL_COUNTS))}개)")
+        seen = set()
+        for j, f in enumerate(fills):
             need(f, BASIC, f"{where} > 바꿔 넣을 말 {j + 1}번")
+            key = f.get("text", "").lower()
+            if key in seen:
+                problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번: '{f.get('text')}'가 겹쳐요")
+            seen.add(key)
+            if p.get("pattern", "").endswith("?") != f.get("meaning", "").endswith("?"):
+                problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번: 묻는 틀이면 뜻도 ?로 끝나요")
+
+# 패턴마다 바꿔 넣을 말 개수. 6개 → 12개로 늘리는 중 (앞 15개만 12개).
+FILL_COUNTS = (6, 12)
 
 def check_situations(data, name):
     for s in data:

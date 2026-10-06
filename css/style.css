@@ -144,8 +144,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
   color: var(--accent); margin: 0; word-break: break-word;
   max-width: 100%;  /* 넘치면 카드 폭 안에서 재서 줄인다 (views.js fitWord) */
 }
-.word.one-line { white-space: nowrap; }.pron { font-size: 22px; font-weight: 700; margin: 10px 0 2px; }
-.meaning { font-size: 18px; color: var(--muted); margin: 0 0 20px; }
+.word.one-line { white-space: nowrap; }.pron { font-size: 22px; font-weight: 700; margin: 10px 0 2px; word-break: keep-all; }
+.meaning { font-size: 18px; color: var(--muted); margin: 0 0 20px; word-break: keep-all; }
 .speak {
   width: 84px; height: 84px; border-radius: 50%; border: 0; cursor: pointer;
   background: var(--speak); color: var(--speak-ink); font-size: 36px;

@@ -35,6 +35,36 @@
     "text": "see the sea",
     "ko_pron": "씨 더 씨",
     "meaning": "바다 보고 싶어"
+   },
+   {
+    "text": "go to the park",
+    "ko_pron": "고 투 더 파크",
+    "meaning": "공원에 가고 싶어"
+   },
+   {
+    "text": "see grandma",
+    "ko_pron": "씨 그랜마",
+    "meaning": "할머니 보고 싶어"
+   },
+   {
+    "text": "buy a toy",
+    "ko_pron": "바이 어 토이",
+    "meaning": "장난감 사고 싶어"
+   },
+   {
+    "text": "sleep early tonight",
+    "ko_pron": "슬립 얼리 투나잇",
+    "meaning": "오늘 밤엔 일찍 자고 싶어"
+   },
+   {
+    "text": "play with my friends after school",
+    "ko_pron": "플레이 위드 마이 프렌즈 애프터 스쿨",
+    "meaning": "방과 후에 친구들이랑 놀고 싶어"
+   },
+   {
+    "text": "ride a bike",
+    "ko_pron": "라이드 어 바이크",
+    "meaning": "자전거 타고 싶어"
    }
   ]
  },
@@ -74,6 +104,36 @@
     "text": "you",
     "ko_pron": "유",
     "meaning": "나는 네가 좋아"
+   },
+   {
+    "text": "my teacher",
+    "ko_pron": "마이 티처",
+    "meaning": "우리 선생님이 좋아"
+   },
+   {
+    "text": "the park",
+    "ko_pron": "더 파크",
+    "meaning": "공원이 좋아"
+   },
+   {
+    "text": "rainy days",
+    "ko_pron": "레이니 데이즈",
+    "meaning": "비 오는 날이 좋아"
+   },
+   {
+    "text": "ice cream",
+    "ko_pron": "아이스크림",
+    "meaning": "아이스크림이 좋아"
+   },
+   {
+    "text": "playing outside",
+    "ko_pron": "플레잉 아웃사이드",
+    "meaning": "밖에서 노는 게 좋아"
+   },
+   {
+    "text": "my grandma's cookies",
+    "ko_pron": "마이 그랜마즈 쿠키즈",
+    "meaning": "할머니가 만든 쿠키가 좋아"
    }
   ]
  },
@@ -113,6 +173,36 @@
     "text": "this",
     "ko_pron": "디스",
     "meaning": "이거 싫어"
+   },
+   {
+    "text": "loud noises",
+    "ko_pron": "라우드 노이지즈",
+    "meaning": "시끄러운 소리 싫어"
+   },
+   {
+    "text": "the dark",
+    "ko_pron": "더 다크",
+    "meaning": "어두운 거 싫어"
+   },
+   {
+    "text": "carrots",
+    "ko_pron": "캐럿츠",
+    "meaning": "당근 싫어"
+   },
+   {
+    "text": "going to bed early",
+    "ko_pron": "고잉 투 베드 얼리",
+    "meaning": "일찍 자러 가는 거 싫어"
+   },
+   {
+    "text": "Mondays",
+    "ko_pron": "먼데이즈",
+    "meaning": "월요일이 싫어"
+   },
+   {
+    "text": "cold water",
+    "ko_pron": "콜드 워터",
+    "meaning": "찬물 싫어"
    }
   ]
  },
@@ -152,6 +242,36 @@
     "text": "to check in",
     "ko_pron": "투 체크 인",
     "meaning": "체크인할게요"
+   },
+   {
+    "text": "a table for two",
+    "ko_pron": "어 테이블 포 투",
+    "meaning": "두 명 자리로 주세요"
+   },
+   {
+    "text": "this one",
+    "ko_pron": "디스 원",
+    "meaning": "이걸로 주세요"
+   },
+   {
+    "text": "a cup of tea",
+    "ko_pron": "어 컵 오브 티",
+    "meaning": "차 한 잔 주세요"
+   },
+   {
+    "text": "a room for tonight",
+    "ko_pron": "어 룸 포 투나잇",
+    "meaning": "오늘 밤 묵을 방 주세요"
+   },
+   {
+    "text": "to try this on",
+    "ko_pron": "투 트라이 디스 온",
+    "meaning": "이거 입어 볼게요"
+   },
+   {
+    "text": "a kids' meal",
+    "ko_pron": "어 키즈 밀",
+    "meaning": "어린이 세트 주세요"
    }
   ]
  },
@@ -191,6 +311,36 @@
     "text": "help you",
     "ko_pron": "헬프 유",
     "meaning": "도와줄 수 있어"
+   },
+   {
+    "text": "ride a bike",
+    "ko_pron": "라이드 어 바이크",
+    "meaning": "자전거 탈 수 있어"
+   },
+   {
+    "text": "count to ten",
+    "ko_pron": "카운트 투 텐",
+    "meaning": "열까지 셀 수 있어"
+   },
+   {
+    "text": "tie my shoes",
+    "ko_pron": "타이 마이 슈즈",
+    "meaning": "신발 끈 묶을 수 있어"
+   },
+   {
+    "text": "see the moon",
+    "ko_pron": "씨 더 문",
+    "meaning": "달이 보여"
+   },
+   {
+    "text": "draw a cat",
+    "ko_pron": "드로 어 캣",
+    "meaning": "고양이 그릴 수 있어"
+   },
+   {
+    "text": "go there by myself",
+    "ko_pron": "고 데어 바이 마이셀프",
+    "meaning": "거기 혼자 갈 수 있어"
    }
   ]
  },
@@ -230,6 +380,36 @@
     "text": "time",
     "ko_pron": "타임",
     "meaning": "시간 있어"
+   },
+   {
+    "text": "a sister",
+    "ko_pron": "어 시스터",
+    "meaning": "자매가 한 명 있어"
+   },
+   {
+    "text": "a cold",
+    "ko_pron": "어 콜드",
+    "meaning": "감기 걸렸어요"
+   },
+   {
+    "text": "my ticket",
+    "ko_pron": "마이 티킷",
+    "meaning": "제 표 있어요"
+   },
+   {
+    "text": "a new toy",
+    "ko_pron": "어 뉴 토이",
+    "meaning": "새 장난감이 있어"
+   },
+   {
+    "text": "an idea",
+    "ko_pron": "언 아이디어",
+    "meaning": "좋은 생각이 있어"
+   },
+   {
+    "text": "school tomorrow",
+    "ko_pron": "스쿨 투모로우",
+    "meaning": "내일 학교 가"
    }
   ]
  },
@@ -269,6 +449,36 @@
     "text": "from Korea",
     "ko_pron": "프롬 코리아",
     "meaning": "한국에서 왔어요"
+   },
+   {
+    "text": "five",
+    "ko_pron": "파이브",
+    "meaning": "나는 다섯 살이야"
+   },
+   {
+    "text": "a student",
+    "ko_pron": "어 스튜던트",
+    "meaning": "나는 학생이에요"
+   },
+   {
+    "text": "in the car",
+    "ko_pron": "인 더 카",
+    "meaning": "나 차 안에 있어"
+   },
+   {
+    "text": "with my dad",
+    "ko_pron": "위드 마이 대드",
+    "meaning": "아빠랑 같이 있어"
+   },
+   {
+    "text": "sorry",
+    "ko_pron": "쏘리",
+    "meaning": "미안해"
+   },
+   {
+    "text": "so excited",
+    "ko_pron": "쏘 익사이티드",
+    "meaning": "너무 신나"
    }
   ]
  },
@@ -308,6 +518,36 @@
     "text": "a doctor",
     "ko_pron": "어 닥터",
     "meaning": "의사가 필요해요"
+   },
+   {
+    "text": "a bathroom",
+    "ko_pron": "어 배스룸",
+    "meaning": "화장실이 급해요"
+   },
+   {
+    "text": "my mom",
+    "ko_pron": "마이 맘",
+    "meaning": "엄마가 필요해"
+   },
+   {
+    "text": "a pencil",
+    "ko_pron": "어 펜슬",
+    "meaning": "연필이 필요해"
+   },
+   {
+    "text": "some rest",
+    "ko_pron": "썸 레스트",
+    "meaning": "좀 쉬어야 해"
+   },
+   {
+    "text": "a bigger size",
+    "ko_pron": "어 비거 사이즈",
+    "meaning": "더 큰 사이즈가 필요해요"
+   },
+   {
+    "text": "a hug",
+    "ko_pron": "어 허그",
+    "meaning": "안아 줘"
    }
   ]
  },
@@ -347,6 +587,36 @@
     "text": "call mom",
     "ko_pron": "콜 맘",
     "meaning": "엄마한테 전화할 거야"
+   },
+   {
+    "text": "go to the zoo",
+    "ko_pron": "고 투 더 주",
+    "meaning": "동물원에 갈 거야"
+   },
+   {
+    "text": "see my friend",
+    "ko_pron": "씨 마이 프렌드",
+    "meaning": "친구 만날 거야"
+   },
+   {
+    "text": "wash my hands",
+    "ko_pron": "워시 마이 핸즈",
+    "meaning": "손 씻을 거야"
+   },
+   {
+    "text": "play soccer after lunch",
+    "ko_pron": "플레이 사커 애프터 런치",
+    "meaning": "점심 먹고 축구할 거야"
+   },
+   {
+    "text": "wear my new shoes",
+    "ko_pron": "웨어 마이 뉴 슈즈",
+    "meaning": "새 신발 신을 거야"
+   },
+   {
+    "text": "visit grandpa this weekend",
+    "ko_pron": "비짓 그랜파 디스 위켄드",
+    "meaning": "이번 주말에 할아버지 댁에 갈 거야"
    }
   ]
  },
@@ -386,6 +656,36 @@
     "text": "brush my teeth",
     "ko_pron": "브러시 마이 티쓰",
     "meaning": "이 닦아야 해"
+   },
+   {
+    "text": "go to school",
+    "ko_pron": "고 투 스쿨",
+    "meaning": "학교에 가야 해"
+   },
+   {
+    "text": "clean my room",
+    "ko_pron": "클린 마이 룸",
+    "meaning": "내 방 치워야 해"
+   },
+   {
+    "text": "call my mom",
+    "ko_pron": "콜 마이 맘",
+    "meaning": "엄마한테 전화해야 해"
+   },
+   {
+    "text": "take medicine",
+    "ko_pron": "테이크 메디슨",
+    "meaning": "약 먹어야 해"
+   },
+   {
+    "text": "be home by six",
+    "ko_pron": "비 홈 바이 식스",
+    "meaning": "6시까지 집에 가야 해"
+   },
+   {
+    "text": "feed the cat",
+    "ko_pron": "피드 더 캣",
+    "meaning": "고양이 밥 줘야 해"
    }
   ]
  },
@@ -425,6 +725,36 @@
     "text": "draw",
     "ko_pron": "드로잉",
     "meaning": "그림 그리는 중이야"
+   },
+   {
+    "text": "cook",
+    "ko_pron": "쿠킹",
+    "meaning": "요리하는 중이야"
+   },
+   {
+    "text": "help",
+    "ko_pron": "헬핑",
+    "meaning": "돕는 중이야"
+   },
+   {
+    "text": "sing",
+    "ko_pron": "싱잉",
+    "meaning": "노래하는 중이야"
+   },
+   {
+    "text": "go",
+    "ko_pron": "고잉",
+    "meaning": "가는 중이야"
+   },
+   {
+    "text": "jump",
+    "ko_pron": "점핑",
+    "meaning": "뛰는 중이야"
+   },
+   {
+    "text": "clean",
+    "ko_pron": "클리닝",
+    "meaning": "청소하는 중이야"
    }
   ]
  },
@@ -464,6 +794,36 @@
     "text": "in Japan",
     "ko_pron": "인 재팬",
     "meaning": "일본에 있었어"
+   },
+   {
+    "text": "at the park",
+    "ko_pron": "앳 더 파크",
+    "meaning": "공원에 있었어"
+   },
+   {
+    "text": "with grandma",
+    "ko_pron": "위드 그랜마",
+    "meaning": "할머니랑 있었어"
+   },
+   {
+    "text": "so tired yesterday",
+    "ko_pron": "쏘 타이어드 예스터데이",
+    "meaning": "어제 너무 피곤했어"
+   },
+   {
+    "text": "a baby",
+    "ko_pron": "어 베이비",
+    "meaning": "나는 아기였어"
+   },
+   {
+    "text": "sleeping",
+    "ko_pron": "슬리핑",
+    "meaning": "자고 있었어"
+   },
+   {
+    "text": "in the bath",
+    "ko_pron": "인 더 배스",
+    "meaning": "목욕하고 있었어"
    }
   ]
  },
@@ -503,6 +863,36 @@
     "text": "have the bill",
     "ko_pron": "해브 더 빌",
     "meaning": "계산서 주시겠어요?"
+   },
+   {
+    "text": "have some water",
+    "ko_pron": "해브 썸 워터",
+    "meaning": "물 좀 마셔도 돼요?"
+   },
+   {
+    "text": "play with you",
+    "ko_pron": "플레이 위드 유",
+    "meaning": "너랑 놀아도 돼?"
+   },
+   {
+    "text": "go to the bathroom",
+    "ko_pron": "고 투 더 배스룸",
+    "meaning": "화장실 가도 돼요?"
+   },
+   {
+    "text": "take a picture here",
+    "ko_pron": "테이크 어 픽처 히어",
+    "meaning": "여기서 사진 찍어도 돼요?"
+   },
+   {
+    "text": "watch TV after dinner",
+    "ko_pron": "워치 티비 애프터 디너",
+    "meaning": "저녁 먹고 TV 봐도 돼요?"
+   },
+   {
+    "text": "open the window",
+    "ko_pron": "오픈 더 윈도우",
+    "meaning": "창문 열어도 돼요?"
    }
   ]
  },
@@ -542,6 +932,36 @@
     "text": "find my hotel",
     "ko_pron": "파인드 마이 호텔",
     "meaning": "제 호텔 찾는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "tie my shoes",
+    "ko_pron": "타이 마이 슈즈",
+    "meaning": "신발 끈 묶는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "with my homework",
+    "ko_pron": "위드 마이 홈워크",
+    "meaning": "숙제 좀 도와줄래요?"
+   },
+   {
+    "text": "open this",
+    "ko_pron": "오픈 디스",
+    "meaning": "이거 여는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "find my mom",
+    "ko_pron": "파인드 마이 맘",
+    "meaning": "엄마 찾는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "get to the station",
+    "ko_pron": "겟 투 더 스테이션",
+    "meaning": "역에 가는 것 좀 도와줄래요?"
+   },
+   {
+    "text": "put on my coat",
+    "ko_pron": "풋 온 마이 코트",
+    "meaning": "외투 입는 것 좀 도와줄래요?"
    }
   ]
  },
@@ -581,6 +1001,36 @@
     "text": "my room",
     "ko_pron": "마이 룸",
     "meaning": "제 방 어디예요?"
+   },
+   {
+    "text": "the park",
+    "ko_pron": "더 파크",
+    "meaning": "공원 어디예요?"
+   },
+   {
+    "text": "my teacher",
+    "ko_pron": "마이 티처",
+    "meaning": "우리 선생님 어디 계세요?"
+   },
+   {
+    "text": "the elevator",
+    "ko_pron": "디 엘리베이터",
+    "meaning": "엘리베이터 어디예요?"
+   },
+   {
+    "text": "my other shoe",
+    "ko_pron": "마이 아더 슈",
+    "meaning": "내 신발 한 짝 어디 있어?"
+   },
+   {
+    "text": "the nearest store",
+    "ko_pron": "더 니어리스트 스토어",
+    "meaning": "제일 가까운 가게 어디예요?"
+   },
+   {
+    "text": "Gate 5",
+    "ko_pron": "게이트 파이브",
+    "meaning": "5번 게이트 어디예요?"
    }
   ]
  },
