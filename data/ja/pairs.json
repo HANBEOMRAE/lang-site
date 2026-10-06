@@ -1,0 +1,326 @@
+{
+ "sets": [
+  {
+   "id": "long",
+   "name": "장음 (짧게 / 길게)",
+   "sounds": [
+    "짧게",
+    "길게"
+   ],
+   "tips": {
+    "짧게": "한 박자로 짧게 끊어요.",
+    "길게": "모음을 한 박자 더 늘려요. 손뼉을 하나 더 치듯이 길게."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "おばさん",
+      "kanji": null,
+      "ko_pron": "오바산",
+      "meaning": "아줌마"
+     },
+     "b": {
+      "text": "おばあさん",
+      "kanji": null,
+      "ko_pron": "오바-산",
+      "meaning": "할머니"
+     }
+    },
+    {
+     "a": {
+      "text": "おじさん",
+      "kanji": null,
+      "ko_pron": "오지산",
+      "meaning": "아저씨"
+     },
+     "b": {
+      "text": "おじいさん",
+      "kanji": null,
+      "ko_pron": "오지-산",
+      "meaning": "할아버지"
+     }
+    },
+    {
+     "a": {
+      "text": "ここ",
+      "kanji": null,
+      "ko_pron": "코코",
+      "meaning": "여기"
+     },
+     "b": {
+      "text": "こうこう",
+      "kanji": "高校",
+      "ko_pron": "코-코-",
+      "meaning": "고등학교"
+     }
+    },
+    {
+     "a": {
+      "text": "ゆき",
+      "kanji": "雪",
+      "ko_pron": "유키",
+      "meaning": "눈"
+     },
+     "b": {
+      "text": "ゆうき",
+      "kanji": "勇気",
+      "ko_pron": "유-키",
+      "meaning": "용기"
+     }
+    },
+    {
+     "a": {
+      "text": "とり",
+      "kanji": "鳥",
+      "ko_pron": "토리",
+      "meaning": "새"
+     },
+     "b": {
+      "text": "とおり",
+      "kanji": "通り",
+      "ko_pron": "토-리",
+      "meaning": "길, 거리"
+     }
+    }
+   ]
+  },
+  {
+   "id": "tsu",
+   "name": "작은 っ (없이 / 있게)",
+   "sounds": [
+    "っ 없이",
+    "っ 있게"
+   ],
+   "tips": {
+    "っ 없이": "멈추지 않고 바로 이어서 말해요.",
+    "っ 있게": "っ 자리에서 한 박자 숨을 멈췄다가 다음 소리를 내요."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "きて",
+      "kanji": "来て",
+      "ko_pron": "키테",
+      "meaning": "와"
+     },
+     "b": {
+      "text": "きって",
+      "kanji": "切手",
+      "ko_pron": "킷테",
+      "meaning": "우표"
+     }
+    },
+    {
+     "a": {
+      "text": "おと",
+      "kanji": "音",
+      "ko_pron": "오토",
+      "meaning": "소리"
+     },
+     "b": {
+      "text": "おっと",
+      "kanji": "夫",
+      "ko_pron": "옷토",
+      "meaning": "남편"
+     }
+    },
+    {
+     "a": {
+      "text": "さか",
+      "kanji": "坂",
+      "ko_pron": "사카",
+      "meaning": "언덕"
+     },
+     "b": {
+      "text": "さっか",
+      "kanji": "作家",
+      "ko_pron": "삿카",
+      "meaning": "작가"
+     }
+    },
+    {
+     "a": {
+      "text": "いた",
+      "kanji": null,
+      "ko_pron": "이타",
+      "meaning": "있었다"
+     },
+     "b": {
+      "text": "いった",
+      "kanji": "行った",
+      "ko_pron": "잇타",
+      "meaning": "갔다"
+     }
+    },
+    {
+     "a": {
+      "text": "ねこ",
+      "kanji": "猫",
+      "ko_pron": "네코",
+      "meaning": "고양이"
+     },
+     "b": {
+      "text": "ねっこ",
+      "kanji": "根っこ",
+      "ko_pron": "넷코",
+      "meaning": "뿌리"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ka-ga",
+   "name": "첫소리 か / が",
+   "sounds": [
+    "か",
+    "が"
+   ],
+   "tips": {
+    "か": "목(성대)을 울리지 않고 가볍게. 한국어 ‘가’처럼 들려도 목은 떨리지 않아요.",
+    "が": "목을 울리면서, ‘응가’처럼 소리를 먼저 낸다는 느낌으로 시작해요."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "かっこう",
+      "kanji": "格好",
+      "ko_pron": "캇코-",
+      "meaning": "모습"
+     },
+     "b": {
+      "text": "がっこう",
+      "kanji": "学校",
+      "ko_pron": "갓코-",
+      "meaning": "학교"
+     }
+    },
+    {
+     "a": {
+      "text": "きん",
+      "kanji": "金",
+      "ko_pron": "킨",
+      "meaning": "금"
+     },
+     "b": {
+      "text": "ぎん",
+      "kanji": "銀",
+      "ko_pron": "긴",
+      "meaning": "은"
+     }
+    },
+    {
+     "a": {
+      "text": "けた",
+      "kanji": "桁",
+      "ko_pron": "케타",
+      "meaning": "자릿수"
+     },
+     "b": {
+      "text": "げた",
+      "kanji": "下駄",
+      "ko_pron": "게타",
+      "meaning": "나막신"
+     }
+    },
+    {
+     "a": {
+      "text": "こま",
+      "kanji": null,
+      "ko_pron": "코마",
+      "meaning": "팽이"
+     },
+     "b": {
+      "text": "ごま",
+      "kanji": null,
+      "ko_pron": "고마",
+      "meaning": "참깨"
+     }
+    },
+    {
+     "a": {
+      "text": "くち",
+      "kanji": "口",
+      "ko_pron": "쿠치",
+      "meaning": "입"
+     },
+     "b": {
+      "text": "ぐち",
+      "kanji": "愚痴",
+      "ko_pron": "구치",
+      "meaning": "투덜거림"
+     }
+    }
+   ]
+  },
+  {
+   "id": "za-ja",
+   "name": "ざ·ず / じゃ·じゅ",
+   "sounds": [
+    "ざ·ず·ぞ",
+    "じゃ·じゅ·じょ"
+   ],
+   "tips": {
+    "ざ·ず·ぞ": "혀끝을 윗니 뒤에 대고, 이 사이로 ‘즈’처럼 떨리게. 한국어 ‘자’보다 혀가 앞에 있어요.",
+    "じゃ·じゅ·じょ": "혀를 입천장 쪽으로 넓게 붙였다 떼며 ‘쟈·쥬·죠’처럼 둥글게."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "ぞう",
+      "kanji": "象",
+      "ko_pron": "조-",
+      "meaning": "코끼리"
+     },
+     "b": {
+      "text": "じょう",
+      "kanji": "錠",
+      "ko_pron": "조-",
+      "meaning": "자물쇠"
+     }
+    },
+    {
+     "a": {
+      "text": "かず",
+      "kanji": "数",
+      "ko_pron": "카즈",
+      "meaning": "수"
+     },
+     "b": {
+      "text": "かじゅ",
+      "kanji": "果樹",
+      "ko_pron": "카주",
+      "meaning": "과일나무"
+     }
+    },
+    {
+     "a": {
+      "text": "ずつ",
+      "kanji": null,
+      "ko_pron": "즈츠",
+      "meaning": "~씩"
+     },
+     "b": {
+      "text": "じゅつ",
+      "kanji": "術",
+      "ko_pron": "주츠",
+      "meaning": "기술, 재주"
+     }
+    },
+    {
+     "a": {
+      "text": "ぞうか",
+      "kanji": "増加",
+      "ko_pron": "조-카",
+      "meaning": "늘어남"
+     },
+     "b": {
+      "text": "じょうか",
+      "kanji": "浄化",
+      "ko_pron": "조-카",
+      "meaning": "깨끗하게 함"
+     }
+    }
+   ]
+  }
+ ]
+}

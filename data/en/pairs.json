@@ -1,0 +1,386 @@
+{
+ "sets": [
+  {
+   "id": "r-l",
+   "name": "r / l",
+   "sounds": [
+    "r",
+    "l"
+   ],
+   "tips": {
+    "r": "혀끝을 입천장 어디에도 닿지 않게 뒤로 살짝 말고, 입술을 둥글게 내밀어요. ‘우롸’처럼 시작해요.",
+    "l": "혀끝을 윗니 뒤 잇몸에 꼭 붙였다가 떼면서 소리 내요."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "right",
+      "ko_pron": "라잇",
+      "meaning": "오른쪽"
+     },
+     "b": {
+      "text": "light",
+      "ko_pron": "라잇",
+      "meaning": "빛, 불"
+     }
+    },
+    {
+     "a": {
+      "text": "rice",
+      "ko_pron": "라이스",
+      "meaning": "쌀, 밥"
+     },
+     "b": {
+      "text": "lice",
+      "ko_pron": "라이스",
+      "meaning": "이(머릿니)"
+     }
+    },
+    {
+     "a": {
+      "text": "road",
+      "ko_pron": "로드",
+      "meaning": "길"
+     },
+     "b": {
+      "text": "load",
+      "ko_pron": "로드",
+      "meaning": "짐"
+     }
+    },
+    {
+     "a": {
+      "text": "rock",
+      "ko_pron": "락",
+      "meaning": "바위"
+     },
+     "b": {
+      "text": "lock",
+      "ko_pron": "락",
+      "meaning": "자물쇠"
+     }
+    },
+    {
+     "a": {
+      "text": "grass",
+      "ko_pron": "그래스",
+      "meaning": "풀"
+     },
+     "b": {
+      "text": "glass",
+      "ko_pron": "글래스",
+      "meaning": "유리잔"
+     }
+    },
+    {
+     "a": {
+      "text": "fry",
+      "ko_pron": "프라이",
+      "meaning": "튀기다"
+     },
+     "b": {
+      "text": "fly",
+      "ko_pron": "플라이",
+      "meaning": "날다"
+     }
+    }
+   ]
+  },
+  {
+   "id": "f-p",
+   "name": "f / p",
+   "sounds": [
+    "f",
+    "p"
+   ],
+   "tips": {
+    "f": "윗니를 아랫입술에 살짝 대고, 그 틈으로 바람을 길게 흘려보내요. 입술은 붙이지 않아요.",
+    "p": "두 입술을 꼭 붙였다가 ‘퍼’ 하고 바람을 터뜨려요."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "fan",
+      "ko_pron": "팬",
+      "meaning": "선풍기"
+     },
+     "b": {
+      "text": "pan",
+      "ko_pron": "팬",
+      "meaning": "프라이팬"
+     }
+    },
+    {
+     "a": {
+      "text": "fork",
+      "ko_pron": "포크",
+      "meaning": "포크"
+     },
+     "b": {
+      "text": "pork",
+      "ko_pron": "포크",
+      "meaning": "돼지고기"
+     }
+    },
+    {
+     "a": {
+      "text": "fine",
+      "ko_pron": "파인",
+      "meaning": "괜찮은"
+     },
+     "b": {
+      "text": "pine",
+      "ko_pron": "파인",
+      "meaning": "소나무"
+     }
+    },
+    {
+     "a": {
+      "text": "four",
+      "ko_pron": "포",
+      "meaning": "넷"
+     },
+     "b": {
+      "text": "pour",
+      "ko_pron": "포",
+      "meaning": "붓다"
+     }
+    },
+    {
+     "a": {
+      "text": "fast",
+      "ko_pron": "패스트",
+      "meaning": "빠른"
+     },
+     "b": {
+      "text": "past",
+      "ko_pron": "패스트",
+      "meaning": "지난"
+     }
+    }
+   ]
+  },
+  {
+   "id": "v-b",
+   "name": "v / b",
+   "sounds": [
+    "v",
+    "b"
+   ],
+   "tips": {
+    "v": "윗니를 아랫입술에 대고, 목을 울리면서 입술이 간질간질 떨리게 소리 내요.",
+    "b": "두 입술을 붙였다가 떼면서 소리 내요. 이는 입술에 닿지 않아요."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "van",
+      "ko_pron": "밴",
+      "meaning": "승합차"
+     },
+     "b": {
+      "text": "ban",
+      "ko_pron": "밴",
+      "meaning": "금지"
+     }
+    },
+    {
+     "a": {
+      "text": "vest",
+      "ko_pron": "베스트",
+      "meaning": "조끼"
+     },
+     "b": {
+      "text": "best",
+      "ko_pron": "베스트",
+      "meaning": "최고의"
+     }
+    },
+    {
+     "a": {
+      "text": "vet",
+      "ko_pron": "벳",
+      "meaning": "수의사"
+     },
+     "b": {
+      "text": "bet",
+      "ko_pron": "벳",
+      "meaning": "내기"
+     }
+    },
+    {
+     "a": {
+      "text": "vase",
+      "ko_pron": "베이스",
+      "meaning": "꽃병"
+     },
+     "b": {
+      "text": "base",
+      "ko_pron": "베이스",
+      "meaning": "바닥, 기지"
+     }
+    }
+   ]
+  },
+  {
+   "id": "th-s",
+   "name": "th / s",
+   "sounds": [
+    "th",
+    "s"
+   ],
+   "tips": {
+    "th": "혀끝을 윗니와 아랫니 사이로 살짝 내밀고, 그 위로 바람을 내보내요.",
+    "s": "혀는 이 안쪽에 두고, 이 사이로 ‘스’ 하고 바람을 내요. 혀가 밖으로 나오지 않아요."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "think",
+      "ko_pron": "씽크",
+      "meaning": "생각하다"
+     },
+     "b": {
+      "text": "sink",
+      "ko_pron": "싱크",
+      "meaning": "싱크대"
+     }
+    },
+    {
+     "a": {
+      "text": "thick",
+      "ko_pron": "씩",
+      "meaning": "두꺼운"
+     },
+     "b": {
+      "text": "sick",
+      "ko_pron": "씩",
+      "meaning": "아픈"
+     }
+    },
+    {
+     "a": {
+      "text": "thank",
+      "ko_pron": "땡크",
+      "meaning": "고마워하다"
+     },
+     "b": {
+      "text": "sank",
+      "ko_pron": "생크",
+      "meaning": "가라앉았다"
+     }
+    },
+    {
+     "a": {
+      "text": "mouth",
+      "ko_pron": "마우스",
+      "meaning": "입"
+     },
+     "b": {
+      "text": "mouse",
+      "ko_pron": "마우스",
+      "meaning": "쥐"
+     }
+    },
+    {
+     "a": {
+      "text": "path",
+      "ko_pron": "패스",
+      "meaning": "오솔길"
+     },
+     "b": {
+      "text": "pass",
+      "ko_pron": "패스",
+      "meaning": "지나가다"
+     }
+    }
+   ]
+  },
+  {
+   "id": "i-ee",
+   "name": "짧은 i / 긴 ee",
+   "sounds": [
+    "짧은 i",
+    "긴 ee"
+   ],
+   "tips": {
+    "짧은 i": "입을 살짝만 벌리고 힘을 빼서 짧게. ‘이’와 ‘에’ 사이 소리예요.",
+    "긴 ee": "입꼬리를 옆으로 당겨 웃는 입으로 ‘이-’ 하고 길게."
+   },
+   "pairs": [
+    {
+     "a": {
+      "text": "ship",
+      "ko_pron": "쉽",
+      "meaning": "배"
+     },
+     "b": {
+      "text": "sheep",
+      "ko_pron": "쉽",
+      "meaning": "양"
+     }
+    },
+    {
+     "a": {
+      "text": "sit",
+      "ko_pron": "싯",
+      "meaning": "앉다"
+     },
+     "b": {
+      "text": "seat",
+      "ko_pron": "싯",
+      "meaning": "자리"
+     }
+    },
+    {
+     "a": {
+      "text": "live",
+      "ko_pron": "리브",
+      "meaning": "살다"
+     },
+     "b": {
+      "text": "leave",
+      "ko_pron": "리브",
+      "meaning": "떠나다"
+     }
+    },
+    {
+     "a": {
+      "text": "hit",
+      "ko_pron": "힛",
+      "meaning": "치다"
+     },
+     "b": {
+      "text": "heat",
+      "ko_pron": "힛",
+      "meaning": "열"
+     }
+    },
+    {
+     "a": {
+      "text": "chip",
+      "ko_pron": "칩",
+      "meaning": "감자칩"
+     },
+     "b": {
+      "text": "cheap",
+      "ko_pron": "칩",
+      "meaning": "값싼"
+     }
+    },
+    {
+     "a": {
+      "text": "fit",
+      "ko_pron": "핏",
+      "meaning": "꼭 맞다"
+     },
+     "b": {
+      "text": "feet",
+      "ko_pron": "핏",
+      "meaning": "발(두 개)"
+     }
+    }
+   ]
+  }
+ ]
+}

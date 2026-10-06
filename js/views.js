@@ -56,6 +56,10 @@ async function resolvePlace(lang, ref) {
       const si = data.findIndex(s => s.scene === ref.scene);
       return si < 0 ? null : { hash: `${base}/${si}`, label: `${head} · ${ref.scene}` };
     }
+    if (ref.kind === "pairset") {
+      const k = data.sets.findIndex(s => s.id === ref.id);
+      return k < 0 ? null : { hash: `${base}/${k}`, label: `${head} · ${data.sets[k].name}` };
+    }
     if (ref.kind === "verb" || ref.kind === "particle") {
       const list = ref.kind === "verb" ? data.verbs : data.particles;
       const i = list.findIndex(x => x.text === ref.text);
@@ -133,6 +137,12 @@ function viewLang(lang) {
         <span class="label"><strong>헷갈린 단어</strong>
           <small>☆ 표시한 카드 ${starList().filter(k => k.startsWith(`${lang}/`)).length}개</small></span>
       </button>
+      ${L.sections.some(s => s.id === "pairs" && s.ready) ? `
+      <button class="row weak-row" data-go="#/${lang}/pairs/weak">
+        <span class="em" aria-hidden="true">🎯</span>
+        <span class="label"><strong>내 발음 약점</strong>
+          <small>연습한 짝 ${Object.keys(pairStats()).filter(k => k.startsWith(`${lang}/`)).length}개</small></span>
+      </button>` : ""}
     </div>`;
   fillContinue(lang);
 }
@@ -910,4 +920,187 @@ async function viewPatternCompare(lang, sec, k) {
     next: last ? { hash: base, label: "패턴 목록으로" } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${cmp.compare[k + 1].title}` }
   });
   bindHideToggle(() => viewPatternCompare(lang, sec, k));
+}
+
+// ── 발음 연습: 소리 하나만 다른 짝 ─────────────────
+// 기록: localStorage "pairStats" = { "en/r-l": { right, wrong, last } } (짝 id 기준)
+function pairStats() {
+  const v = store.get("pairStats", {});
+  return v && typeof v === "object" && !Array.isArray(v) ? v : {};
+}
+function addPairStat(lang, setId, ok) {
+  const all = pairStats(), key = `${lang}/${setId}`;
+  const r = all[key] && typeof all[key] === "object" ? all[key] : { right: 0, wrong: 0 };
+  r.right = (r.right | 0) + (ok ? 1 : 0); r.wrong = (r.wrong | 0) + (ok ? 0 : 1); r.last = Date.now();
+  all[key] = r; store.set("pairStats", all);
+  return r;
+}
+const statText = r => r ? `맞음 ${r.right | 0} · 틀림 ${r.wrong | 0}` : "아직 안 해 봤어요";
+
+// 두 단어에서 다른 부분만 강조 (right / light → r, l). 앞뒤 같은 글자를 빼고 남은 가운데.
+function diffMark(x, y) {
+  let p = 0; while (p < x.length && p < y.length && x[p] === y[p]) p++;
+  let s = 0; while (s < x.length - p && s < y.length - p && x[x.length - 1 - s] === y[y.length - 1 - s]) s++;
+  const mark = t => (t ? `<mark class="diff">${esc(t)}</mark>` : "");
+  const one = t => esc(t.slice(0, p)) + mark(t.slice(p, t.length - s)) + esc(t.slice(t.length - s));
+  return [one(x), one(y)];
+}
+
+async function viewPairList(lang, sec) {
+  setHeader(sec.name, `#/${lang}`);
+  app.innerHTML = `<p class="lead">불러오는 중…</p>`;
+  let data;
+  try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const st = pairStats();
+  app.innerHTML = `
+    <p class="lead">소리 하나만 다른 말로 귀와 입을 연습해요.</p>
+    <div class="list">
+      <button class="row weak-row" data-go="#/${lang}/${sec.id}/weak">
+        <span class="em" aria-hidden="true">🎯</span>
+        <span class="label"><strong>내 발음 약점</strong><small>틀린 비율이 높은 짝부터</small></span>
+      </button>
+    </div>
+    <h2 class="group">헷갈리는 짝</h2>
+    <div class="list">
+      ${data.sets.map((s, k) => `
+        <button class="row" data-go="#/${lang}/${sec.id}/${k}">
+          <span class="label"><strong lang="${lang}">${esc(s.name)}</strong>
+            <small>${s.pairs.length}쌍 · ${statText(st[`${lang}/${s.id}`])}</small></span>
+        </button>`).join("")}
+    </div>`;
+}
+
+// 연습 화면 상태: 같은 짝에 머무는 동안 모드·문제를 기억한다
+let pairState = null;
+function newPairQuestion(set, prev) {
+  const n = set.pairs.length;
+  const q = { pi: Math.floor(Math.random() * n) % n, side: Math.random() < 0.5 ? "a" : "b" };
+  // 바로 전 문제와 똑같으면 다음 짝으로 (다시 뽑기를 반복하지 않는다)
+  if (prev && n > 1 && q.pi === prev.pi && q.side === prev.side) q.pi = (q.pi + 1) % n;
+  return q;
+}
+
+async function viewPairs(lang, sec, k) {
+  const L = LANGS[lang];
+  let data;
+  try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const set = data.sets[k];
+  const base = `#/${lang}/${sec.id}`;
+  if (!set) { location.hash = base; return; }
+  setHeader(set.name, base);
+  remember(lang, { sec: sec.id, kind: "pairset", id: set.id });
+  const key = `${lang}/${set.id}`;
+  if (!pairState || pairState.key !== key) pairState = { key, mode: "listen", q: newPairQuestion(set), done: null };
+  if (pairState.mode === "speak" && !speech.supported()) pairState.mode = "listen";
+  const { q, mode, done } = pairState;
+  const pair = set.pairs[q.pi], target = pair[q.side], other = pair[q.side === "a" ? "b" : "a"];
+  const [ha, hb] = diffMark(pair.a.text, pair.b.text);
+  const html = { a: ha, b: hb };
+  const sameKo = pair.a.ko_pron === pair.b.ko_pron;
+  const sound = side => set.sounds[side === "a" ? 0 : 1];
+  const r = pairStats()[key];
+
+  const opt = (side, big) => {
+    const w = pair[side];
+    const cls = done ? (side === q.side ? "right" : (done.picked === side ? "wrong" : "")) : "";
+    return `<div class="pair-opt ${cls} ${big ? "big" : ""}" ${mode === "listen" && !done ? `role="button" tabindex="0" data-pick="${side}"` : ""}>
+        <span class="tag">${esc(sound(side))}</span>
+        <span class="pw" lang="${lang}">${html[side]}</span>
+        ${w.kanji ? `<span class="kanji" lang="${lang}">${esc(w.kanji)}</span>` : ""}
+        <span class="pk">${esc(w.ko_pron)}</span>
+        <span class="pm">${esc(w.meaning)}</span>
+        <button class="mini-speak" data-hear="${side}" aria-label="${esc(w.text)} 듣기">🔊</button>
+      </div>`;
+  };
+  const tips = () => `
+    <div class="tips">
+      <p class="tips-title">입 모양 팁</p>
+      ${[q.side, q.side === "a" ? "b" : "a"].map(side => `
+        <p class="${side === q.side ? "tip-main" : ""}"><strong lang="${lang}">${esc(sound(side))}</strong> (${esc(pair[side].text)}) — ${esc(set.tips[sound(side)])}</p>`).join("")}
+    </div>`;
+
+  app.innerHTML = `
+    <div class="tools">
+      <div class="chips mode">
+        <button class="chip ${mode === "listen" ? "on" : ""}" data-mode="listen">듣고 고르기</button>
+        ${speech.supported() ? `<button class="chip ${mode === "speak" ? "on" : ""}" data-mode="speak">말해 보기</button>` : ""}
+      </div>
+      <span class="pair-stat">${statText(r)}</span>
+    </div>
+    ${mode === "listen" ? `
+      <p class="lead">🔊를 듣고, 들린 말을 골라 보세요.</p>
+      <div class="center"><button class="speak" id="playTarget" aria-label="문제 듣기">🔊</button></div>
+      <div class="pair-opts">${opt("a")}${opt("b")}</div>` : `
+      <p class="lead">이 말을 소리 내어 말해 보세요. 짝과 헷갈리지 않게!</p>
+      <div class="pair-opts single">${opt(q.side, true)}</div>
+      <p class="pair-other">헷갈리는 짝: <span lang="${lang}">${esc(other.text)}</span> (${esc(other.meaning)})</p>
+      <div class="say-tools" id="pairMic"><button class="chip mic">🎤 말해 보기</button><p class="say-result" aria-live="polite"></p></div>`}
+    ${sameKo ? `<p class="same-ko">한글로는 구분이 안 돼요. 귀로 들어 보세요.</p>` : ""}
+    <div id="pairFeedback">${done ? `
+      <p class="feedback ${done.ok ? "ok" : "no"}">${done.ok ? "맞았어요!" : esc(done.msg)}</p>
+      ${done.ok ? "" : tips()}` : ""}</div>
+    <div class="nav"><button class="primary" id="nextQ">${done ? "다음 문제" : "건너뛰기"}</button></div>`;
+
+  const hear = side => tts.speak(pair[side].text, L.voice);
+  const finish = (ok, msg, picked) => {
+    addPairStat(lang, set.id, ok);
+    pairState.done = { ok, msg, picked };
+    viewPairs(lang, sec, k);
+  };
+  document.getElementById("playTarget")?.addEventListener("click", e => tts.speak(target.text, L.voice, e.currentTarget));
+  app.querySelectorAll("[data-hear]").forEach(b => b.addEventListener("click", e => { e.stopPropagation(); hear(b.dataset.hear); }));
+  app.querySelectorAll("[data-pick]").forEach(el => {
+    const pick = () => finish(el.dataset.pick === q.side,
+      `아쉬워요. 들린 건 “${target.text}”(${target.meaning})였어요.`, el.dataset.pick);
+    el.addEventListener("click", pick);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  app.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => {
+    pairState.mode = b.dataset.mode; pairState.done = null; pairState.q = newPairQuestion(set, q); viewPairs(lang, sec, k);
+  }));
+  document.getElementById("nextQ").onclick = () => { pairState.done = null; pairState.q = newPairQuestion(set, q); viewPairs(lang, sec, k); };
+  // 말해 보기: 목표 단어로 들렸으면 맞음, 짝의 다른 단어로 들렸으면 틀림, 둘 다 아니면 다시
+  const micBox = document.getElementById("pairMic");
+  if (micBox && !done) {
+    const btn = micBox.querySelector(".mic"), out = micBox.querySelector(".say-result");
+    btn.onclick = async () => {
+      if (btn.classList.contains("listening")) { speech.stop(); return; }
+      if (!navigator.onLine) { out.textContent = MIC_ERRORS.network; return; }
+      if (!(await speechNotice())) return;
+      tts.stop(); btn.classList.add("listening"); out.textContent = "듣는 중… 말해 보세요";
+      try {
+        const alts = await speech.listen(L.voice);
+        const t = speech.judge(lang, alts, [target.text, target.kanji].filter(Boolean));
+        const o = speech.judge(lang, alts, [other.text, other.kanji].filter(Boolean));
+        if (t.score >= 0.8 && t.score >= o.score) finish(true);
+        else if (o.score > t.score && o.score >= 0.8) finish(false, `“${o.heard}”로 들렸어요. 목표는 “${target.text}”(${target.meaning})예요.`);
+        else out.innerHTML = `<span class="lv lv-retry">다시 해 봐요</span> 이렇게 들렸어요: “<span lang="${lang}">${esc(t.heard)}</span>”`;
+      } catch (e) {
+        out.textContent = e.message === "aborted" ? "" : (MIC_ERRORS[e.message] || "다시 해 봐요.");
+      } finally { btn.classList.remove("listening"); }
+    };
+  } else if (micBox) micBox.remove();
+}
+
+// 내 발음 약점: 틀린 비율이 높은 짝부터
+async function viewWeak(lang, sec) {
+  setHeader("내 발음 약점", `#/${lang}`);
+  let data;
+  try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const st = pairStats();
+  const rows = data.sets.map((s, k) => {
+    const r = st[`${lang}/${s.id}`], n = r ? (r.right | 0) + (r.wrong | 0) : 0;
+    return { s, k, r, n, rate: n ? (r.wrong | 0) / n : -1 };
+  }).sort((x, y) => (y.rate - x.rate) || ((y.r?.wrong | 0) - (x.r?.wrong | 0)));
+  const tried = rows.filter(x => x.n);
+  app.innerHTML = `
+    <p class="lead">${tried.length ? "틀린 비율이 높은 짝부터 보여 줘요. 눌러서 다시 연습해요." : "아직 연습 기록이 없어요. 발음 연습을 하면 여기에 약점이 모여요."}</p>
+    <div class="list">
+      ${rows.map(x => `
+        <button class="row weak" data-go="#/${lang}/${sec.id}/${x.k}">
+          <span class="label"><strong lang="${lang}">${esc(x.s.name)}</strong>
+            <small>${x.n ? `틀린 비율 ${Math.round(x.rate * 100)}% · ${statText(x.r)}` : "아직 안 해 봤어요"}</small>
+            ${x.n ? `<span class="bar weak-bar"><i style="width:${Math.round(x.rate * 100)}%"></i></span>` : ""}</span>
+        </button>`).join("")}
+    </div>`;
 }

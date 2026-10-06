@@ -219,6 +219,38 @@ def check_pattern_compare(data, name):
             if not ans or any(a not in q.get("choices", []) for a in ans):
                 problems.append(f"{w}: answers가 choices 안에 없어요")
 
+def check_pairs(data, name):
+    """헷갈리는 짝: 소리 두 개와 입 모양 팁, 짝 4~6쌍, 두 단어가 서로 다른지, 일본어는 가나·kanji 칸."""
+    ja = name.startswith("ja/")
+    ids = set()
+    for i, s in enumerate(data.get("sets", [])):
+        where = f"{name} > {i + 1}번 ({s.get('name', '?')})"
+        need(s, ["id", "name"], where)
+        if s.get("id") in ids:
+            problems.append(f"{where}: 중복된 id예요")
+        ids.add(s.get("id"))
+        sounds = s.get("sounds", [])
+        if len(sounds) != 2:
+            problems.append(f"{where}: sounds는 두 개여야 해요")
+        for snd in sounds:
+            if not str((s.get("tips") or {}).get(snd, "")).strip():
+                problems.append(f"{where}: '{snd}' 입 모양 팁(tips)이 없어요")
+        pairs = s.get("pairs", [])
+        if not 4 <= len(pairs) <= 6:
+            problems.append(f"{where}: 짝이 {len(pairs)}쌍이에요 (4~6쌍)")
+        for k, pr in enumerate(pairs):
+            w = f"{where} > {k + 1}번 짝"
+            for side in ("a", "b"):
+                x = pr.get(side) or {}
+                need(x, BASIC, f"{w} {side}")
+                if ja:
+                    if "kanji" not in x:
+                        problems.append(f"{w} {side}: 'kanji' 칸이 없어요 (한자로 안 쓰면 null)")
+                    if x.get("text") and not KANA.match(x["text"]):
+                        problems.append(f"{w} {side}: text는 가나로만 써요")
+            if (pr.get("a") or {}).get("text") == (pr.get("b") or {}).get("text"):
+                problems.append(f"{w}: 두 단어가 같아요")
+
 def check_patterns(data, name):
     for i, p in enumerate(data):
         where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
@@ -323,12 +355,12 @@ def check_conjugation(data, name):
             check_kanji_text(v["example"].get("text"), v["example"].get("kanji_text"), f"{where} > 예문")
 
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
-            "patterns": check_patterns, "situations": check_situations}
+            "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
                     "en/pattern_compare": check_pattern_compare}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict}
+SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict}
 
 def check_offline():
     """sw.js의 오프라인 저장 목록(PRECACHE)이 실제 파일과 맞는지, 글꼴 주소가 index.html과 같은지."""

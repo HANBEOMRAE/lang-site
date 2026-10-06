@@ -31,7 +31,7 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   같은 `verbs.json`이라도 `en`은 카드 목록, `ja`는 `{groups, forms, verbs}`다.
 - 색은 `css/style.css` 맨 위 `:root` 변수만 쓴다(다크 모드 포함). 일본어 화면은 `body.lang-ja`에서 `--accent`가 빨강이 된다.
 - 기록은 `localStorage`에 둔다. `core.js`의 `store.get/set`(JSON, try/catch로 막힌 환경에서도 동작)을 쓴다.
-  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 단어, `"언어/섹션/주제/단어"` 목록 — 동사 변형은 주제 자리에 `-`), `hideMeaning`.
+  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 단어, `"언어/섹션/주제/단어"` 목록 — 동사 변형은 주제 자리에 `-`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`.
   이어서 하기와 ☆는 번호가 아니라 이름(섹션·주제·항목 text, 패턴 틀·바꿔 넣는 말, 비교 id, 장면 이름)으로 저장하고, 열 때 지금 번호를 찾는다
   (views.js `resolvePlace`). 주제 이름이나 항목 `text`를 바꾸면 그 기록은 찾을 수 없게 되어 조용히 빠진다(☆는 "찾을 수 없는 표시"로 알림).
 - 오프라인(PWA): `sw.js`가 `PRECACHE`(화면 파일·데이터 전체)를 저장하고 저장본을 먼저 쓴다. 페이지를 열 때마다 뒤에서 새 버전을 확인해
