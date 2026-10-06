@@ -61,7 +61,7 @@ async function resolvePlace(lang, ref) {
       return k < 0 ? null : { hash: `${base}/${k}`, label: `${head} · ${data.sets[k].name}` };
     }
     if (ref.kind === "verb" || ref.kind === "particle") {
-      const list = ref.kind === "verb" ? data.verbs : data.particles;
+      const list = ref.kind === "verb" ? data.verbs : entriesOf(data);
       const i = list.findIndex(x => x.text === ref.text);
       return i < 0 ? null : { hash: `${base}/${i}`, label: `${head} · ${ref.text} ${i + 1}/${list.length}` };
     }
@@ -523,6 +523,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
   const p = data[pIdx];
   if (!p) { location.hash = `#/${lang}/${sec.id}`; return; }
   const tips = await tipsFor(lang, p);
+  const fwIdx = await loadFwIndex(lang);
   const n = p.fills.length;
   const i = Math.min(Math.max(fIdx || 0, 0), n - 1);
   const f = p.fills[i];
@@ -572,7 +573,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
   addSwipe(document.getElementById("card"), next, prev);
   const pw = p.words || {}, fw = f.words || {};
   bindWordGloss(lang, document.getElementById("card"),
-    el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k]);
+    el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], fwIdx);
   bindSayTools(document.getElementById("saySentence"), lang, [sentence]);
   const panel = document.getElementById("tipPanel");
   if (panel) {
@@ -583,7 +584,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
       btn.setAttribute("aria-expanded", String(!panel.hidden));
       closeGloss();
     };
-    bindTips(lang, tips);
+    bindTips(lang, tips, fwIdx);
   }
   bindHideToggle(() => viewPattern(lang, sec, pIdx, i, !!panel && !panel.hidden));
 }
@@ -616,8 +617,31 @@ function sentenceHTML(pattern, fillText) {
 function closeGloss() { document.querySelectorAll(".gloss").forEach(g => g.remove()); }
 document.addEventListener("click", e => { if (!e.target.closest(".w, .gloss")) closeGloss(); });
 
+// ── 말풍선의 "더 알아보기": 작은 말(function_words) 항목으로 ──
+// 갈 곳은 문장 속 자리로 고른 그 뜻(g)으로 정한다: g.fw가 있으면 그것(false=붙이지 않음, 목록=버튼 여러 개),
+// 없으면 단어 모양(forms)으로 찾는다. her처럼 두 항목에 걸리는 모양은 뜻에 fw를 적는다(validate.py check_fw_links).
+async function loadFwIndex(lang) {
+  const sec = LANGS[lang].sections.find(s => s.id === "function_words" && s.ready);
+  if (!sec) return null;
+  try {
+    const data = await loadData(lang, sec.id);
+    const byForm = {}, byId = {};
+    data.items.forEach((it, i) => {
+      byId[it.id] = { hash: `#/${lang}/${sec.id}/${i}`, text: it.text, stage: (data.stages.find(s => s.id === it.stage) || {}).name };
+      it.forms.forEach(f => (byForm[f] = byForm[f] || []).push(it.id));
+    });
+    return { byForm, byId };
+  } catch { return null; }
+}
+function fwLinks(idx, key, g) {
+  if (!idx || !g || g.fw === false) return [];
+  const targets = (g.fw ? [].concat(g.fw) : idx.byForm[key] || []).map(id => idx.byId[id]).filter(Boolean);
+  return targets.map(t => ({ hash: t.hash, label: targets.length > 1 ? `${t.stage}: ${t.text}` : `더 알아보기: ${t.text}` }));
+}
+
 // card: 말풍선을 넣을 상자(position: relative). lookup(단어 요소) → { ko_pron, meaning } — 찾는 규칙은 화면마다 다르다.
-function bindWordGloss(lang, card, lookup) {
+// fwIdx가 있으면 작은 말에 "더 알아보기" 버튼을 붙인다.
+function bindWordGloss(lang, card, lookup, fwIdx = null) {
   card.querySelectorAll(".w").forEach(el => {
     const open = e => {
       e.stopPropagation();
@@ -631,6 +655,9 @@ function bindWordGloss(lang, card, lookup) {
       box.innerHTML = `<span class="g-text"><b lang="${lang}">${esc(el.dataset.word)}</b>
           <span class="g-pron">${esc(g.ko_pron)}</span><span class="g-mean">${esc(g.meaning)}</span></span>
         <button class="mini-speak" aria-label="${esc(el.dataset.word)} 발음 듣기">🔊</button>`;
+      const links = fwLinks(fwIdx, el.dataset.k, g);
+      if (links.length) box.insertAdjacentHTML("beforeend", `<span class="g-more">${links.map(l =>
+        `<button class="chip g-link" data-go="${esc(l.hash)}">${esc(l.label)} →</button>`).join("")}</span>`);
       card.appendChild(box);
       box.querySelector("button").onclick = ev => { ev.stopPropagation(); tts.speak(el.dataset.word, LANGS[lang].voice, ev.currentTarget); };
       // 누른 단어 바로 아래, 카드 안쪽에 맞춘다
@@ -693,13 +720,13 @@ function tipHTML(lang, t, k, open = true) {
     </details>`;
 }
 // 단어 뜻 찾는 순서: 예문 words의 "단어@몇번째" → 예문 words → 설명 words (validate.py check_tips와 같은 규칙)
-function bindTips(lang, tips) {
+function bindTips(lang, tips, fwIdx = null) {
   app.querySelectorAll(".tip-box").forEach(box => {
     const t = tips[box.dataset.t], tw = t.words || {};
     bindWordGloss(lang, box, el => {
       const ew = t.examples[el.closest(".tip-ex").dataset.x].words || {};
       return ew[`${el.dataset.k}@${el.dataset.n}`] || ew[el.dataset.k] || tw[el.dataset.k];
-    });
+    }, fwIdx);
     box.querySelectorAll("[data-speak]").forEach(b =>
       b.onclick = e => { e.stopPropagation(); tts.speak(b.dataset.speak, LANGS[lang].voice, e.currentTarget); });
   });
@@ -745,7 +772,7 @@ async function viewTips(lang, idx) {
     </div>`;
   document.getElementById("prev").onclick = () => { if (idx > 0) location.hash = `${base}/${idx - 1}`; };
   document.getElementById("next").onclick = () => { location.hash = idx === n - 1 ? base : `${base}/${idx + 1}`; };
-  bindTips(lang, [t]);
+  bindTips(lang, [t], await loadFwIndex(lang));
   bindHideToggle(() => viewTips(lang, idx));
 }
 
@@ -955,48 +982,75 @@ function bindSay(lang) {
     }));
 }
 
-// 목록: 단계별 조사 → 맨 끝에 헷갈리는 조사 비교
+// ── 조사·작은 말 (같은 화면) ──────────────────────
+// 일본어 조사(ja/particles.json): particles, 비교는 pair + points{id: 글}, 예문 particle
+// 영어 작은 말(en/function_words.json): items, explain(조각 설명), 비교는 sides[{label, entry, point}], 예문 side
+const entriesOf = data => data.items || data.particles;
+const unitOf = sec => sec.unit || "조사";
+const particleById = (data, id) => entriesOf(data).find(p => p.id === id) || { text: "?" };
+// 받침이 있으면 a, 없으면 b (조사 → 조사를, 작은 말 → 작은 말을)
+const josa = (word, a, b) => { const c = word.charCodeAt(word.length - 1) - 0xAC00; return c >= 0 && c <= 11171 && c % 28 ? a : b; };
+
+// 설명 조각 [{lang, text}] 줄 목록 → 화면. 영어·일본어 조각에는 lang을 붙인다.
+function chunksHTML(lines, cls = "ex-line") {
+  return (lines || []).map(ln => `<span class="${cls}">${ln.map(c =>
+    c.lang === "ko" ? esc(c.text) : `<span lang="${c.lang}">${esc(c.text)}</span>`).join("")}</span>`).join("");
+}
+const chunksText = lines => (lines || []).map(ln => ln.map(c => c.text).join("")).join(" ");
+
+// 비교 한 쪽씩: [{ label, entry, pointHTML, pointText }]
+function compareSides(data, c) {
+  if (c.sides) return c.sides.map(s => ({ label: s.label, entry: s.entry, pointHTML: chunksHTML(s.point), pointText: chunksText(s.point) }));
+  return c.pair.map(id => ({ label: particleById(data, id).text, entry: id, pointHTML: esc(c.points[id]), pointText: c.points[id] }));
+}
+const exampleSide = (c, ex) => c.sides ? ex.side : c.pair.indexOf(ex.particle);
+
+// 목록: 묶음(단계)별 → 맨 끝에 헷갈리는 말 비교
 async function viewParticleList(lang, sec) {
   setHeader(sec.name, `#/${lang}`);
   app.innerHTML = `<p class="lead">불러오는 중…</p>`;
   let data;
   try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const unit = unitOf(sec);
   app.innerHTML = `
-    <p class="lead">단계 순서대로 익히고, 마지막에 헷갈리는 조사를 비교해요.</p>
+    <p class="lead">위에서부터 차례로 익히고, 마지막에 헷갈리는 ${unit}${josa(unit, "을", "를")} 비교해요.</p>
     ${data.stages.map(st => `
       <h2 class="group">${esc(st.name)} <small class="group-desc">${esc(st.desc || "")}</small></h2>
       <div class="list">
-        ${data.particles.map((p, i) => p.stage !== st.id ? "" : `
+        ${entriesOf(data).map((p, i) => p.stage !== st.id ? "" : lang === "ja" ? `
           <button class="row" data-go="#/${lang}/${sec.id}/${i}">
             <span class="em kana" lang="${lang}" aria-hidden="true">${esc(p.text)}</span>
             <span class="label"><strong>${esc(p.meaning)}</strong><small>소리: ${esc(p.ko_pron)} · ${esc(p.role)}</small></span>
+          </button>` : `
+          <button class="row" data-go="#/${lang}/${sec.id}/${i}">
+            <span class="label"><strong lang="${lang}">${esc(p.text)}</strong><small>${esc(p.meaning)} · 소리: ${esc(p.ko_pron)}</small></span>
           </button>`).join("")}
       </div>`).join("")}
-    <h2 class="group">헷갈리는 조사</h2>
+    <h2 class="group">헷갈리는 ${esc(unit)}</h2>
     <div class="list">
       ${data.compare.map((c, k) => `
         <button class="row" data-go="#/${lang}/${sec.id}/vs/${k}">
           <span class="em" aria-hidden="true">⚖️</span>
           <span class="label"><strong>${esc(c.title)}</strong>
-            <small>${c.pair.map(id => `${esc(particleById(data, id).text)}: ${esc(c.points[id])}`).join(" / ")}</small></span>
+            <small>${compareSides(data, c).map(s => `${esc(s.label)}: ${esc(s.pointText)}`).join(" / ")}</small></span>
         </button>`).join("")}
     </div>`;
 }
-const particleById = (data, id) => data.particles.find(p => p.id === id) || { text: "?" };
 
 // 조사 하나: 큰 글자 카드 + 쓰임별로 묶인 예문 + 관련 비교
 async function viewParticle(lang, sec, idx) {
   const L = LANGS[lang];
   let data;
   try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
-  const p = data.particles[idx];
+  const list = entriesOf(data);
+  const p = list[idx];
   if (!p) { location.hash = `#/${lang}/${sec.id}`; return; }
-  const n = data.particles.length;
+  const n = list.length;
   const base = `#/${lang}/${sec.id}`;
-  setHeader(`조사 ${p.text}`, base);
+  setHeader(`${unitOf(sec)} ${p.text}`, base);
   remember(lang, { sec: sec.id, kind: "particle", text: p.text });
   const multi = p.uses.length > 1;
-  const related = data.compare.map((c, k) => [c, k]).filter(([c]) => c.pair.includes(p.id));
+  const related = data.compare.map((c, k) => [c, k]).filter(([c]) => compareSides(data, c).some(s => s.entry === p.id));
 
   app.innerHTML = `
     <div class="tools">${progressBar(idx, n)}${hideToggle()}</div>
@@ -1007,8 +1061,9 @@ async function viewParticle(lang, sec, idx) {
         <p class="meaning">${esc(p.meaning)}</p>
       </div>
       <button class="speak" id="speakWord" aria-label="${esc(p.text)} 발음 듣기">🔊</button>
-      <p class="role">${esc(p.role)}</p>
+      ${p.role ? `<p class="role">${esc(p.role)}</p>` : ""}
       ${p.note ? `<p class="note">${noBreakJa(p.note)}</p>` : ""}
+      ${p.explain ? `<div class="note explain" id="explain">${chunksHTML(p.explain)}</div>` : ""}
     </article>
     ${p.uses.map(u => `
       ${multi ? `<h2 class="group">${esc(u.name)} <small class="group-desc">${esc(u.desc || "")}</small></h2>`
@@ -1035,15 +1090,16 @@ async function viewParticle(lang, sec, idx) {
 }
 
 // ── 비교 화면 (조사·패턴이 함께 쓴다) ──────────────
-// sides: [{ label, point, big?, practice? }]  examples: [{ tag, text, ko_pron, meaning, why }]
+// sides: [{ label, point | pointHTML, big?, practice?, practiceLabel? }]  examples: [{ tag, text, ko_pron, meaning, why }]
+// 쪽이 셋이면(in·on·at) 세 칸으로 나눈다.
 function renderCompare({ lang, sides, examples, next }) {
   app.innerHTML = `
     <div class="tools">${hideToggle()}</div>
-    <div class="pair">
+    <div class="pair ${sides.length === 3 ? "three" : ""}" id="pair">
       ${sides.map(s => `<div class="pair-side">
           <p class="${s.big ? "pair-kana" : "pair-label"}" lang="${lang}">${esc(s.label)}</p>
-          <p class="pair-point">${esc(s.point)}</p>
-          ${s.practice ? `<button class="chip practice" data-go="${s.practice}">이 패턴 연습하기</button>` : ""}
+          <p class="pair-point">${s.pointHTML ?? esc(s.point)}</p>
+          ${s.practice ? `<button class="chip practice" data-go="${s.practice}">${esc(s.practiceLabel || "이 패턴 연습하기")}</button>` : ""}
         </div>`).join("")}
     </div>
     <h2 class="group">예문</h2>
@@ -1054,9 +1110,8 @@ function renderCompare({ lang, sides, examples, next }) {
   bindSay(lang);
 }
 
-// 헷갈리는 조사 비교
+// 헷갈리는 조사·작은 말 비교
 async function viewCompare(lang, sec, k) {
-  const L = LANGS[lang];
   let data;
   try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
   const c = data.compare[k];
@@ -1065,11 +1120,19 @@ async function viewCompare(lang, sec, k) {
   setHeader(c.title, base);
   remember(lang, { sec: sec.id, kind: "compare", id: c.id });
   const last = k === data.compare.length - 1;
+  const sides = compareSides(data, c);
+  const list = entriesOf(data);
   renderCompare({
     lang,
-    sides: c.pair.map(id => ({ label: particleById(data, id).text, point: c.points[id], big: true })),
-    examples: c.examples.map(ex => ({ ...ex, tag: particleById(data, ex.particle).text })),
-    next: last ? { hash: base, label: "조사 목록으로" } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${data.compare[k + 1].title}` }
+    sides: sides.map(s => {
+      const i = list.findIndex(p => p.id === s.entry);
+      // 작은 말은 쪽마다 그 단어 화면으로 가는 버튼 (I·me처럼 두 쪽이 같은 단어면 첫 쪽에만)
+      const first = sides.findIndex(x => x.entry === s.entry) === sides.indexOf(s);
+      return { label: s.label, pointHTML: s.pointHTML, big: true,
+               practice: c.sides && i >= 0 && first ? `${base}/${i}` : null, practiceLabel: "자세히" };
+    }),
+    examples: c.examples.map(ex => ({ ...ex, tag: sides[exampleSide(c, ex)]?.label })),
+    next: last ? { hash: base, label: `${unitOf(sec)} 목록으로` } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${data.compare[k + 1].title}` }
   });
   bindHideToggle(() => viewCompare(lang, sec, k));
 }

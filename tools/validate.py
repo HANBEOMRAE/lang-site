@@ -154,19 +154,33 @@ def check_particles(data, name):
                 continue
             need(ex, ["why"], w)
             sentence(ex, w, f"[{pts[ex['particle']]}]")
-        choices_ok = sorted(pts[x] for x in pair)
         for k, q in enumerate(c.get("quiz", [])):
             w = f"{where} > 퀴즈 {k + 1}번"
-            if q.get("text", "").count("[___]") != 1:
-                problems.append(f"{w}: 빈칸 [___]이 하나여야 해요")
-            if sorted(q.get("choices", [])) != choices_ok:
-                problems.append(f"{w}: choices가 비교하는 두 조사가 아니에요")
-            ans = q.get("answers") or []
-            if not ans or any(a not in q.get("choices", []) for a in ans):
-                problems.append(f"{w}: answers가 choices 안에 없어요")
-            need(q, ["why"], w)
+            ans = check_quiz(q, [pts[x] for x in pair], w, ja=True)
             filled = dict(q, text=q.get("text", "").replace("[___]", f"[{ans[0]}]" if ans else ""))
-            sentence(filled, w, f"[{ans[0]}]" if ans else "[?]", kanji=False)   # 퀴즈는 🎤가 없어 한자 표기 없음
+            sentence(filled, w, f"[{ans[0]}]" if ans else "[?]", kanji=False)   # 한자 표기는 check_quiz가 검사
+
+def check_quiz(q, choices, where, ja=False):
+    """퀴즈 한 문제 (일본어 조사·패턴 비교·작은 말이 같은 형식):
+    { context?, text: '…[___]…', choices, answers, ko_pron, meaning, why, words?, kanji_text(일본어, [___] 포함) }
+    choices는 비교하는 쪽의 이름 그대로(순서 무관). ko_pron·meaning은 정답을 넣은 문장. 정답 목록을 돌려준다."""
+    need(q, BASIC + ["why"], where)
+    if "context" in q and not str(q["context"]).strip():
+        problems.append(f"{where}: context가 비어 있어요 (없으면 칸을 빼요)")
+    if q.get("text", "").count("[___]") != 1:
+        problems.append(f"{where}: 빈칸 [___]이 하나여야 해요")
+    if sorted(q.get("choices", [])) != sorted(choices):
+        problems.append(f"{where}: choices가 비교하는 {' / '.join(choices)}가 아니에요")
+    ans = q.get("answers") or []
+    if not ans or any(a not in q.get("choices", []) for a in ans):
+        problems.append(f"{where}: answers가 choices 안에 없어요")
+    if ja:
+        kt = str(q.get("kanji_text") or "")
+        if kt.count("[___]") != 1:
+            problems.append(f"{where}: kanji_text에도 빈칸 [___]이 하나 있어야 해요")
+        elif ans:
+            check_kanji_text(q.get("text", "").replace("[___]", ans[0]), kt.replace("[___]", ans[0]), where)
+    return ans
 
 def pattern_prefix(pattern):
     """'Can I ___?' → 'Can I' : 비교 예문의 [ ] 안에 들어가는 틀 앞부분."""
@@ -210,14 +224,8 @@ def check_pattern_compare(data, name):
             problems.append(f"{where}: 두 틀 모두 예문이 있어야 해요")
         for k, q in enumerate(c.get("quiz", [])):
             w = f"{where} > 퀴즈 {k + 1}번"
-            need(q, BASIC + ["why", "context"], w)
-            if q.get("text", "").count("[___]") != 1:
-                problems.append(f"{w}: 빈칸 [___]이 하나여야 해요")
-            if sorted(q.get("choices", [])) != sorted(prefixes):
-                problems.append(f"{w}: choices가 비교하는 두 틀이 아니에요")
-            ans = q.get("answers") or []
-            if not ans or any(a not in q.get("choices", []) for a in ans):
-                problems.append(f"{w}: answers가 choices 안에 없어요")
+            check_quiz(q, prefixes, w)
+            need(q, ["context"], w)   # 두 틀 모두 문법상 맞을 때가 많아 상황이 있어야 정답이 갈린다
 
 def check_pairs(data, name):
     """헷갈리는 짝: 소리 두 개와 입 모양 팁, 짝 4~6쌍, 두 단어가 서로 다른지, 일본어는 가나·kanji 칸."""
@@ -367,6 +375,199 @@ def check_tips(data, name):
                 elif not str(g.get("meaning", "")).strip() or not str(g.get("ko_pron", "")).strip():
                     problems.append(f"{w}: '{m.group()}'의 ko_pron·meaning이 비어 있어요")
 
+HANGUL = re.compile(r"[가-힣ㄱ-ㅎㅏ-ㅣ]")
+LATIN = re.compile(r"[A-Za-z]")
+CHUNK_LANGS = ("ko", "en", "ja")
+
+def check_chunks(lines, where, count=None):
+    """설명 줄 = {lang, text} 조각 목록. 🔊가 조각마다 그 언어 목소리로 읽는다.
+    영어·일본어 조각에 한글, 한국어 조각에 알파벳이 있으면 다른 언어 목소리가 읽게 되어 문제로 본다."""
+    if not isinstance(lines, list) or not lines:
+        problems.append(f"{where}: 설명 줄이 없어요")
+        return
+    if count and not count[0] <= len(lines) <= count[1]:
+        problems.append(f"{where}: 설명이 {len(lines)}줄이에요 ({count[0]}~{count[1]}줄)")
+    for i, ln in enumerate(lines):
+        w = f"{where} {i + 1}번째 줄"
+        if not isinstance(ln, list) or not ln:
+            problems.append(f"{w}: [{{lang, text}}, …] 조각 목록이어야 해요")
+            continue
+        for c in ln:
+            if not isinstance(c, dict) or c.get("lang") not in CHUNK_LANGS:
+                problems.append(f"{w}: 조각의 lang은 {'/'.join(CHUNK_LANGS)} 중 하나예요 — {c}")
+                continue
+            t = str(c.get("text", ""))
+            if not t.strip():
+                problems.append(f"{w}: 빈 조각이 있어요")
+            elif c.get("silent"):
+                continue                                   # 화면에만 보이고 읽지 않는 조각(기호 등)
+            elif c["lang"] != "ko" and HANGUL.search(t):
+                problems.append(f"{w}: {c['lang']} 조각에 한글이 섞여 있어요 — '{t}'")
+            elif c["lang"] == "ko" and LATIN.search(t):
+                problems.append(f"{w}: 한국어 조각에 알파벳이 있어요 (한국어 목소리가 읽어요) — '{t}' → {{\"lang\": \"en\"}} 조각으로 나눠요")
+
+def en_vocab():
+    """영어 기초 단어·동사 text (소문자). 작은 말 예문의 words가 여기 있어야 한다."""
+    out = set()
+    for f in ("words", "verbs"):
+        try:
+            for c in json.loads((ROOT / f"data/en/{f}.json").read_text(encoding="utf-8")):
+                out |= {it.get("text", "").lower() for it in c.get("items", [])}
+        except Exception:
+            pass
+    return out
+
+def check_function_words(data, name):
+    """영어 작은 말: 조사와 같은 화면. 단어마다 forms(문장 속 모양), explain(조각 설명), 쓰임별 예문,
+    비교는 sides({label, entry, point})로 2~3쪽, 퀴즈는 check_quiz 공통 형식."""
+    vocab = en_vocab()
+    stages = {s.get("id") for s in data.get("stages", [])}
+    def sentence(ex, where, marks):
+        need(ex, BASIC, where)
+        t = ex.get("text", "")
+        found = [m.lower() for m in re.findall(r"\[([^\]]+)\]", t)]
+        if not found:
+            problems.append(f"{where}: 강조할 작은 말을 [ ]로 감싸야 해요")
+        for m in found:
+            if m not in marks:
+                problems.append(f"{where}: [{m}]가 이 단어의 모양({', '.join(sorted(marks))})이 아니에요")
+        for w in ex.get("words", []):
+            if w.lower() not in vocab:
+                problems.append(f"{where}: '{w}'는 기초 단어·동사에 없어요 (예문은 기초 단어 위주)")
+    ids = {}
+    for i, it in enumerate(data.get("items", [])):
+        where = f"{name} > {i + 1}번 ({it.get('text', '?')})"
+        need(it, ["id"] + BASIC, where)
+        if it.get("id") in ids:
+            problems.append(f"{where}: 중복된 id예요")
+        forms = it.get("forms") or []
+        ids[it.get("id")] = set(forms)
+        if it.get("stage") not in stages:
+            problems.append(f"{where}: stage '{it.get('stage')}'이 stages에 없어요")
+        if not forms or any(f != f.lower() or not f.strip() for f in forms):
+            problems.append(f"{where}: forms(문장 속 모양, 소문자)가 없어요")
+        check_chunks(it.get("explain"), f"{where} > explain", (1, 3))
+        uses = it.get("uses") or []
+        if not uses:
+            problems.append(f"{where}: 쓰임(uses)이 없어요")
+        if sum(len(u.get("examples", [])) for u in uses) < 2:
+            problems.append(f"{where}: 예문이 2개 이상 있어야 해요")
+        for u in uses:
+            if not str(u.get("name", "")).strip():
+                problems.append(f"{where}: 쓰임 이름(name)이 없어요")
+            if not u.get("examples"):
+                problems.append(f"{where} > {u.get('name')}: 예문이 없어요")
+            for k, ex in enumerate(u.get("examples", [])):
+                sentence(ex, f"{where} > {u.get('name')} {k + 1}번", set(forms))
+    cids = set()
+    for i, c in enumerate(data.get("compare", [])):
+        where = f"{name} > 비교 {i + 1}번 ({c.get('title', '?')})"
+        need(c, ["id", "title"], where)
+        if c.get("id") in cids:
+            problems.append(f"{where}: 중복된 id예요")
+        cids.add(c.get("id"))
+        sides = c.get("sides") or []
+        if not 2 <= len(sides) <= 3:
+            problems.append(f"{where}: sides는 2~3쪽이에요")
+            continue
+        for s in sides:
+            need(s, ["label"], where)
+            if s.get("entry") not in ids:
+                problems.append(f"{where}: '{s.get('label')}'의 entry '{s.get('entry')}'가 items에 없어요")
+            elif str(s.get("label", "")).lower() not in ids[s["entry"]]:
+                problems.append(f"{where}: '{s.get('label')}'가 '{s.get('entry')}'의 forms에 없어요")
+            check_chunks(s.get("point"), f"{where} > {s.get('label')} point", (1, 1))
+        labels = [s.get("label", "") for s in sides]
+        seen = set()
+        for k, ex in enumerate(c.get("examples", [])):
+            w = f"{where} > 예문 {k + 1}번"
+            if ex.get("side") not in range(len(sides)):
+                problems.append(f"{w}: side는 0~{len(sides) - 1}이에요")
+                continue
+            seen.add(ex["side"])
+            need(ex, ["why"], w)
+            sentence(ex, w, {labels[ex["side"]].lower()})
+        if seen != set(range(len(sides))):
+            problems.append(f"{where}: 모든 쪽에 예문이 있어야 해요")
+        if not c.get("quiz"):
+            problems.append(f"{where}: 퀴즈가 없어요")
+        for k, q in enumerate(c.get("quiz", [])):
+            w = f"{where} > 퀴즈 {k + 1}번"
+            ans = check_quiz(q, labels, w)
+            if ans:
+                sentence(dict(q, text=q.get("text", "").replace("[___]", f"[{ans[0]}]")), w, {a.lower() for a in labels})
+
+def fw_forms():
+    """작은 말의 모양 → 항목 id 목록 (예: 'her' → ['her', 'she-her'])."""
+    out = {}
+    try:
+        data = json.loads((ROOT / "data/en/function_words.json").read_text(encoding="utf-8"))
+    except Exception:
+        return out, set()
+    for it in data.get("items", []):
+        for f in it.get("forms", []):
+            out.setdefault(f, []).append(it.get("id"))
+    return out, {it.get("id") for it in data.get("items", [])}
+
+def check_fw_link(g, tok, where, forms, ids):
+    """단어 말풍선의 '더 알아보기'가 갈 곳. 말풍선 뜻(g)에 fw가 있으면 그것(false=안 붙임, 목록=버튼 여러 개),
+    없으면 모양으로 찾는다. 모양이 여러 항목에 걸리면(her) 문장 속 자리에 맞는 fw를 뜻에 적어야 한다."""
+    fw = g.get("fw") if isinstance(g, dict) else None
+    if fw is False:
+        return
+    if fw is not None:
+        for x in ([fw] if isinstance(fw, str) else fw if isinstance(fw, list) else [None]):
+            if x not in ids:
+                problems.append(f"{where}: '{tok}'의 fw '{x}'가 작은 말에 없어요")
+        return
+    if len(forms.get(tok, [])) > 1:
+        problems.append(f"{where}: '{tok}'는 작은 말 {', '.join(forms[tok])}에 다 있어요 — 뜻에 \"fw\"로 이 자리의 항목을 적어요")
+    elif tok in forms and re.match(r"^\(.*=.*\)$", str(g.get("meaning", ""))):
+        warnings.append(f"{where}: '{tok}'가 '{g.get('meaning')}'처럼 묶음 말인데 더 알아보기가 붙어요 — 맞지 않으면 \"fw\": false")
+
+def check_fw_links():
+    """패턴 문장·알아두기 예문의 작은 말이 '더 알아보기'로 맞는 곳에 가는지."""
+    forms, ids = fw_forms()
+    if not forms:
+        return
+    try:
+        pats = json.loads((ROOT / "data/en/patterns.json").read_text(encoding="utf-8"))
+    except Exception:
+        pats = []
+    for p in pats:
+        pattern = p.get("pattern", "")
+        if "___" not in pattern:
+            continue
+        start = pattern.index("___")
+        pw = {k.lower(): v for k, v in (p.get("words") or {}).items()}
+        for f in p.get("fills", []):
+            fw = {k.lower(): v for k, v in (f.get("words") or {}).items()}
+            end = start + len(f.get("text", ""))
+            for m in WORD.finditer(pattern.replace("___", f.get("text", ""))):
+                tok = m.group().lower()
+                if tok not in forms:
+                    continue
+                in_fill = m.start() < end and m.end() > start
+                g = (fw.get(tok) or pw.get(tok)) if in_fill else pw.get(tok)
+                if g:
+                    check_fw_link(g, tok, f"en/patterns.json > {pattern} > {f.get('text')}", forms, ids)
+    try:
+        tips = json.loads((ROOT / "data/en/tips.json").read_text(encoding="utf-8")).get("tips", [])
+    except Exception:
+        tips = []
+    for t in tips:
+        tw = {k.lower(): v for k, v in (t.get("words") or {}).items()}
+        for ex in t.get("examples", []):
+            ew = {k.lower(): v for k, v in (ex.get("words") or {}).items()}
+            seen = {}
+            for m in WORD.finditer(str(ex.get("text", "")).replace("[", "").replace("]", "")):
+                tok = m.group().lower()
+                seen[tok] = seen.get(tok, 0) + 1
+                g = ew.get(f"{tok}@{seen[tok]}") or ew.get(tok) or tw.get(tok)
+                if tok in forms and g:
+                    check_fw_link(g, tok, f"en/tips.json > {t.get('title')} > {ex.get('text')}", forms, ids)
+    print("검사함: 작은 말 '더 알아보기' 연결")
+
 def check_situations(data, name):
     for s in data:
         need(s, ["scene"], f"{name} 장면")
@@ -421,9 +622,11 @@ CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards
             "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
-                    "en/pattern_compare": check_pattern_compare, "en/tips": check_tips}
+                    "en/pattern_compare": check_pattern_compare, "en/tips": check_tips,
+                    "en/function_words": check_function_words}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict}
+SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict,
+          check_function_words: dict}
 
 def check_offline():
     """sw.js의 오프라인 저장 목록(PRECACHE)이 실제 파일과 맞는지, 글꼴 주소가 index.html과 같은지."""
@@ -464,6 +667,7 @@ def main():
                 continue
             checker(data, name)
             print(f"검사함: {name}")
+    check_fw_links()
     check_offline()
     if warnings:
         print(f"\n경고 {len(warnings)}개 (검사는 멈추지 않아요):")

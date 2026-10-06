@@ -29,6 +29,7 @@ lang-site/
   data/en/              영어 데이터
     words.json          기초 단어 (주제별)
     verbs.json          동사 (주제별)
+    function_words.json 작은 말 (and·to·my·the·me 같은 기능어, 비교·퀴즈 데이터)
     patterns.json       패턴 영어
     pattern_compare.json 비슷한 패턴 비교 (I want to/I need to 등)
     tips.json           💡 알아두기 (to의 두 뜻, a/the 등 짧은 설명)
@@ -145,7 +146,7 @@ python tools/validate.py
   "compare": [
     { "id": "ni-de", "pair": ["ni", "de"], "title": "に와 で", "points": { "ni": "가는 곳, 있는 곳", "de": "…" },
       "examples": [ { "particle": "ni", "text": "こうえん[に] いく。", "ko_pron": "…", "meaning": "…", "why": "가는 곳이라 に", "words": ["こうえん"] } ],
-      "quiz": [ { "text": "がっこう[___] いく。", "choices": ["に", "で"], "answers": ["に"],
+      "quiz": [ { "text": "がっこう[___] いく。", "kanji_text": "学校[___]行く。", "choices": ["に", "で"], "answers": ["に"],
                   "ko_pron": "갓코-니 이쿠.", "meaning": "학교에 가.", "why": "가는 곳이라 に", "words": ["がっこう"] } ] }
   ]
 }
@@ -155,7 +156,66 @@ python tools/validate.py
   쓰임이 하나면 예문 3~4개, 여러 개면(に·で·と) 쓰임마다 2~3개.
 - 예문의 조사는 `[ ]`로 표시한다. 화면에서는 강조로 바뀌고, 발음 듣기와 가나 검사는 괄호를 뺀 문장으로 한다.
 - `words`에는 예문에 쓴 `ja/words.json` 단어를 적는다. 검사기가 단어가 있는지, 예문에 들어 있는지 확인한다.
-- 퀴즈는 빈칸을 `[___]`로 쓰고, 정답이 여럿이면 `answers`에 모두 넣는다(예: に·へ 둘 다 맞음). `ko_pron`·`meaning`은 첫 정답을 넣은 문장 기준. 퀴즈 화면은 아직 없다.
+- 퀴즈는 아래 "퀴즈 형식 (세 곳 공통)"을 따른다.
+
+### 영어 작은 말 (en/function_words.json)
+
+일본어 조사와 같은 화면(`type: "particles"`)을 쓴다. 섹션의 `unit`("조사"/"작은 말")이 화면 글자에 들어간다.
+
+```json
+{
+  "stages": [ { "id": "person", "name": "사람 대신 쓰는 말", "desc": "I·me, you, …" } ],
+  "items": [
+    { "id": "i-me", "stage": "person", "text": "I · me", "ko_pron": "아이 · 미", "meaning": "나 / 나를, 나에게",
+      "forms": ["i", "me"],
+      "explain": [ [ {"lang": "ko", "text": "앞에 와서 하는 사람이면 "}, {"lang": "en", "text": "I"}, {"lang": "ko", "text": ", …"} ] ],
+      "uses": [ { "name": "me: 나를, 나에게", "desc": "동작 뒤", "examples": [
+          { "text": "Help [me]!", "ko_pron": "헬프 미!", "meaning": "도와줘!", "words": ["help"] } ] } ] }
+  ],
+  "compare": [
+    { "id": "i-me", "title": "I와 me",
+      "sides": [ { "label": "I", "entry": "i-me", "point": [ [ {"lang": "ko", "text": "앞에 와서 하는 사람"} ] ] },
+                 { "label": "me", "entry": "i-me", "point": [ [ … ] ] } ],
+      "examples": [ { "side": 1, "text": "Mom helps [me].", "ko_pron": "…", "meaning": "…", "why": "…", "words": ["mom", "help"] } ],
+      "quiz": [ … ] }
+  ]
+}
+```
+
+- `forms`: 문장 속 모양(소문자). 패턴·알아두기 말풍선의 "더 알아보기"가 이것으로 이 항목을 찾는다. 예문의 `[ ]` 안도 이 모양이어야 한다.
+- `explain`·`point`: 설명을 `{lang, text}` 조각 줄로 쓴다(아래 "설명 조각"). `explain`은 1~3줄, `point`는 1줄.
+- 예문 `words`에는 예문에 쓴 기초 단어(`en/words.json`·`verbs.json`의 `text`, 기본형)를 적는다. 없는 단어면 검사에서 걸린다.
+- 비교는 2~3쪽(in·on·at). `label`은 화면에 크게 보이는 말이고 `entry`의 `forms`에 있어야 한다. I·me처럼 한 항목의 두 모양을 비교할 수도 있다.
+
+### 설명 조각 ({lang, text})
+
+설명 한 줄 = 조각 목록. 화면은 조각을 그대로 이어 붙이고(띄어쓰기는 조각 `text` 안에 둔다), 영어·일본어 조각에는 그 언어 글꼴을 쓴다.
+
+- `lang`은 `ko`/`en`/`ja`. 영어·일본어 조각에 한글, 한국어 조각에 알파벳이 있으면 검사에서 걸린다(다른 언어 목소리가 읽게 되므로).
+- 화면에만 보이고 읽지 않을 기호는 `"silent": true` 조각으로 둔다.
+
+### "더 알아보기" (패턴 말풍선 → 작은 말)
+
+패턴 문장과 알아두기 예문에서 단어를 누르면 뜨는 말풍선에, 그 단어가 작은 말이면 그 항목으로 가는 버튼이 붙는다.
+갈 곳은 문장 속 자리로 고른 바로 그 뜻(`words`의 값)으로 정한다.
+
+- 뜻에 `"fw"`가 있으면 그것: `"fw": "she-her"`(그 항목), `"fw": false`(버튼 없음), `"fw": ["her", "she-her"]`(문장만으로 구분이 안 될 때 버튼 두 개).
+- 없으면 단어 모양(`forms`)으로 찾는다. her처럼 두 항목에 걸리는 모양은 뜻에 `fw`가 꼭 있어야 한다(검사).
+- `turn on`, `look for`, `so happy`처럼 묶음 말이거나 뜻이 다른 자리는 `"fw": false`. 뜻이 `(… = …)` 모양인데 `fw`가 없으면 검사가 경고한다.
+
+### 퀴즈 형식 (세 곳 공통)
+
+일본어 조사(`ja/particles.json`), 비슷한 패턴 비교(`pattern_compare.json`), 작은 말(`function_words.json`)의 `compare[].quiz`는 같은 형식이다.
+퀴즈 화면은 아직 없고, 만들면 세 곳이 같은 화면을 쓴다.
+
+```json
+{ "context": "도서관 규칙을 말할 때", "text": "[___] be quiet in the library.", "choices": ["I need to", "I have to"],
+  "answers": ["I have to"], "ko_pron": "…", "meaning": "…", "why": "…", "words": ["…"] }
+```
+
+- `text`에 빈칸 `[___]` 하나. `choices`는 그 비교의 쪽 이름 그대로(조사 글자, 틀 앞부분, 작은 말 `label`). 정답이 여럿이면 `answers`에 모두.
+- `ko_pron`·`meaning`은 첫 정답을 넣은 문장 기준. `context`(상황)는 없어도 되지만 패턴 비교는 꼭 있어야 한다.
+- 일본어는 `kanji_text`도 `[___]`를 넣어 쓴다(빈칸에 정답을 넣으면 한자 표기 문장).
 
 ### 패턴 영어 (patterns.json)
 
@@ -280,6 +340,7 @@ python tools/build_preview.py
 | --- | --- |
 | 영어 기초 단어 | 36개 주제, 370개 |
 | 영어 동사 | 5개 주제, 42개 |
+| 영어 작은 말 | 5개 묶음, 36개, 예문 129개, 비교 5개(예문 22개, 퀴즈 15개) |
 | 패턴 영어 | 33개 틀, 문장 396개 (틀마다 12개) |
 | 비슷한 패턴 비교 | 5개 짝, 예문 20개, 퀴즈 15개 |
 | 💡 알아두기 (영어) | 설명 6개, 예문 25개, 패턴 15개에 연결 |

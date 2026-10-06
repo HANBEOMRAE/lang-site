@@ -27,6 +27,7 @@ const PRECACHE = [
   "icons/apple-touch-icon.png",
   "data/en/words.json",
   "data/en/verbs.json",
+  "data/en/function_words.json",
   "data/en/patterns.json",
   "data/en/pattern_compare.json",
   "data/en/tips.json",

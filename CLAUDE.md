@@ -18,7 +18,8 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 
 - `js/core.js`의 `LANGS`가 언어·섹션 목록의 기준이다. 섹션마다 `id`(= `data/<언어>/<id>.json`), `type`, `ready`가 있다.
 - `js/app.js`가 `#/<언어>/<섹션>/<a>/<b>` 주소를 읽고 섹션 `type`에 따라 `views.js`의 화면 함수를 고른다.
-  type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표), `particles`(일본어 조사, `#/ja/particles/vs/<n>`은 비교).
+  type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표), `particles`(일본어 조사·영어 작은 말, `#/<언어>/<섹션>/vs/<n>`은 비교).
+  `particles` 화면은 두 모양을 다 읽는다: 조사(`particles`, 비교 `pair`+`points`)와 작은 말(`items`, `explain`, 비교 `sides`). views.js `entriesOf`·`compareSides` 참고.
 - 조사 예문의 `[조사]` 표시는 화면에서 강조(`markParticle`)로, 발음 듣기·검사에서는 괄호를 뺀 문장(`plainText`)으로 쓴다.
   `uses`는 쓰임별 묶음, `words`는 예문에 쓴 `ja/words.json` 단어 목록이다.
 - 스크립트는 모듈 없이 `core.js → speech.js → views.js → app.js` 순서로 불러오는 전역 함수 방식이다.
@@ -57,6 +58,15 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 - 찾는 순서는 문장 속 자리로 정한다: 틀 자리 단어 → 패턴 `words`, 바꿔 넣는 말 자리 단어 → 그 말 `words` → 패턴 `words`.
   (views.js `viewPattern`이 `bindWordGloss`에 넘기는 찾기 함수, validate.py `check_word_glosses`가 같은 규칙. 문장의 모든 단어에 뜻이 있어야 검사를 통과한다.)
 - 단어 키는 소문자. 문장부호는 떼고, I'm·don't·kids' 같은 말은 한 단어로 본다. `I'm ___ing`은 문장에 나오는 형태(eating)로 적는다.
+
+## 영어 작은 말 (`data/en/function_words.json`)과 "더 알아보기"
+
+- 예문은 `en/words.json`·`verbs.json`에 있는 기초 단어 위주로 쓰고, 쓴 단어(기본형)를 예문 `words`에 적는다.
+- 설명(`explain`, 비교 `point`)은 `{lang, text}` 조각 줄로 쓴다. 한국어 조각에 영어를 넣지 않는다(한국어 목소리가 영어를 읽게 된다). 띄어쓰기는 조각 text 안에 둔다.
+- 패턴·알아두기 말풍선의 "더 알아보기"는 문장 속 자리로 고른 뜻(`words` 값)의 `fw`로 갈 곳을 정하고, 없으면 `forms`로 찾는다.
+  her처럼 두 항목에 걸리는 모양은 뜻에 `fw`를 꼭 적는다. 묶음 말(turn on, look for)이나 뜻이 다른 자리(so happy의 so)는 `"fw": false`.
+  (views.js `fwLinks`, validate.py `check_fw_links`가 같은 규칙.)
+- 퀴즈는 일본어 조사·패턴 비교·작은 말이 같은 형식이다(README "퀴즈 형식", validate.py `check_quiz`).
 
 ## 💡 알아두기 (`data/en/tips.json`)
 

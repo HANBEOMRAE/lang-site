@@ -8,6 +8,7 @@
 //  #/ja/stars               헷갈린 단어(☆) 모아 보기   #/ja/stars/2  3번째 카드
 //  #/en/tips                💡 알아두기 모음  #/en/tips/1       2번째 설명 (LANGS의 tips: true인 언어만)
 //  #/en/pairs               발음 연습 목록   #/en/pairs/0      짝 연습   #/en/pairs/weak  내 발음 약점
+//  #/en/function_words      작은 말 목록     #/en/function_words/7  8번째 말   #/en/function_words/vs/0  비교 (조사와 같은 화면)
 //  #/ja/particles           조사 목록        #/ja/particles/4  5번째 조사   #/ja/particles/vs/1  2번째 비교
 
 function route() {

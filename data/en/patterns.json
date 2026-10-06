@@ -879,7 +879,8 @@
      },
      "in": {
       "ko_pron": "인",
-      "meaning": "(check in = 체크인하다)"
+      "meaning": "(check in = 체크인하다)",
+      "fw": false
      }
     }
    },
@@ -962,7 +963,8 @@
      },
      "on": {
       "ko_pron": "온",
-      "meaning": "(try on = 입어 보다)"
+      "meaning": "(try on = 입어 보다)",
+      "fw": false
      }
     }
    },
@@ -1192,7 +1194,8 @@
      },
      "by": {
       "ko_pron": "바이",
-      "meaning": "(by myself = 혼자)"
+      "meaning": "(by myself = 혼자)",
+      "fw": false
      },
      "myself": {
       "ko_pron": "마이셀프",
@@ -1547,7 +1550,8 @@
     "words": {
      "so": {
       "ko_pron": "쏘",
-      "meaning": "정말"
+      "meaning": "정말",
+      "fw": false
      },
      "excited": {
       "ko_pron": "익사이티드",
@@ -1979,7 +1983,8 @@
    },
    "to": {
     "ko_pron": "투",
-    "meaning": "(going to = ~할 것이다)"
+    "meaning": "(going to = ~할 것이다)",
+    "fw": "to"
    },
    "my": {
     "ko_pron": "마이",
@@ -2426,7 +2431,8 @@
    },
    "to": {
     "ko_pron": "투",
-    "meaning": "(have to = ~해야 한다)"
+    "meaning": "(have to = ~해야 한다)",
+    "fw": "to"
    },
    "go": {
     "ko_pron": "고",
@@ -2793,7 +2799,8 @@
    },
    "so": {
     "ko_pron": "쏘",
-    "meaning": "정말"
+    "meaning": "정말",
+    "fw": false
    },
    "at": {
     "ko_pron": "앳",
@@ -3032,7 +3039,8 @@
      },
      "on": {
       "ko_pron": "온",
-      "meaning": "(try on = 입어 보다)"
+      "meaning": "(try on = 입어 보다)",
+      "fw": false
      }
     }
    },
@@ -3379,7 +3387,8 @@
      },
      "on": {
       "ko_pron": "온",
-      "meaning": "(put on = 입다)"
+      "meaning": "(put on = 입다)",
+      "fw": false
      },
      "coat": {
       "ko_pron": "코트",
@@ -4024,7 +4033,8 @@
     "words": {
      "in": {
       "ko_pron": "인",
-      "meaning": "(in total = 전부 합쳐서)"
+      "meaning": "(in total = 전부 합쳐서)",
+      "fw": false
      },
      "total": {
       "ko_pron": "토털",
@@ -4508,7 +4518,8 @@
      },
      "on": {
       "ko_pron": "온",
-      "meaning": "(turn on = 켜다)"
+      "meaning": "(turn on = 켜다)",
+      "fw": false
      },
      "light": {
       "ko_pron": "라이트",
@@ -4554,7 +4565,8 @@
    },
    "for": {
     "ko_pron": "포",
-    "meaning": "(look for = ~을 찾다)"
+    "meaning": "(look for = ~을 찾다)",
+    "fw": false
    },
    "my": {
     "ko_pron": "마이",
@@ -6337,7 +6349,8 @@
     "words": {
      "so": {
       "ko_pron": "쏘",
-      "meaning": "그렇게"
+      "meaning": "그렇게",
+      "fw": false
      }
     }
    },

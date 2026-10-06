@@ -1,0 +1,3492 @@
+{
+ "stages": [
+  {
+   "id": "link",
+   "name": "이어 주는 말",
+   "desc": "and·but·or·so·because·when·if"
+  },
+  {
+   "id": "place",
+   "name": "방향·위치 말",
+   "desc": "to·in·on·at·for·with·from·of·by·about"
+  },
+  {
+   "id": "whose",
+   "name": "누구의",
+   "desc": "my·your·his·her·our·their"
+  },
+  {
+   "id": "point",
+   "name": "가리키는 말",
+   "desc": "a·an·the·this·that·these·those"
+  },
+  {
+   "id": "person",
+   "name": "사람 대신 쓰는 말",
+   "desc": "I·me, you, he·him, she·her, we·us, they·them"
+  }
+ ],
+ "items": [
+  {
+   "id": "and",
+   "stage": "link",
+   "text": "and",
+   "ko_pron": "앤드",
+   "meaning": "~와, 그리고",
+   "forms": [
+    "and"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "두 가지를 하나로 이어요. "
+     },
+     {
+      "lang": "en",
+      "text": "mom and dad"
+     },
+     {
+      "lang": "ko",
+      "text": " 엄마와 아빠."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "문장 두 개를 이어 '~하고'라고도 해요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "단어 잇기",
+     "desc": "~와, ~랑",
+     "examples": [
+      {
+       "text": "I like apples [and] bananas.",
+       "ko_pron": "아이 라이크 애플즈 앤드 바나나즈.",
+       "meaning": "나는 사과랑 바나나가 좋아.",
+       "words": [
+        "like",
+        "apple",
+        "banana"
+       ]
+      },
+      {
+       "text": "Mom [and] dad are home.",
+       "ko_pron": "맘 앤드 대드 아 홈.",
+       "meaning": "엄마랑 아빠가 집에 있어.",
+       "words": [
+        "mom",
+        "dad",
+        "home"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "동작 잇기",
+     "desc": "~하고",
+     "examples": [
+      {
+       "text": "Wash your hands [and] eat.",
+       "ko_pron": "워시 유어 핸즈 앤드 잇.",
+       "meaning": "손 씻고 먹어.",
+       "words": [
+        "wash",
+        "hand",
+        "eat"
+       ]
+      },
+      {
+       "text": "Sit down [and] wait.",
+       "ko_pron": "싯 다운 앤드 웨잇.",
+       "meaning": "앉아서 기다려.",
+       "words": [
+        "sit",
+        "down",
+        "wait"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "but",
+   "stage": "link",
+   "text": "but",
+   "ko_pron": "벗",
+   "meaning": "하지만, 그런데",
+   "forms": [
+    "but"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "앞말과 반대되는 이야기를 이어요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "but"
+     },
+     {
+      "lang": "ko",
+      "text": " 뒤에는 앞에서 생각한 것과 다른 말이 와요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "반대 잇기",
+     "desc": "~하지만",
+     "examples": [
+      {
+       "text": "I'm tired, [but] I want to play.",
+       "ko_pron": "아임 타이어드, 벗 아이 원 투 플레이.",
+       "meaning": "피곤하지만 놀고 싶어.",
+       "words": [
+        "tired",
+        "want",
+        "play"
+       ]
+      },
+      {
+       "text": "It's small, [but] it's yummy.",
+       "ko_pron": "잇츠 스몰, 벗 잇츠 야미.",
+       "meaning": "작지만 맛있어.",
+       "words": [
+        "small",
+        "yummy"
+       ]
+      },
+      {
+       "text": "I like cats, [but] I don't like dogs.",
+       "ko_pron": "아이 라이크 캣츠, 벗 아이 돈트 라이크 도그즈.",
+       "meaning": "고양이는 좋은데 개는 싫어.",
+       "words": [
+        "like",
+        "cat",
+        "dog"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "or",
+   "stage": "link",
+   "text": "or",
+   "ko_pron": "오어",
+   "meaning": "또는, 아니면",
+   "forms": [
+    "or"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "둘 중 하나를 고를 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "묻는 말에 "
+     },
+     {
+      "lang": "en",
+      "text": "or"
+     },
+     {
+      "lang": "ko",
+      "text": "가 있으면 둘 중 하나로 대답해요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "둘 중 하나",
+     "desc": "~ 아니면 ~",
+     "examples": [
+      {
+       "text": "Milk [or] juice?",
+       "ko_pron": "밀크 오어 주스?",
+       "meaning": "우유, 아니면 주스?",
+       "words": [
+        "milk",
+        "juice"
+       ]
+      },
+      {
+       "text": "Do you want red [or] blue?",
+       "ko_pron": "두 유 원트 레드 오어 블루?",
+       "meaning": "빨강이 좋아, 파랑이 좋아?",
+       "words": [
+        "want",
+        "red",
+        "blue"
+       ]
+      },
+      {
+       "text": "Is it big [or] small?",
+       "ko_pron": "이즈 잇 빅 오어 스몰?",
+       "meaning": "그거 커, 작아?",
+       "words": [
+        "big",
+        "small"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "so",
+   "stage": "link",
+   "text": "so",
+   "ko_pron": "쏘",
+   "meaning": "그래서",
+   "forms": [
+    "so"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "앞이 이유, 뒤가 결과예요. '그래서'로 이어요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "so happy"
+     },
+     {
+      "lang": "ko",
+      "text": "처럼 기분을 나타내는 말 앞에 오면 '정말'이라는 뜻이에요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "이유 → 결과",
+     "desc": "~해서 ~해",
+     "examples": [
+      {
+       "text": "I'm hungry, [so] I want to eat.",
+       "ko_pron": "아임 헝그리, 쏘 아이 원 투 잇.",
+       "meaning": "배고파서 먹고 싶어.",
+       "words": [
+        "hungry",
+        "want",
+        "eat"
+       ]
+      },
+      {
+       "text": "It's cold, [so] wear a coat.",
+       "ko_pron": "잇츠 콜드, 쏘 웨어 어 코트.",
+       "meaning": "추우니까 코트 입어.",
+       "words": [
+        "cold",
+        "coat"
+       ]
+      },
+      {
+       "text": "I'm sleepy, [so] I'm going to bed.",
+       "ko_pron": "아임 슬리피, 쏘 아임 고잉 투 베드.",
+       "meaning": "졸려서 자러 갈래.",
+       "words": [
+        "sleepy",
+        "go",
+        "bed"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "because",
+   "stage": "link",
+   "text": "because",
+   "ko_pron": "비코즈",
+   "meaning": "~때문에, 왜냐하면",
+   "forms": [
+    "because"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "이유를 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "because"
+     },
+     {
+      "lang": "ko",
+      "text": " 바로 뒤에 이유가 와요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "이유 말하기",
+     "desc": "~해서, ~니까",
+     "examples": [
+      {
+       "text": "I'm sad [because] it's raining.",
+       "ko_pron": "아임 새드 비코즈 잇츠 레이닝.",
+       "meaning": "비가 와서 슬퍼.",
+       "words": [
+        "sad",
+        "rain"
+       ]
+      },
+      {
+       "text": "I want water [because] I'm hot.",
+       "ko_pron": "아이 원트 워터 비코즈 아임 핫.",
+       "meaning": "더워서 물 마시고 싶어.",
+       "words": [
+        "want",
+        "water",
+        "hot"
+       ]
+      },
+      {
+       "text": "I can't sleep [because] it's loud.",
+       "ko_pron": "아이 캔트 슬립 비코즈 잇츠 라우드.",
+       "meaning": "시끄러워서 못 자겠어.",
+       "words": [
+        "sleep",
+        "loud"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "when",
+   "stage": "link",
+   "text": "when",
+   "ko_pron": "웬",
+   "meaning": "~할 때",
+   "forms": [
+    "when"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "두 가지 일을 '~할 때'로 이어요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "문장 맨 앞에서 물을 때는 '언제'라는 뜻이에요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "~할 때",
+     "examples": [
+      {
+       "text": "I'm happy [when] I play.",
+       "ko_pron": "아임 해피 웬 아이 플레이.",
+       "meaning": "나는 놀 때 행복해.",
+       "words": [
+        "happy",
+        "play"
+       ]
+      },
+      {
+       "text": "Wash your hands [when] you come home.",
+       "ko_pron": "워시 유어 핸즈 웬 유 컴 홈.",
+       "meaning": "집에 오면 손 씻어.",
+       "words": [
+        "wash",
+        "hand",
+        "come",
+        "home"
+       ]
+      },
+      {
+       "text": "I drink milk [when] I wake up.",
+       "ko_pron": "아이 드링크 밀크 웬 아이 웨이크 업.",
+       "meaning": "나는 일어나면 우유를 마셔.",
+       "words": [
+        "drink",
+        "milk",
+        "wake up"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "if",
+   "stage": "link",
+   "text": "if",
+   "ko_pron": "이프",
+   "meaning": "만약 ~하면",
+   "forms": [
+    "if"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "'만약 ~하면'이라고 조건을 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "if"
+     },
+     {
+      "lang": "ko",
+      "text": " 바로 뒤에 조건이 와요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "만약 ~하면",
+     "examples": [
+      {
+       "text": "[If] you're hungry, eat this.",
+       "ko_pron": "이프 유어 헝그리, 잇 디스.",
+       "meaning": "배고프면 이거 먹어.",
+       "words": [
+        "hungry",
+        "eat",
+        "this"
+       ]
+      },
+      {
+       "text": "[If] it rains, we stay home.",
+       "ko_pron": "이프 잇 레인즈, 위 스테이 홈.",
+       "meaning": "비가 오면 우리는 집에 있어.",
+       "words": [
+        "rain",
+        "home"
+       ]
+      },
+      {
+       "text": "Ask me [if] you need help.",
+       "ko_pron": "애스크 미 이프 유 니드 헬프.",
+       "meaning": "도움이 필요하면 나한테 물어봐.",
+       "words": [
+        "ask",
+        "need",
+        "help"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "to",
+   "stage": "place",
+   "text": "to",
+   "ko_pron": "투",
+   "meaning": "~로, ~에 / ~하기를",
+   "forms": [
+    "to"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "en",
+      "text": "to"
+     },
+     {
+      "lang": "ko",
+      "text": "는 뜻이 두 가지예요. 바로 뒤를 보면 알 수 있어요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "뒤에 장소가 오면 '~로, ~에'예요. "
+     },
+     {
+      "lang": "en",
+      "text": "go to the park"
+     },
+     {
+      "lang": "ko",
+      "text": " 공원에 가."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "뒤에 동작이 오면 '~하기를'이에요. "
+     },
+     {
+      "lang": "en",
+      "text": "want to eat"
+     },
+     {
+      "lang": "ko",
+      "text": " 먹고 싶어."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "장소 앞: ~로, ~에",
+     "desc": "어디로 가는지",
+     "examples": [
+      {
+       "text": "Let's go [to] the park.",
+       "ko_pron": "렛츠 고 투 더 파크.",
+       "meaning": "공원에 가자.",
+       "words": [
+        "go",
+        "park"
+       ]
+      },
+      {
+       "text": "I walk [to] school.",
+       "ko_pron": "아이 워크 투 스쿨.",
+       "meaning": "나는 학교에 걸어가.",
+       "words": [
+        "walk",
+        "school"
+       ]
+      },
+      {
+       "text": "Come [to] me.",
+       "ko_pron": "컴 투 미.",
+       "meaning": "나한테 와.",
+       "words": [
+        "come"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "동작 앞: ~하기를",
+     "desc": "하고 싶은 일, 해야 할 일",
+     "examples": [
+      {
+       "text": "I want [to] eat.",
+       "ko_pron": "아이 원 투 잇.",
+       "meaning": "먹고 싶어.",
+       "words": [
+        "want",
+        "eat"
+       ]
+      },
+      {
+       "text": "I need [to] sleep.",
+       "ko_pron": "아이 니드 투 슬립.",
+       "meaning": "자야 해.",
+       "words": [
+        "need",
+        "sleep"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "둘 다 있는 문장",
+     "desc": "앞 to는 ~하기를, 뒤 to는 ~로",
+     "examples": [
+      {
+       "text": "I want [to] go [to] school.",
+       "ko_pron": "아이 원 투 고 투 스쿨.",
+       "meaning": "학교에 가고 싶어.",
+       "words": [
+        "want",
+        "go",
+        "school"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "in",
+   "stage": "place",
+   "text": "in",
+   "ko_pron": "인",
+   "meaning": "~안에, ~에",
+   "forms": [
+    "in"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "무언가의 안에 있을 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "계절, 아침처럼 긴 시간 앞에도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "in summer"
+     },
+     {
+      "lang": "ko",
+      "text": " 여름에."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "안에",
+     "examples": [
+      {
+       "text": "The fish is [in] the water.",
+       "ko_pron": "더 피시 이즈 인 더 워터.",
+       "meaning": "물고기가 물속에 있어.",
+       "words": [
+        "fish",
+        "water"
+       ]
+      },
+      {
+       "text": "My phone is [in] my bag.",
+       "ko_pron": "마이 폰 이즈 인 마이 백.",
+       "meaning": "내 폰은 가방 안에 있어.",
+       "words": [
+        "phone",
+        "bag"
+       ]
+      },
+      {
+       "text": "I'm [in] the kitchen.",
+       "ko_pron": "아임 인 더 키친.",
+       "meaning": "나 부엌에 있어.",
+       "words": [
+        "kitchen"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "긴 시간",
+     "desc": "계절, 아침·저녁",
+     "examples": [
+      {
+       "text": "It's hot [in] summer.",
+       "ko_pron": "잇츠 핫 인 써머.",
+       "meaning": "여름에는 더워.",
+       "words": [
+        "hot",
+        "summer"
+       ]
+      },
+      {
+       "text": "I eat bread [in] the morning.",
+       "ko_pron": "아이 잇 브레드 인 더 모닝.",
+       "meaning": "나는 아침에 빵을 먹어.",
+       "words": [
+        "eat",
+        "bread",
+        "morning"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "on",
+   "stage": "place",
+   "text": "on",
+   "ko_pron": "온",
+   "meaning": "~위에, ~에",
+   "forms": [
+    "on"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "무언가의 위에 닿아 있을 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "요일 앞에도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "on Monday"
+     },
+     {
+      "lang": "ko",
+      "text": " 월요일에."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "turn on"
+     },
+     {
+      "lang": "ko",
+      "text": "처럼 동작 말에 붙으면 '켜다'처럼 뜻이 따로 생겨요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "위에",
+     "desc": "닿아 있을 때",
+     "examples": [
+      {
+       "text": "The cup is [on] the table.",
+       "ko_pron": "더 컵 이즈 온 더 테이블.",
+       "meaning": "컵이 탁자 위에 있어.",
+       "words": [
+        "cup",
+        "table"
+       ]
+      },
+      {
+       "text": "Sit [on] the chair.",
+       "ko_pron": "싯 온 더 체어.",
+       "meaning": "의자에 앉아.",
+       "words": [
+        "sit",
+        "chair"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "요일",
+     "examples": [
+      {
+       "text": "I play soccer [on] Sunday.",
+       "ko_pron": "아이 플레이 사커 온 썬데이.",
+       "meaning": "나는 일요일에 축구를 해.",
+       "words": [
+        "play",
+        "soccer",
+        "sunday"
+       ]
+      },
+      {
+       "text": "See you [on] Monday!",
+       "ko_pron": "씨 유 온 먼데이!",
+       "meaning": "월요일에 만나!",
+       "words": [
+        "see",
+        "monday"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "at",
+   "stage": "place",
+   "text": "at",
+   "ko_pron": "앳",
+   "meaning": "~에서, ~에 (콕 집은 곳·시각)",
+   "forms": [
+    "at"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "콕 집은 한 곳이나 한 시각에 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "at home"
+     },
+     {
+      "lang": "ko",
+      "text": " 집에서, "
+     },
+     {
+      "lang": "en",
+      "text": "at six"
+     },
+     {
+      "lang": "ko",
+      "text": " 여섯 시에."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "한 곳",
+     "examples": [
+      {
+       "text": "I'm [at] home.",
+       "ko_pron": "아임 앳 홈.",
+       "meaning": "나 집에 있어.",
+       "words": [
+        "home"
+       ]
+      },
+      {
+       "text": "Let's meet [at] the station.",
+       "ko_pron": "렛츠 밋 앳 더 스테이션.",
+       "meaning": "역에서 만나자.",
+       "words": [
+        "station"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "시각",
+     "desc": "몇 시, 밤",
+     "examples": [
+      {
+       "text": "I wake up [at] seven.",
+       "ko_pron": "아이 웨이크 업 앳 세븐.",
+       "meaning": "나는 일곱 시에 일어나.",
+       "words": [
+        "wake up",
+        "seven"
+       ]
+      },
+      {
+       "text": "See you [at] three!",
+       "ko_pron": "씨 유 앳 쓰리!",
+       "meaning": "세 시에 봐!",
+       "words": [
+        "see",
+        "three"
+       ]
+      },
+      {
+       "text": "I sleep [at] night.",
+       "ko_pron": "아이 슬립 앳 나잇.",
+       "meaning": "나는 밤에 자.",
+       "words": [
+        "sleep",
+        "night"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "for",
+   "stage": "place",
+   "text": "for",
+   "ko_pron": "포",
+   "meaning": "~을 위해, ~동안",
+   "forms": [
+    "for"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "누구를 위한 것인지 말할 때 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "for you"
+     },
+     {
+      "lang": "ko",
+      "text": " 너를 위해."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "얼마 동안인지 말할 때도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "for ten minutes"
+     },
+     {
+      "lang": "ko",
+      "text": " 십 분 동안."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "~을 위해, ~에게 주려고",
+     "examples": [
+      {
+       "text": "This is [for] you.",
+       "ko_pron": "디스 이즈 포 유.",
+       "meaning": "이거 너 주려고 가져왔어.",
+       "words": [
+        "this"
+       ]
+      },
+      {
+       "text": "I have a gift [for] mom.",
+       "ko_pron": "아이 해브 어 기프트 포 맘.",
+       "meaning": "엄마한테 줄 선물이 있어.",
+       "words": [
+        "have",
+        "gift",
+        "mom"
+       ]
+      },
+      {
+       "text": "Thank you [for] the cookie.",
+       "ko_pron": "땡큐 포 더 쿠키.",
+       "meaning": "쿠키 고마워.",
+       "words": [
+        "thank you",
+        "cookie"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "~동안",
+     "examples": [
+      {
+       "text": "Let's play [for] ten minutes.",
+       "ko_pron": "렛츠 플레이 포 텐 미닛츠.",
+       "meaning": "10분 동안 놀자.",
+       "words": [
+        "play",
+        "ten"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "wait for: ~을 기다리다",
+     "examples": [
+      {
+       "text": "Wait [for] me!",
+       "ko_pron": "웨잇 포 미!",
+       "meaning": "나 기다려!",
+       "words": [
+        "wait"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "with",
+   "stage": "place",
+   "text": "with",
+   "ko_pron": "위드",
+   "meaning": "~와 함께, ~로",
+   "forms": [
+    "with"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "누구와 함께하는지 말할 때 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "with me"
+     },
+     {
+      "lang": "ko",
+      "text": " 나랑."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "무엇을 써서 하는지 말할 때도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "with a spoon"
+     },
+     {
+      "lang": "ko",
+      "text": " 숟가락으로."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "함께",
+     "examples": [
+      {
+       "text": "Play [with] me.",
+       "ko_pron": "플레이 위드 미.",
+       "meaning": "나랑 놀자.",
+       "words": [
+        "play"
+       ]
+      },
+      {
+       "text": "I go to school [with] my brother.",
+       "ko_pron": "아이 고 투 스쿨 위드 마이 브라더.",
+       "meaning": "나는 형이랑 학교에 가.",
+       "words": [
+        "go",
+        "school",
+        "brother"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "도구",
+     "desc": "~로",
+     "examples": [
+      {
+       "text": "Eat [with] a spoon.",
+       "ko_pron": "잇 위드 어 스푼.",
+       "meaning": "숟가락으로 먹어.",
+       "words": [
+        "eat",
+        "spoon"
+       ]
+      },
+      {
+       "text": "Cut it [with] scissors.",
+       "ko_pron": "컷 잇 위드 시저스.",
+       "meaning": "가위로 잘라.",
+       "words": [
+        "scissors"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "from",
+   "stage": "place",
+   "text": "from",
+   "ko_pron": "프롬",
+   "meaning": "~에서(부터)",
+   "forms": [
+    "from"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "출발한 곳을 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "누가 준 것인지 말할 때도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "from grandma"
+     },
+     {
+      "lang": "ko",
+      "text": " 할머니가 주신."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "출발한 곳",
+     "examples": [
+      {
+       "text": "I'm [from] Korea.",
+       "ko_pron": "아임 프롬 코리아.",
+       "meaning": "나는 한국에서 왔어.",
+       "words": []
+      },
+      {
+       "text": "I walk home [from] school.",
+       "ko_pron": "아이 워크 홈 프롬 스쿨.",
+       "meaning": "나는 학교에서 집까지 걸어와.",
+       "words": [
+        "walk",
+        "home",
+        "school"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "누가 준 것",
+     "examples": [
+      {
+       "text": "This is [from] grandma.",
+       "ko_pron": "디스 이즈 프롬 그랜마.",
+       "meaning": "이거 할머니가 주신 거야.",
+       "words": [
+        "this",
+        "grandma"
+       ]
+      },
+      {
+       "text": "A gift [from] my friend.",
+       "ko_pron": "어 기프트 프롬 마이 프렌드.",
+       "meaning": "친구가 준 선물.",
+       "words": [
+        "gift",
+        "friend"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "of",
+   "stage": "place",
+   "text": "of",
+   "ko_pron": "오브",
+   "meaning": "~의",
+   "forms": [
+    "of"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "'무엇의 무엇'처럼 두 말을 이어요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "a cup of milk"
+     },
+     {
+      "lang": "ko",
+      "text": "처럼 담는 그릇과 양을 말할 때 많이 써요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "양",
+     "desc": "한 컵, 한 잔, 한 조각",
+     "examples": [
+      {
+       "text": "A cup [of] milk, please.",
+       "ko_pron": "어 컵 오브 밀크, 플리즈.",
+       "meaning": "우유 한 컵 주세요.",
+       "words": [
+        "cup",
+        "milk",
+        "please"
+       ]
+      },
+      {
+       "text": "A glass [of] water.",
+       "ko_pron": "어 글래스 오브 워터.",
+       "meaning": "물 한 잔.",
+       "words": [
+        "glass",
+        "water"
+       ]
+      },
+      {
+       "text": "Can I have a piece [of] cake?",
+       "ko_pron": "캔 아이 해브 어 피스 오브 케이크?",
+       "meaning": "케이크 한 조각 먹어도 돼?",
+       "words": [
+        "have"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "~의",
+     "examples": [
+      {
+       "text": "The door [of] the car is open.",
+       "ko_pron": "더 도어 오브 더 카 이즈 오픈.",
+       "meaning": "차 문이 열려 있어.",
+       "words": [
+        "door",
+        "car",
+        "open"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "by",
+   "stage": "place",
+   "text": "by",
+   "ko_pron": "바이",
+   "meaning": "~로(방법), ~옆에, ~까지",
+   "forms": [
+    "by"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "무엇을 타고 가는지 말할 때 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "by bus"
+     },
+     {
+      "lang": "ko",
+      "text": " 버스로."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "바로 옆, 또는 '~까지'라는 뜻도 있어요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "타는 것·방법",
+     "desc": "~로",
+     "examples": [
+      {
+       "text": "I go to school [by] bus.",
+       "ko_pron": "아이 고 투 스쿨 바이 버스.",
+       "meaning": "나는 버스로 학교에 가.",
+       "words": [
+        "go",
+        "school",
+        "bus"
+       ]
+      },
+      {
+       "text": "Can I pay [by] card?",
+       "ko_pron": "캔 아이 페이 바이 카드?",
+       "meaning": "카드로 내도 돼요?",
+       "words": [
+        "pay",
+        "card"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "옆에",
+     "examples": [
+      {
+       "text": "Sit [by] me.",
+       "ko_pron": "싯 바이 미.",
+       "meaning": "내 옆에 앉아.",
+       "words": [
+        "sit"
+       ]
+      },
+      {
+       "text": "The cat is [by] the door.",
+       "ko_pron": "더 캣 이즈 바이 더 도어.",
+       "meaning": "고양이가 문 옆에 있어.",
+       "words": [
+        "cat",
+        "door"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "~까지",
+     "desc": "시각 앞",
+     "examples": [
+      {
+       "text": "Come home [by] six.",
+       "ko_pron": "컴 홈 바이 식스.",
+       "meaning": "여섯 시까지 집에 와.",
+       "words": [
+        "come",
+        "home",
+        "six"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "about",
+   "stage": "place",
+   "text": "about",
+   "ko_pron": "어바웃",
+   "meaning": "~에 대해",
+   "forms": [
+    "about"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "무엇에 대한 이야기인지 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "about"
+     },
+     {
+      "lang": "ko",
+      "text": " 바로 뒤에 이야기 거리가 와요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "~에 대해",
+     "examples": [
+      {
+       "text": "Tell me [about] your dog.",
+       "ko_pron": "텔 미 어바웃 유어 도그.",
+       "meaning": "너희 강아지 이야기 해 줘.",
+       "words": [
+        "tell",
+        "dog"
+       ]
+      },
+      {
+       "text": "This book is [about] a bear.",
+       "ko_pron": "디스 북 이즈 어바웃 어 베어.",
+       "meaning": "이 책은 곰 이야기야.",
+       "words": [
+        "book",
+        "bear"
+       ]
+      },
+      {
+       "text": "I think [about] you.",
+       "ko_pron": "아이 씽크 어바웃 유.",
+       "meaning": "네 생각을 해.",
+       "words": [
+        "think"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "my",
+   "stage": "whose",
+   "text": "my",
+   "ko_pron": "마이",
+   "meaning": "나의, 내",
+   "forms": [
+    "my"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "내 것이라고 말할 때 이름 앞에 붙여요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "my bag"
+     },
+     {
+      "lang": "ko",
+      "text": " 내 가방, "
+     },
+     {
+      "lang": "en",
+      "text": "my mom"
+     },
+     {
+      "lang": "ko",
+      "text": " 우리 엄마."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "내 것",
+     "examples": [
+      {
+       "text": "This is [my] bag.",
+       "ko_pron": "디스 이즈 마이 백.",
+       "meaning": "이건 내 가방이야.",
+       "words": [
+        "this",
+        "bag"
+       ]
+      },
+      {
+       "text": "[My] mom is a doctor.",
+       "ko_pron": "마이 맘 이즈 어 닥터.",
+       "meaning": "우리 엄마는 의사야.",
+       "words": [
+        "mom",
+        "doctor"
+       ]
+      },
+      {
+       "text": "Where is [my] phone?",
+       "ko_pron": "웨어 이즈 마이 폰?",
+       "meaning": "내 폰 어디 있지?",
+       "words": [
+        "where",
+        "phone"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "your",
+   "stage": "whose",
+   "text": "your",
+   "ko_pron": "유어",
+   "meaning": "너의, 네",
+   "forms": [
+    "your"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "네 것이라고 말할 때 이름 앞에 붙여요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "영어는 "
+     },
+     {
+      "lang": "en",
+      "text": "your hands"
+     },
+     {
+      "lang": "ko",
+      "text": "처럼 누구 것인지 꼭 붙여 말해요. 한국어로는 빼고 옮겨도 돼요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "네 것",
+     "examples": [
+      {
+       "text": "Is this [your] hat?",
+       "ko_pron": "이즈 디스 유어 햇?",
+       "meaning": "이거 네 모자야?",
+       "words": [
+        "this",
+        "hat"
+       ]
+      },
+      {
+       "text": "Wash [your] hands.",
+       "ko_pron": "워시 유어 핸즈.",
+       "meaning": "손 씻어.",
+       "words": [
+        "wash",
+        "hand"
+       ]
+      },
+      {
+       "text": "I like [your] shoes.",
+       "ko_pron": "아이 라이크 유어 슈즈.",
+       "meaning": "네 신발 멋지다.",
+       "words": [
+        "like",
+        "shoes"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "his",
+   "stage": "whose",
+   "text": "his",
+   "ko_pron": "히즈",
+   "meaning": "그의, 그 남자의",
+   "forms": [
+    "his"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "남자 한 명의 것이라고 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "his ball"
+     },
+     {
+      "lang": "ko",
+      "text": " 그 남자아이 공."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "그 남자의 것",
+     "examples": [
+      {
+       "text": "This is [his] ball.",
+       "ko_pron": "디스 이즈 히즈 볼.",
+       "meaning": "이건 그 아이 공이야.",
+       "words": [
+        "this",
+        "ball"
+       ]
+      },
+      {
+       "text": "[His] name is Tom.",
+       "ko_pron": "히즈 네임 이즈 탐.",
+       "meaning": "그 아이 이름은 톰이야.",
+       "words": []
+      },
+      {
+       "text": "Dad lost [his] key.",
+       "ko_pron": "대드 로스트 히즈 키.",
+       "meaning": "아빠가 열쇠를 잃어버렸어.",
+       "words": [
+        "dad",
+        "key"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "her",
+   "stage": "whose",
+   "text": "her",
+   "ko_pron": "허",
+   "meaning": "그녀의, 그 여자의",
+   "forms": [
+    "her"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "여자 한 명의 것이라고 말할 때 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "her bag"
+     },
+     {
+      "lang": "ko",
+      "text": " 그 여자아이 가방."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "help her"
+     },
+     {
+      "lang": "ko",
+      "text": "처럼 동작 뒤에 오면 '그녀를'이에요. 사람 대신 쓰는 말에 있어요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "그 여자의 것",
+     "desc": "이름 앞에",
+     "examples": [
+      {
+       "text": "This is [her] bag.",
+       "ko_pron": "디스 이즈 허 백.",
+       "meaning": "이건 그 여자아이 가방이야.",
+       "words": [
+        "this",
+        "bag"
+       ]
+      },
+      {
+       "text": "[Her] dog is big.",
+       "ko_pron": "허 도그 이즈 빅.",
+       "meaning": "그 여자아이네 개는 커.",
+       "words": [
+        "dog",
+        "big"
+       ]
+      },
+      {
+       "text": "Grandma likes [her] garden.",
+       "ko_pron": "그랜마 라익스 허 가든.",
+       "meaning": "할머니는 할머니 정원을 좋아하셔.",
+       "words": [
+        "grandma",
+        "like",
+        "garden"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "our",
+   "stage": "whose",
+   "text": "our",
+   "ko_pron": "아워",
+   "meaning": "우리의",
+   "forms": [
+    "our"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "우리 것이라고 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "our teacher"
+     },
+     {
+      "lang": "ko",
+      "text": " 우리 선생님."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "우리 것",
+     "examples": [
+      {
+       "text": "This is [our] house.",
+       "ko_pron": "디스 이즈 아워 하우스.",
+       "meaning": "여기가 우리 집이야.",
+       "words": [
+        "this"
+       ]
+      },
+      {
+       "text": "[Our] teacher is nice.",
+       "ko_pron": "아워 티처 이즈 나이스.",
+       "meaning": "우리 선생님은 친절해.",
+       "words": [
+        "teacher"
+       ]
+      },
+      {
+       "text": "Let's clean [our] room.",
+       "ko_pron": "렛츠 클린 아워 룸.",
+       "meaning": "우리 방 치우자.",
+       "words": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "their",
+   "stage": "whose",
+   "text": "their",
+   "ko_pron": "데어",
+   "meaning": "그들의",
+   "forms": [
+    "their"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "여러 사람의 것이라고 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "there"
+     },
+     {
+      "lang": "ko",
+      "text": "와 소리가 같아서 듣고 헷갈리기 쉬워요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "그 사람들 것",
+     "examples": [
+      {
+       "text": "That is [their] car.",
+       "ko_pron": "댓 이즈 데어 카.",
+       "meaning": "저건 그 사람들 차야.",
+       "words": [
+        "that",
+        "car"
+       ]
+      },
+      {
+       "text": "The kids love [their] toys.",
+       "ko_pron": "더 키즈 러브 데어 토이즈.",
+       "meaning": "아이들은 자기 장난감을 좋아해.",
+       "words": [
+        "love",
+        "toy"
+       ]
+      },
+      {
+       "text": "[Their] dog is cute.",
+       "ko_pron": "데어 도그 이즈 큐트.",
+       "meaning": "그 사람들 강아지는 귀여워.",
+       "words": [
+        "dog"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a",
+   "stage": "point",
+   "text": "a",
+   "ko_pron": "어",
+   "meaning": "하나의 (아무거나 하나)",
+   "forms": [
+    "a"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "셀 수 있는 것 하나를 처음 말할 때 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "여러 개 중 아무거나 하나예요. "
+     },
+     {
+      "lang": "en",
+      "text": "a cat"
+     },
+     {
+      "lang": "ko",
+      "text": " 고양이 한 마리."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "아무거나 하나",
+     "examples": [
+      {
+       "text": "I have [a] dog.",
+       "ko_pron": "아이 해브 어 도그.",
+       "meaning": "나는 강아지가 한 마리 있어.",
+       "words": [
+        "have",
+        "dog"
+       ]
+      },
+      {
+       "text": "I want [a] cookie.",
+       "ko_pron": "아이 원트 어 쿠키.",
+       "meaning": "쿠키 하나 먹고 싶어.",
+       "words": [
+        "want",
+        "cookie"
+       ]
+      },
+      {
+       "text": "There is [a] bird!",
+       "ko_pron": "데어 이즈 어 버드!",
+       "meaning": "새가 있어!",
+       "words": [
+        "bird"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "an",
+   "stage": "point",
+   "text": "an",
+   "ko_pron": "언",
+   "meaning": "하나의 (모음 소리 앞)",
+   "forms": [
+    "an"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "en",
+      "text": "a"
+     },
+     {
+      "lang": "ko",
+      "text": "와 뜻이 같아요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "아·에·이·오·우 같은 모음 소리 앞에서는 "
+     },
+     {
+      "lang": "en",
+      "text": "an"
+     },
+     {
+      "lang": "ko",
+      "text": "을 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "an apple"
+     },
+     {
+      "lang": "ko",
+      "text": " 사과 하나."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "모음 소리 앞",
+     "examples": [
+      {
+       "text": "I want [an] apple.",
+       "ko_pron": "아이 원트 언 애플.",
+       "meaning": "사과 하나 먹고 싶어.",
+       "words": [
+        "want",
+        "apple"
+       ]
+      },
+      {
+       "text": "I have [an] egg.",
+       "ko_pron": "아이 해브 언 에그.",
+       "meaning": "달걀이 하나 있어.",
+       "words": [
+        "have",
+        "egg"
+       ]
+      },
+      {
+       "text": "It's [an] orange.",
+       "ko_pron": "잇츠 언 오렌지.",
+       "meaning": "그건 오렌지야.",
+       "words": [
+        "orange"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "the",
+   "stage": "point",
+   "text": "the",
+   "ko_pron": "더",
+   "meaning": "그 (바로 그것)",
+   "forms": [
+    "the"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "서로 아는 것, 앞에서 말한 것 앞에 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "하나뿐인 것에도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "the sun"
+     },
+     {
+      "lang": "ko",
+      "text": " 해, "
+     },
+     {
+      "lang": "en",
+      "text": "the moon"
+     },
+     {
+      "lang": "ko",
+      "text": " 달."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "모음 소리 앞에서는 '디'처럼 소리 나요. "
+     },
+     {
+      "lang": "en",
+      "text": "the apple"
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "바로 그것",
+     "examples": [
+      {
+       "text": "[The] dog is big.",
+       "ko_pron": "더 도그 이즈 빅.",
+       "meaning": "그 강아지는 커.",
+       "words": [
+        "dog",
+        "big"
+       ]
+      },
+      {
+       "text": "Open [the] door, please.",
+       "ko_pron": "오픈 더 도어, 플리즈.",
+       "meaning": "문 좀 열어 줘.",
+       "words": [
+        "open",
+        "door",
+        "please"
+       ]
+      },
+      {
+       "text": "Look at [the] moon!",
+       "ko_pron": "룩 앳 더 문!",
+       "meaning": "달 좀 봐!",
+       "words": [
+        "look",
+        "moon"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "this",
+   "stage": "point",
+   "text": "this",
+   "ko_pron": "디스",
+   "meaning": "이것, 이",
+   "forms": [
+    "this"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "가까이 있는 것 하나를 가리켜요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "혼자 쓰면 '이것', 이름 앞에 붙이면 '이'예요. "
+     },
+     {
+      "lang": "en",
+      "text": "this cup"
+     },
+     {
+      "lang": "ko",
+      "text": " 이 컵."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "가까이 있는 것",
+     "examples": [
+      {
+       "text": "What is [this]?",
+       "ko_pron": "왓 이즈 디스?",
+       "meaning": "이게 뭐야?",
+       "words": [
+        "what"
+       ]
+      },
+      {
+       "text": "[This] is my mom.",
+       "ko_pron": "디스 이즈 마이 맘.",
+       "meaning": "이분은 우리 엄마야.",
+       "words": [
+        "mom"
+       ]
+      },
+      {
+       "text": "I like [this] hat.",
+       "ko_pron": "아이 라이크 디스 햇.",
+       "meaning": "이 모자 좋아.",
+       "words": [
+        "like",
+        "hat"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "that",
+   "stage": "point",
+   "text": "that",
+   "ko_pron": "댓",
+   "meaning": "저것, 저",
+   "forms": [
+    "that"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "멀리 있는 것 하나를 가리켜요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "혼자 쓰면 '저것', 이름 앞에 붙이면 '저'예요. "
+     },
+     {
+      "lang": "en",
+      "text": "that toy"
+     },
+     {
+      "lang": "ko",
+      "text": " 저 장난감."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "멀리 있는 것",
+     "examples": [
+      {
+       "text": "What is [that]?",
+       "ko_pron": "왓 이즈 댓?",
+       "meaning": "저게 뭐야?",
+       "words": [
+        "what"
+       ]
+      },
+      {
+       "text": "I want [that] toy.",
+       "ko_pron": "아이 원트 댓 토이.",
+       "meaning": "저 장난감 갖고 싶어.",
+       "words": [
+        "want",
+        "toy"
+       ]
+      },
+      {
+       "text": "Is [that] your bike?",
+       "ko_pron": "이즈 댓 유어 바이크?",
+       "meaning": "저거 네 자전거야?",
+       "words": [
+        "bike"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "these",
+   "stage": "point",
+   "text": "these",
+   "ko_pron": "디즈",
+   "meaning": "이것들, 이 (여러 개)",
+   "forms": [
+    "these"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "가까이 있는 것 여러 개를 가리켜요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "this"
+     },
+     {
+      "lang": "ko",
+      "text": "가 여러 개면 "
+     },
+     {
+      "lang": "en",
+      "text": "these"
+     },
+     {
+      "lang": "ko",
+      "text": "예요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "가까이 있는 것 여러 개",
+     "examples": [
+      {
+       "text": "[These] are my shoes.",
+       "ko_pron": "디즈 아 마이 슈즈.",
+       "meaning": "이건 내 신발이야.",
+       "words": [
+        "shoes"
+       ]
+      },
+      {
+       "text": "I like [these] cookies.",
+       "ko_pron": "아이 라이크 디즈 쿠키즈.",
+       "meaning": "이 쿠키들 맛있다.",
+       "words": [
+        "like",
+        "cookie"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "those",
+   "stage": "point",
+   "text": "those",
+   "ko_pron": "도즈",
+   "meaning": "저것들, 저 (여러 개)",
+   "forms": [
+    "those"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "멀리 있는 것 여러 개를 가리켜요."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "that"
+     },
+     {
+      "lang": "ko",
+      "text": "이 여러 개면 "
+     },
+     {
+      "lang": "en",
+      "text": "those"
+     },
+     {
+      "lang": "ko",
+      "text": "예요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "멀리 있는 것 여러 개",
+     "examples": [
+      {
+       "text": "Look at [those] birds!",
+       "ko_pron": "룩 앳 도즈 버즈!",
+       "meaning": "저 새들 좀 봐!",
+       "words": [
+        "look",
+        "bird"
+       ]
+      },
+      {
+       "text": "[Those] are my friends.",
+       "ko_pron": "도즈 아 마이 프렌즈.",
+       "meaning": "저 애들은 내 친구야.",
+       "words": [
+        "friend"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "i-me",
+   "stage": "person",
+   "text": "I · me",
+   "ko_pron": "아이 · 미",
+   "meaning": "나 / 나를, 나에게",
+   "forms": [
+    "i",
+    "me"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "둘 다 '나'예요. 자리에 따라 모양이 바뀌어요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "앞에 와서 하는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "I"
+     },
+     {
+      "lang": "ko",
+      "text": ", 동작 뒤에 와서 받는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "me"
+     },
+     {
+      "lang": "ko",
+      "text": "."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "I: 내가 할 때",
+     "desc": "문장 앞",
+     "examples": [
+      {
+       "text": "[I] like cats.",
+       "ko_pron": "아이 라이크 캣츠.",
+       "meaning": "나는 고양이가 좋아.",
+       "words": [
+        "like",
+        "cat"
+       ]
+      },
+      {
+       "text": "[I] am hungry.",
+       "ko_pron": "아이 엠 헝그리.",
+       "meaning": "나 배고파.",
+       "words": [
+        "hungry"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "me: 나를, 나에게",
+     "desc": "동작 뒤",
+     "examples": [
+      {
+       "text": "Help [me]!",
+       "ko_pron": "헬프 미!",
+       "meaning": "도와줘!",
+       "words": [
+        "help"
+       ]
+      },
+      {
+       "text": "Mom loves [me].",
+       "ko_pron": "맘 러브즈 미.",
+       "meaning": "엄마는 나를 사랑해.",
+       "words": [
+        "mom",
+        "love"
+       ]
+      },
+      {
+       "text": "Give [me] the ball.",
+       "ko_pron": "기브 미 더 볼.",
+       "meaning": "나한테 공 줘.",
+       "words": [
+        "give",
+        "ball"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "you",
+   "stage": "person",
+   "text": "you",
+   "ko_pron": "유",
+   "meaning": "너, 너를, 너에게",
+   "forms": [
+    "you"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "en",
+      "text": "you"
+     },
+     {
+      "lang": "ko",
+      "text": "는 앞에 와도, 동작 뒤에 와도 모양이 같아요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "'너의'는 "
+     },
+     {
+      "lang": "en",
+      "text": "your"
+     },
+     {
+      "lang": "ko",
+      "text": "예요. 누구의 묶음에 있어요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "네가 할 때",
+     "desc": "문장 앞",
+     "examples": [
+      {
+       "text": "[You] are my friend.",
+       "ko_pron": "유 아 마이 프렌드.",
+       "meaning": "너는 내 친구야.",
+       "words": [
+        "friend"
+       ]
+      },
+      {
+       "text": "Do [you] like milk?",
+       "ko_pron": "두 유 라이크 밀크?",
+       "meaning": "너 우유 좋아해?",
+       "words": [
+        "like",
+        "milk"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "너를, 너에게",
+     "desc": "동작 뒤",
+     "examples": [
+      {
+       "text": "I love [you].",
+       "ko_pron": "아이 러브 유.",
+       "meaning": "사랑해.",
+       "words": [
+        "love"
+       ]
+      },
+      {
+       "text": "I'll help [you].",
+       "ko_pron": "아일 헬프 유.",
+       "meaning": "내가 도와줄게.",
+       "words": [
+        "help"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "he-him",
+   "stage": "person",
+   "text": "he · him",
+   "ko_pron": "히 · 힘",
+   "meaning": "그 / 그를 (남자 한 명)",
+   "forms": [
+    "he",
+    "him"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "남자 한 명을 가리켜요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "하는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "he"
+     },
+     {
+      "lang": "ko",
+      "text": ", 받는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "him"
+     },
+     {
+      "lang": "ko",
+      "text": "."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "he: 그가 할 때",
+     "desc": "문장 앞",
+     "examples": [
+      {
+       "text": "[He] is my brother.",
+       "ko_pron": "히 이즈 마이 브라더.",
+       "meaning": "그 애는 우리 형이야.",
+       "words": [
+        "brother"
+       ]
+      },
+      {
+       "text": "[He] likes soccer.",
+       "ko_pron": "히 라익스 사커.",
+       "meaning": "그 애는 축구를 좋아해.",
+       "words": [
+        "like",
+        "soccer"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "him: 그를, 그에게",
+     "desc": "동작 뒤",
+     "examples": [
+      {
+       "text": "I like [him].",
+       "ko_pron": "아이 라이크 힘.",
+       "meaning": "나는 그 애가 좋아.",
+       "words": [
+        "like"
+       ]
+      },
+      {
+       "text": "Give [him] the ball.",
+       "ko_pron": "기브 힘 더 볼.",
+       "meaning": "그 애한테 공 줘.",
+       "words": [
+        "give",
+        "ball"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "she-her",
+   "stage": "person",
+   "text": "she · her",
+   "ko_pron": "쉬 · 허",
+   "meaning": "그녀 / 그녀를 (여자 한 명)",
+   "forms": [
+    "she",
+    "her"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "여자 한 명을 가리켜요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "하는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "she"
+     },
+     {
+      "lang": "ko",
+      "text": ", 받는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "her"
+     },
+     {
+      "lang": "ko",
+      "text": "."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "her bag"
+     },
+     {
+      "lang": "ko",
+      "text": "처럼 이름 앞에 오면 '그녀의'예요. 누구의 묶음에 있어요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "she: 그녀가 할 때",
+     "desc": "문장 앞",
+     "examples": [
+      {
+       "text": "[She] is my sister.",
+       "ko_pron": "쉬 이즈 마이 시스터.",
+       "meaning": "그 애는 우리 언니야.",
+       "words": [
+        "sister"
+       ]
+      },
+      {
+       "text": "[She] is happy.",
+       "ko_pron": "쉬 이즈 해피.",
+       "meaning": "그 애는 기분이 좋아.",
+       "words": [
+        "happy"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "her: 그녀를, 그녀에게",
+     "desc": "동작 뒤",
+     "examples": [
+      {
+       "text": "I help [her].",
+       "ko_pron": "아이 헬프 허.",
+       "meaning": "나는 그 애를 도와.",
+       "words": [
+        "help"
+       ]
+      },
+      {
+       "text": "Call [her], please.",
+       "ko_pron": "콜 허, 플리즈.",
+       "meaning": "그분한테 전화해 줘.",
+       "words": [
+        "please"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "we-us",
+   "stage": "person",
+   "text": "we · us",
+   "ko_pron": "위 · 어스",
+   "meaning": "우리 / 우리를",
+   "forms": [
+    "we",
+    "us"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "나를 포함한 여러 사람이에요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "하는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "we"
+     },
+     {
+      "lang": "ko",
+      "text": ", 받는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "us"
+     },
+     {
+      "lang": "ko",
+      "text": "."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "we: 우리가 할 때",
+     "desc": "문장 앞",
+     "examples": [
+      {
+       "text": "[We] are friends.",
+       "ko_pron": "위 아 프렌즈.",
+       "meaning": "우리는 친구야.",
+       "words": [
+        "friend"
+       ]
+      },
+      {
+       "text": "[We] play together.",
+       "ko_pron": "위 플레이 투게더.",
+       "meaning": "우리는 같이 놀아.",
+       "words": [
+        "play"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "us: 우리를, 우리에게",
+     "desc": "동작 뒤",
+     "examples": [
+      {
+       "text": "Come with [us].",
+       "ko_pron": "컴 위드 어스.",
+       "meaning": "우리랑 같이 가자.",
+       "words": [
+        "come"
+       ]
+      },
+      {
+       "text": "Mom reads to [us].",
+       "ko_pron": "맘 리즈 투 어스.",
+       "meaning": "엄마가 우리한테 책을 읽어 줘.",
+       "words": [
+        "mom"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "they-them",
+   "stage": "person",
+   "text": "they · them",
+   "ko_pron": "데이 · 뎀",
+   "meaning": "그들 / 그들을",
+   "forms": [
+    "they",
+    "them"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "다른 사람 여러 명을 가리켜요. 물건 여러 개에도 써요."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "하는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "they"
+     },
+     {
+      "lang": "ko",
+      "text": ", 받는 사람이면 "
+     },
+     {
+      "lang": "en",
+      "text": "them"
+     },
+     {
+      "lang": "ko",
+      "text": "."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "they: 그들이 할 때",
+     "desc": "문장 앞",
+     "examples": [
+      {
+       "text": "[They] are my friends.",
+       "ko_pron": "데이 아 마이 프렌즈.",
+       "meaning": "그 애들은 내 친구야.",
+       "words": [
+        "friend"
+       ]
+      },
+      {
+       "text": "[They] are playing soccer.",
+       "ko_pron": "데이 아 플레잉 사커.",
+       "meaning": "그 애들은 축구하고 있어.",
+       "words": [
+        "play",
+        "soccer"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "them: 그들을, 그들에게",
+     "desc": "동작 뒤",
+     "examples": [
+      {
+       "text": "I like [them].",
+       "ko_pron": "아이 라이크 뎀.",
+       "meaning": "나는 그 애들이 좋아.",
+       "words": [
+        "like"
+       ]
+      },
+      {
+       "text": "Look at [them]!",
+       "ko_pron": "룩 앳 뎀!",
+       "meaning": "쟤네 좀 봐!",
+       "words": [
+        "look"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "compare": [
+  {
+   "id": "in-on-at",
+   "title": "in · on · at",
+   "sides": [
+    {
+     "label": "in",
+     "entry": "in",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "안에 있을 때, 계절처럼 긴 시간"
+       }
+      ]
+     ]
+    },
+    {
+     "label": "on",
+     "entry": "on",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "위에 닿아 있을 때, 요일"
+       }
+      ]
+     ]
+    },
+    {
+     "label": "at",
+     "entry": "at",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "콕 집은 한 곳, 몇 시"
+       }
+      ]
+     ]
+    }
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "The fish is [in] the water.",
+     "ko_pron": "더 피시 이즈 인 더 워터.",
+     "meaning": "물고기가 물속에 있어.",
+     "why": "물 안에 있어요",
+     "words": [
+      "fish",
+      "water"
+     ]
+    },
+    {
+     "side": 0,
+     "text": "I swim [in] summer.",
+     "ko_pron": "아이 스윔 인 써머.",
+     "meaning": "나는 여름에 수영해.",
+     "why": "계절은 긴 시간",
+     "words": [
+      "swim",
+      "summer"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "The cup is [on] the table.",
+     "ko_pron": "더 컵 이즈 온 더 테이블.",
+     "meaning": "컵이 탁자 위에 있어.",
+     "why": "탁자 위에 닿아 있어요",
+     "words": [
+      "cup",
+      "table"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "I play [on] Sunday.",
+     "ko_pron": "아이 플레이 온 썬데이.",
+     "meaning": "나는 일요일에 놀아.",
+     "why": "요일 앞",
+     "words": [
+      "play",
+      "sunday"
+     ]
+    },
+    {
+     "side": 2,
+     "text": "I'm [at] the station.",
+     "ko_pron": "아임 앳 더 스테이션.",
+     "meaning": "나 역에 있어.",
+     "why": "콕 집은 한 곳",
+     "words": [
+      "station"
+     ]
+    },
+    {
+     "side": 2,
+     "text": "I wake up [at] seven.",
+     "ko_pron": "아이 웨이크 업 앳 세븐.",
+     "meaning": "나는 일곱 시에 일어나.",
+     "why": "몇 시 앞",
+     "words": [
+      "wake up",
+      "seven"
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "text": "See you [___] Monday!",
+     "choices": [
+      "in",
+      "on",
+      "at"
+     ],
+     "answers": [
+      "on"
+     ],
+     "ko_pron": "씨 유 온 먼데이!",
+     "meaning": "월요일에 만나!",
+     "why": "요일 앞에는 on",
+     "words": [
+      "see",
+      "monday"
+     ]
+    },
+    {
+     "text": "My toys are [___] the bag.",
+     "choices": [
+      "in",
+      "on",
+      "at"
+     ],
+     "answers": [
+      "in"
+     ],
+     "ko_pron": "마이 토이즈 아 인 더 백.",
+     "meaning": "내 장난감은 가방 안에 있어.",
+     "why": "가방 안에 들어 있어요",
+     "words": [
+      "toy",
+      "bag"
+     ]
+    },
+    {
+     "text": "Let's meet [___] three.",
+     "choices": [
+      "in",
+      "on",
+      "at"
+     ],
+     "answers": [
+      "at"
+     ],
+     "ko_pron": "렛츠 밋 앳 쓰리.",
+     "meaning": "세 시에 만나자.",
+     "why": "몇 시 앞에는 at",
+     "words": [
+      "three"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a-the",
+   "title": "a와 the",
+   "sides": [
+    {
+     "label": "a",
+     "entry": "a",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "처음 말하는 것, 아무거나 하나"
+       }
+      ]
+     ]
+    },
+    {
+     "label": "the",
+     "entry": "the",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "서로 아는 것, 하나뿐인 것"
+       }
+      ]
+     ]
+    }
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "I see [a] cat.",
+     "ko_pron": "아이 씨 어 캣.",
+     "meaning": "고양이가 보여.",
+     "why": "고양이를 처음 말해요",
+     "words": [
+      "see",
+      "cat"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "[The] cat is sleeping.",
+     "ko_pron": "더 캣 이즈 슬리핑.",
+     "meaning": "그 고양이는 자고 있어.",
+     "why": "방금 말한 그 고양이",
+     "words": [
+      "cat",
+      "sleep"
+     ]
+    },
+    {
+     "side": 0,
+     "text": "Can I have [a] cookie?",
+     "ko_pron": "캔 아이 해브 어 쿠키?",
+     "meaning": "쿠키 하나 먹어도 돼?",
+     "why": "아무 쿠키나 하나",
+     "words": [
+      "have",
+      "cookie"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "Look at [the] sun!",
+     "ko_pron": "룩 앳 더 썬!",
+     "meaning": "해 좀 봐!",
+     "why": "해는 하나뿐이에요",
+     "words": [
+      "look",
+      "sun"
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "text": "I have [___] dog. The dog is big.",
+     "choices": [
+      "a",
+      "the"
+     ],
+     "answers": [
+      "a"
+     ],
+     "ko_pron": "아이 해브 어 도그. 더 도그 이즈 빅.",
+     "meaning": "나는 강아지가 있어. 그 강아지는 커.",
+     "why": "강아지를 처음 말해요",
+     "words": [
+      "have",
+      "dog",
+      "big"
+     ]
+    },
+    {
+     "text": "Close [___] door, please.",
+     "choices": [
+      "a",
+      "the"
+     ],
+     "answers": [
+      "the"
+     ],
+     "ko_pron": "클로즈 더 도어, 플리즈.",
+     "meaning": "문 좀 닫아 줘.",
+     "why": "서로 아는 바로 그 문",
+     "words": [
+      "close",
+      "door",
+      "please"
+     ]
+    },
+    {
+     "text": "Look at [___] moon!",
+     "choices": [
+      "a",
+      "the"
+     ],
+     "answers": [
+      "the"
+     ],
+     "ko_pron": "룩 앳 더 문!",
+     "meaning": "달 좀 봐!",
+     "why": "달은 하나뿐이에요",
+     "words": [
+      "look",
+      "moon"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "and-but",
+   "title": "and와 but",
+   "sides": [
+    {
+     "label": "and",
+     "entry": "and",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "비슷한 말, 더하는 말을 이어요"
+       }
+      ]
+     ]
+    },
+    {
+     "label": "but",
+     "entry": "but",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "반대되는 말을 이어요"
+       }
+      ]
+     ]
+    }
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "I'm hungry [and] tired.",
+     "ko_pron": "아임 헝그리 앤드 타이어드.",
+     "meaning": "배고프고 피곤해.",
+     "why": "둘 다 힘든 일이에요",
+     "words": [
+      "hungry",
+      "tired"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "I'm tired, [but] happy.",
+     "ko_pron": "아임 타이어드, 벗 해피.",
+     "meaning": "피곤하지만 기분은 좋아.",
+     "why": "힘든데 기분은 좋아요. 반대예요",
+     "words": [
+      "tired",
+      "happy"
+     ]
+    },
+    {
+     "side": 0,
+     "text": "It's big [and] soft.",
+     "ko_pron": "잇츠 빅 앤드 소프트.",
+     "meaning": "크고 부드러워.",
+     "why": "둘 다 좋은 점",
+     "words": [
+      "big",
+      "soft"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "It's small, [but] fast.",
+     "ko_pron": "잇츠 스몰, 벗 패스트.",
+     "meaning": "작지만 빨라.",
+     "why": "작으면 느릴 것 같은데 빨라요",
+     "words": [
+      "small",
+      "fast"
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "text": "I like cats [___] dogs.",
+     "choices": [
+      "and",
+      "but"
+     ],
+     "answers": [
+      "and"
+     ],
+     "ko_pron": "아이 라이크 캣츠 앤드 도그즈.",
+     "meaning": "나는 고양이랑 개가 좋아.",
+     "why": "둘 다 좋아해요",
+     "words": [
+      "like",
+      "cat",
+      "dog"
+     ]
+    },
+    {
+     "text": "I like cats, [___] I don't like dogs.",
+     "choices": [
+      "and",
+      "but"
+     ],
+     "answers": [
+      "but"
+     ],
+     "ko_pron": "아이 라이크 캣츠, 벗 아이 돈트 라이크 도그즈.",
+     "meaning": "고양이는 좋은데 개는 싫어.",
+     "why": "좋아함과 싫어함, 반대예요",
+     "words": [
+      "like",
+      "cat",
+      "dog"
+     ]
+    },
+    {
+     "text": "The cake is sweet [___] yummy.",
+     "choices": [
+      "and",
+      "but"
+     ],
+     "answers": [
+      "and"
+     ],
+     "ko_pron": "더 케이크 이즈 스윗 앤드 야미.",
+     "meaning": "케이크가 달고 맛있어.",
+     "why": "둘 다 좋은 점",
+     "words": [
+      "sweet",
+      "yummy"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "so-because",
+   "title": "so와 because",
+   "sides": [
+    {
+     "label": "so",
+     "entry": "so",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "앞이 이유, 뒤가 결과"
+       }
+      ]
+     ]
+    },
+    {
+     "label": "because",
+     "entry": "because",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "앞이 결과, 뒤가 이유"
+       }
+      ]
+     ]
+    }
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "I'm hungry, [so] I eat.",
+     "ko_pron": "아임 헝그리, 쏘 아이 잇.",
+     "meaning": "배고파서 먹어.",
+     "why": "배고픔이 이유, 먹는 게 결과",
+     "words": [
+      "hungry",
+      "eat"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "I eat [because] I'm hungry.",
+     "ko_pron": "아이 잇 비코즈 아임 헝그리.",
+     "meaning": "배고파서 먹어.",
+     "why": "먹는 게 결과, 배고픔이 이유",
+     "words": [
+      "eat",
+      "hungry"
+     ]
+    },
+    {
+     "side": 0,
+     "text": "It's raining, [so] I stay home.",
+     "ko_pron": "잇츠 레이닝, 쏘 아이 스테이 홈.",
+     "meaning": "비가 와서 집에 있어.",
+     "why": "비가 이유",
+     "words": [
+      "rain",
+      "home"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "I stay home [because] it's raining.",
+     "ko_pron": "아이 스테이 홈 비코즈 잇츠 레이닝.",
+     "meaning": "비가 와서 집에 있어.",
+     "why": "이유가 뒤에 와요",
+     "words": [
+      "home",
+      "rain"
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "text": "I'm tired, [___] I go to bed.",
+     "choices": [
+      "so",
+      "because"
+     ],
+     "answers": [
+      "so"
+     ],
+     "ko_pron": "아임 타이어드, 쏘 아이 고 투 베드.",
+     "meaning": "피곤해서 자러 가.",
+     "why": "뒤에 결과가 와요",
+     "words": [
+      "tired",
+      "go",
+      "bed"
+     ]
+    },
+    {
+     "text": "I go to bed [___] I'm tired.",
+     "choices": [
+      "so",
+      "because"
+     ],
+     "answers": [
+      "because"
+     ],
+     "ko_pron": "아이 고 투 베드 비코즈 아임 타이어드.",
+     "meaning": "피곤해서 자러 가.",
+     "why": "뒤에 이유가 와요",
+     "words": [
+      "go",
+      "bed",
+      "tired"
+     ]
+    },
+    {
+     "text": "I'm happy [___] my friend is here.",
+     "choices": [
+      "so",
+      "because"
+     ],
+     "answers": [
+      "because"
+     ],
+     "ko_pron": "아임 해피 비코즈 마이 프렌드 이즈 히어.",
+     "meaning": "친구가 와서 기뻐.",
+     "why": "친구가 온 게 이유",
+     "words": [
+      "happy",
+      "friend",
+      "here"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "i-me",
+   "title": "I와 me",
+   "sides": [
+    {
+     "label": "I",
+     "entry": "i-me",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "앞에 와서 하는 사람"
+       }
+      ]
+     ]
+    },
+    {
+     "label": "me",
+     "entry": "i-me",
+     "point": [
+      [
+       {
+        "lang": "ko",
+        "text": "동작 뒤에 와서 받는 사람"
+       }
+      ]
+     ]
+    }
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "[I] help mom.",
+     "ko_pron": "아이 헬프 맘.",
+     "meaning": "내가 엄마를 도와.",
+     "why": "내가 돕는 사람, 앞에 와요",
+     "words": [
+      "help",
+      "mom"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "Mom helps [me].",
+     "ko_pron": "맘 헬프스 미.",
+     "meaning": "엄마가 나를 도와줘.",
+     "why": "내가 도움을 받아요, 동작 뒤에 와요",
+     "words": [
+      "mom",
+      "help"
+     ]
+    },
+    {
+     "side": 0,
+     "text": "[I] love you.",
+     "ko_pron": "아이 러브 유.",
+     "meaning": "사랑해.",
+     "why": "내가 사랑하는 사람",
+     "words": [
+      "love"
+     ]
+    },
+    {
+     "side": 1,
+     "text": "Play with [me].",
+     "ko_pron": "플레이 위드 미.",
+     "meaning": "나랑 놀자.",
+     "why": "with 같은 작은 말 뒤에도 me",
+     "words": [
+      "play"
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "text": "[___] am hungry.",
+     "choices": [
+      "I",
+      "me"
+     ],
+     "answers": [
+      "I"
+     ],
+     "ko_pron": "아이 엠 헝그리.",
+     "meaning": "나 배고파.",
+     "why": "앞에 와서 배고픈 사람",
+     "words": [
+      "hungry"
+     ]
+    },
+    {
+     "text": "Give [___] the ball.",
+     "choices": [
+      "I",
+      "me"
+     ],
+     "answers": [
+      "me"
+     ],
+     "ko_pron": "기브 미 더 볼.",
+     "meaning": "나한테 공 줘.",
+     "why": "공을 받는 사람",
+     "words": [
+      "give",
+      "ball"
+     ]
+    },
+    {
+     "text": "Can you help [___]?",
+     "choices": [
+      "I",
+      "me"
+     ],
+     "answers": [
+      "me"
+     ],
+     "ko_pron": "캔 유 헬프 미?",
+     "meaning": "나 좀 도와줄래?",
+     "why": "도움을 받는 사람",
+     "words": [
+      "help"
+     ]
+    }
+   ]
+  }
+ ]
+}

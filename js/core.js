@@ -11,6 +11,7 @@ const LANGS = {
     sections: [
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "verbs",      type: "cards",      name: "동사",       desc: "매일 쓰는 동작 말", ready: true },
+      { id: "function_words", type: "particles", unit: "작은 말", name: "작은 말", desc: "and·to·my·the·me 같은 말", ready: true },
       { id: "patterns",   type: "patterns",   name: "패턴 영어",   desc: "문장 틀에 단어 바꿔 넣기", ready: true },
       { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·호텔·식당·교통·카페·병원 등 12개 장면", ready: true },
       { id: "pairs",      type: "pairs",      name: "발음 연습",   desc: "r/l · f/p · v/b · th/s · i/ee 헷갈리는 짝", ready: true }
@@ -21,7 +22,7 @@ const LANGS = {
     voice: "ja-JP",
     sections: [
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
-      { id: "particles",  type: "particles",  name: "조사",       desc: "は·の·も → を·に·で·へ → と·が, 헷갈리는 조사 비교", ready: true },
+      { id: "particles",  type: "particles",  unit: "조사", name: "조사",       desc: "は·の·も → を·に·で·へ → と·が, 헷갈리는 조사 비교", ready: true },
       { id: "verbs",      type: "conjugation", name: "동사 변형",  desc: "1·2·3형 × ます·て·た·ない·たい형", ready: true },
       { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·호텔·식당·교통·카페·병원 등 12개 장면", ready: true },
       { id: "pairs",      type: "pairs",      name: "발음 연습",   desc: "장음 · っ · か/が · ざ/じゃ 헷갈리는 짝", ready: true }
