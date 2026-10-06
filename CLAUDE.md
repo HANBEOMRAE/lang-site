@@ -42,6 +42,16 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 4. 코드를 바꿀 때는 무엇을 왜 바꾸는지 먼저 설명한다.
 5. 큰 작업이 하나 끝나서 검사(`validate.py`)를 통과하면, 커밋할지 사용자에게 먼저 묻는다. 묻지 않고 커밋하지 않는다.
 
+## 패턴 단어별 뜻 (`patterns.json`의 `words`)
+
+- 틀 단어(I, want, to…)의 뜻은 패턴의 `words`에 한 번만 적는다. 바꿔 넣는 말의 단어 뜻은 그 말(`fills[].words`)에 적는다.
+- a, the, my처럼 한 패턴의 여러 말에 **같은 뜻**으로 반복되는 작은 단어는 패턴 `words`에 한 번만 적어도 된다(기본값).
+- 같은 단어라도 문장에 따라 뜻이 다르면 바꿔 넣는 말 쪽에 적는다. 그쪽이 우선하고, 패턴 쪽은 기본값으로만 쓴다.
+  예: "I want to eat"의 to(~하기를)와 "go to the beach"의 to(~로). for, on, in, at, by, take, have, get도 같은 규칙.
+- 찾는 순서는 문장 속 자리로 정한다: 틀 자리 단어 → 패턴 `words`, 바꿔 넣는 말 자리 단어 → 그 말 `words` → 패턴 `words`.
+  (views.js `bindWordGloss`, validate.py `check_word_glosses`가 같은 규칙. 문장의 모든 단어에 뜻이 있어야 검사를 통과한다.)
+- 단어 키는 소문자. 문장부호는 떼고, I'm·don't·kids' 같은 말은 한 단어로 본다. `I'm ___ing`은 문장에 나오는 형태(eating)로 적는다.
+
 ## 일본어 띄어쓰기
 
 - 단어 카드의 `text`와 예문 모두 단어 단위로 띄어 쓴다. 조사와 です·ます는 앞말에 붙인다.

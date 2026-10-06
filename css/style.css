@@ -255,6 +255,21 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
   font-size: clamp(32px, 9vw, 46px); line-height: 1.2; margin: 0; word-break: break-word;
 }
 .fill { color: var(--accent); border-bottom: 4px solid var(--speak); }
+
+/* 단어별 뜻: 누를 수 있는 단어는 점선 밑줄, 누르면 작은 말풍선 */
+.sentence .w { cursor: pointer; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
+.sentence .fill .w { border-bottom: 0; }
+.sentence .w:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
+.gloss {
+  position: absolute; z-index: 3; max-width: calc(100% - 16px);
+  display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 14px;
+  border-radius: 14px; background: var(--ink); color: var(--paper); text-align: left;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .2); word-break: keep-all;
+}
+.gloss .g-text { display: flex; flex-direction: column; }
+.gloss b { font-size: 18px; }
+.gloss .g-pron { font-weight: 700; font-size: 15px; }
+.gloss .g-mean { font-size: 14px; opacity: .85; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 
 /* 상황별 회화 */

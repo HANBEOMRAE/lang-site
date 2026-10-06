@@ -208,6 +208,7 @@ def check_patterns(data, name):
         if "___" not in p.get("ko_pron", ""):
             problems.append(f"{where}: ko_pron에 빈칸 ___ 이 없어요")
         fills = p.get("fills", [])
+        check_word_glosses(p, where)
         if len(fills) not in FILL_COUNTS:
             problems.append(f"{where}: 바꿔 넣을 말이 {len(fills)}개예요 ({' 또는 '.join(map(str, FILL_COUNTS))}개)")
         seen = set()
@@ -219,6 +220,34 @@ def check_patterns(data, name):
             seen.add(key)
             if p.get("pattern", "").endswith("?") != f.get("meaning", "").endswith("?"):
                 problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번: 묻는 틀이면 뜻도 ?로 끝나요")
+
+WORD = re.compile(r"[A-Za-z0-9][A-Za-z0-9'\-]*")
+
+def check_word_glosses(p, where):
+    """문장(틀 + 바꿔 넣는 말)의 모든 단어에 뜻이 있는지.
+    틀 자리 단어는 pattern.words, 바꿔 넣는 말 자리 단어는 fill.words → 없으면 pattern.words(기본값)."""
+    pattern = p.get("pattern", "")
+    pw = {k.lower(): v for k, v in (p.get("words") or {}).items()}
+    if "___" not in pattern:
+        return
+    start = pattern.index("___")
+    frame_words = {m.group().lower() for m in WORD.finditer(pattern.replace("___", " "))}
+    for j, f in enumerate(p.get("fills", [])):
+        fw = {k.lower(): v for k, v in (f.get("words") or {}).items()}
+        text = f.get("text", "")
+        end = start + len(text)
+        for m in WORD.finditer(pattern.replace("___", text)):
+            tok = m.group().lower()
+            in_fill = m.start() < end and m.end() > start
+            if in_fill and tok in frame_words and tok not in fw:
+                warnings.append(f"{where} > 바꿔 넣을 말 {j + 1}번 ({text}): '{m.group()}'가 틀 단어와 같은데 말 쪽 뜻이 없어서 "
+                                f"틀의 뜻이 쓰여요 — 같은 뜻인지 확인해 주세요")
+            g = (fw.get(tok) or pw.get(tok)) if in_fill else pw.get(tok)
+            if not g:
+                problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번 ({text}): '{m.group()}' 뜻이 없어요"
+                                + ("" if in_fill else " (틀 단어는 패턴 words에)"))
+            elif not str(g.get("meaning", "")).strip() or not str(g.get("ko_pron", "")).strip():
+                problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번 ({text}): '{m.group()}'의 ko_pron·meaning이 비어 있어요")
 
 # 패턴마다 바꿔 넣을 말 개수
 FILL_COUNTS = (12,)

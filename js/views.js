@@ -338,7 +338,7 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
       <p class="frame" lang="${lang}">${esc(before)}<span class="slot">?</span>${esc(after)}
         ${p.tip ? `<small>${esc(p.tip)}</small>` : ""}</p>
       <article class="card" id="card">
-        <p class="sentence" lang="${lang}">${esc(before)}<span class="fill">${esc(f.text)}</span>${esc(after)}</p>
+        <p class="sentence" lang="${lang}">${sentenceHTML(p.pattern, f.text)}</p>
         <div class="${H()}">
           <p class="pron">${esc(pron)}</p>
           <p class="meaning">${esc(f.meaning)}</p>
@@ -363,7 +363,69 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
+  bindWordGloss(lang, p, f);
   bindHideToggle(() => viewPattern(lang, sec, pIdx, i));
+}
+
+// ── 단어별 뜻 (누를 때만 보인다) ───────────────────
+// 틀 자리 단어는 p.words, 바꿔 넣는 말 자리 단어는 f.words → 없으면 p.words(기본값).
+// "I want to go to the park"처럼 같은 단어(to)라도 자리에 따라 뜻이 다르다.
+const WORD_RE = /[A-Za-z0-9][A-Za-z0-9'\-]*/g;
+function sentenceHTML(pattern, fillText) {
+  const s = pattern.replace("___", fillText);
+  const fs = pattern.indexOf("___"), fe = fs + fillText.length;
+  const toks = [...s.matchAll(WORD_RE)].map(m => ({ a: m.index, b: m.index + m[0].length, key: m[0].toLowerCase() }))
+    .map(t => ({ ...t, inFill: t.a < fe && t.b > fs }));
+  // 앞부분·바꿔 넣는 말·뒷부분으로 나눠 그린다. eating처럼 경계를 넘는 단어는 두 조각 모두 같은 단어로 묶는다.
+  const piece = (a, b) => {
+    let out = "", pos = a;
+    for (const t of toks) {
+      const x = Math.max(t.a, a), y = Math.min(t.b, b);
+      if (x >= y) continue;
+      out += esc(s.slice(pos, x));
+      out += `<span class="w" role="button" tabindex="0" data-k="${esc(t.key)}" data-f="${t.inFill ? 1 : 0}"
+        data-word="${esc(s.slice(t.a, t.b))}">${esc(s.slice(x, y))}</span>`;
+      pos = y;
+    }
+    return out + esc(s.slice(pos, b));
+  };
+  return `${piece(0, fs)}<span class="fill">${piece(fs, fe)}</span>${piece(fe, s.length)}`;
+}
+
+function closeGloss() { document.querySelectorAll(".gloss").forEach(g => g.remove()); }
+document.addEventListener("click", e => { if (!e.target.closest(".w, .gloss")) closeGloss(); });
+
+function bindWordGloss(lang, p, f) {
+  const card = document.getElementById("card");
+  const lookup = (k, inFill) => {
+    const pw = p.words || {}, fw = f.words || {};
+    return inFill ? (fw[k] || pw[k]) : pw[k];
+  };
+  card.querySelectorAll(".w").forEach(el => {
+    const open = e => {
+      e.stopPropagation();
+      const wasOpen = card.querySelector(`.gloss[data-k="${el.dataset.k}"][data-f="${el.dataset.f}"]`);
+      closeGloss();
+      if (wasOpen) return;                                   // 같은 단어를 다시 누르면 닫기
+      const g = lookup(el.dataset.k, el.dataset.f === "1");
+      if (!g) return;
+      const box = document.createElement("div");
+      box.className = "gloss"; box.dataset.k = el.dataset.k; box.dataset.f = el.dataset.f;
+      box.innerHTML = `<span class="g-text"><b lang="${lang}">${esc(el.dataset.word)}</b>
+          <span class="g-pron">${esc(g.ko_pron)}</span><span class="g-mean">${esc(g.meaning)}</span></span>
+        <button class="mini-speak" aria-label="${esc(el.dataset.word)} 발음 듣기">🔊</button>`;
+      card.appendChild(box);
+      box.querySelector("button").onclick = ev => { ev.stopPropagation(); tts.speak(el.dataset.word, LANGS[lang].voice, ev.currentTarget); };
+      // 누른 단어 바로 아래, 카드 안쪽에 맞춘다
+      const cr = card.getBoundingClientRect(), wr = el.getBoundingClientRect();
+      const w = box.offsetWidth;
+      const left = Math.min(Math.max(wr.left - cr.left + wr.width / 2 - w / 2, 8), cr.width - w - 8);
+      box.style.left = `${left}px`;
+      box.style.top = `${wr.bottom - cr.top + 6}px`;
+    };
+    el.addEventListener("click", open);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); } });
+  });
 }
 
 // ── 상황별 회화: 장면 목록 ───────────────────────

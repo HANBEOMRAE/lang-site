@@ -133,6 +133,14 @@ python tools/validate.py
 `___` 자리에 `fills`의 말이 들어가 문장이 된다. `fills.meaning`은 완성된 문장의 뜻을 쓴다.
 틀마다 `fills`는 12개. 동작·장소·사람·물건·시간, 짧은 말과 긴 말이 섞이게 고른다.
 
+단어별 뜻(화면에서 단어를 누르면 뜸)은 `words`에 적는다. 규칙은 CLAUDE.md "패턴 단어별 뜻" 참고.
+
+```json
+{ "pattern": "I want to ___", "words": { "i": { "ko_pron": "아이", "meaning": "나" }, "to": { "ko_pron": "투", "meaning": "~하기를 (want to = ~하고 싶다)" }, "the": { … } },
+  "fills": [ { "text": "go to the park", "ko_pron": "고 투 더 파크", "meaning": "공원에 가고 싶어",
+               "words": { "to": { "ko_pron": "투", "meaning": "~로, ~에" }, "park": { "ko_pron": "파크", "meaning": "공원" } } } ] }
+```
+
 ### 비슷한 패턴 비교 (pattern_compare.json)
 
 ```json
