@@ -888,5 +888,824 @@
     "example_meaning": "바람이 세."
    }
   ]
+ },
+ {
+  "category": "탈것",
+  "emoji": "🚗",
+  "items": [
+   {
+    "text": "くるま",
+    "kanji": "車",
+    "ko_pron": "쿠루마",
+    "meaning": "자동차",
+    "example": "くるまに のって。",
+    "example_ko_pron": "쿠루마니 놋테.",
+    "example_meaning": "차에 타."
+   },
+   {
+    "text": "バス",
+    "kanji": null,
+    "ko_pron": "바스",
+    "meaning": "버스",
+    "example": "バスが きたよ。",
+    "example_ko_pron": "바스가 키타요.",
+    "example_meaning": "버스 왔다."
+   },
+   {
+    "text": "でんしゃ",
+    "kanji": "電車",
+    "ko_pron": "덴샤",
+    "meaning": "전철, 기차",
+    "example": "でんしゃで いく。",
+    "example_ko_pron": "덴샤데 이쿠.",
+    "example_meaning": "전철 타고 가."
+   },
+   {
+    "text": "しんかんせん",
+    "kanji": "新幹線",
+    "ko_pron": "신칸센",
+    "meaning": "신칸센(고속 열차)",
+    "example": "しんかんせんは はやい！",
+    "example_ko_pron": "신칸센와 하야이!",
+    "example_meaning": "신칸센은 빨라!"
+   },
+   {
+    "text": "ひこうき",
+    "kanji": "飛行機",
+    "ko_pron": "히코-키",
+    "meaning": "비행기",
+    "example": "ひこうきが とんで いる。",
+    "example_ko_pron": "히코-키가 톤데 이루.",
+    "example_meaning": "비행기가 날고 있어."
+   },
+   {
+    "text": "ふね",
+    "kanji": "船",
+    "ko_pron": "후네",
+    "meaning": "배",
+    "example": "ふねに のりたい。",
+    "example_ko_pron": "후네니 노리타이.",
+    "example_meaning": "배 타고 싶어."
+   },
+   {
+    "text": "じてんしゃ",
+    "kanji": "自転車",
+    "ko_pron": "지텐샤",
+    "meaning": "자전거",
+    "example": "じてんしゃに のれるよ。",
+    "example_ko_pron": "지텐샤니 노레루요.",
+    "example_meaning": "자전거 탈 수 있어."
+   },
+   {
+    "text": "タクシー",
+    "kanji": null,
+    "ko_pron": "타쿠시-",
+    "meaning": "택시",
+    "example": "タクシーで かえろう。",
+    "example_ko_pron": "타쿠시-데 카에로-.",
+    "example_meaning": "택시 타고 돌아가자."
+   },
+   {
+    "text": "ちかてつ",
+    "kanji": "地下鉄",
+    "ko_pron": "치카테츠",
+    "meaning": "지하철",
+    "example": "ちかてつは どこ？",
+    "example_ko_pron": "치카테츠와 도코?",
+    "example_meaning": "지하철 어디야?"
+   }
+  ]
+ },
+ {
+  "category": "장소",
+  "emoji": "🏫",
+  "items": [
+   {
+    "text": "おうち",
+    "kanji": null,
+    "ko_pron": "오우치",
+    "meaning": "집",
+    "example": "おうちに かえろう。",
+    "example_ko_pron": "오우치니 카에로-.",
+    "example_meaning": "집에 가자."
+   },
+   {
+    "text": "ようちえん",
+    "kanji": "幼稚園",
+    "ko_pron": "요-치엔",
+    "meaning": "유치원",
+    "example": "ようちえん たのしい！",
+    "example_ko_pron": "요-치엔 타노시-!",
+    "example_meaning": "유치원 재밌어!"
+   },
+   {
+    "text": "がっこう",
+    "kanji": "学校",
+    "ko_pron": "갓코-",
+    "meaning": "학교",
+    "example": "がっこうに いく。",
+    "example_ko_pron": "갓코-니 이쿠.",
+    "example_meaning": "학교에 가."
+   },
+   {
+    "text": "おみせ",
+    "kanji": "お店",
+    "ko_pron": "오미세",
+    "meaning": "가게",
+    "example": "おみせで かう。",
+    "example_ko_pron": "오미세데 카우.",
+    "example_meaning": "가게에서 사."
+   },
+   {
+    "text": "こうえん",
+    "kanji": "公園",
+    "ko_pron": "코-엔",
+    "meaning": "공원",
+    "example": "こうえんで あそぼう。",
+    "example_ko_pron": "코-엔데 아소보-.",
+    "example_meaning": "공원에서 놀자."
+   },
+   {
+    "text": "びょういん",
+    "kanji": "病院",
+    "ko_pron": "뵤-인",
+    "meaning": "병원",
+    "example": "びょういんに いく。",
+    "example_ko_pron": "뵤-인니 이쿠.",
+    "example_meaning": "병원에 가."
+   },
+   {
+    "text": "えき",
+    "kanji": "駅",
+    "ko_pron": "에키",
+    "meaning": "역",
+    "example": "えきは ちかいよ。",
+    "example_ko_pron": "에키와 치카이요.",
+    "example_meaning": "역은 가까워."
+   },
+   {
+    "text": "くうこう",
+    "kanji": "空港",
+    "ko_pron": "쿠-코-",
+    "meaning": "공항",
+    "example": "くうこうに ついた。",
+    "example_ko_pron": "쿠-코-니 츠이타.",
+    "example_meaning": "공항에 도착했어."
+   }
+  ]
+ },
+ {
+  "category": "집·물건",
+  "emoji": "🏠",
+  "items": [
+   {
+    "text": "ドア",
+    "kanji": null,
+    "ko_pron": "도아",
+    "meaning": "문",
+    "example": "ドアを あけて。",
+    "example_ko_pron": "도아오 아케테.",
+    "example_meaning": "문 열어."
+   },
+   {
+    "text": "まど",
+    "kanji": "窓",
+    "ko_pron": "마도",
+    "meaning": "창문",
+    "example": "まどを しめて。",
+    "example_ko_pron": "마도오 시메테.",
+    "example_meaning": "창문 닫아."
+   },
+   {
+    "text": "ベッド",
+    "kanji": null,
+    "ko_pron": "벳도",
+    "meaning": "침대",
+    "example": "ベッドで ねる。",
+    "example_ko_pron": "벳도데 네루.",
+    "example_meaning": "침대에서 자."
+   },
+   {
+    "text": "いす",
+    "kanji": null,
+    "ko_pron": "이스",
+    "meaning": "의자",
+    "example": "いすに すわって。",
+    "example_ko_pron": "이스니 스왓테.",
+    "example_meaning": "의자에 앉아."
+   },
+   {
+    "text": "テーブル",
+    "kanji": null,
+    "ko_pron": "테-부루",
+    "meaning": "식탁, 탁자",
+    "example": "テーブルに おいて。",
+    "example_ko_pron": "테-부루니 오이테.",
+    "example_meaning": "식탁 위에 놓아."
+   },
+   {
+    "text": "トイレ",
+    "kanji": null,
+    "ko_pron": "토이레",
+    "meaning": "화장실",
+    "example": "トイレ いきたい。",
+    "example_ko_pron": "토이레 이키타이.",
+    "example_meaning": "화장실 가고 싶어."
+   },
+   {
+    "text": "かぎ",
+    "kanji": "鍵",
+    "ko_pron": "카기",
+    "meaning": "열쇠",
+    "example": "かぎを なくした。",
+    "example_ko_pron": "카기오 나쿠시타.",
+    "example_meaning": "열쇠를 잃어버렸어."
+   },
+   {
+    "text": "でんわ",
+    "kanji": "電話",
+    "ko_pron": "덴와",
+    "meaning": "전화",
+    "example": "でんわが なって いる。",
+    "example_ko_pron": "덴와가 낫테 이루.",
+    "example_meaning": "전화가 울리고 있어."
+   }
+  ]
+ },
+ {
+  "category": "주방",
+  "emoji": "🍽️",
+  "items": [
+   {
+    "text": "コップ",
+    "kanji": null,
+    "ko_pron": "콧푸",
+    "meaning": "컵",
+    "example": "コップで のむ。",
+    "example_ko_pron": "콧푸데 노무.",
+    "example_meaning": "컵으로 마셔."
+   },
+   {
+    "text": "おさら",
+    "kanji": "お皿",
+    "ko_pron": "오사라",
+    "meaning": "접시",
+    "example": "おさらを はこんで。",
+    "example_ko_pron": "오사라오 하콘데.",
+    "example_meaning": "접시 날라 줘."
+   },
+   {
+    "text": "スプーン",
+    "kanji": null,
+    "ko_pron": "스푸-ㄴ",
+    "meaning": "숟가락",
+    "example": "スプーン ちょうだい。",
+    "example_ko_pron": "스푸-ㄴ 초-다이.",
+    "example_meaning": "숟가락 줘."
+   },
+   {
+    "text": "フォーク",
+    "kanji": null,
+    "ko_pron": "포-쿠",
+    "meaning": "포크",
+    "example": "フォークで たべる。",
+    "example_ko_pron": "포-쿠데 타베루.",
+    "example_meaning": "포크로 먹어."
+   },
+   {
+    "text": "おはし",
+    "kanji": "お箸",
+    "ko_pron": "오하시",
+    "meaning": "젓가락",
+    "example": "おはしで たべられるよ。",
+    "example_ko_pron": "오하시데 타베라레루요.",
+    "example_meaning": "젓가락으로 먹을 수 있어."
+   },
+   {
+    "text": "ちゃわん",
+    "kanji": "茶碗",
+    "ko_pron": "차완",
+    "meaning": "밥그릇",
+    "example": "ちゃわんを もって たべる。",
+    "example_ko_pron": "차완오 못테 타베루.",
+    "example_meaning": "밥그릇을 들고 먹어."
+   },
+   {
+    "text": "ナイフ",
+    "kanji": null,
+    "ko_pron": "나이후",
+    "meaning": "칼, 나이프",
+    "example": "ナイフは あぶないよ。",
+    "example_ko_pron": "나이후와 아부나이요.",
+    "example_meaning": "칼은 위험해."
+   },
+   {
+    "text": "れいぞうこ",
+    "kanji": "冷蔵庫",
+    "ko_pron": "레-조-코",
+    "meaning": "냉장고",
+    "example": "れいぞうこを あけないで。",
+    "example_ko_pron": "레-조-코오 아케나이데.",
+    "example_meaning": "냉장고 열지 마."
+   }
+  ]
+ },
+ {
+  "category": "시간",
+  "emoji": "⏰",
+  "items": [
+   {
+    "text": "あさ",
+    "kanji": "朝",
+    "ko_pron": "아사",
+    "meaning": "아침",
+    "example": "あさだよ、おきて。",
+    "example_ko_pron": "아사다요, 오키테.",
+    "example_meaning": "아침이야, 일어나."
+   },
+   {
+    "text": "ひる",
+    "kanji": "昼",
+    "ko_pron": "히루",
+    "meaning": "낮",
+    "example": "ひるまで ねた。",
+    "example_ko_pron": "히루마데 네타.",
+    "example_meaning": "낮까지 잤어."
+   },
+   {
+    "text": "よる",
+    "kanji": "夜",
+    "ko_pron": "요루",
+    "meaning": "밤",
+    "example": "よるは くらい。",
+    "example_ko_pron": "요루와 쿠라이.",
+    "example_meaning": "밤은 어두워."
+   },
+   {
+    "text": "きょう",
+    "kanji": "今日",
+    "ko_pron": "쿄-",
+    "meaning": "오늘",
+    "example": "きょうは はれ。",
+    "example_ko_pron": "쿄-와 하레.",
+    "example_meaning": "오늘은 맑아."
+   },
+   {
+    "text": "あした",
+    "kanji": "明日",
+    "ko_pron": "아시타",
+    "meaning": "내일",
+    "example": "あした あそぼう。",
+    "example_ko_pron": "아시타 아소보-.",
+    "example_meaning": "내일 놀자."
+   },
+   {
+    "text": "きのう",
+    "kanji": "昨日",
+    "ko_pron": "키노-",
+    "meaning": "어제",
+    "example": "きのう こうえんに いった。",
+    "example_ko_pron": "키노- 코-엔니 잇타.",
+    "example_meaning": "어제 공원에 갔어."
+   },
+   {
+    "text": "いま",
+    "kanji": "今",
+    "ko_pron": "이마",
+    "meaning": "지금",
+    "example": "いま いく！",
+    "example_ko_pron": "이마 이쿠!",
+    "example_meaning": "지금 갈게!"
+   },
+   {
+    "text": "あとで",
+    "kanji": null,
+    "ko_pron": "아토데",
+    "meaning": "나중에",
+    "example": "あとでね。",
+    "example_ko_pron": "아토데네.",
+    "example_meaning": "나중에 해."
+   }
+  ]
+ },
+ {
+  "category": "반대말",
+  "emoji": "↔️",
+  "items": [
+   {
+    "text": "おおきい",
+    "kanji": "大きい",
+    "ko_pron": "오-키-",
+    "meaning": "큰",
+    "example": "ぞうは おおきい。",
+    "example_ko_pron": "조-와 오-키-.",
+    "example_meaning": "코끼리는 커."
+   },
+   {
+    "text": "ちいさい",
+    "kanji": "小さい",
+    "ko_pron": "치-사이",
+    "meaning": "작은",
+    "example": "ありは ちいさい。",
+    "example_ko_pron": "아리와 치-사이.",
+    "example_meaning": "개미는 작아."
+   },
+   {
+    "text": "いい",
+    "kanji": null,
+    "ko_pron": "이-",
+    "meaning": "좋은",
+    "example": "いい こだね。",
+    "example_ko_pron": "이- 코다네.",
+    "example_meaning": "착한 아이구나."
+   },
+   {
+    "text": "わるい",
+    "kanji": "悪い",
+    "ko_pron": "와루이",
+    "meaning": "나쁜",
+    "example": "わるい こと しないで。",
+    "example_ko_pron": "와루이 코토 시나이데.",
+    "example_meaning": "나쁜 짓 하지 마."
+   },
+   {
+    "text": "はやい",
+    "kanji": "速い",
+    "ko_pron": "하야이",
+    "meaning": "빠른",
+    "example": "でんしゃは はやい。",
+    "example_ko_pron": "덴샤와 하야이.",
+    "example_meaning": "전철은 빨라."
+   },
+   {
+    "text": "おそい",
+    "kanji": "遅い",
+    "ko_pron": "오소이",
+    "meaning": "느린",
+    "example": "かめは おそい。",
+    "example_ko_pron": "카메와 오소이.",
+    "example_meaning": "거북이는 느려."
+   },
+   {
+    "text": "おもい",
+    "kanji": "重い",
+    "ko_pron": "오모이",
+    "meaning": "무거운",
+    "example": "この かばん おもい！",
+    "example_ko_pron": "코노 카반 오모이!",
+    "example_meaning": "이 가방 무거워!"
+   },
+   {
+    "text": "かるい",
+    "kanji": "軽い",
+    "ko_pron": "카루이",
+    "meaning": "가벼운",
+    "example": "はねは かるい。",
+    "example_ko_pron": "하네와 카루이.",
+    "example_meaning": "깃털은 가벼워."
+   }
+  ]
+ },
+ {
+  "category": "위치·방향",
+  "emoji": "🧭",
+  "items": [
+   {
+    "text": "うえ",
+    "kanji": "上",
+    "ko_pron": "우에",
+    "meaning": "위",
+    "example": "つくえの うえ。",
+    "example_ko_pron": "츠쿠에노 우에.",
+    "example_meaning": "책상 위."
+   },
+   {
+    "text": "した",
+    "kanji": "下",
+    "ko_pron": "시타",
+    "meaning": "아래, 밑",
+    "example": "ベッドの したに ある。",
+    "example_ko_pron": "벳도노 시타니 아루.",
+    "example_meaning": "침대 밑에 있어."
+   },
+   {
+    "text": "なか",
+    "kanji": "中",
+    "ko_pron": "나카",
+    "meaning": "안",
+    "example": "はこの なかに ねこが いる。",
+    "example_ko_pron": "하코노 나카니 네코가 이루.",
+    "example_meaning": "상자 안에 고양이가 있어."
+   },
+   {
+    "text": "まえ",
+    "kanji": "前",
+    "ko_pron": "마에",
+    "meaning": "앞",
+    "example": "えきの まえで まってる。",
+    "example_ko_pron": "에키노 마에데 맛테루.",
+    "example_meaning": "역 앞에서 기다릴게."
+   },
+   {
+    "text": "うしろ",
+    "kanji": "後ろ",
+    "ko_pron": "우시로",
+    "meaning": "뒤",
+    "example": "うしろを みて！",
+    "example_ko_pron": "우시로오 미테!",
+    "example_meaning": "뒤를 봐!"
+   },
+   {
+    "text": "よこ",
+    "kanji": "横",
+    "ko_pron": "요코",
+    "meaning": "옆",
+    "example": "よこに すわって。",
+    "example_ko_pron": "요코니 스왓테.",
+    "example_meaning": "옆에 앉아."
+   },
+   {
+    "text": "となり",
+    "kanji": "隣",
+    "ko_pron": "토나리",
+    "meaning": "옆, 이웃",
+    "example": "となりの いえ。",
+    "example_ko_pron": "토나리노 이에.",
+    "example_meaning": "옆집."
+   },
+   {
+    "text": "ちかく",
+    "kanji": "近く",
+    "ko_pron": "치카쿠",
+    "meaning": "가까이",
+    "example": "ちかくに いてね。",
+    "example_ko_pron": "치카쿠니 이테네.",
+    "example_meaning": "가까이 있어."
+   },
+   {
+    "text": "とおく",
+    "kanji": "遠く",
+    "ko_pron": "토-쿠",
+    "meaning": "멀리",
+    "example": "とおくに いかないで。",
+    "example_ko_pron": "토-쿠니 이카나이데.",
+    "example_meaning": "멀리 가지 마."
+   },
+   {
+    "text": "ひだり",
+    "kanji": "左",
+    "ko_pron": "히다리",
+    "meaning": "왼쪽",
+    "example": "ひだりに まがって。",
+    "example_ko_pron": "히다리니 마갓테.",
+    "example_meaning": "왼쪽으로 돌아."
+   },
+   {
+    "text": "みぎ",
+    "kanji": "右",
+    "ko_pron": "미기",
+    "meaning": "오른쪽",
+    "example": "みぎに ある。",
+    "example_ko_pron": "미기니 아루.",
+    "example_meaning": "오른쪽에 있어."
+   },
+   {
+    "text": "そと",
+    "kanji": "外",
+    "ko_pron": "소토",
+    "meaning": "밖",
+    "example": "そとで あそぼう。",
+    "example_ko_pron": "소토데 아소보-.",
+    "example_meaning": "밖에서 놀자."
+   }
+  ]
+ },
+ {
+  "category": "질문 단어",
+  "emoji": "❓",
+  "items": [
+   {
+    "text": "なに",
+    "kanji": "何",
+    "ko_pron": "나니",
+    "meaning": "무엇",
+    "example": "なにが すき？",
+    "example_ko_pron": "나니가 스키?",
+    "example_meaning": "뭐 좋아해?"
+   },
+   {
+    "text": "どこ",
+    "kanji": null,
+    "ko_pron": "도코",
+    "meaning": "어디",
+    "example": "おかあさん どこ？",
+    "example_ko_pron": "오카-산 도코?",
+    "example_meaning": "엄마 어디 있어?"
+   },
+   {
+    "text": "だれ",
+    "kanji": "誰",
+    "ko_pron": "다레",
+    "meaning": "누구",
+    "example": "あの ひと だれ？",
+    "example_ko_pron": "아노 히토 다레?",
+    "example_meaning": "저 사람 누구야?"
+   },
+   {
+    "text": "いつ",
+    "kanji": null,
+    "ko_pron": "이츠",
+    "meaning": "언제",
+    "example": "いつ いくの？",
+    "example_ko_pron": "이츠 이쿠노?",
+    "example_meaning": "언제 가?"
+   },
+   {
+    "text": "なんで",
+    "kanji": null,
+    "ko_pron": "난데",
+    "meaning": "왜",
+    "example": "なんで ないてるの？",
+    "example_ko_pron": "난데 나이테루노?",
+    "example_meaning": "왜 울어?"
+   },
+   {
+    "text": "どうやって",
+    "kanji": null,
+    "ko_pron": "도-얏테",
+    "meaning": "어떻게",
+    "example": "どうやって つくるの？",
+    "example_ko_pron": "도-얏테 츠쿠루노?",
+    "example_meaning": "어떻게 만들어?"
+   },
+   {
+    "text": "どれ",
+    "kanji": null,
+    "ko_pron": "도레",
+    "meaning": "어느 것",
+    "example": "どれが いい？",
+    "example_ko_pron": "도레가 이-?",
+    "example_meaning": "어느 게 좋아?"
+   },
+   {
+    "text": "いくつ",
+    "kanji": null,
+    "ko_pron": "이쿠츠",
+    "meaning": "몇 개",
+    "example": "りんご いくつ？",
+    "example_ko_pron": "린고 이쿠츠?",
+    "example_meaning": "사과 몇 개야?"
+   },
+   {
+    "text": "いくら",
+    "kanji": null,
+    "ko_pron": "이쿠라",
+    "meaning": "얼마",
+    "example": "これ いくら？",
+    "example_ko_pron": "코레 이쿠라?",
+    "example_meaning": "이거 얼마야?"
+   },
+   {
+    "text": "なんさい",
+    "kanji": "何歳",
+    "ko_pron": "난사이",
+    "meaning": "몇 살",
+    "example": "いま なんさい？",
+    "example_ko_pron": "이마 난사이?",
+    "example_meaning": "지금 몇 살이야?"
+   },
+   {
+    "text": "なんじ",
+    "kanji": "何時",
+    "ko_pron": "난지",
+    "meaning": "몇 시",
+    "example": "いま なんじ？",
+    "example_ko_pron": "이마 난지?",
+    "example_meaning": "지금 몇 시야?"
+   }
+  ]
+ },
+ {
+  "category": "숫자 2",
+  "emoji": "💯",
+  "items": [
+   {
+    "text": "じゅういち",
+    "kanji": "十一",
+    "ko_pron": "주-이치",
+    "meaning": "열하나, 11",
+    "example": "サッカーは じゅういちにんで する。",
+    "example_ko_pron": "삿카-와 주-이치닌데 스루.",
+    "example_meaning": "축구는 열한 명이서 해."
+   },
+   {
+    "text": "じゅうに",
+    "kanji": "十二",
+    "ko_pron": "주-니",
+    "meaning": "열둘, 12",
+    "example": "いちねんは じゅうにかげつ。",
+    "example_ko_pron": "이치넨와 주-니카게츠.",
+    "example_meaning": "1년은 열두 달이야."
+   },
+   {
+    "text": "じゅうさん",
+    "kanji": "十三",
+    "ko_pron": "주-산",
+    "meaning": "열셋, 13",
+    "example": "じゅうさんばんの バス。",
+    "example_ko_pron": "주-산반노 바스.",
+    "example_meaning": "13번 버스."
+   },
+   {
+    "text": "じゅうよん",
+    "kanji": "十四",
+    "ko_pron": "주-욘",
+    "meaning": "열넷, 14",
+    "example": "じゅうよにん いるよ。",
+    "example_ko_pron": "주-요닌 이루요.",
+    "example_meaning": "열네 명 있어."
+   },
+   {
+    "text": "じゅうご",
+    "kanji": "十五",
+    "ko_pron": "주-고",
+    "meaning": "열다섯, 15",
+    "example": "じゅうごふん まって。",
+    "example_ko_pron": "주-고훈 맛테.",
+    "example_meaning": "15분 기다려."
+   },
+   {
+    "text": "じゅうろく",
+    "kanji": "十六",
+    "ko_pron": "주-로쿠",
+    "meaning": "열여섯, 16",
+    "example": "クラスに じゅうろくにん いる。",
+    "example_ko_pron": "쿠라스니 주-로쿠닌 이루.",
+    "example_meaning": "우리 반에 열여섯 명 있어."
+   },
+   {
+    "text": "じゅうなな",
+    "kanji": "十七",
+    "ko_pron": "주-나나",
+    "meaning": "열일곱, 17",
+    "example": "じゅうななばんの へや。",
+    "example_ko_pron": "주-나나반노 헤야.",
+    "example_meaning": "17번 방."
+   },
+   {
+    "text": "じゅうはち",
+    "kanji": "十八",
+    "ko_pron": "주-하치",
+    "meaning": "열여덟, 18",
+    "example": "いとこは じゅうはっさい。",
+    "example_ko_pron": "이토코와 주-핫사이.",
+    "example_meaning": "사촌은 열여덟 살이야."
+   },
+   {
+    "text": "じゅうきゅう",
+    "kanji": "十九",
+    "ko_pron": "주-큐-",
+    "meaning": "열아홉, 19",
+    "example": "じゅうきゅう、にじゅう！ もう いいかい？",
+    "example_ko_pron": "주-큐-, 니주-! 모- 이-카이?",
+    "example_meaning": "열아홉, 스물! 이제 됐니?"
+   },
+   {
+    "text": "にじゅう",
+    "kanji": "二十",
+    "ko_pron": "니주-",
+    "meaning": "스물, 20",
+    "example": "ての ゆびと あしの ゆびで にじゅっぽん。",
+    "example_ko_pron": "테노 유비토 아시노 유비데 니줏폰.",
+    "example_meaning": "손가락 발가락 합쳐서 스무 개야."
+   },
+   {
+    "text": "さんじゅう",
+    "kanji": "三十",
+    "ko_pron": "산주-",
+    "meaning": "서른, 30",
+    "example": "いっかげつは さんじゅうにち。",
+    "example_ko_pron": "잇카게츠와 산주-니치.",
+    "example_meaning": "한 달은 30일이야."
+   },
+   {
+    "text": "ごじゅう",
+    "kanji": "五十",
+    "ko_pron": "고주-",
+    "meaning": "쉰, 50",
+    "example": "シールが ごじゅうまい ある。",
+    "example_ko_pron": "시-루가 고주-마이 아루.",
+    "example_meaning": "스티커가 50장 있어."
+   },
+   {
+    "text": "ひゃく",
+    "kanji": "百",
+    "ko_pron": "햐쿠",
+    "meaning": "백, 100",
+    "example": "ひゃくまで かぞえられるよ！",
+    "example_ko_pron": "햐쿠마데 카조에라레루요!",
+    "example_meaning": "100까지 셀 수 있어!"
+   }
+  ]
  }
 ]
