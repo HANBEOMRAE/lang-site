@@ -11,7 +11,7 @@ const LANGS = {
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "verbs",      type: "cards",      name: "동사",       desc: "매일 쓰는 동작 말", ready: true },
       { id: "patterns",   type: "patterns",   name: "패턴 영어",   desc: "문장 틀에 단어 바꿔 넣기", ready: true },
-      { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·티켓·호텔·식당·쇼핑·길찾기", ready: true }
+      { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·호텔·식당·교통·카페·병원 등 12개 장면", ready: true }
     ]
   },
   ja: {
@@ -21,7 +21,7 @@ const LANGS = {
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "particles",  type: "cards",      name: "조사",       desc: "は・が・を・に・で…", ready: false },
       { id: "verbs",      type: "conjugation", name: "동사 변형",  desc: "1·2·3형 × ます·て·た·ない·たい형", ready: true },
-      { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·티켓·호텔·식당·쇼핑·길찾기", ready: true }
+      { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·호텔·식당·교통·카페·병원 등 12개 장면", ready: true }
     ]
   }
 };

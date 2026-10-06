@@ -682,5 +682,713 @@
     "meaning": "왼쪽으로 도세요."
    }
   ]
+ },
+ {
+  "scene": "인사·자기소개",
+  "emoji": "👋",
+  "desc": "처음 만났을 때, 나에 대해 말하기",
+  "dialogues": [
+   {
+    "title": "처음 만났을 때",
+    "lines": [
+     {
+      "who": "친구",
+      "text": "Hi! What's your name?",
+      "ko_pron": "하이! 왓츠 유어 네임?",
+      "meaning": "안녕! 이름이 뭐야?"
+     },
+     {
+      "who": "나",
+      "text": "I'm Minji. What's your name?",
+      "ko_pron": "아임 민지. 왓츠 유어 네임?",
+      "meaning": "나는 민지야. 너는 이름이 뭐야?"
+     },
+     {
+      "who": "친구",
+      "text": "I'm Emma. Nice to meet you.",
+      "ko_pron": "아임 엠마. 나이스 투 밋 유",
+      "meaning": "나는 엠마야. 만나서 반가워."
+     },
+     {
+      "who": "나",
+      "text": "Nice to meet you, too.",
+      "ko_pron": "나이스 투 밋 유, 투",
+      "meaning": "나도 만나서 반가워."
+     },
+     {
+      "who": "친구",
+      "text": "Where are you from?",
+      "ko_pron": "웨어 아 유 프롬?",
+      "meaning": "어디서 왔어?"
+     },
+     {
+      "who": "나",
+      "text": "I'm from Seoul, Korea.",
+      "ko_pron": "아임 프롬 서울, 코리아",
+      "meaning": "한국 서울에서 왔어."
+     }
+    ]
+   },
+   {
+    "title": "나에 대해 말하기",
+    "lines": [
+     {
+      "who": "친구",
+      "text": "How old are you?",
+      "ko_pron": "하우 올드 아 유?",
+      "meaning": "몇 살이야?"
+     },
+     {
+      "who": "나",
+      "text": "I'm seven.",
+      "ko_pron": "아임 세븐",
+      "meaning": "나는 일곱 살이야."
+     },
+     {
+      "who": "친구",
+      "text": "What do you like?",
+      "ko_pron": "왓 두 유 라이크?",
+      "meaning": "뭐 좋아해?"
+     },
+     {
+      "who": "나",
+      "text": "I like drawing.",
+      "ko_pron": "아이 라이크 드로잉",
+      "meaning": "나는 그림 그리기 좋아해."
+     },
+     {
+      "who": "친구",
+      "text": "Me too! Let's draw together.",
+      "ko_pron": "미 투! 렛츠 드로 투게더",
+      "meaning": "나도! 같이 그리자."
+     }
+    ]
+   }
+  ],
+  "phrases": [
+   {
+    "text": "Good morning.",
+    "ko_pron": "굿 모닝",
+    "meaning": "좋은 아침이에요."
+   },
+   {
+    "text": "How are you?",
+    "ko_pron": "하우 아 유?",
+    "meaning": "잘 지내요?"
+   },
+   {
+    "text": "I'm fine, thank you.",
+    "ko_pron": "아임 파인, 땡큐",
+    "meaning": "잘 지내요, 고마워요."
+   },
+   {
+    "text": "This is my mom.",
+    "ko_pron": "디스 이즈 마이 맘",
+    "meaning": "이분은 우리 엄마예요."
+   },
+   {
+    "text": "See you tomorrow.",
+    "ko_pron": "씨 유 투모로우",
+    "meaning": "내일 봐요."
+   },
+   {
+    "text": "Can we be friends?",
+    "ko_pron": "캔 위 비 프렌즈?",
+    "meaning": "우리 친구 할래?"
+   }
+  ]
+ },
+ {
+  "scene": "교통",
+  "emoji": "🚌",
+  "desc": "버스·지하철·택시 타기",
+  "dialogues": [
+   {
+    "title": "버스 타기",
+    "lines": [
+     {
+      "who": "나",
+      "text": "Does this bus go to the zoo?",
+      "ko_pron": "더즈 디스 버스 고 투 더 주?",
+      "meaning": "이 버스 동물원 가요?"
+     },
+     {
+      "who": "기사",
+      "text": "Yes, it does.",
+      "ko_pron": "예스, 잇 더즈",
+      "meaning": "네, 가요."
+     },
+     {
+      "who": "나",
+      "text": "How much is it?",
+      "ko_pron": "하우 머치 이즈 잇?",
+      "meaning": "얼마예요?"
+     },
+     {
+      "who": "기사",
+      "text": "Two dollars.",
+      "ko_pron": "투 달러즈",
+      "meaning": "2달러예요."
+     },
+     {
+      "who": "나",
+      "text": "Please tell me when to get off.",
+      "ko_pron": "플리즈 텔 미 웬 투 겟 오프",
+      "meaning": "내릴 때 알려 주세요."
+     },
+     {
+      "who": "기사",
+      "text": "Sure.",
+      "ko_pron": "슈어",
+      "meaning": "네."
+     }
+    ]
+   },
+   {
+    "title": "택시 타기",
+    "lines": [
+     {
+      "who": "기사",
+      "text": "Where to?",
+      "ko_pron": "웨어 투?",
+      "meaning": "어디로 가세요?"
+     },
+     {
+      "who": "나",
+      "text": "To the City Hotel, please.",
+      "ko_pron": "투 더 시티 호텔, 플리즈",
+      "meaning": "시티 호텔이요."
+     },
+     {
+      "who": "기사",
+      "text": "Okay. Put on your seat belt.",
+      "ko_pron": "오케이. 풋 온 유어 씻 벨트",
+      "meaning": "네. 안전벨트 매세요."
+     },
+     {
+      "who": "나",
+      "text": "How long does it take?",
+      "ko_pron": "하우 롱 더즈 잇 테이크?",
+      "meaning": "얼마나 걸려요?"
+     },
+     {
+      "who": "기사",
+      "text": "About ten minutes.",
+      "ko_pron": "어바웃 텐 미닛츠",
+      "meaning": "10분쯤이요."
+     },
+     {
+      "who": "나",
+      "text": "Stop here, please.",
+      "ko_pron": "스탑 히어, 플리즈",
+      "meaning": "여기 세워 주세요."
+     }
+    ]
+   }
+  ],
+  "phrases": [
+   {
+    "text": "Where is the bus stop?",
+    "ko_pron": "웨어 이즈 더 버스 스탑?",
+    "meaning": "버스 정류장이 어디예요?"
+   },
+   {
+    "text": "Where is the subway station?",
+    "ko_pron": "웨어 이즈 더 서브웨이 스테이션?",
+    "meaning": "지하철역이 어디예요?"
+   },
+   {
+    "text": "Is this the right train?",
+    "ko_pron": "이즈 디스 더 라잇 트레인?",
+    "meaning": "이 기차 맞아요?"
+   },
+   {
+    "text": "Where do I get off?",
+    "ko_pron": "웨어 두 아이 겟 오프?",
+    "meaning": "어디서 내려요?"
+   },
+   {
+    "text": "Can you open the trunk?",
+    "ko_pron": "캔 유 오픈 더 트렁크?",
+    "meaning": "트렁크 열어 주실래요?"
+   },
+   {
+    "text": "Keep the change.",
+    "ko_pron": "킵 더 체인지",
+    "meaning": "거스름돈은 가지세요."
+   }
+  ]
+ },
+ {
+  "scene": "카페",
+  "emoji": "☕",
+  "desc": "주문하기, 자리 찾기",
+  "dialogues": [
+   {
+    "title": "주문하기",
+    "lines": [
+     {
+      "who": "직원",
+      "text": "Hi! What can I get you?",
+      "ko_pron": "하이! 왓 캔 아이 겟 유?",
+      "meaning": "안녕하세요! 뭐 드릴까요?"
+     },
+     {
+      "who": "나",
+      "text": "A hot chocolate, please.",
+      "ko_pron": "어 핫 초콜릿, 플리즈",
+      "meaning": "코코아 한 잔 주세요."
+     },
+     {
+      "who": "직원",
+      "text": "What size?",
+      "ko_pron": "왓 사이즈?",
+      "meaning": "어떤 사이즈요?"
+     },
+     {
+      "who": "나",
+      "text": "Small, please.",
+      "ko_pron": "스몰, 플리즈",
+      "meaning": "작은 걸로요."
+     },
+     {
+      "who": "직원",
+      "text": "For here or to go?",
+      "ko_pron": "포 히어 오어 투 고?",
+      "meaning": "드시고 가세요, 가져가세요?"
+     },
+     {
+      "who": "나",
+      "text": "For here.",
+      "ko_pron": "포 히어",
+      "meaning": "먹고 갈게요."
+     }
+    ]
+   },
+   {
+    "title": "자리 찾기",
+    "lines": [
+     {
+      "who": "나",
+      "text": "Is this seat free?",
+      "ko_pron": "이즈 디스 씻 프리?",
+      "meaning": "이 자리 비었어요?"
+     },
+     {
+      "who": "손님",
+      "text": "Yes, go ahead.",
+      "ko_pron": "예스, 고 어헤드",
+      "meaning": "네, 앉으세요."
+     },
+     {
+      "who": "나",
+      "text": "Thank you. Where is the sugar?",
+      "ko_pron": "땡큐. 웨어 이즈 더 슈거?",
+      "meaning": "고마워요. 설탕은 어디 있어요?"
+     },
+     {
+      "who": "손님",
+      "text": "It's over there.",
+      "ko_pron": "잇츠 오버 데어",
+      "meaning": "저쪽에 있어요."
+     },
+     {
+      "who": "나",
+      "text": "Can I have a napkin?",
+      "ko_pron": "캔 아이 해브 어 냅킨?",
+      "meaning": "냅킨 하나 주실래요?"
+     },
+     {
+      "who": "직원",
+      "text": "Here you go.",
+      "ko_pron": "히어 유 고",
+      "meaning": "여기 있어요."
+     }
+    ]
+   }
+  ],
+  "phrases": [
+   {
+    "text": "One cookie, please.",
+    "ko_pron": "원 쿠키, 플리즈",
+    "meaning": "쿠키 하나 주세요."
+   },
+   {
+    "text": "Less sugar, please.",
+    "ko_pron": "레스 슈거, 플리즈",
+    "meaning": "설탕 조금만 넣어 주세요."
+   },
+   {
+    "text": "Can I have some water?",
+    "ko_pron": "캔 아이 해브 썸 워터?",
+    "meaning": "물 좀 주실래요?"
+   },
+   {
+    "text": "Is it hot?",
+    "ko_pron": "이즈 잇 핫?",
+    "meaning": "뜨거워요?"
+   },
+   {
+    "text": "It's too sweet.",
+    "ko_pron": "잇츠 투 스윗",
+    "meaning": "너무 달아요."
+   },
+   {
+    "text": "Can I sit here?",
+    "ko_pron": "캔 아이 싯 히어?",
+    "meaning": "여기 앉아도 돼요?"
+   }
+  ]
+ },
+ {
+  "scene": "편의점",
+  "emoji": "🏪",
+  "desc": "물건 찾기, 데우기, 계산",
+  "dialogues": [
+   {
+    "title": "물건 찾기",
+    "lines": [
+     {
+      "who": "나",
+      "text": "Excuse me. Where is the milk?",
+      "ko_pron": "익스큐즈 미. 웨어 이즈 더 밀크?",
+      "meaning": "저기요. 우유 어디 있어요?"
+     },
+     {
+      "who": "직원",
+      "text": "It's in the back.",
+      "ko_pron": "잇츠 인 더 백",
+      "meaning": "안쪽에 있어요."
+     },
+     {
+      "who": "나",
+      "text": "Do you have ice cream?",
+      "ko_pron": "두 유 해브 아이스크림?",
+      "meaning": "아이스크림 있어요?"
+     },
+     {
+      "who": "직원",
+      "text": "Yes, in the freezer.",
+      "ko_pron": "예스, 인 더 프리저",
+      "meaning": "네, 냉동고에 있어요."
+     },
+     {
+      "who": "나",
+      "text": "Thank you.",
+      "ko_pron": "땡큐",
+      "meaning": "고마워요."
+     }
+    ]
+   },
+   {
+    "title": "계산하기",
+    "lines": [
+     {
+      "who": "직원",
+      "text": "Next, please.",
+      "ko_pron": "넥스트, 플리즈",
+      "meaning": "다음 분이요."
+     },
+     {
+      "who": "나",
+      "text": "Can you heat this up?",
+      "ko_pron": "캔 유 힛 디스 업?",
+      "meaning": "이거 데워 주실래요?"
+     },
+     {
+      "who": "직원",
+      "text": "Sure. Do you want chopsticks?",
+      "ko_pron": "슈어. 두 유 원트 찹스틱스?",
+      "meaning": "네. 젓가락 드릴까요?"
+     },
+     {
+      "who": "나",
+      "text": "Yes, please.",
+      "ko_pron": "예스, 플리즈",
+      "meaning": "네, 주세요."
+     },
+     {
+      "who": "직원",
+      "text": "That's 5 dollars.",
+      "ko_pron": "댓츠 파이브 달러즈",
+      "meaning": "5달러예요."
+     },
+     {
+      "who": "나",
+      "text": "Here you are.",
+      "ko_pron": "히어 유 아",
+      "meaning": "여기요."
+     }
+    ]
+   }
+  ],
+  "phrases": [
+   {
+    "text": "Where is the water?",
+    "ko_pron": "웨어 이즈 더 워터?",
+    "meaning": "물 어디 있어요?"
+   },
+   {
+    "text": "Do you sell batteries?",
+    "ko_pron": "두 유 셀 배터리즈?",
+    "meaning": "건전지 팔아요?"
+   },
+   {
+    "text": "Is there an ATM?",
+    "ko_pron": "이즈 데어 언 에이티엠?",
+    "meaning": "현금 인출기 있어요?"
+   },
+   {
+    "text": "I need a phone charger.",
+    "ko_pron": "아이 니드 어 폰 차저",
+    "meaning": "휴대폰 충전기가 필요해요."
+   },
+   {
+    "text": "Can I have a receipt?",
+    "ko_pron": "캔 아이 해브 어 리싯?",
+    "meaning": "영수증 주실래요?"
+   },
+   {
+    "text": "No bag, thank you.",
+    "ko_pron": "노 백, 땡큐",
+    "meaning": "봉투는 괜찮아요."
+   }
+  ]
+ },
+ {
+  "scene": "병원·약국",
+  "emoji": "🏥",
+  "desc": "아픈 곳 말하기, 약 사기",
+  "dialogues": [
+   {
+    "title": "병원에서",
+    "lines": [
+     {
+      "who": "의사",
+      "text": "What's wrong?",
+      "ko_pron": "왓츠 롱?",
+      "meaning": "어디가 아파요?"
+     },
+     {
+      "who": "나",
+      "text": "I have a stomachache.",
+      "ko_pron": "아이 해브 어 스터먹에이크",
+      "meaning": "배가 아파요."
+     },
+     {
+      "who": "의사",
+      "text": "Since when?",
+      "ko_pron": "신스 웬?",
+      "meaning": "언제부터요?"
+     },
+     {
+      "who": "나",
+      "text": "Since last night.",
+      "ko_pron": "신스 라스트 나잇",
+      "meaning": "어젯밤부터요."
+     },
+     {
+      "who": "의사",
+      "text": "Do you have a fever?",
+      "ko_pron": "두 유 해브 어 피버?",
+      "meaning": "열이 나요?"
+     },
+     {
+      "who": "나",
+      "text": "Yes, a little.",
+      "ko_pron": "예스, 어 리틀",
+      "meaning": "네, 조금요."
+     }
+    ]
+   },
+   {
+    "title": "약국에서",
+    "lines": [
+     {
+      "who": "나",
+      "text": "I have a cold. Do you have medicine?",
+      "ko_pron": "아이 해브 어 콜드. 두 유 해브 메디슨?",
+      "meaning": "감기에 걸렸어요. 약 있어요?"
+     },
+     {
+      "who": "약사",
+      "text": "Yes. Take this after meals.",
+      "ko_pron": "예스. 테이크 디스 애프터 밀즈",
+      "meaning": "네. 이거 식후에 드세요."
+     },
+     {
+      "who": "나",
+      "text": "How many times a day?",
+      "ko_pron": "하우 메니 타임즈 어 데이?",
+      "meaning": "하루에 몇 번이요?"
+     },
+     {
+      "who": "약사",
+      "text": "Three times a day.",
+      "ko_pron": "쓰리 타임즈 어 데이",
+      "meaning": "하루 세 번이요."
+     },
+     {
+      "who": "나",
+      "text": "Is it okay for kids?",
+      "ko_pron": "이즈 잇 오케이 포 키즈?",
+      "meaning": "아이가 먹어도 돼요?"
+     },
+     {
+      "who": "약사",
+      "text": "Yes. Kids take half.",
+      "ko_pron": "예스. 키즈 테이크 하프",
+      "meaning": "네. 아이는 반만 먹어요."
+     }
+    ]
+   }
+  ],
+  "phrases": [
+   {
+    "text": "I don't feel well.",
+    "ko_pron": "아이 돈트 필 웰",
+    "meaning": "몸이 안 좋아요."
+   },
+   {
+    "text": "It hurts here.",
+    "ko_pron": "잇 헐츠 히어",
+    "meaning": "여기가 아파요."
+   },
+   {
+    "text": "I'm allergic to eggs.",
+    "ko_pron": "아임 앨러직 투 에그즈",
+    "meaning": "저는 달걀 알레르기가 있어요."
+   },
+   {
+    "text": "Where is the pharmacy?",
+    "ko_pron": "웨어 이즈 더 파머시?",
+    "meaning": "약국이 어디예요?"
+   },
+   {
+    "text": "I need a doctor.",
+    "ko_pron": "아이 니드 어 닥터",
+    "meaning": "의사가 필요해요."
+   },
+   {
+    "text": "I threw up.",
+    "ko_pron": "아이 쓰루 업",
+    "meaning": "토했어요."
+   }
+  ]
+ },
+ {
+  "scene": "긴급상황",
+  "emoji": "🆘",
+  "desc": "물건 잃어버렸을 때, 도움 요청",
+  "dialogues": [
+   {
+    "title": "물건을 잃어버렸을 때",
+    "lines": [
+     {
+      "who": "나",
+      "text": "I lost my wallet.",
+      "ko_pron": "아이 로스트 마이 월릿",
+      "meaning": "지갑을 잃어버렸어요."
+     },
+     {
+      "who": "직원",
+      "text": "Where did you lose it?",
+      "ko_pron": "웨어 디드 유 루즈 잇?",
+      "meaning": "어디서 잃어버렸어요?"
+     },
+     {
+      "who": "나",
+      "text": "Maybe on the bus.",
+      "ko_pron": "메이비 온 더 버스",
+      "meaning": "아마 버스에서요."
+     },
+     {
+      "who": "직원",
+      "text": "What color is it?",
+      "ko_pron": "왓 컬러 이즈 잇?",
+      "meaning": "무슨 색이에요?"
+     },
+     {
+      "who": "나",
+      "text": "It's black.",
+      "ko_pron": "잇츠 블랙",
+      "meaning": "검은색이에요."
+     },
+     {
+      "who": "직원",
+      "text": "Please write your phone number here.",
+      "ko_pron": "플리즈 라이트 유어 폰 넘버 히어",
+      "meaning": "여기 전화번호 적어 주세요."
+     }
+    ]
+   },
+   {
+    "title": "도움 요청하기",
+    "lines": [
+     {
+      "who": "나",
+      "text": "Help! I can't find my mom.",
+      "ko_pron": "헬프! 아이 캔트 파인드 마이 맘",
+      "meaning": "도와주세요! 엄마를 못 찾겠어요."
+     },
+     {
+      "who": "경찰",
+      "text": "It's okay. What's your name?",
+      "ko_pron": "잇츠 오케이. 왓츠 유어 네임?",
+      "meaning": "괜찮아. 이름이 뭐니?"
+     },
+     {
+      "who": "나",
+      "text": "My name is Minji.",
+      "ko_pron": "마이 네임 이즈 민지",
+      "meaning": "제 이름은 민지예요."
+     },
+     {
+      "who": "경찰",
+      "text": "Do you know your mom's phone number?",
+      "ko_pron": "두 유 노우 유어 맘즈 폰 넘버?",
+      "meaning": "엄마 전화번호 아니?"
+     },
+     {
+      "who": "나",
+      "text": "Yes. It's on my card.",
+      "ko_pron": "예스. 잇츠 온 마이 카드",
+      "meaning": "네. 제 카드에 적혀 있어요."
+     }
+    ]
+   }
+  ],
+  "phrases": [
+   {
+    "text": "Help!",
+    "ko_pron": "헬프!",
+    "meaning": "도와주세요!"
+   },
+   {
+    "text": "Call the police!",
+    "ko_pron": "콜 더 폴리스!",
+    "meaning": "경찰 불러 주세요!"
+   },
+   {
+    "text": "Call an ambulance!",
+    "ko_pron": "콜 언 앰뷸런스!",
+    "meaning": "구급차 불러 주세요!"
+   },
+   {
+    "text": "Where is the lost and found?",
+    "ko_pron": "웨어 이즈 더 로스트 앤 파운드?",
+    "meaning": "분실물 센터가 어디예요?"
+   },
+   {
+    "text": "Someone took my bag.",
+    "ko_pron": "썸원 툭 마이 백",
+    "meaning": "누가 제 가방을 가져갔어요."
+   },
+   {
+    "text": "Please call this number.",
+    "ko_pron": "플리즈 콜 디스 넘버",
+    "meaning": "이 번호로 전화해 주세요."
+   }
+  ]
  }
 ]
