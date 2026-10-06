@@ -20,17 +20,61 @@ function bindHideToggle(rerender) {
 const H = () => (settings.hide ? "hideable" : "");
 
 // ── 이어서 하기: 언어별 마지막으로 본 공부 화면 ──────
-// 저장: { en: { hash, label, time }, ja: {...} }
-function remember(lang, hash, label) {
+// 번호가 아니라 이름으로 저장한다(패턴·단어를 중간에 추가해도 같은 곳을 찾게).
+// 저장: { en: { ref: { sec, kind, ... }, time }, ja: {...} }
+//   kind: card(category, text) | pattern(pattern, fill) | compare(id) | scene(scene) | verb(text) | particle(text)
+// 열 때 지금 데이터에서 번호를 찾아 주소를 만든다. 예전 형식(번호만 저장)이나 찾을 수 없는 기록은 조용히 무시한다.
+function remember(lang, ref) {
   const all = store.get("lastPlace", {});
-  all[lang] = { hash, label, time: Date.now() };
-  store.set("lastPlace", all);
+  const next = all && typeof all === "object" && !Array.isArray(all) ? all : {};
+  next[lang] = { ref, time: Date.now() };
+  store.set("lastPlace", next);
 }
-function lastPlaces() {
+async function resolvePlace(lang, ref) {
+  const L = LANGS[lang];
+  const sec = ref && L.sections.find(s => s.id === ref.sec && s.ready);
+  if (!sec) return null;
+  const base = `#/${lang}/${sec.id}`, head = `${L.name} · ${sec.name}`;
+  try {
+    const data = await loadData(lang, sec.id);
+    if (ref.kind === "card") {
+      const ci = data.findIndex(c => c.category === ref.category);
+      const ii = ci < 0 ? -1 : data[ci].items.findIndex(x => x.text === ref.text);
+      return ii < 0 ? null : { hash: `${base}/${ci}/${ii}`, label: `${head} · ${ref.category} ${ii + 1}/${data[ci].items.length}` };
+    }
+    if (ref.kind === "pattern") {
+      const pi = data.findIndex(p => p.pattern === ref.pattern);
+      const fi = pi < 0 ? -1 : data[pi].fills.findIndex(f => f.text === ref.fill);
+      return fi < 0 ? null : { hash: `${base}/${pi}/${fi}`, label: `${head} · ${ref.pattern} ${fi + 1}/${data[pi].fills.length}` };
+    }
+    if (ref.kind === "compare") {
+      const list = sec.type === "patterns" ? (await loadData(lang, "pattern_compare")).compare : data.compare;
+      const k = list.findIndex(c => c.id === ref.id);
+      return k < 0 ? null : { hash: `${base}/vs/${k}`, label: `${head} · ${list[k].title} 비교` };
+    }
+    if (ref.kind === "scene") {
+      const si = data.findIndex(s => s.scene === ref.scene);
+      return si < 0 ? null : { hash: `${base}/${si}`, label: `${head} · ${ref.scene}` };
+    }
+    if (ref.kind === "verb" || ref.kind === "particle") {
+      const list = ref.kind === "verb" ? data.verbs : data.particles;
+      const i = list.findIndex(x => x.text === ref.text);
+      return i < 0 ? null : { hash: `${base}/${i}`, label: `${head} · ${ref.text} ${i + 1}/${list.length}` };
+    }
+  } catch {}
+  return null;
+}
+async function resolvedPlaces(onlyLang) {
   const all = store.get("lastPlace", {});
-  return Object.entries(all && typeof all === "object" ? all : {})
-    .filter(([lang, p]) => LANGS[lang] && p && typeof p.hash === "string" && p.hash.startsWith(`#/${lang}/`))
+  const entries = Object.entries(all && typeof all === "object" ? all : {})
+    .filter(([lang, p]) => LANGS[lang] && (!onlyLang || lang === onlyLang) && p && p.ref && typeof p.ref === "object")
     .sort((a, b) => (b[1].time || 0) - (a[1].time || 0));
+  const out = [];
+  for (const [lang, p] of entries) {
+    const r = await resolvePlace(lang, p.ref);
+    if (r) out.push([lang, r]);
+  }
+  return out;
 }
 function continueRow(lang, p) {
   return `<button class="row continue" style="--accent: var(--${lang})" data-go="${esc(p.hash)}">
@@ -38,15 +82,24 @@ function continueRow(lang, p) {
       <span class="label"><strong>이어서 하기</strong><small>${esc(p.label)}</small></span>
     </button>`;
 }
+// 화면을 먼저 그리고, 기록을 찾으면 그 자리(#continueList)에 버튼을 채운다. 그 사이 화면을 떠났으면 그만둔다.
+function fillContinue(onlyLang) {
+  const box = document.getElementById("continueList");
+  if (!box) return;
+  resolvedPlaces(onlyLang).then(list => {
+    if (!box.isConnected || !list.length) return;
+    box.innerHTML = list.map(([lang, p]) => continueRow(lang, p)).join("");
+    box.hidden = false;
+  });
+}
 
 // ── 첫 화면: 언어 고르기 ─────────────────────────
 function viewHome() {
   document.body.className = "";
   setHeader("첫말", null);
-  const places = lastPlaces();
   app.innerHTML = `
     <p class="hello">오늘은 어떤 말을<br>배워 볼까요?</p>
-    ${places.length ? `<div class="list continue-list">${places.map(([lang, p]) => continueRow(lang, p)).join("")}</div>` : ""}
+    <div class="list continue-list" id="continueList" hidden></div>
     <p class="hello-sub">언어를 고르면 그 언어만 보여요.</p>
     <div class="lang-pick">
       ${Object.entries(LANGS).map(([id, L]) => `
@@ -55,16 +108,16 @@ function viewHome() {
           <span><span class="name">${L.name}</span><span class="desc">${L.desc}</span></span>
         </button>`).join("")}
     </div>`;
+  fillContinue();
 }
 
-// ── 언어 홈: 섹션 4개 ────────────────────────────
+// ── 언어 홈: 섹션 목록 ───────────────────────────
 function viewLang(lang) {
   const L = LANGS[lang];
   document.body.className = `lang-${lang}`;
   setHeader(L.name, "#/");
-  const place = lastPlaces().find(([l]) => l === lang);
   app.innerHTML = `
-    ${place ? `<div class="list continue-list">${continueRow(lang, place[1])}</div>` : ""}
+    <div class="list continue-list" id="continueList" hidden></div>
     <p class="lead">위에서부터 차례로 공부해요.</p>
     <div class="list">
       ${L.sections.map((s, i) => `
@@ -81,6 +134,7 @@ function viewLang(lang) {
           <small>☆ 표시한 카드 ${starList().filter(k => k.startsWith(`${lang}/`)).length}개</small></span>
       </button>
     </div>`;
+  fillContinue(lang);
 }
 
 // ── 카드형(기초 단어·동사): 주제 목록 ─────────────
@@ -114,7 +168,7 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   const it = cat.items[i];
   const base = `#/${lang}/${sec.id}/${catIdx}`;
   setHeader(cat.category, `#/${lang}/${sec.id}`);
-  remember(lang, `${base}/${i}`, `${L.name} · ${sec.name} · ${cat.category} ${i + 1}/${n}`);
+  remember(lang, { sec: sec.id, kind: "card", category: cat.category, text: it.text });
 
   const key = starKey(lang, sec.id, cat.category, it.text);
   app.innerHTML = `
@@ -330,7 +384,7 @@ async function viewPattern(lang, sec, pIdx, fIdx) {
   const last = i === n - 1;
   const hasNextPattern = pIdx < data.length - 1;
   setHeader(p.meaning, `#/${lang}/${sec.id}`);
-  remember(lang, `${base}/${i}`, `${L.name} · ${sec.name} · ${p.pattern} ${i + 1}/${n}`);
+  remember(lang, { sec: sec.id, kind: "pattern", pattern: p.pattern, fill: f.text });
 
   app.innerHTML = `
     <div class="viewer">
@@ -453,7 +507,7 @@ async function viewScene(lang, sec, sIdx) {
   const s = data[sIdx];
   if (!s) { location.hash = `#/${lang}/${sec.id}`; return; }
   setHeader(s.scene, `#/${lang}/${sec.id}`);
-  remember(lang, `#/${lang}/${sec.id}/${sIdx}`, `${L.name} · ${sec.name} · ${s.scene}`);
+  remember(lang, { sec: sec.id, kind: "scene", scene: s.scene });
 
   const line = (l, d, k) => `
     <button class="bubble ${l.who === "나" ? "me" : ""}" data-d="${d}" data-k="${k}">
@@ -549,7 +603,7 @@ async function viewVerb(lang, sec, vIdx) {
   const g = data.groups.find(x => x.id === v.group);
   const base = `#/${lang}/${sec.id}`;
   setHeader(v.text, base);
-  remember(lang, `${base}/${vIdx}`, `${L.name} · ${sec.name} · ${v.text} ${vIdx + 1}/${n}`);
+  remember(lang, { sec: sec.id, kind: "verb", text: v.text });
 
   app.innerHTML = `
     <div class="tools">${progressBar(vIdx, n)}${hideToggle()}</div>
@@ -665,7 +719,7 @@ async function viewParticle(lang, sec, idx) {
   const n = data.particles.length;
   const base = `#/${lang}/${sec.id}`;
   setHeader(`조사 ${p.text}`, base);
-  remember(lang, `${base}/${idx}`, `${L.name} · ${sec.name} · ${p.text} ${idx + 1}/${n}`);
+  remember(lang, { sec: sec.id, kind: "particle", text: p.text });
   const multi = p.uses.length > 1;
   const related = data.compare.map((c, k) => [c, k]).filter(([c]) => c.pair.includes(p.id));
 
@@ -734,7 +788,7 @@ async function viewCompare(lang, sec, k) {
   const base = `#/${lang}/${sec.id}`;
   if (!c) { location.hash = base; return; }
   setHeader(c.title, base);
-  remember(lang, `${base}/vs/${k}`, `${L.name} · ${sec.name} · ${c.title} 비교`);
+  remember(lang, { sec: sec.id, kind: "compare", id: c.id });
   const last = k === data.compare.length - 1;
   renderCompare({
     lang,
@@ -755,7 +809,7 @@ async function viewPatternCompare(lang, sec, k) {
   const base = `#/${lang}/${sec.id}`;
   if (!c) { location.hash = base; return; }
   setHeader(c.title, base);
-  remember(lang, `${base}/vs/${k}`, `${L.name} · ${sec.name} · ${c.title} 비교`);
+  remember(lang, { sec: sec.id, kind: "compare", id: c.id });
   const last = k === cmp.compare.length - 1;
   renderCompare({
     lang,
