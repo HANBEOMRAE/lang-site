@@ -5,6 +5,7 @@
 //  #/en/patterns            패턴 목록        #/en/patterns/0/3 패턴 0의 4번째 문장
 //  #/en/situations          장면 목록        #/en/situations/3 장면 3
 //  #/ja/verbs               동사 변형 표     #/ja/verbs/4      5번째 동사 상세
+//  #/ja/stars               헷갈린 단어(☆) 모아 보기   #/ja/stars/2  3번째 카드
 
 function route() {
   tts.stop();
@@ -12,7 +13,9 @@ function route() {
   const [lang, secId, a, b] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (!lang || !LANGS[lang]) return viewHome();
   document.body.className = `lang-${lang}`;
+  if (secId !== "stars") starSnap = null;     // 헷갈린 단어 모아 보기에서 나가면 순서를 새로 정한다
   if (!secId) return viewLang(lang);
+  if (secId === "stars") return viewStars(lang, a === undefined ? 0 : Number(a));
   const sec = LANGS[lang].sections.find(s => s.id === secId && s.ready);
   if (!sec) return viewLang(lang);
   const A = a === undefined ? undefined : Number(a);

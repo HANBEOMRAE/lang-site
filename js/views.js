@@ -72,6 +72,14 @@ function viewLang(lang) {
           <span class="step">${i + 1}</span>
           <span class="label"><strong>${s.name}</strong><small>${s.ready ? s.desc : "준비 중"}</small></span>
         </button>`).join("")}
+    </div>
+    <h2 class="group">복습</h2>
+    <div class="list">
+      <button class="row star-row" data-go="#/${lang}/stars">
+        <span class="em" aria-hidden="true">★</span>
+        <span class="label"><strong>헷갈린 단어</strong>
+          <small>☆ 표시한 카드 ${starList().filter(k => k.startsWith(`${lang}/`)).length}개</small></span>
+      </button>
     </div>`;
 }
 
@@ -108,10 +116,24 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   setHeader(cat.category, `#/${lang}/${sec.id}`);
   remember(lang, `${base}/${i}`, `${L.name} · ${sec.name} · ${cat.category} ${i + 1}/${n}`);
 
+  const key = starKey(lang, sec.id, cat.category, it.text);
   app.innerHTML = `
     <div class="viewer">
       <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
+      ${cardHTML(lang, it, key)}
+      ${navHTML(i, n)}
+    </div>`;
+
+  const go = j => { location.hash = `${base}/${(j + n) % n}`; };
+  bindCard(lang, it, key, () => go(i === n - 1 ? 0 : i + 1), () => { if (i > 0) go(i - 1); });
+  bindHideToggle(() => viewCards(lang, sec, catIdx, i));
+}
+
+// 단어 카드 한 장 (주제 카드·헷갈린 단어 모음이 함께 쓴다)
+function cardHTML(lang, it, key) {
+  return `
       <article class="card" id="card">
+        ${starButton(key)}
         <p class="word" lang="${lang}">${wordHTML(it.text)}</p>
         ${it.kanji ? `<p class="kanji-big" lang="${lang}">${esc(it.kanji)}</p>` : ""}
         <div class="${H()}">
@@ -127,24 +149,111 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
                <span class="ko-line ${H()}">${esc(it.example_meaning)}</span></p>
             <button class="mini-speak" id="speakEx" aria-label="예문 듣기">🔊</button>
           </div>` : ""}
-      </article>
+      </article>`;
+}
+function navHTML(i, n) {
+  return `
       <div class="nav">
         <button id="prev" ${i === 0 ? "disabled" : ""}>이전</button>
         <button id="next" class="primary">${i === n - 1 ? "처음부터" : "다음"}</button>
-      </div>
-    </div>`;
-
-  const go = j => { location.hash = `${base}/${(j + n) % n}`; };
-  const next = () => go(i === n - 1 ? 0 : i + 1);
-  const prev = () => { if (i > 0) go(i - 1); };
-  document.getElementById("speakWord").onclick = e => tts.speak(it.text, L.voice, e.currentTarget);
+      </div>`;
+}
+function bindCard(lang, it, key, next, prev) {
+  const voice = LANGS[lang].voice;
+  document.getElementById("speakWord").onclick = e => tts.speak(it.text, voice, e.currentTarget);
   const ex = document.getElementById("speakEx");
-  if (ex) ex.onclick = e => tts.speak(it.example, L.voice, e.currentTarget);
+  if (ex) ex.onclick = e => tts.speak(it.example, voice, e.currentTarget);
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
+  bindStar(key);
   fitWord();
-  bindHideToggle(() => viewCards(lang, sec, catIdx, i));
+}
+
+// ── 헷갈린 단어 ☆ ─────────────────────────────────
+// 카드 번호가 아니라 내용으로 저장한다: "언어/섹션/주제/단어" (동사 변형은 주제 자리에 "-").
+// 번호로 저장하면 단어를 추가할 때 다른 카드로 바뀐다. 주제까지 넣는 건 はな(코)·はな(꽃) 때문.
+function starKey(lang, secId, category, text) { return `${lang}/${secId}/${category}/${text}`; }
+function starList() {
+  const v = store.get("stars", []);
+  return Array.isArray(v) ? v.filter(k => typeof k === "string") : [];
+}
+function starButton(key) {
+  const on = starList().includes(key);
+  return `<button class="star-btn ${on ? "on" : ""}" id="starBtn" aria-pressed="${on}"
+    aria-label="헷갈린 단어로 표시">${on ? "★" : "☆"}</button>`;
+}
+function bindStar(key) {
+  const b = document.getElementById("starBtn");
+  if (!b) return;
+  b.onclick = e => {
+    e.stopPropagation();
+    const list = starList();
+    const on = !list.includes(key);
+    store.set("stars", on ? [...list, key] : list.filter(k => k !== key));
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-pressed", on);
+    b.textContent = on ? "★" : "☆";
+    toast(on ? "헷갈린 단어에 넣었어요" : "헷갈린 단어에서 뺐어요");
+  };
+}
+
+// 모아 보기 화면에서 ★를 풀어도 지금 넘기던 순서는 그대로 둔다. 다른 화면으로 나가면 비운다(app.js).
+let starSnap = null;
+
+async function viewStars(lang, idx) {
+  const L = LANGS[lang];
+  setHeader("헷갈린 단어", `#/${lang}`);
+  if (!starSnap || starSnap.lang !== lang) {
+    starSnap = { lang, keys: starList().filter(k => k.startsWith(`${lang}/`)) };
+  }
+  // 표시를 실제 카드로 바꾼다. 찾을 수 없는 표시(주제 이름이 바뀌었거나 지워진 단어)는 따로 센다.
+  const cards = [], missing = [];
+  for (const key of starSnap.keys) {
+    const [, secId, category, ...rest] = key.split("/");
+    const text = rest.join("/");
+    const sec = L.sections.find(s => s.id === secId && s.ready);
+    let data = null, found = null;
+    if (sec) { try { data = await loadData(lang, sec.id); } catch {} }
+    if (data && sec.type === "cards") {
+      const cat = data.find(c => c.category === category);
+      const it = cat && cat.items.find(x => x.text === text);
+      if (it) found = { it, src: `${sec.name} · ${cat.category}` };
+    } else if (data && sec.type === "conjugation") {
+      const v = data.verbs.find(x => x.text === text);
+      if (v) found = { src: sec.name, it: { text: v.text, kanji: v.kanji, ko_pron: v.ko_pron, meaning: v.meaning, note: v.note,
+        example: v.example?.text, example_ko_pron: v.example?.ko_pron, example_meaning: v.example?.meaning } };
+    }
+    if (found) cards.push({ key, ...found }); else missing.push(key);
+  }
+  const missingHTML = missing.length ? `
+    <p class="lead missing">찾을 수 없는 표시 ${missing.length}개 · <button class="chip" id="dropMissing">지우기</button></p>` : "";
+
+  if (!cards.length) {
+    app.innerHTML = `${missingHTML}
+      <p class="lead">아직 ☆ 표시한 단어가 없어요.<br>단어 카드 오른쪽 위 ☆를 누르면 여기에 모여요.</p>`;
+  } else {
+    const n = cards.length;
+    const i = Math.min(Math.max(idx || 0, 0), n - 1);
+    const c = cards[i];
+    app.innerHTML = `
+      <div class="viewer">
+        ${missingHTML}
+        <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
+        <p class="star-src">${esc(c.src)}</p>
+        ${cardHTML(lang, c.it, c.key)}
+        ${navHTML(i, n)}
+      </div>`;
+    const go = j => { location.hash = `#/${lang}/stars/${(j + n) % n}`; };
+    bindCard(lang, c.it, c.key, () => go(i === n - 1 ? 0 : i + 1), () => { if (i > 0) go(i - 1); });
+    bindHideToggle(() => viewStars(lang, i));
+  }
+  const drop = document.getElementById("dropMissing");
+  if (drop) drop.onclick = () => {
+    store.set("stars", starList().filter(k => !missing.includes(k)));
+    starSnap.keys = starSnap.keys.filter(k => !missing.includes(k));
+    viewStars(lang, idx);
+  };
 }
 
 // ── 큰 글자 맞춤 ─────────────────────────────────
@@ -372,6 +481,7 @@ async function viewVerb(lang, sec, vIdx) {
   app.innerHTML = `
     <div class="tools">${progressBar(vIdx, n)}${hideToggle()}</div>
     <article class="card" id="card">
+      ${starButton(starKey(lang, sec.id, "-", v.text))}
       ${g ? `<span class="badge">${esc(g.name)}</span>` : ""}
       <p class="word" lang="${lang}">${wordHTML(v.text)}</p>
       ${v.kanji ? `<p class="kanji-big" lang="${lang}">${esc(v.kanji)}</p>` : ""}
@@ -418,6 +528,7 @@ async function viewVerb(lang, sec, vIdx) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
+  bindStar(starKey(lang, sec.id, "-", v.text));
   fitWord();
   bindHideToggle(() => viewVerb(lang, sec, vIdx));
 }
