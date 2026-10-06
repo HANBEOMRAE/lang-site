@@ -125,7 +125,9 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
 // ── 큰 글자 맞춤 ─────────────────────────────────
 // 단어(띄어쓰기 단위)마다 줄이 안 바뀌게 감싼다. 먼저 한 줄로 두고 WORD_MIN까지 줄여 보고,
 // 그래도 넘치면 띄어쓰기 자리에서 줄을 바꾼 뒤 다시 맞춘다 (in front of, ありがとう ございます).
-const WORD_MIN = 36;  // px. 360px 화면에서 띄어쓰기 없는 단어가 모두 이 크기 이상으로 들어간다
+// 띄어쓰기가 없거나, 줄을 바꿔도 한 단어가 넘치면 WORD_MIN 밑으로 더 줄인다 (넘치거나 단어 중간에서 끊기지 않게).
+const WORD_MIN = 36;    // px. 360px 화면에서 띄어쓰기 없는 단어가 모두 이 크기 이상으로 들어간다
+const WORD_FLOOR = 8;   // px. 더 줄일 때의 마지막 한계 (끝없이 줄지 않게)
 function wordHTML(text) {
   return String(text).split(" ").map(w => `<span class="nobr">${esc(w)}</span>`).join(" ");
 }
@@ -141,8 +143,8 @@ function fitWord() {
   el.classList.add("one-line");
   shrink(WORD_MIN);
   if (fits()) return;
-  el.classList.remove("one-line");  // 띄어쓰기 자리에서 줄바꿈 허용
-  shrink(24);
+  if (el.textContent.includes(" ")) el.classList.remove("one-line");  // 띄어쓰기 자리에서 줄바꿈 허용
+  shrink(WORD_FLOOR);
 }
 window.addEventListener("resize", fitWord);
 

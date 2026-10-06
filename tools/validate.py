@@ -16,6 +16,19 @@ KANA = re.compile(r"^[ぁ-ゟ゠-ヿ]+( [ぁ-ゟ゠-ヿ]+)*$")
 KANA_SENTENCE = re.compile(r"^[ぁ-ゟ゠-ヿ 、。？！]+$")
 KANJI = re.compile(r"[一-鿿]")
 problems = []
+warnings = []   # 멈추지 않고 사람이 확인할 것
+
+# 카드 큰 글자에서 띄어쓰기 없는 덩어리의 경고 기준.
+# 360px 화면(카드 안쪽 폭 약 288px)에서 가장 긴 7글자 おねがいします는 39.8px로 한 줄에 들어간다.
+# 7글자 × 39.8px ≈ 279px이므로 같은 폭에 8글자를 넣으면 279 ÷ 8 ≈ 34.8px이 되어
+# 최소 크기 36px(views.js WORD_MIN)보다 작아진다. 그래서 8글자부터 경고한다.
+LONG_CHUNK = 8
+
+def warn_long_chunk(text, where):
+    """일본어 큰 글자 text에 띄어쓰기 없이 LONG_CHUNK글자 이상인 덩어리가 있으면 경고."""
+    for chunk in str(text).split(" "):
+        if len(chunk) >= LONG_CHUNK:
+            warnings.append(f"{where}: 띄어쓰기 없는 {len(chunk)}글자 '{chunk}' — 띄어 쓸 수 있는 말인지 확인해 주세요")
 
 def need(obj, keys, where):
     for k in keys:
@@ -50,6 +63,7 @@ def check_ja_cards(data, name):
                 problems.append(f"{where}: kanji에 한자가 없어요 (한자로 안 쓰면 null)")
             if it.get("text") and not KANA.match(it["text"]):
                 problems.append(f"{where}: text는 히라가나·가타카나로만 써요")
+            warn_long_chunk(it.get("text", ""), where)
             if it.get("example"):
                 if not KANA_SENTENCE.match(it["example"]):
                     problems.append(f"{where}: 예문은 가나로만 써요")
@@ -95,6 +109,7 @@ def check_conjugation(data, name):
             problems.append(f"{where}: 'kanji' 칸이 없어요 (한자가 없으면 null)")
         if v.get("text") and not HIRAGANA.match(v["text"]):
             problems.append(f"{where}: text는 히라가나로만 써요")
+        warn_long_chunk(v.get("text", ""), where)  # 동사 상세 화면의 큰 글자
         vf = v.get("forms", {})
         for fid in fids:
             if fid not in vf:
@@ -133,6 +148,10 @@ def main():
                 continue
             checker(data, name)
             print(f"검사함: {name}")
+    if warnings:
+        print(f"\n경고 {len(warnings)}개 (검사는 멈추지 않아요):")
+        for w in warnings:
+            print(" -", w)
     if problems:
         print(f"\n문제 {len(problems)}개:")
         for p in problems:
