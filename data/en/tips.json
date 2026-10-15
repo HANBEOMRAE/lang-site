@@ -1,6 +1,196 @@
 {
  "tips": [
   {
+   "id": "be-verb",
+   "title": "am·is·are: 누구냐에 따라 모양이 달라요",
+   "body": [
+    [
+     {
+      "lang": "en",
+      "text": "I"
+     },
+     {
+      "lang": "ko",
+      "text": " 뒤에는 "
+     },
+     {
+      "lang": "en",
+      "text": "am"
+     },
+     {
+      "lang": "ko",
+      "text": "을 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "I am happy."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "you"
+     },
+     {
+      "lang": "ko",
+      "text": ", "
+     },
+     {
+      "lang": "en",
+      "text": "we"
+     },
+     {
+      "lang": "ko",
+      "text": ", "
+     },
+     {
+      "lang": "en",
+      "text": "they"
+     },
+     {
+      "lang": "ko",
+      "text": " 뒤에는 "
+     },
+     {
+      "lang": "en",
+      "text": "are"
+     },
+     {
+      "lang": "ko",
+      "text": "를 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "You are my friend."
+     }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "he"
+     },
+     {
+      "lang": "ko",
+      "text": ", "
+     },
+     {
+      "lang": "en",
+      "text": "she"
+     },
+     {
+      "lang": "ko",
+      "text": ", "
+     },
+     {
+      "lang": "en",
+      "text": "it"
+     },
+     {
+      "lang": "ko",
+      "text": " 뒤에는 "
+     },
+     {
+      "lang": "en",
+      "text": "is"
+     },
+     {
+      "lang": "ko",
+      "text": "를 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "He is tall."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "순서를 바꾸면 묻는 말이 돼요. "
+     },
+     {
+      "lang": "en",
+      "text": "You are"
+     },
+     {
+      "lang": "ko",
+      "text": "를 "
+     },
+     {
+      "lang": "en",
+      "text": "Are you"
+     },
+     {
+      "lang": "ko",
+      "text": "로 바꿔 시작해요."
+     }
+    ]
+   ],
+   "words": {
+    "i": {
+     "ko_pron": "아이",
+     "meaning": "나"
+    },
+    "am": {
+     "ko_pron": "엠",
+     "meaning": "~이다 (I 뒤에)"
+    },
+    "happy": {
+     "ko_pron": "해피",
+     "meaning": "기쁜"
+    },
+    "you": {
+     "ko_pron": "유",
+     "meaning": "너"
+    },
+    "are": {
+     "ko_pron": "아",
+     "meaning": "~이다 (you·we·they 뒤에)"
+    },
+    "my": {
+     "ko_pron": "마이",
+     "meaning": "나의"
+    },
+    "friend": {
+     "ko_pron": "프렌드",
+     "meaning": "친구"
+    },
+    "he": {
+     "ko_pron": "히",
+     "meaning": "그, 그 남자아이"
+    },
+    "is": {
+     "ko_pron": "이즈",
+     "meaning": "~이다 (he·she·it 뒤에)"
+    },
+    "tall": {
+     "ko_pron": "톨",
+     "meaning": "키가 큰"
+    }
+   },
+   "examples": [
+    {
+     "text": "I [am] happy.",
+     "ko_pron": "아이 엠 해피.",
+     "meaning": "나는 기뻐."
+    },
+    {
+     "text": "You [are] my friend.",
+     "ko_pron": "유 아 마이 프렌드.",
+     "meaning": "너는 내 친구야."
+    },
+    {
+     "text": "He [is] tall.",
+     "ko_pron": "히 이즈 톨.",
+     "meaning": "그 애는 키가 커."
+    },
+    {
+     "text": "[Are you] happy?",
+     "ko_pron": "아 유 해피?",
+     "meaning": "너 기뻐?"
+    }
+   ]
+  },
+  {
    "id": "to-two",
    "title": "to의 두 가지 뜻",
    "see": {

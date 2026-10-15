@@ -146,6 +146,22 @@
     "freq": 2,
     "example": "What's your name?",
     "example_meaning": "이름이 뭐야?"
+   },
+   {
+    "text": "hi",
+    "ko_pron": "하이",
+    "meaning": "안녕",
+    "freq": 3,
+    "example": "Hi, Emma!",
+    "example_meaning": "안녕, 엠마!"
+   },
+   {
+    "text": "good morning",
+    "ko_pron": "굿 모닝",
+    "meaning": "좋은 아침, 안녕하세요 (아침 인사)",
+    "freq": 3,
+    "example": "Good morning, mom!",
+    "example_meaning": "엄마, 좋은 아침이에요!"
    }
   ]
  },
@@ -794,6 +810,14 @@
     "freq": 2,
     "example": "Don't be scared.",
     "example_meaning": "무서워하지 마."
+   },
+   {
+    "text": "thirsty",
+    "ko_pron": "써스티",
+    "meaning": "목마른",
+    "freq": 2,
+    "example": "I'm thirsty.",
+    "example_meaning": "목말라."
    }
   ]
  },

@@ -1,0 +1,1115 @@
+{
+ "known_from_start": [
+  "i'm",
+  "it's",
+  "what's",
+  "a",
+  "the",
+  "and",
+  "too",
+  "do",
+  "yes",
+  "no",
+  "oh",
+  "wow",
+  "minji",
+  "emma",
+  "tom",
+  "mia",
+  "korea"
+ ],
+ "dialogues": [
+  {
+   "id": "morning",
+   "title": "아침부터 밤까지 인사",
+   "lines": [
+    {
+     "who": "엄마",
+     "text": "Good morning!",
+     "ko_pron": "굿 모닝!",
+     "meaning": "좋은 아침!"
+    },
+    {
+     "who": "나",
+     "text": "Good morning, mom!",
+     "ko_pron": "굿 모닝, 맘!",
+     "meaning": "엄마, 좋은 아침이에요!"
+    },
+    {
+     "who": "친구",
+     "text": "Hi!",
+     "ko_pron": "하이!",
+     "meaning": "안녕!"
+    },
+    {
+     "who": "나",
+     "text": "Hello!",
+     "ko_pron": "헬로!",
+     "meaning": "안녕!"
+    },
+    {
+     "who": "친구",
+     "text": "Bye! See you tomorrow.",
+     "ko_pron": "바이! 씨 유 투모로우.",
+     "meaning": "안녕! 내일 봐."
+    },
+    {
+     "who": "나",
+     "text": "Bye!",
+     "ko_pron": "바이!",
+     "meaning": "안녕!"
+    },
+    {
+     "who": "엄마",
+     "text": "Good night.",
+     "ko_pron": "굿 나잇.",
+     "meaning": "잘 자."
+    },
+    {
+     "who": "나",
+     "text": "Thank you, mom. Good night.",
+     "ko_pron": "땡큐, 맘. 굿 나잇.",
+     "meaning": "고마워요, 엄마. 안녕히 주무세요."
+    }
+   ]
+  },
+  {
+   "id": "name",
+   "title": "이름이 뭐야?",
+   "words": {
+    "emma": {
+     "ko_pron": "엠마",
+     "meaning": "엠마 (이름)"
+    }
+   },
+   "lines": [
+    {
+     "who": "친구",
+     "text": "Hi! What is your name?",
+     "ko_pron": "하이! 왓 이즈 유어 네임?",
+     "meaning": "안녕! 이름이 뭐야?"
+    },
+    {
+     "who": "나",
+     "text": "My name is Minji. What is your name?",
+     "ko_pron": "마이 네임 이즈 민지. 왓 이즈 유어 네임?",
+     "meaning": "내 이름은 민지야. 너는 이름이 뭐야?"
+    },
+    {
+     "who": "친구",
+     "text": "I am Emma.",
+     "ko_pron": "아이 엠 엠마.",
+     "meaning": "나는 엠마야."
+    },
+    {
+     "who": "나",
+     "text": "Nice to meet you, Emma.",
+     "ko_pron": "나이스 투 밋 유, 엠마.",
+     "meaning": "만나서 반가워, 엠마.",
+     "words": {
+      "nice": {
+       "ko_pron": "나이스",
+       "meaning": "(nice to meet you = 만나서 반가워)"
+      }
+     }
+    },
+    {
+     "who": "친구",
+     "text": "Nice to meet you, too!",
+     "ko_pron": "나이스 투 밋 유, 투!",
+     "meaning": "나도 만나서 반가워!",
+     "words": {
+      "nice": {
+       "ko_pron": "나이스",
+       "meaning": "(nice to meet you = 만나서 반가워)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "from-age",
+   "title": "어디서 왔어? 몇 살이야?",
+   "lines": [
+    {
+     "who": "친구",
+     "text": "Where are you from?",
+     "ko_pron": "웨어 아 유 프롬?",
+     "meaning": "어디서 왔어?"
+    },
+    {
+     "who": "나",
+     "text": "I'm from Korea.",
+     "ko_pron": "아임 프롬 코리아.",
+     "meaning": "한국에서 왔어."
+    },
+    {
+     "who": "친구",
+     "text": "How old are you?",
+     "ko_pron": "하우 올드 아 유?",
+     "meaning": "몇 살이야?",
+     "words": {
+      "old": {
+       "ko_pron": "올드",
+       "meaning": "(how old = 몇 살)"
+      }
+     }
+    },
+    {
+     "who": "나",
+     "text": "I am seven. How old are you?",
+     "ko_pron": "아이 엠 세븐. 하우 올드 아 유?",
+     "meaning": "나는 일곱 살이야. 너는 몇 살이야?",
+     "words": {
+      "old": {
+       "ko_pron": "올드",
+       "meaning": "(how old = 몇 살)"
+      }
+     }
+    },
+    {
+     "who": "친구",
+     "text": "I am six.",
+     "ko_pron": "아이 엠 식스.",
+     "meaning": "나는 여섯 살이야."
+    }
+   ]
+  },
+  {
+   "id": "family",
+   "title": "우리 가족이야",
+   "lines": [
+    {
+     "who": "친구",
+     "text": "Who is that?",
+     "ko_pron": "후 이즈 댓?",
+     "meaning": "저 사람 누구야?"
+    },
+    {
+     "who": "나",
+     "text": "This is my mom.",
+     "ko_pron": "디스 이즈 마이 맘.",
+     "meaning": "우리 엄마야."
+    },
+    {
+     "who": "엄마",
+     "text": "Hello!",
+     "ko_pron": "헬로!",
+     "meaning": "안녕!"
+    },
+    {
+     "who": "나",
+     "text": "And this is my dad.",
+     "ko_pron": "앤드 디스 이즈 마이 대드.",
+     "meaning": "그리고 이분은 우리 아빠야."
+    },
+    {
+     "who": "아빠",
+     "text": "Hi!",
+     "ko_pron": "하이!",
+     "meaning": "안녕!"
+    },
+    {
+     "who": "나",
+     "text": "This is my brother, and this is my sister.",
+     "ko_pron": "디스 이즈 마이 브라더, 앤드 디스 이즈 마이 시스터.",
+     "meaning": "이 애는 우리 형이고, 이 애는 우리 언니야."
+    }
+   ]
+  },
+  {
+   "id": "have",
+   "title": "너 언니 있어?",
+   "lines": [
+    {
+     "who": "친구",
+     "text": "Do you have a sister?",
+     "ko_pron": "두 유 해브 어 시스터?",
+     "meaning": "너 언니 있어?"
+    },
+    {
+     "who": "나",
+     "text": "Yes, I have a sister. I have a dog, too.",
+     "ko_pron": "예스, 아이 해브 어 시스터. 아이 해브 어 도그, 투.",
+     "meaning": "응, 언니 있어. 강아지도 있어."
+    },
+    {
+     "who": "친구",
+     "text": "Wow! I have two cats.",
+     "ko_pron": "와우! 아이 해브 투 캣츠.",
+     "meaning": "우와! 나는 고양이가 두 마리 있어."
+    },
+    {
+     "who": "나",
+     "text": "Two cats? I have one dog.",
+     "ko_pron": "투 캣츠? 아이 해브 원 도그.",
+     "meaning": "고양이 두 마리? 나는 강아지 한 마리 있어."
+    }
+   ]
+  },
+  {
+   "id": "friends",
+   "title": "내 친구를 소개할게",
+   "words": {
+    "tom": {
+     "ko_pron": "탐",
+     "meaning": "톰 (이름)"
+    },
+    "mia": {
+     "ko_pron": "미아",
+     "meaning": "미아 (이름)"
+    }
+   },
+   "lines": [
+    {
+     "who": "나",
+     "text": "This is Tom. He is my friend.",
+     "ko_pron": "디스 이즈 탐. 히 이즈 마이 프렌드.",
+     "meaning": "이 애는 톰이야. 내 친구야."
+    },
+    {
+     "who": "톰",
+     "text": "Hi! I am Tom.",
+     "ko_pron": "하이! 아이 엠 탐.",
+     "meaning": "안녕! 나는 톰이야."
+    },
+    {
+     "who": "나",
+     "text": "And this is Mia. She is my sister.",
+     "ko_pron": "앤드 디스 이즈 미아. 쉬 이즈 마이 시스터.",
+     "meaning": "그리고 이 애는 미아야. 우리 언니야."
+    },
+    {
+     "who": "톰",
+     "text": "Hi, Mia! You are tall!",
+     "ko_pron": "하이, 미아! 유 아 톨!",
+     "meaning": "안녕, 미아! 너 키 크다!"
+    },
+    {
+     "who": "미아",
+     "text": "Thank you! He is a nice boy.",
+     "ko_pron": "땡큐! 히 이즈 어 나이스 보이.",
+     "meaning": "고마워! 착한 아이네."
+    }
+   ]
+  },
+  {
+   "id": "mood",
+   "title": "기분이 어때?",
+   "lines": [
+    {
+     "who": "나",
+     "text": "Are you sad?",
+     "ko_pron": "아 유 새드?",
+     "meaning": "너 슬퍼?"
+    },
+    {
+     "who": "친구",
+     "text": "Yes. I am scared.",
+     "ko_pron": "예스. 아이 엠 스케어드.",
+     "meaning": "응. 무서워."
+    },
+    {
+     "who": "나",
+     "text": "I am here, too.",
+     "ko_pron": "아이 엠 히어, 투.",
+     "meaning": "나도 여기 있어."
+    },
+    {
+     "who": "엄마",
+     "text": "Are you tired?",
+     "ko_pron": "아 유 타이어드?",
+     "meaning": "피곤하니?"
+    },
+    {
+     "who": "나",
+     "text": "Yes. I am tired and sleepy.",
+     "ko_pron": "예스. 아이 엠 타이어드 앤드 슬리피.",
+     "meaning": "네. 피곤하고 졸려요."
+    },
+    {
+     "who": "엄마",
+     "text": "Good night!",
+     "ko_pron": "굿 나잇!",
+     "meaning": "잘 자!"
+    }
+   ]
+  },
+  {
+   "id": "hungry",
+   "title": "배고파요",
+   "lines": [
+    {
+     "who": "나",
+     "text": "Mom, I am hungry.",
+     "ko_pron": "맘, 아이 엠 헝그리.",
+     "meaning": "엄마, 배고파요."
+    },
+    {
+     "who": "엄마",
+     "text": "Me too!",
+     "ko_pron": "미 투!",
+     "meaning": "나도!"
+    },
+    {
+     "who": "나",
+     "text": "And I am thirsty. I need water.",
+     "ko_pron": "앤드 아이 엠 써스티. 아이 니드 워터.",
+     "meaning": "그리고 목말라요. 물이 필요해요."
+    },
+    {
+     "who": "엄마",
+     "text": "It's hot today. Here is your water.",
+     "ko_pron": "잇츠 핫 투데이. 히어 이즈 유어 워터.",
+     "meaning": "오늘 덥네. 여기 물."
+    },
+    {
+     "who": "나",
+     "text": "Thank you! Oh, it's cold!",
+     "ko_pron": "땡큐! 오, 잇츠 콜드!",
+     "meaning": "고마워요! 아, 차가워요!"
+    }
+   ]
+  },
+  {
+   "id": "okay",
+   "title": "괜찮아?",
+   "lines": [
+    {
+     "who": "친구",
+     "text": "Are you OK?",
+     "ko_pron": "아 유 오케이?",
+     "meaning": "괜찮아?"
+    },
+    {
+     "who": "나",
+     "text": "No. I'm not OK. I'm sick.",
+     "ko_pron": "노. 아임 낫 오케이. 아임 씩.",
+     "meaning": "아니. 안 괜찮아. 아파."
+    },
+    {
+     "who": "친구",
+     "text": "Are you hungry?",
+     "ko_pron": "아 유 헝그리?",
+     "meaning": "배고파?"
+    },
+    {
+     "who": "나",
+     "text": "No, I'm not hungry. Ouch! My head hurts.",
+     "ko_pron": "노, 아임 낫 헝그리. 아우치! 마이 헤드 헐츠.",
+     "meaning": "아니, 배 안 고파. 아야! 머리가 아파."
+    },
+    {
+     "who": "친구",
+     "text": "Oh no! I am sorry.",
+     "ko_pron": "오 노! 아이 엠 쏘리.",
+     "meaning": "이런! 안됐다."
+    }
+   ]
+  }
+ ],
+ "units": [
+  {
+   "id": "greet",
+   "title": "인사·이름",
+   "goal": "만나서 인사하고 이름을 말할 수 있어요.",
+   "lessons": [
+    {
+     "id": "greet-hello",
+     "title": "안녕!",
+     "goal": "만날 때·헤어질 때 인사할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:morning"
+      }
+     ],
+     "words": [
+      "w:꼭 쓰는 말/hello",
+      "w:꼭 쓰는 말/hi",
+      "w:꼭 쓰는 말/good morning",
+      "w:꼭 쓰는 말/bye",
+      "w:꼭 쓰는 말/good night",
+      "w:꼭 쓰는 말/thank you"
+     ],
+     "core": [
+      {
+       "ref": "ph:인사·자기소개/Good morning."
+      },
+      {
+       "ref": "ph:인사·자기소개/See you tomorrow."
+      }
+     ],
+     "quiz": [
+      {
+       "text": "[___]! See you tomorrow.",
+       "choices": [
+        "Bye",
+        "Hello"
+       ],
+       "answers": [
+        "Bye"
+       ],
+       "ko_pron": "바이! 씨 유 투모로우.",
+       "meaning": "안녕! 내일 봐.",
+       "why": "헤어질 때는 bye"
+      },
+      {
+       "context": "아침에 일어나서",
+       "text": "[___], mom!",
+       "choices": [
+        "Good morning",
+        "Good night"
+       ],
+       "answers": [
+        "Good morning"
+       ],
+       "ko_pron": "굿 모닝, 맘!",
+       "meaning": "엄마, 좋은 아침이에요!",
+       "why": "아침 인사는 good morning"
+      }
+     ]
+    },
+    {
+     "id": "greet-name",
+     "title": "이름이 뭐야?",
+     "goal": "이름을 묻고 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:name"
+      }
+     ],
+     "words": [
+      "w:질문 단어/what",
+      "w:꼭 쓰는 말/name",
+      "fw:my",
+      "fw:your",
+      "fw:i-me",
+      "fw:you",
+      "w:자주 붙이는 말/nice"
+     ],
+     "core": [
+      {
+       "ref": "p:What is ___?",
+       "fills": [
+        "your name",
+        "this",
+        "that"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "context": "친구 이름을 물을 때",
+       "text": "What is [___] name?",
+       "choices": [
+        "your",
+        "my"
+       ],
+       "answers": [
+        "your"
+       ],
+       "ko_pron": "왓 이즈 유어 네임?",
+       "meaning": "이름이 뭐야?",
+       "why": "너의 이름 → your name"
+      },
+      {
+       "text": "[___] name is Minji.",
+       "choices": [
+        "My",
+        "Your"
+       ],
+       "answers": [
+        "My"
+       ],
+       "ko_pron": "마이 네임 이즈 민지.",
+       "meaning": "내 이름은 민지야.",
+       "why": "나의 이름 → my name"
+      }
+     ]
+    },
+    {
+     "id": "greet-from",
+     "title": "어디서 왔어? 몇 살이야?",
+     "goal": "어디서 왔는지, 몇 살인지 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:from-age"
+      }
+     ],
+     "words": [
+      "w:질문 단어/where",
+      "w:질문 단어/how old",
+      "fw:from",
+      "w:숫자/five",
+      "w:숫자/six",
+      "w:숫자/seven"
+     ],
+     "core": [
+      {
+       "ref": "p:I am ___",
+       "fills": [
+        "from Korea",
+        "five"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "text": "I'm [___] Korea.",
+       "choices": [
+        "from",
+        "to"
+       ],
+       "answers": [
+        "from"
+       ],
+       "ko_pron": "아임 프롬 코리아.",
+       "meaning": "한국에서 왔어.",
+       "why": "어디서 왔는지 → from"
+      },
+      {
+       "text": "How [___] are you?",
+       "choices": [
+        "old",
+        "much"
+       ],
+       "answers": [
+        "old"
+       ],
+       "ko_pron": "하우 올드 아 유?",
+       "meaning": "몇 살이야?",
+       "why": "나이는 how old"
+      }
+     ]
+    },
+    {
+     "id": "greet-review",
+     "title": "단원 1 복습",
+     "goal": "인사하고, 이름·나이·사는 곳을 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:morning"
+      },
+      {
+       "ref": "d:인사·자기소개/처음 만났을 때"
+      }
+     ],
+     "words": [],
+     "core": [],
+     "quiz": [
+      {
+       "text": "[___]! Good morning.",
+       "choices": [
+        "Hi",
+        "Bye"
+       ],
+       "answers": [
+        "Hi"
+       ],
+       "ko_pron": "하이! 굿 모닝.",
+       "meaning": "안녕! 좋은 아침이야.",
+       "why": "만날 때 인사는 hi"
+      },
+      {
+       "context": "일곱 살일 때",
+       "text": "I am [___].",
+       "choices": [
+        "seven",
+        "six"
+       ],
+       "answers": [
+        "seven"
+       ],
+       "ko_pron": "아이 엠 세븐.",
+       "meaning": "나는 일곱 살이야.",
+       "why": "seven = 일곱"
+      }
+     ],
+     "review": true
+    }
+   ]
+  },
+  {
+   "id": "family",
+   "title": "나와 가족",
+   "goal": "가족과 친구를 소개할 수 있어요.",
+   "lessons": [
+    {
+     "id": "family-home",
+     "title": "우리 가족",
+     "goal": "가족을 소개할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:family"
+      }
+     ],
+     "words": [
+      "w:사람·가족/mom",
+      "w:사람·가족/dad",
+      "w:사람·가족/brother",
+      "w:사람·가족/sister",
+      "w:사람·가족/grandma",
+      "w:사람·가족/grandpa",
+      "w:꼭 쓰는 말/this"
+     ],
+     "core": [
+      {
+       "ref": "p:This is my ___",
+       "fills": [
+        "mom",
+        "dad",
+        "grandma",
+        "grandpa"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "text": "This is [___] mom.",
+       "choices": [
+        "my",
+        "I"
+       ],
+       "answers": [
+        "my"
+       ],
+       "ko_pron": "디스 이즈 마이 맘.",
+       "meaning": "이분은 우리 엄마야.",
+       "why": "나의 엄마 → my mom"
+      },
+      {
+       "text": "[___] is my dad.",
+       "choices": [
+        "This",
+        "My"
+       ],
+       "answers": [
+        "This"
+       ],
+       "ko_pron": "디스 이즈 마이 대드.",
+       "meaning": "이분은 우리 아빠야.",
+       "why": "이분은 → this"
+      }
+     ]
+    },
+    {
+     "id": "family-have",
+     "title": "나는 ~이 있어",
+     "goal": "가족·동물이 있다고 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:have"
+      }
+     ],
+     "words": [
+      "v:주고받기·하기/have",
+      "fw:a",
+      "w:동물/dog",
+      "w:동물/cat",
+      "w:숫자/one",
+      "w:숫자/two"
+     ],
+     "core": [
+      {
+       "ref": "p:I have ___",
+       "fills": [
+        "a sister",
+        "a dog"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "text": "I [___] a dog.",
+       "choices": [
+        "have",
+        "am"
+       ],
+       "answers": [
+        "have"
+       ],
+       "ko_pron": "아이 해브 어 도그.",
+       "meaning": "나는 강아지가 있어.",
+       "why": "가지고 있다 → have"
+      },
+      {
+       "text": "I have two [___].",
+       "choices": [
+        "cats",
+        "cat"
+       ],
+       "answers": [
+        "cats"
+       ],
+       "ko_pron": "아이 해브 투 캣츠.",
+       "meaning": "나는 고양이가 두 마리 있어.",
+       "why": "두 마리면 끝에 s"
+      }
+     ]
+    },
+    {
+     "id": "family-friend",
+     "title": "내 친구야",
+     "goal": "he·she와 am·is·are를 맞게 쓸 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:friends"
+      }
+     ],
+     "words": [
+      "fw:he-him",
+      "fw:she-her",
+      "w:사람·가족/friend",
+      "w:사람·가족/boy",
+      "w:모양·크기/tall"
+     ],
+     "core": [
+      {
+       "ref": "tip:be-verb"
+      },
+      {
+       "ref": "fw:he-him"
+      },
+      {
+       "ref": "fw:she-her"
+      }
+     ],
+     "quiz": [
+      {
+       "text": "I [___] Tom.",
+       "choices": [
+        "am",
+        "is",
+        "are"
+       ],
+       "answers": [
+        "am"
+       ],
+       "ko_pron": "아이 엠 탐.",
+       "meaning": "나는 톰이야.",
+       "why": "I 뒤에는 am"
+      },
+      {
+       "text": "You [___] tall!",
+       "choices": [
+        "am",
+        "is",
+        "are"
+       ],
+       "answers": [
+        "are"
+       ],
+       "ko_pron": "유 아 톨!",
+       "meaning": "너 키 크다!",
+       "why": "you 뒤에는 are"
+      },
+      {
+       "text": "He [___] my friend.",
+       "choices": [
+        "am",
+        "is",
+        "are"
+       ],
+       "answers": [
+        "is"
+       ],
+       "ko_pron": "히 이즈 마이 프렌드.",
+       "meaning": "그 애는 내 친구야.",
+       "why": "he 뒤에는 is"
+      },
+      {
+       "text": "[___] is my sister.",
+       "choices": [
+        "She",
+        "He"
+       ],
+       "answers": [
+        "She"
+       ],
+       "ko_pron": "쉬 이즈 마이 시스터.",
+       "meaning": "그 애는 우리 언니야.",
+       "why": "여자 한 명 → she"
+      }
+     ]
+    },
+    {
+     "id": "family-review",
+     "title": "단원 2 복습",
+     "goal": "가족과 친구를 소개하고, 있는 것을 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:family"
+      },
+      {
+       "ref": "ld:have"
+      },
+      {
+       "ref": "ld:friends"
+      }
+     ],
+     "words": [],
+     "core": [],
+     "quiz": [
+      {
+       "ref": "q:function_words/i-me/1"
+      },
+      {
+       "ref": "q:function_words/i-me/2"
+      },
+      {
+       "text": "[___] you my friend?",
+       "choices": [
+        "Are",
+        "Is",
+        "Am"
+       ],
+       "answers": [
+        "Are"
+       ],
+       "ko_pron": "아 유 마이 프렌드?",
+       "meaning": "너 내 친구야?",
+       "why": "you를 물을 때는 Are you"
+      }
+     ],
+     "review": true
+    }
+   ]
+  },
+  {
+   "id": "feel",
+   "title": "기분·상태",
+   "goal": "기분과 몸 상태를 말하고 물어볼 수 있어요.",
+   "lessons": [
+    {
+     "id": "feel-mood",
+     "title": "나 기뻐!",
+     "goal": "기분을 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:mood"
+      }
+     ],
+     "words": [
+      "w:감정·상태/happy",
+      "w:감정·상태/sad",
+      "w:감정·상태/tired",
+      "w:감정·상태/sleepy",
+      "w:감정·상태/scared"
+     ],
+     "core": [
+      {
+       "ref": "p:I am ___",
+       "fills": [
+        "happy",
+        "tired",
+        "sorry"
+       ]
+      },
+      {
+       "ref": "p:Are you ___?",
+       "fills": [
+        "sad",
+        "tired"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "text": "I [___] happy.",
+       "choices": [
+        "am",
+        "is",
+        "are"
+       ],
+       "answers": [
+        "am"
+       ],
+       "ko_pron": "아이 엠 해피.",
+       "meaning": "나는 기뻐.",
+       "why": "I 뒤에는 am"
+      },
+      {
+       "text": "[___] you sad?",
+       "choices": [
+        "Are",
+        "Is"
+       ],
+       "answers": [
+        "Are"
+       ],
+       "ko_pron": "아 유 새드?",
+       "meaning": "너 슬퍼?",
+       "why": "you를 물을 때는 Are you"
+      }
+     ]
+    },
+    {
+     "id": "feel-hungry",
+     "title": "배고파",
+     "goal": "배고프다·목마르다·덥다·춥다를 말할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:hungry"
+      }
+     ],
+     "words": [
+      "w:감정·상태/hungry",
+      "w:감정·상태/thirsty",
+      "w:감정·상태/hot",
+      "w:감정·상태/cold",
+      "w:음식/water"
+     ],
+     "core": [
+      {
+       "ref": "p:I am ___",
+       "fills": [
+        "hungry"
+       ]
+      },
+      {
+       "ref": "p:I need ___",
+       "fills": [
+        "water"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "context": "목마를 때",
+       "text": "I need [___].",
+       "choices": [
+        "water",
+        "hungry"
+       ],
+       "answers": [
+        "water"
+       ],
+       "ko_pron": "아이 니드 워터.",
+       "meaning": "물이 필요해.",
+       "why": "필요한 것은 물"
+      },
+      {
+       "text": "I am [___]. I need water.",
+       "choices": [
+        "thirsty",
+        "sleepy"
+       ],
+       "answers": [
+        "thirsty"
+       ],
+       "ko_pron": "아이 엠 써스티. 아이 니드 워터.",
+       "meaning": "목말라. 물이 필요해.",
+       "why": "물이 필요하면 목마른 것"
+      }
+     ]
+    },
+    {
+     "id": "feel-ok",
+     "title": "괜찮아?",
+     "goal": "상태를 묻고, 아니라고 대답할 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:okay"
+      }
+     ],
+     "words": [
+      "w:꼭 쓰는 말/OK",
+      "w:몸 상태/sick",
+      "w:몸 상태/hurt",
+      "w:몸 상태/ouch",
+      "w:자주 붙이는 말/not"
+     ],
+     "core": [
+      {
+       "ref": "p:Are you ___?",
+       "fills": [
+        "okay",
+        "hungry",
+        "tired",
+        "sad"
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "context": "배가 안 고플 때",
+       "text": "I'm [___] hungry.",
+       "choices": [
+        "not",
+        "no"
+       ],
+       "answers": [
+        "not"
+       ],
+       "ko_pron": "아임 낫 헝그리.",
+       "meaning": "배 안 고파.",
+       "why": "~아니다는 not"
+      },
+      {
+       "context": "친구가 넘어졌을 때",
+       "text": "Are you [___]?",
+       "choices": [
+        "OK",
+        "five"
+       ],
+       "answers": [
+        "OK"
+       ],
+       "ko_pron": "아 유 오케이?",
+       "meaning": "괜찮아?",
+       "why": "괜찮냐고 물을 때는 OK"
+      }
+     ]
+    },
+    {
+     "id": "feel-review",
+     "title": "단원 3 복습",
+     "goal": "기분과 몸 상태를 말하고 물어볼 수 있어요.",
+     "dialogues": [
+      {
+       "ref": "ld:mood"
+      },
+      {
+       "ref": "ld:hungry"
+      },
+      {
+       "ref": "ld:okay"
+      }
+     ],
+     "words": [],
+     "core": [],
+     "quiz": [
+      {
+       "text": "I [___] tired.",
+       "choices": [
+        "am",
+        "is",
+        "are"
+       ],
+       "answers": [
+        "am"
+       ],
+       "ko_pron": "아이 엠 타이어드.",
+       "meaning": "나 피곤해.",
+       "why": "I 뒤에는 am"
+      },
+      {
+       "text": "[___]! My head hurts.",
+       "choices": [
+        "Ouch",
+        "Wow"
+       ],
+       "answers": [
+        "Ouch"
+       ],
+       "ko_pron": "아우치! 마이 헤드 헐츠.",
+       "meaning": "아야! 머리가 아파.",
+       "why": "아플 때는 ouch"
+      }
+     ],
+     "review": true
+    }
+   ]
+  }
+ ]
+}

@@ -1474,6 +1474,175 @@
  },
  {
   "group": "능력·소유·상태",
+  "pattern": "This is my ___",
+  "ko_pron": "디스 이즈 마이 ___",
+  "meaning": "이건 내 ~야, 이 사람은 우리 ~야",
+  "freq": 3,
+  "tip": "물건도, 사람을 소개할 때도 this를 써요.",
+  "tip_ids": ["be-verb"],
+  "words": {
+   "this": {
+    "ko_pron": "디스",
+    "meaning": "이것, 이 사람"
+   },
+   "is": {
+    "ko_pron": "이즈",
+    "meaning": "~이다"
+   },
+   "my": {
+    "ko_pron": "마이",
+    "meaning": "나의, 우리"
+   }
+  },
+  "fills": [
+   {
+    "text": "mom",
+    "ko_pron": "맘",
+    "meaning": "이분은 우리 엄마야",
+    "freq": 3,
+    "words": {
+     "mom": {
+      "ko_pron": "맘",
+      "meaning": "엄마"
+     }
+    }
+   },
+   {
+    "text": "dad",
+    "ko_pron": "대드",
+    "meaning": "이분은 우리 아빠야",
+    "freq": 3,
+    "words": {
+     "dad": {
+      "ko_pron": "대드",
+      "meaning": "아빠"
+     }
+    }
+   },
+   {
+    "text": "friend",
+    "ko_pron": "프렌드",
+    "meaning": "이 애는 내 친구야",
+    "freq": 3,
+    "words": {
+     "friend": {
+      "ko_pron": "프렌드",
+      "meaning": "친구"
+     }
+    }
+   },
+   {
+    "text": "brother",
+    "ko_pron": "브라더",
+    "meaning": "이 애는 우리 형(오빠, 남동생)이야",
+    "freq": 2,
+    "words": {
+     "brother": {
+      "ko_pron": "브라더",
+      "meaning": "형, 오빠, 남동생"
+     }
+    }
+   },
+   {
+    "text": "sister",
+    "ko_pron": "시스터",
+    "meaning": "이 애는 우리 언니(누나, 여동생)야",
+    "freq": 2,
+    "words": {
+     "sister": {
+      "ko_pron": "시스터",
+      "meaning": "언니, 누나, 여동생"
+     }
+    }
+   },
+   {
+    "text": "grandma",
+    "ko_pron": "그랜마",
+    "meaning": "이분은 우리 할머니야",
+    "freq": 2,
+    "words": {
+     "grandma": {
+      "ko_pron": "그랜마",
+      "meaning": "할머니"
+     }
+    }
+   },
+   {
+    "text": "grandpa",
+    "ko_pron": "그랜파",
+    "meaning": "이분은 우리 할아버지야",
+    "freq": 2,
+    "words": {
+     "grandpa": {
+      "ko_pron": "그랜파",
+      "meaning": "할아버지"
+     }
+    }
+   },
+   {
+    "text": "dog",
+    "ko_pron": "도그",
+    "meaning": "이건 우리 강아지야",
+    "freq": 2,
+    "words": {
+     "dog": {
+      "ko_pron": "도그",
+      "meaning": "개, 강아지"
+     }
+    }
+   },
+   {
+    "text": "teacher",
+    "ko_pron": "티처",
+    "meaning": "이분은 우리 선생님이야",
+    "freq": 2,
+    "words": {
+     "teacher": {
+      "ko_pron": "티처",
+      "meaning": "선생님"
+     }
+    }
+   },
+   {
+    "text": "room",
+    "ko_pron": "룸",
+    "meaning": "여기가 내 방이야",
+    "freq": 2,
+    "words": {
+     "room": {
+      "ko_pron": "룸",
+      "meaning": "방"
+     }
+    }
+   },
+   {
+    "text": "bag",
+    "ko_pron": "백",
+    "meaning": "이건 내 가방이야",
+    "freq": 2,
+    "words": {
+     "bag": {
+      "ko_pron": "백",
+      "meaning": "가방"
+     }
+    }
+   },
+   {
+    "text": "house",
+    "ko_pron": "하우스",
+    "meaning": "여기가 우리 집이야",
+    "freq": 2,
+    "words": {
+     "house": {
+      "ko_pron": "하우스",
+      "meaning": "집"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "group": "능력·소유·상태",
   "pattern": "I am ___",
   "ko_pron": "아이 엠 ___",
   "meaning": "나는 ~야",
@@ -1663,7 +1832,8 @@
      }
     }
    }
-  ]
+  ],
+  "tip_ids": ["be-verb"]
  },
  {
   "group": "능력·소유·상태",
@@ -5888,7 +6058,8 @@
      }
     }
    }
-  ]
+  ],
+  "tip_ids": ["be-verb"]
  },
  {
   "group": "질문·부탁",

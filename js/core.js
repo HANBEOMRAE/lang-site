@@ -8,6 +8,7 @@ const LANGS = {
     name: "영어", big: "Aa", desc: "다섯 살 아이처럼, 소리와 단어부터",
     voice: "en-US",
     tips: true,   // data/en/tips.json (💡 알아두기)
+    lessons: true, // data/en/lessons.json (📘 수업)
     sections: [
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "verbs",      type: "cards",      name: "동사",       desc: "매일 쓰는 동작 말", ready: true },

@@ -80,10 +80,6 @@
    "ko_pron": "맘즈",
    "meaning": "엄마의"
   },
-  "hi": {
-   "ko_pron": "하이",
-   "meaning": "안녕"
-  },
   "okay": {
    "ko_pron": "오케이",
    "meaning": "좋아, 괜찮아"
@@ -547,6 +543,18 @@
   "minji": {
    "ko_pron": "민지",
    "meaning": "민지 (이름)"
+  },
+  "wow": {
+   "ko_pron": "와우",
+   "meaning": "우와"
+  },
+  "oh": {
+   "ko_pron": "오",
+   "meaning": "아, 오 (놀랄 때)"
+  },
+  "am": {
+   "ko_pron": "엠",
+   "meaning": "~이다 (I 뒤에)"
   }
  }
 }

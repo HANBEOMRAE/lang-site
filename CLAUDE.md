@@ -40,7 +40,7 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   같은 `verbs.json`이라도 `en`은 카드 목록, `ja`는 `{groups, forms, verbs}`다.
 - 색은 `css/style.css` 맨 위 `:root` 변수만 쓴다(다크 모드 포함). 일본어 화면은 `body.lang-ja`에서 `--accent`가 빨강이 된다.
 - 기록은 `localStorage`에 둔다. `core.js`의 `store.get/set`(JSON, try/catch로 막힌 환경에서도 동작)을 쓴다.
-  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 것, `"언어/섹션/주제/항목"` 목록 — 단어 카드 `en/words/주제/단어`, 동사 변형 `ja/verbs/-/동사`, 패턴 문장 `en/patterns/틀/바꿔 넣는 말`, 회화 문장 `en/situations/장면/문장`; 섹션이 patterns·situations면 문장 탭, views.js `resolveStar`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`, `review`(오늘의 복습, key별 `{due, stage, kind}` — key는 ☆와 같은 모양 또는 `quiz:언어/파일/비교id/번호`), `reviewSeeded`, `conjFreqOnly`(동사 표 "자주 쓰는 동사만").
+  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 것, `"언어/섹션/주제/항목"` 목록 — 단어 카드 `en/words/주제/단어`, 동사 변형 `ja/verbs/-/동사`, 패턴 문장 `en/patterns/틀/바꿔 넣는 말`, 회화 문장 `en/situations/장면/문장`; 섹션이 patterns·situations면 문장 탭, views.js `resolveStar`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`, `review`(오늘의 복습, key별 `{due, stage, kind}` — key는 ☆와 같은 모양 또는 `quiz:언어/파일/비교id/번호`), `reviewSeeded`, `lessonDone`(수업 진도, 언어별 레슨 id 목록), `conjFreqOnly`(동사 표 "자주 쓰는 동사만").
   이어서 하기와 ☆는 번호가 아니라 이름(섹션·주제·항목 text, 패턴 틀·바꿔 넣는 말, 비교 id, 장면 이름)으로 저장하고, 열 때 지금 번호를 찾는다
   (views.js `resolvePlace`). 주제 이름이나 항목 `text`를 바꾸면 그 기록은 찾을 수 없게 되어 조용히 빠진다(☆는 "찾을 수 없는 표시"로 알림).
 - 오프라인(PWA): `sw.js`가 `PRECACHE`(화면 파일·데이터 전체)를 저장하고 저장본을 먼저 쓴다. 페이지를 열 때마다 뒤에서 새 버전을 확인해
@@ -54,6 +54,13 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 3. 데이터를 고친 뒤에는 항상 `python tools/validate.py`를 실행해서 문제가 없는지 확인한다.
 4. 코드를 바꿀 때는 무엇을 왜 바꾸는지 먼저 설명한다.
 5. 큰 작업이 하나 끝나서 검사(`validate.py`)를 통과하면, 커밋할지 사용자에게 먼저 묻는다. 묻지 않고 커밋하지 않는다.
+
+## 📘 수업 (`data/<언어>/lessons.json`, js/lessons.js)
+
+- 레슨은 기존 재료를 이름으로 가리킨다(`w:`·`p:`·`d:`·`ld:`… README "수업"). 재료를 복사하지 않는다. 없는 재료만 새로 만든다: 단어는 기존 주제에, 패턴은 patterns.json에, 레슨 전용 대화는 lessons.json `dialogues`에.
+- 레슨마다 새 단어 5~8개(최대 8), 3등급 단어를 앞 레슨에. 새 단어는 그 레슨 대화나 핵심 문장에 꼭 나오게 쓴다(검사). 앞 레슨까지 안 배운 말은 대화에 적게(4개 이상이면 경고).
+- 단원 = 레슨 3~4개 + 복습 레슨(`review: true`). 진도는 `lessonDone`(레슨 id 목록), 이어서 하기는 `{kind: "lesson", id, step}`.
+- 레슨 대화 문장의 ☆ key는 `언어/lessons/대화id/문장`, 대화 단어는 `언어/gw/ld:대화id/단어`.
 
 ## 빈도 등급 (`freq`)
 

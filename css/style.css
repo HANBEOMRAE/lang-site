@@ -487,3 +487,28 @@ mark.diff { padding: 0 2px; border-radius: 4px; color: inherit; background: colo
 .quiz-next { height: 52px; border-radius: 14px; border: 0; cursor: pointer; background: var(--accent); color: #fff; font-size: 16px; font-weight: 700; }
 .quiz-done { font-family: "Jua", sans-serif; font-size: 26px; text-align: center; margin: 24px 0 8px; }
 .row.review-row .em { color: var(--accent); }
+
+/* ── 📘 수업 ── */
+.lesson-box { margin-bottom: 8px; }
+.row.lesson-next { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.row.lesson-next .em { color: var(--accent); }
+.unit-goal { margin: -4px 0 10px; font-size: 14px; color: var(--muted); }
+.row.lesson-row.done .step { background: var(--ok); }
+.row.lesson-row.next { border-color: var(--accent); }
+.lesson-steps { display: flex; gap: 4px; margin: 0 0 14px; padding: 0; list-style: none; overflow-x: auto; }
+.lesson-steps li { flex: 1; min-width: 44px; }
+.lesson-steps button {
+  width: 100%; padding: 6px 2px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--surface); color: var(--muted);
+  font-size: 13px; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; line-height: 1.2;
+}
+.lesson-steps button span { font-size: 11px; font-weight: 400; }
+.lesson-steps li.past button { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); color: var(--ink); }
+.lesson-steps li.on button { border-color: var(--accent); background: var(--accent); color: #fff; }
+.lesson-goal { padding: 18px 16px; border-radius: 16px; background: var(--surface); border: 1.5px solid var(--line); }
+.goal-big { margin: 4px 0 14px; font-family: "Jua", sans-serif; font-size: 24px; line-height: 1.35; word-break: keep-all; }
+.lesson-goal .chips { margin: 0 0 12px; }
+.core-block { margin-bottom: 18px; }
+.core-block .related { margin-top: 10px; }
+.core-word-big { margin: 0; font-family: "Jua", sans-serif; font-size: 32px; color: var(--accent); }
+.core-word .chip { margin-top: 10px; }
+.lesson-done { margin-top: 18px; }

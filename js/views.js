@@ -32,6 +32,7 @@ function remember(lang, ref) {
 }
 async function resolvePlace(lang, ref) {
   const L = LANGS[lang];
+  if (ref && ref.kind === "lesson") return lessonPlace(lang, ref);   // 📘 수업 (lessons.js)
   const sec = ref && L.sections.find(s => s.id === ref.sec && s.ready);
   if (!sec) return null;
   const base = `#/${lang}/${sec.id}`, head = `${L.name} · ${sec.name}`;
@@ -120,8 +121,15 @@ function viewLang(lang) {
   const L = LANGS[lang];
   document.body.className = `lang-${lang}`;
   setHeader(L.name, "#/");
+  // 수업이 있는 언어: 맨 위 📘 수업(다음 레슨·오늘의 복습·단원 전체), 그 아래 지금 섹션들을 📚 찾아보기·연습으로
   app.innerHTML = `
     <div class="list continue-list" id="continueList" hidden></div>
+    ${L.lessons ? `
+      <section class="lesson-box">
+        <h2 class="group">📘 수업</h2>
+        <div class="list" id="lessonRows"><p class="lead">불러오는 중…</p></div>
+      </section>
+      <h2 class="group">📚 찾아보기·연습</h2>` : ""}
     <p class="lead">위에서부터 차례로 공부해요.</p>
     <div class="list">
       ${L.sections.map((s, i) => `
@@ -132,10 +140,11 @@ function viewLang(lang) {
     </div>
     <h2 class="group">복습</h2>
     <div class="list">
+      ${L.lessons ? "" : `
       <button class="row review-row" data-go="#/${lang}/review">
         <span class="em" aria-hidden="true">🔁</span>
         <span class="label"><strong>오늘의 복습</strong><small>${reviewDue(lang).length ? `오늘 볼 것 ${reviewDue(lang).length}개` : "오늘은 복습할 게 없어요"}</small></span>
-      </button>
+      </button>`}
       <button class="row star-row" data-go="#/${lang}/stars">
         <span class="em" aria-hidden="true">★</span>
         <span class="label"><strong>헷갈린 것</strong>
@@ -155,6 +164,7 @@ function viewLang(lang) {
       </button>` : ""}
     </div>`;
   fillContinue(lang);
+  if (L.lessons) fillLessonBox(lang);
 }
 
 // ── 카드형(기초 단어·동사): 주제 목록 ─────────────
@@ -391,7 +401,7 @@ function attachInlineTools(afterEl, lang, answers, alignEnd = false, starKeyOf =
 //  단어: 카드 "언어/words/주제/단어", 동사 변형 "언어/verbs/-/동사" (주제까지 넣는 건 はな(코)·はな(꽃) 때문)
 //  문장: 패턴 "언어/patterns/틀/바꿔 넣는 말", 회화 "언어/situations/장면/문장"
 function starKey(lang, secId, category, text) { return `${lang}/${secId}/${category}/${text}`; }
-const SENTENCE_SECS = ["patterns", "situations"];
+const SENTENCE_SECS = ["patterns", "situations", "lessons"];   // lessons: 레슨 대화 "언어/lessons/대화id/문장"
 const isSentenceKey = k => SENTENCE_SECS.includes(k.split("/")[1]);
 function starList() {
   const v = store.get("stars", []);
@@ -435,11 +445,24 @@ async function resolveStar(lang, key) {
   const L = LANGS[lang];
   const [, secId, category, ...rest] = key.split("/");
   const text = rest.join("/");
-  if (secId === "gw") {                      // 회화 문장 단어 (카드가 없는 말): 그 장면에서 처음 나오는 문장을 예문으로
+  if (secId === "lessons") {                 // 레슨 대화 문장: "언어/lessons/대화id/문장"
+    try {
+      const d = (await loadData(lang, "lessons")).dialogues.find(x => x.id === category);
+      const ln = d && d.lines.find(x => x.text === text);
+      return ln ? { kind: "sentence", src: `수업 · ${d.title}`, x: { text: ln.text, ko_pron: ln.ko_pron, meaning: ln.meaning, kanji_text: ln.kanji_text } } : null;
+    } catch { return null; }
+  }
+  if (secId === "gw") {                      // 회화 문장 단어 (카드가 없는 말): 그 장면(레슨 대화는 "ld:id")에서 처음 나오는 문장을 예문으로
     const sit = L.sections.find(s => s.type === "situations" && s.ready);
     try {
-      const data = await loadData(lang, sit.id), gi = await loadGlossIndex(lang);
-      const s = data.find(x => x.scene === category);
+      const gi = await loadGlossIndex(lang);
+      let s, src;
+      if (category.startsWith("ld:")) {
+        s = (await loadData(lang, "lessons")).dialogues.find(x => x.id === category.slice(3));
+        s = s && { ...s, scene: s.title, phrases: [], dialogues: [s] }; src = `수업 · ${s?.title}`;
+      } else {
+        s = (await loadData(lang, sit.id)).find(x => x.scene === category); src = `${sit.name} · ${s?.scene}`;
+      }
       for (const ln of s ? [...s.dialogues.flatMap(d => d.lines), ...s.phrases] : []) {
         const seen = {};
         for (const m of glossTokens(lang, ln)) {
@@ -447,7 +470,7 @@ async function resolveStar(lang, key) {
           if (m.k !== text) continue;
           const g = glossLookup(gi, s, ln, m.k, seen[m.k], m.mid);
           if (!g) continue;
-          return { kind: "word", src: `${sit.name} · ${s.scene}`, it: { text: m.word, kanji: g.kanji, ko_pron: g.ko_pron, meaning: g.meaning,
+          return { kind: "word", src, it: { text: m.word, kanji: g.kanji, ko_pron: g.ko_pron, meaning: g.meaning,
             example: plainText(ln.text), example_ko_pron: ln.ko_pron, example_kanji_text: ln.kanji_text, example_meaning: ln.meaning } };
         }
       }

@@ -389,6 +389,9 @@ def check_tips(data, name):
     try:
         used = {t for p in json.loads((ROOT / f"data/{lang}/patterns.json").read_text(encoding="utf-8"))
                 for t in (p.get("tip_ids") or [])}
+        if (ROOT / f"data/{lang}/lessons.json").exists():         # 레슨 핵심 재료로 쓰는 설명도 쓰이는 것
+            used |= {c["ref"][4:] for u in json.loads((ROOT / f"data/{lang}/lessons.json").read_text(encoding="utf-8")).get("units", [])
+                     for l in u.get("lessons", []) for c in l.get("core", []) if str(c.get("ref", "")).startswith("tip:")}
     except Exception:
         used = set()
     ids = set()
@@ -904,15 +907,194 @@ def check_conjugation(data, name):
         for k, q in enumerate(c.get("quiz", [])):
             check_quiz(q, labels, f"{where} > 퀴즈 {k + 1}번", ja=True)
 
+# ── 수업 (data/<언어>/lessons.json) ──
+# 레슨은 재료를 이름으로 가리킨다 (views.js와 같은 모양, js/lessons.js lessonRef):
+#  w:주제/단어  v:주제/동사  fw:작은말id  pt:조사  p:틀(+fills)  ph:장면/문장  d:장면/대화 제목(+lines)  ld:레슨 대화 id  tip:알아두기 id  q:파일/비교id/번호
+LESSON_MAX_WORDS = 8          # 레슨마다 새 단어 최대
+LESSON_UNKNOWN_WARN = 4       # 앞 레슨까지 안 배운 단어가 대화에 이만큼 이상 나오면 경고
+
+def lesson_sources(lang):
+    L = lambda p: json.loads((ROOT / "data" / p).read_text(encoding="utf-8"))
+    def opt(p, empty):
+        try: return L(p)
+        except Exception: return empty
+    return {"words": opt(f"{lang}/words.json", []), "verbs": opt(f"{lang}/verbs.json", [] if lang == "en" else {}),
+            "fw": opt(f"{lang}/function_words.json", {}), "particles": opt(f"{lang}/particles.json", {}),
+            "patterns": opt(f"{lang}/patterns.json", []), "situations": opt(f"{lang}/situations.json", []),
+            "tips": opt(f"{lang}/tips.json", {}), "lang": lang}
+
+def lesson_word(src, ref):
+    """w:/v:/fw:/pt: → (항목, 문장 속 모양들) 또는 None"""
+    kind, _, rest = ref.partition(":")
+    if kind in ("w", "v") and "/" in rest:
+        cat, _, text = rest.partition("/")
+        data = src["words"] if kind == "w" else src["verbs"]
+        if isinstance(data, list):
+            for c in data:
+                if c.get("category") == cat:
+                    it = next((i for i in c.get("items", []) if i.get("text") == text), None)
+                    if it:
+                        t = text.lower()
+                        forms = [t] + (en_verb_forms(t) if kind == "v" else [t + "s", t + "es"])
+                        return it, forms
+        elif kind == "v":                                   # 일본어 동사 변형 표: v:-/いく
+            v = next((x for x in data.get("verbs", []) if x.get("text") == text), None)
+            if v: return v, [v["text"]] + [f.get("text") for f in (v.get("forms") or {}).values()]
+        return None
+    if kind == "fw":
+        it = next((i for i in src["fw"].get("items", []) if i.get("id") == rest), None)
+        return (it, list(it.get("forms", []))) if it else None
+    if kind == "pt":
+        it = next((i for i in src["particles"].get("particles", []) if i.get("text") == rest), None)
+        return (it, [rest]) if it else None
+    return None
+
+def lesson_dialogue(src, own, item):
+    """{ref: d:/ld:, lines?} → (대화 줄 목록, 장면(words 칸)) 또는 None"""
+    ref = item.get("ref", "")
+    kind, _, rest = ref.partition(":")
+    if kind == "ld":
+        d = own.get(rest)
+        if not d: return None
+        lines = d.get("lines", [])
+        scene = d
+    elif kind == "d" and "/" in rest:
+        sc, _, title = rest.partition("/")
+        s = next((x for x in src["situations"] if x.get("scene") == sc), None)
+        d = s and next((x for x in s.get("dialogues", []) if x.get("title") == title), None)
+        if not d: return None
+        lines, scene = d.get("lines", []), s
+    else:
+        return None
+    pick = item.get("lines")
+    if pick is not None:
+        if any(not isinstance(i, int) or not 0 <= i < len(lines) for i in pick): return None
+        lines = [lines[i] for i in pick]
+    return lines, scene
+
+def lesson_core_texts(src, item):
+    """핵심 재료 → 그 재료의 문장들 (새 단어가 나오는지 볼 때 쓴다). 없으면 None"""
+    ref = item.get("ref", "")
+    kind, _, rest = ref.partition(":")
+    if kind == "p":
+        p = next((x for x in src["patterns"] if x.get("pattern") == rest), None)
+        if not p: return None
+        fills = item.get("fills") or [f.get("text") for f in p.get("fills", [])]
+        have = {f.get("text") for f in p.get("fills", [])}
+        if any(f not in have for f in fills): return None
+        return [rest.replace("___", f) for f in fills]
+    if kind == "ph" and "/" in rest:
+        sc, _, text = rest.partition("/")
+        s = next((x for x in src["situations"] if x.get("scene") == sc), None)
+        return [text] if s and any(ph.get("text") == text for ph in s.get("phrases", [])) else None
+    if kind == "tip":
+        t = next((x for x in src["tips"].get("tips", []) if x.get("id") == rest), None)
+        return [str(e.get("text", "")).replace("[", "").replace("]", "") for e in t.get("examples", [])] if t else None
+    if kind in ("fw", "pt"):
+        r = lesson_word(src, ref)
+        if not r: return None
+        return [str(ex.get("text", "")).replace("[", "").replace("]", "") for u in r[0].get("uses", []) for ex in u.get("examples", [])]
+    return None
+
+def lesson_tokens(lang, texts):
+    if lang == "ja":
+        return [u for t in texts for u, _ in ja_units(t)]
+    return [m.group().lower() for t in texts for m in WORD.finditer(str(t))]
+
+def check_lessons(data, name):
+    lang = name.split("/")[0]
+    src = lesson_sources(lang)
+    gl = glossary(lang)
+    auto = en_auto_index() if lang == "en" else {}
+    ja_auto, ja_parts, ja_verbs = ja_auto_index() if lang == "ja" else ({}, set(), set())
+    own = {}
+    for i, d in enumerate(data.get("dialogues", [])):
+        where = f"{name} > 레슨 대화 {i + 1}번 ({d.get('id', '?')})"
+        need(d, ["id", "title"], where)
+        if d.get("id") in own: problems.append(f"{where}: 중복된 id예요")
+        own[d.get("id")] = d
+        for k, l in enumerate(d.get("lines", [])):
+            w = f"{where} > {k + 1}번 줄"
+            need(l, ["who"] + BASIC, w)
+            if lang == "en": check_en_line_words(d, l, w, gl, auto)
+            else:
+                check_kanji_text(l.get("text"), l.get("kanji_text"), w)
+                check_ja_line_words(d, l, w, gl, ja_auto, ja_parts, ja_verbs)
+    known = {w.lower() for w in data.get("known_from_start", [])}
+    ids = set()
+    for ui, u in enumerate(data.get("units", [])):
+        uw = f"{name} > 단원 {ui + 1} ({u.get('title', '?')})"
+        need(u, ["id", "title", "goal"], uw)
+        lessons = u.get("lessons", [])
+        if not 4 <= len(lessons) <= 5 or not lessons[-1].get("review"):
+            problems.append(f"{uw}: 레슨 3~4개 + 마지막에 복습 레슨(review: true) 하나여야 해요")
+        for li, les in enumerate(lessons):
+            where = f"{uw} > {li + 1}번 레슨 ({les.get('id', '?')})"
+            need(les, ["id", "title", "goal"], where)
+            if les.get("id") in ids: problems.append(f"{where}: 중복된 id예요")
+            ids.add(les.get("id"))
+            # 대화
+            dlg_texts = []
+            if not les.get("dialogues"): problems.append(f"{where}: 대화(dialogues)가 없어요")
+            for item in les.get("dialogues", []):
+                r = lesson_dialogue(src, own, item)
+                if not r: problems.append(f"{where}: 대화 '{item.get('ref')}'(lines {item.get('lines')})를 찾을 수 없어요"); continue
+                dlg_texts += [l.get("text", "") for l in r[0]]
+            # 핵심
+            core_texts = []
+            for item in les.get("core", []):
+                t = lesson_core_texts(src, item)
+                if t is None: problems.append(f"{where}: 핵심 재료 '{item.get('ref')}'(fills {item.get('fills')})를 찾을 수 없어요"); continue
+                core_texts += t
+            # 새 단어: 있는지, 8개 이하, 대화·문장에 실제로 나오는지
+            words = les.get("words", [])
+            if len(words) > LESSON_MAX_WORDS: problems.append(f"{where}: 새 단어가 {len(words)}개예요 ({LESSON_MAX_WORDS}개까지)")
+            if not les.get("review") and not words: problems.append(f"{where}: 새 단어가 없어요")
+            toks = lesson_tokens(lang, dlg_texts + core_texts)
+            joined = " " + " ".join(toks) + " "
+            for ref in words:
+                r = lesson_word(src, ref)
+                if not r: problems.append(f"{where}: 새 단어 '{ref}'를 찾을 수 없어요"); continue
+                forms = [f.lower() for f in r[1] if f]
+                if not any((" " + f + " ") in joined for f in forms):
+                    problems.append(f"{where}: 새 단어 '{ref}'가 이 레슨의 대화나 문장에 안 나와요")
+                known |= set(forms) | {p for f in forms for p in f.split()}    # good morning → good, morning 도
+            known |= set(lesson_tokens(lang, core_texts))   # 핵심 문장(패턴 문장·핵심 문장)에서 배운 말
+            for item in les.get("core", []):                # 배운 패턴의 틀 단어·작은 말도 아는 말로
+                kind, _, rest = item.get("ref", "").partition(":")
+                if kind == "p": known |= set(lesson_tokens(lang, [rest.replace("___", " ")]))
+                if kind in ("fw", "pt"):
+                    r = lesson_word(src, item["ref"])
+                    if r: known |= {f.lower() for f in r[1]}
+            # 앞 레슨까지 안 배운 단어가 대화에 너무 많은지 (경고)
+            unknown = sorted({t for t in lesson_tokens(lang, dlg_texts) if t not in known and not t.isdigit()})
+            if len(unknown) >= LESSON_UNKNOWN_WARN and not les.get("review"):
+                warnings.append(f"{where}: 아직 안 배운 말이 대화에 {len(unknown)}개 나와요 — {', '.join(unknown)}")
+            # 확인 문제
+            for k, q in enumerate(les.get("quiz", [])):
+                w = f"{where} > 문제 {k + 1}번"
+                if "ref" in q:
+                    m = re.fullmatch(r"q:([^/]+)/([^/]+)/(\d+)", q["ref"])
+                    try:
+                        c = m and next((x for x in json.loads((ROOT / f"data/{lang}/{m.group(1)}.json").read_text(encoding="utf-8"))["compare"]
+                                        if x.get("id") == m.group(2)), None)
+                    except Exception:
+                        c = None
+                    if not c or int(m.group(3)) >= len(c.get("quiz", [])):
+                        problems.append(f"{w}: 퀴즈 '{q['ref']}'를 찾을 수 없어요")
+                    continue
+                if len(q.get("choices", [])) < 2: problems.append(f"{w}: 보기(choices)가 두 개 이상이어야 해요")
+                check_quiz(q, q.get("choices", []), w, ja=lang == "ja")
+
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
             "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs,
-            "glossary": check_glossary}
+            "glossary": check_glossary, "lessons": check_lessons}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
                     "en/pattern_compare": check_pattern_compare, "en/tips": check_tips,
                     "en/function_words": check_function_words}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict, check_glossary: dict,
+SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict, check_glossary: dict, check_lessons: dict,
           check_function_words: dict}
 
 def check_offline():

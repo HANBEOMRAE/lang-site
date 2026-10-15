@@ -11,6 +11,7 @@
 //  #/en/function_words      작은 말 목록     #/en/function_words/7  8번째 말   #/en/function_words/vs/0  비교 (조사와 같은 화면)
 //  #/ja/particles           조사 목록        #/ja/particles/4  5번째 조사   #/ja/particles/vs/1  2번째 비교
 //  #/ja/particles/vs/1/quiz 비교 퀴즈 (패턴·작은 말·동사 변형 비교도 같은 모양)
+//  #/en/lessons             📘 수업 단원 목록   #/en/lessons/0/1/3  단원 1 · 레슨 2 · 4번째 단계
 //  #/en/review              오늘의 복습 (퀴즈에서 틀리거나 ☆한 것, 1·3·7일 뒤)
 
 function route() {
@@ -26,6 +27,8 @@ function route() {
   if (!secId) return viewLang(lang);
   if (secId === "stars") return a === "s" ? viewStars(lang, "s", Number(b || 0)) : viewStars(lang, "w", a === undefined ? 0 : Number(a));
   if (secId === "review") return viewReview(lang);
+  if (secId === "lessons") return !LANGS[lang].lessons ? viewLang(lang)
+    : a === undefined ? viewLessons(lang) : viewLesson(lang, Number(a), Number(b || 0), Number(c || 0));
   if (secId === "tips") return LANGS[lang].tips ? viewTips(lang, a === undefined ? undefined : Number(a)) : viewLang(lang);
   const sec = LANGS[lang].sections.find(s => s.id === secId && s.ready);
   if (!sec) return viewLang(lang);
