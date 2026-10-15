@@ -235,6 +235,156 @@
   ]
  },
  {
+  "category": "맞장구·반응",
+  "emoji": "👍",
+  "items": [
+   {
+    "text": "ほんとう？",
+    "kanji": "本当？",
+    "ko_pron": "혼토-?",
+    "meaning": "정말?",
+    "freq": 3,
+    "example": "ほんとう？ すごい！",
+    "example_kanji_text": "本当？すごい！",
+    "example_ko_pron": "혼토-? 스고이!",
+    "example_meaning": "정말? 대단해!",
+    "example_freq": 3
+   },
+   {
+    "text": "そうなんだ",
+    "kanji": null,
+    "ko_pron": "소-난다",
+    "meaning": "그렇구나",
+    "freq": 3,
+    "example": "そうなんだ、しらなかった。",
+    "example_kanji_text": "そうなんだ、知らなかった。",
+    "example_ko_pron": "소-난다, 시라나캇타.",
+    "example_meaning": "그렇구나, 몰랐어.",
+    "example_freq": 2
+   },
+   {
+    "text": "そうですね",
+    "kanji": null,
+    "ko_pron": "소-데스네",
+    "meaning": "그렇네요",
+    "freq": 3,
+    "example": "そうですね、いいと おもいます。",
+    "example_kanji_text": "そうですね、いいと思います。",
+    "example_ko_pron": "소-데스네, 이-토 오모이마스.",
+    "example_meaning": "그렇네요, 좋은 것 같아요.",
+    "example_freq": 2
+   },
+   {
+    "text": "いいですね",
+    "kanji": null,
+    "ko_pron": "이-데스네",
+    "meaning": "좋네요",
+    "freq": 3,
+    "example": "いいですね、いきましょう。",
+    "example_kanji_text": "いいですね、行きましょう。",
+    "example_ko_pron": "이-데스네, 이키마쇼-.",
+    "example_meaning": "좋네요, 가요.",
+    "example_freq": 2
+   },
+   {
+    "text": "うん",
+    "kanji": null,
+    "ko_pron": "운",
+    "meaning": "응",
+    "freq": 3,
+    "example": "うん、いいよ。",
+    "example_kanji_text": "うん、いいよ。",
+    "example_ko_pron": "운, 이-요.",
+    "example_meaning": "응, 좋아.",
+    "example_freq": 3
+   },
+   {
+    "text": "すごい！",
+    "kanji": null,
+    "ko_pron": "스고이!",
+    "meaning": "대단해!",
+    "freq": 3,
+    "example": "すごい！ じょうずだね。",
+    "example_kanji_text": "すごい！上手だね。",
+    "example_ko_pron": "스고이! 조-즈다네.",
+    "example_meaning": "대단해! 잘하네.",
+    "example_freq": 3
+   },
+   {
+    "text": "わかった",
+    "kanji": "分かった",
+    "ko_pron": "와캇타",
+    "meaning": "알았어",
+    "freq": 3,
+    "example": "わかった、すぐ いく。",
+    "example_kanji_text": "分かった、すぐ行く。",
+    "example_ko_pron": "와캇타, 스구 이쿠.",
+    "example_meaning": "알았어, 금방 갈게.",
+    "example_freq": 3
+   },
+   {
+    "text": "ちがう",
+    "kanji": "違う",
+    "ko_pron": "치가우",
+    "meaning": "아니야, 달라",
+    "freq": 3,
+    "example": "ちがうよ、こっちだよ。",
+    "example_kanji_text": "違うよ、こっちだよ。",
+    "example_ko_pron": "치가우요, 콧치다요.",
+    "example_meaning": "아니야, 이쪽이야.",
+    "example_freq": 2
+   },
+   {
+    "text": "よかった",
+    "kanji": "良かった",
+    "ko_pron": "요캇타",
+    "meaning": "다행이다, 잘됐다",
+    "freq": 3,
+    "example": "よかった！ みつかった。",
+    "example_kanji_text": "良かった！見つかった。",
+    "example_ko_pron": "요캇타! 미츠캇타.",
+    "example_meaning": "다행이다! 찾았어.",
+    "example_freq": 2
+   },
+   {
+    "text": "なるほど",
+    "kanji": null,
+    "ko_pron": "나루호도",
+    "meaning": "그렇구나, 과연",
+    "freq": 2,
+    "example": "なるほど、わかった。",
+    "example_kanji_text": "なるほど、分かった。",
+    "example_ko_pron": "나루호도, 와캇타.",
+    "example_meaning": "그렇구나, 알겠어.",
+    "example_freq": 2
+   },
+   {
+    "text": "へえ",
+    "kanji": null,
+    "ko_pron": "헤-",
+    "meaning": "와, 그래?",
+    "freq": 2,
+    "example": "へえ、そうなんだ。",
+    "example_kanji_text": "へえ、そうなんだ。",
+    "example_ko_pron": "헤-, 소-난다.",
+    "example_meaning": "와, 그렇구나.",
+    "example_freq": 2
+   },
+   {
+    "text": "もちろん",
+    "kanji": null,
+    "ko_pron": "모치론",
+    "meaning": "물론",
+    "freq": 2,
+    "example": "もちろん いいよ。",
+    "example_kanji_text": "もちろんいいよ。",
+    "example_ko_pron": "모치론 이-요.",
+    "example_meaning": "물론 좋아.",
+    "example_freq": 2
+   }
+  ]
+ },
+ {
   "category": "사람·가족",
   "emoji": "👨‍👩‍👧",
   "items": [

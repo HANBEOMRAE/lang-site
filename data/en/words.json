@@ -150,6 +150,116 @@
   ]
  },
  {
+  "category": "맞장구·반응",
+  "emoji": "👍",
+  "items": [
+   {
+    "text": "Really?",
+    "ko_pron": "리얼리?",
+    "meaning": "정말?",
+    "freq": 3,
+    "example": "Really? Show me!",
+    "example_meaning": "정말? 보여 줘!"
+   },
+   {
+    "text": "I see.",
+    "ko_pron": "아이 씨.",
+    "meaning": "그렇구나.",
+    "freq": 3,
+    "example": "I see. Thank you.",
+    "example_meaning": "그렇구나. 고마워."
+   },
+   {
+    "text": "Of course.",
+    "ko_pron": "오브 코스.",
+    "meaning": "물론이지.",
+    "freq": 3,
+    "example": "Of course you can.",
+    "example_meaning": "물론 되지."
+   },
+   {
+    "text": "No problem.",
+    "ko_pron": "노 프라블럼.",
+    "meaning": "괜찮아, 문제없어.",
+    "freq": 3,
+    "example": "No problem, I can help.",
+    "example_meaning": "괜찮아, 내가 도와줄게."
+   },
+   {
+    "text": "That's right.",
+    "ko_pron": "댓츠 라잇.",
+    "meaning": "맞아.",
+    "freq": 3,
+    "example": "That's right! Good job.",
+    "example_meaning": "맞아! 잘했어."
+   },
+   {
+    "text": "Me too.",
+    "ko_pron": "미 투.",
+    "meaning": "나도.",
+    "freq": 3,
+    "example": "I'm hungry. Me too!",
+    "example_meaning": "배고파. 나도!"
+   },
+   {
+    "text": "Sure.",
+    "ko_pron": "슈어.",
+    "meaning": "그래, 좋아.",
+    "freq": 3,
+    "example": "Sure, here you go.",
+    "example_meaning": "그래, 여기 있어."
+   },
+   {
+    "text": "Wow!",
+    "ko_pron": "와우!",
+    "meaning": "우와!",
+    "freq": 3,
+    "example": "Wow! It's so big!",
+    "example_meaning": "우와! 엄청 크다!"
+   },
+   {
+    "text": "Good job!",
+    "ko_pron": "굿 잡!",
+    "meaning": "잘했어!",
+    "freq": 3,
+    "example": "Good job! You did it!",
+    "example_meaning": "잘했어! 해냈구나!"
+   },
+   {
+    "text": "I'm not sure.",
+    "ko_pron": "아임 낫 슈어.",
+    "meaning": "잘 모르겠어.",
+    "freq": 2,
+    "example": "I'm not sure. Let me see.",
+    "example_meaning": "잘 모르겠어. 어디 보자."
+   },
+   {
+    "text": "Sounds good.",
+    "ko_pron": "사운즈 굿.",
+    "meaning": "좋아.",
+    "freq": 2,
+    "example": "Let's go to the park. Sounds good!",
+    "example_meaning": "공원 가자. 좋아!"
+   },
+   {
+    "text": "Oh no!",
+    "ko_pron": "오 노!",
+    "meaning": "이런!",
+    "freq": 2,
+    "example": "Oh no! I dropped it.",
+    "example_meaning": "이런! 떨어뜨렸어."
+   },
+   {
+    "text": "Cool!",
+    "ko_pron": "쿨!",
+    "meaning": "멋지다!",
+    "freq": 2,
+    "example": "Cool! I like it.",
+    "example_meaning": "멋지다! 마음에 들어."
+   }
+  ]
+ },
+ {
   "category": "사람·가족",
   "emoji": "👨‍👩‍👧",
   "items": [
