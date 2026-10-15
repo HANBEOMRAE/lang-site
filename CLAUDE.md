@@ -24,7 +24,8 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 - 일본어 단어 주제는 영어 단어 주제 순서의 앞부분(1~21번)과 같은 이름·순서로 둔다. 새 주제를 넣을 때는 두 언어에 같은 자리로 넣는다.
 - 조사 예문의 `[조사]` 표시는 화면에서 강조(`markParticle`)로, 발음 듣기·검사에서는 괄호를 뺀 문장(`plainText`)으로 쓴다.
   `uses`는 쓰임별 묶음, `words`는 예문에 쓴 `ja/words.json` 단어 목록이다.
-- 스크립트는 모듈 없이 `core.js → speech.js → views.js → app.js` 순서로 불러오는 전역 함수 방식이다.
+- 스크립트는 모듈 없이 `core.js → speech.js → views.js → lessons.js → app.js` 순서로 불러오는 전역 함수 방식이다.
+  `lessons.js`: 퀴즈 화면(`runQuiz`: 공통 퀴즈 형식 빈칸 고르기 + 단어 듣고·뜻 보고 고르기), 오늘의 복습(`review`), 수업(단원·레슨).
 - 🎤 따라 말하기: `speech.js`가 인식·비교(띄어쓰기·문장부호·대소문자 무시, 일본어 가타카나→히라가나, 영어 숫자→단어)를 하고,
   `views.js`의 `sayToolsHTML`/`bindSayTools`/`attachInlineTools`가 화면에 붙인다. 일본어 문장은 `text`와 `kanji_text`(단어 카드 예문은 `example_kanji_text`)를 둘 다 정답으로 쓴다.
   새 일본어 문장에는 `kanji_text`도 넣는다(README "일본어 문장의 한자 표기").
@@ -39,7 +40,7 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   같은 `verbs.json`이라도 `en`은 카드 목록, `ja`는 `{groups, forms, verbs}`다.
 - 색은 `css/style.css` 맨 위 `:root` 변수만 쓴다(다크 모드 포함). 일본어 화면은 `body.lang-ja`에서 `--accent`가 빨강이 된다.
 - 기록은 `localStorage`에 둔다. `core.js`의 `store.get/set`(JSON, try/catch로 막힌 환경에서도 동작)을 쓴다.
-  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 것, `"언어/섹션/주제/항목"` 목록 — 단어 카드 `en/words/주제/단어`, 동사 변형 `ja/verbs/-/동사`, 패턴 문장 `en/patterns/틀/바꿔 넣는 말`, 회화 문장 `en/situations/장면/문장`; 섹션이 patterns·situations면 문장 탭, views.js `resolveStar`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`, `conjFreqOnly`(동사 표 "자주 쓰는 동사만").
+  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 것, `"언어/섹션/주제/항목"` 목록 — 단어 카드 `en/words/주제/단어`, 동사 변형 `ja/verbs/-/동사`, 패턴 문장 `en/patterns/틀/바꿔 넣는 말`, 회화 문장 `en/situations/장면/문장`; 섹션이 patterns·situations면 문장 탭, views.js `resolveStar`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`, `review`(오늘의 복습, key별 `{due, stage, kind}` — key는 ☆와 같은 모양 또는 `quiz:언어/파일/비교id/번호`), `reviewSeeded`, `conjFreqOnly`(동사 표 "자주 쓰는 동사만").
   이어서 하기와 ☆는 번호가 아니라 이름(섹션·주제·항목 text, 패턴 틀·바꿔 넣는 말, 비교 id, 장면 이름)으로 저장하고, 열 때 지금 번호를 찾는다
   (views.js `resolvePlace`). 주제 이름이나 항목 `text`를 바꾸면 그 기록은 찾을 수 없게 되어 조용히 빠진다(☆는 "찾을 수 없는 표시"로 알림).
 - 오프라인(PWA): `sw.js`가 `PRECACHE`(화면 파일·데이터 전체)를 저장하고 저장본을 먼저 쓴다. 페이지를 열 때마다 뒤에서 새 버전을 확인해
