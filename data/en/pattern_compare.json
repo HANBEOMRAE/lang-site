@@ -431,6 +431,270 @@
      "why": "약속하니까 I will"
     }
    ]
+  },
+  {
+   "id": "have-get-ill",
+   "pair": [
+    "Can I have ___?",
+    "Can I get ___?",
+    "I'll have ___"
+   ],
+   "title": "Can I have · Can I get · I'll have",
+   "points": [
+    "정중하게 부탁할 때",
+    "편하게 부탁할 때 (가게·카페)",
+    "고른 것을 정해서 말할 때 (주문)"
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "[Can I have] some water, please?",
+     "ko_pron": "캔 아이 해브 섬 워터, 플리즈?",
+     "meaning": "물 좀 주시겠어요?",
+     "why": "공손하게 부탁해요"
+    },
+    {
+     "side": 1,
+     "text": "[Can I get] a straw?",
+     "ko_pron": "캔 아이 겟 어 스트로?",
+     "meaning": "빨대 하나 주실래요?",
+     "why": "카페에서 편하게 부탁해요"
+    },
+    {
+     "side": 2,
+     "text": "[I'll have] the pancakes.",
+     "ko_pron": "아일 해브 더 팬케익스.",
+     "meaning": "팬케이크로 할게요.",
+     "why": "메뉴에서 고른 것을 말해요"
+    },
+    {
+     "side": 0,
+     "text": "[Can I have] the bill, please?",
+     "ko_pron": "캔 아이 해브 더 빌, 플리즈?",
+     "meaning": "계산서 주시겠어요?",
+     "why": "식당에서 공손하게"
+    }
+   ],
+   "quiz": [
+    {
+     "context": "점원이 '뭐 드릴까요?' 하고 물었을 때",
+     "text": "[___] a hot chocolate.",
+     "choices": [
+      "Can I have",
+      "Can I get",
+      "I'll have"
+     ],
+     "answers": [
+      "I'll have"
+     ],
+     "ko_pron": "아일 해브 어 핫 초콜릿.",
+     "meaning": "핫초코로 할게요.",
+     "why": "고른 것을 말할 때는 I'll have"
+    },
+    {
+     "context": "편한 카페에서 빨대가 필요할 때",
+     "text": "[___] a straw?",
+     "choices": [
+      "Can I have",
+      "Can I get",
+      "I'll have"
+     ],
+     "answers": [
+      "Can I get",
+      "Can I have"
+     ],
+     "ko_pron": "캔 아이 겟 어 스트로?",
+     "meaning": "빨대 하나 주실래요?",
+     "why": "부탁할 때는 둘 다 돼요"
+    },
+    {
+     "context": "식당에서 공손하게 물을 달라고 할 때",
+     "text": "[___] some water, please?",
+     "choices": [
+      "Can I have",
+      "Can I get",
+      "I'll have"
+     ],
+     "answers": [
+      "Can I have"
+     ],
+     "ko_pron": "캔 아이 해브 섬 워터, 플리즈?",
+     "meaning": "물 좀 주시겠어요?",
+     "why": "공손하게는 Can I have"
+    }
+   ]
+  },
+  {
+   "id": "like-want",
+   "pair": [
+    "Would you like ___?",
+    "Do you want to ___?"
+   ],
+   "title": "Would you like와 Do you want to",
+   "points": [
+    "손님·어른에게 공손하게 권할 때",
+    "친구에게 같이 하자고 물을 때"
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "[Would you like] some tea?",
+     "ko_pron": "우드 유 라이크 섬 티?",
+     "meaning": "차 드릴까요?",
+     "why": "손님에게 공손하게"
+    },
+    {
+     "side": 1,
+     "text": "[Do you want to] play?",
+     "ko_pron": "두 유 원 투 플레이?",
+     "meaning": "놀래?",
+     "why": "친구에게"
+    },
+    {
+     "side": 0,
+     "text": "[Would you like] to sit down?",
+     "ko_pron": "우드 유 라이크 투 싯 다운?",
+     "meaning": "앉으시겠어요?",
+     "why": "뒤에 to + 동작도 돼요"
+    },
+    {
+     "side": 1,
+     "text": "[Do you want to] eat?",
+     "ko_pron": "두 유 원 투 잇?",
+     "meaning": "먹을래?",
+     "why": "친구에게 편하게"
+    }
+   ],
+   "quiz": [
+    {
+     "context": "식당 직원이 손님에게",
+     "text": "[___] some water?",
+     "choices": [
+      "Would you like",
+      "Do you want to"
+     ],
+     "answers": [
+      "Would you like"
+     ],
+     "ko_pron": "우드 유 라이크 섬 워터?",
+     "meaning": "물 좀 드릴까요?",
+     "why": "손님에게는 공손하게"
+    },
+    {
+     "context": "친구에게 놀자고 할 때",
+     "text": "[___] play?",
+     "choices": [
+      "Would you like",
+      "Do you want to"
+     ],
+     "answers": [
+      "Do you want to"
+     ],
+     "ko_pron": "두 유 원 투 플레이?",
+     "meaning": "놀래?",
+     "why": "친구에게는 Do you want to"
+    },
+    {
+     "context": "친구에게 집에 갈지 물을 때",
+     "text": "[___] go home?",
+     "choices": [
+      "Would you like",
+      "Do you want to"
+     ],
+     "answers": [
+      "Do you want to"
+     ],
+     "ko_pron": "두 유 원 투 고 홈?",
+     "meaning": "집에 갈래?",
+     "why": "뒤에 동작이 바로 와요"
+    }
+   ]
+  },
+  {
+   "id": "its-there",
+   "pair": [
+    "It's ___",
+    "There is ___"
+   ],
+   "title": "It's와 There is",
+   "points": [
+    "무엇인지·어떤지 말할 때",
+    "무엇이 있다고 알릴 때"
+   ],
+   "examples": [
+    {
+     "side": 0,
+     "text": "[It's] a cat.",
+     "ko_pron": "잇츠 어 캣.",
+     "meaning": "그건 고양이야.",
+     "why": "무엇인지 말해요"
+    },
+    {
+     "side": 1,
+     "text": "[There is] a cat.",
+     "ko_pron": "데어 이즈 어 캣.",
+     "meaning": "고양이가 있어.",
+     "why": "있다고 알려요"
+    },
+    {
+     "side": 0,
+     "text": "[It's] hot.",
+     "ko_pron": "잇츠 핫.",
+     "meaning": "더워.",
+     "why": "날씨가 어떤지 말해요"
+    },
+    {
+     "side": 1,
+     "text": "[There is] a park near here.",
+     "ko_pron": "데어 이즈 어 파크 니어 히어.",
+     "meaning": "이 근처에 공원이 있어.",
+     "why": "어디에 무엇이 있는지"
+    }
+   ],
+   "quiz": [
+    {
+     "context": "벌레가 있다고 알려 줄 때",
+     "text": "[___] a bug on your arm!",
+     "choices": [
+      "It's",
+      "There is"
+     ],
+     "answers": [
+      "There is"
+     ],
+     "ko_pron": "데어 이즈 어 버그 온 유어 암!",
+     "meaning": "팔에 벌레가 있어!",
+     "why": "있다고 알릴 때는 There is"
+    },
+    {
+     "context": "게임에서 차례가 왔을 때",
+     "text": "[___] my turn.",
+     "choices": [
+      "It's",
+      "There is"
+     ],
+     "answers": [
+      "It's"
+     ],
+     "ko_pron": "잇츠 마이 턴.",
+     "meaning": "내 차례야.",
+     "why": "무엇인지 말할 때는 It's"
+    },
+    {
+     "context": "날씨를 말할 때",
+     "text": "[___] cold today.",
+     "choices": [
+      "It's",
+      "There is"
+     ],
+     "answers": [
+      "It's"
+     ],
+     "ko_pron": "잇츠 콜드 투데이.",
+     "meaning": "오늘 추워.",
+     "why": "날씨는 It's"
+    }
+   ]
   }
  ]
 }

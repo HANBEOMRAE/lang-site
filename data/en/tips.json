@@ -123,6 +123,40 @@
       "lang": "ko",
       "text": "로 바꿔 시작해요."
      }
+    ],
+    [
+     {
+      "lang": "en",
+      "text": "There is"
+     },
+     {
+      "lang": "ko",
+      "text": "는 하나, "
+     },
+     {
+      "lang": "en",
+      "text": "There are"
+     },
+     {
+      "lang": "ko",
+      "text": "는 여럿이에요. 물을 때는 순서를 바꿔 "
+     },
+     {
+      "lang": "en",
+      "text": "Is there"
+     },
+     {
+      "lang": "ko",
+      "text": "·"
+     },
+     {
+      "lang": "en",
+      "text": "Are there"
+     },
+     {
+      "lang": "ko",
+      "text": "."
+     }
     ]
    ],
    "words": {
@@ -165,6 +199,18 @@
     "tall": {
      "ko_pron": "톨",
      "meaning": "키가 큰"
+    },
+    "there": {
+     "ko_pron": "데어",
+     "meaning": "(there are = ~들이 있다)"
+    },
+    "two": {
+     "ko_pron": "투",
+     "meaning": "둘"
+    },
+    "dogs": {
+     "ko_pron": "도그즈",
+     "meaning": "개들"
     }
    },
    "examples": [
@@ -187,6 +233,11 @@
      "text": "[Are you] happy?",
      "ko_pron": "아 유 해피?",
      "meaning": "너 기뻐?"
+    },
+    {
+     "text": "[There are] two dogs.",
+     "ko_pron": "데어 아 투 도그즈.",
+     "meaning": "개가 두 마리 있어."
     }
    ]
   },

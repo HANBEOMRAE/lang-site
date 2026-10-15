@@ -226,8 +226,10 @@ def pattern_prefix(pattern):
 
 def check_pattern_compare(data, name):
     """비슷한 패턴 비교: pair가 patterns.json에 있는 틀인지, 예문의 [틀], 퀴즈 보기·정답·상황."""
+    lang = name.split("/")[0]
+    ja = lang == "ja"
     try:
-        known = {p["pattern"] for p in json.loads((ROOT / "data/en/patterns.json").read_text(encoding="utf-8"))}
+        known = {p["pattern"] for p in json.loads((ROOT / f"data/{lang}/patterns.json").read_text(encoding="utf-8"))}
     except Exception:
         known = set()
     ids = set()
@@ -238,31 +240,31 @@ def check_pattern_compare(data, name):
             problems.append(f"{where}: 중복된 id예요")
         ids.add(c.get("id"))
         pair = c.get("pair", [])
-        if len(pair) != 2:
-            problems.append(f"{where}: pair는 틀 두 개여야 해요")
+        if not 2 <= len(pair) <= 3:
+            problems.append(f"{where}: pair는 틀 2~3개여야 해요")
             continue
         for x in pair:
             if x not in known:
                 problems.append(f"{where}: '{x}'가 patterns.json에 없어요 (연습하기 링크가 끊겨요)")
         pts = c.get("points", [])
-        if len(pts) != 2 or not all(str(x).strip() for x in pts):
-            problems.append(f"{where}: points(언제 쓰는지)가 두 개여야 해요")
+        if len(pts) != len(pair) or not all(str(x).strip() for x in pts):
+            problems.append(f"{where}: points(언제 쓰는지)가 틀 수만큼 있어야 해요")
         prefixes = [pattern_prefix(x) for x in pair]
         sides = set()
         for k, ex in enumerate(c.get("examples", [])):
             w = f"{where} > 예문 {k + 1}번"
             need(ex, BASIC + ["why"], w)
-            if ex.get("side") not in (0, 1):
-                problems.append(f"{w}: side는 0 또는 1이에요")
+            if ex.get("side") not in range(len(pair)):
+                problems.append(f"{w}: side는 0~{len(pair) - 1}이에요")
                 continue
             sides.add(ex["side"])
             if f"[{prefixes[ex['side']]}]" not in ex.get("text", ""):
                 problems.append(f"{w}: 예문에 [{prefixes[ex['side']]}] 표시가 없어요")
-        if sides != {0, 1}:
-            problems.append(f"{where}: 두 틀 모두 예문이 있어야 해요")
+        if sides != set(range(len(pair))):
+            problems.append(f"{where}: 모든 틀에 예문이 있어야 해요")
         for k, q in enumerate(c.get("quiz", [])):
             w = f"{where} > 퀴즈 {k + 1}번"
-            check_quiz(q, prefixes, w)
+            check_quiz(q, prefixes, w, ja=ja)
             need(q, ["context"], w)   # 두 틀 모두 문법상 맞을 때가 많아 상황이 있어야 정답이 갈린다
 
 def check_pairs(data, name):
