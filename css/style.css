@@ -344,6 +344,17 @@ mark.diff { padding: 0 2px; border-radius: 4px; color: inherit; background: colo
 .gloss b { font-size: 18px; }
 .gloss .g-pron { font-weight: 700; font-size: 15px; }
 .gloss .g-mean { font-size: 14px; opacity: .85; }
+.gloss .g-kanji, .gloss .g-base { font-size: 13px; opacity: .85; }
+.gloss .g-btns { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.gloss .g-star {
+  width: 40px; height: 40px; border: 0; border-radius: 50%; background: transparent; cursor: pointer;
+  font-size: 24px; line-height: 1; color: var(--paper); opacity: .8;
+}
+.gloss .g-star.on { color: var(--speak); opacity: 1; }
+/* 회화 문장: 단어를 누르면 뜻 (말풍선 상자 안에 띄운다) */
+.dialogue, .phrase-list { position: relative; }
+.say .w, .phrase .w { cursor: pointer; border-bottom: 1.5px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
+.say .w:focus-visible, .phrase .w:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
 .gloss { flex-wrap: wrap; }
 .gloss .g-more { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 6px; }
 .gloss .g-link {

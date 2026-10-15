@@ -1,0 +1,552 @@
+{
+ "words": {
+  "do": {
+   "ko_pron": "두",
+   "meaning": "하다 (묻는 말·안 하는 말을 만들 때도 써요)"
+  },
+  "does": {
+   "ko_pron": "더즈",
+   "meaning": "하다 (묻는 말을 만드는 말, do의 모양)"
+  },
+  "did": {
+   "ko_pron": "디드",
+   "meaning": "했다 (지난 일을 묻는 말을 만드는 말)"
+  },
+  "don't": {
+   "ko_pron": "돈트",
+   "meaning": "~하지 않는다 (do not)"
+  },
+  "doesn't": {
+   "ko_pron": "더즌트",
+   "meaning": "~하지 않는다 (does not)"
+  },
+  "is": {
+   "ko_pron": "이즈",
+   "meaning": "~이다, ~에 있다"
+  },
+  "are": {
+   "ko_pron": "아",
+   "meaning": "~이다, ~에 있다"
+  },
+  "be": {
+   "ko_pron": "비",
+   "meaning": "~이다, ~이 되다"
+  },
+  "can": {
+   "ko_pron": "캔",
+   "meaning": "~할 수 있다, ~해도 된다"
+  },
+  "can't": {
+   "ko_pron": "캔트",
+   "meaning": "~할 수 없다 (can not)"
+  },
+  "will": {
+   "ko_pron": "윌",
+   "meaning": "~할 것이다"
+  },
+  "may": {
+   "ko_pron": "메이",
+   "meaning": "~해도 될까요 (공손하게)"
+  },
+  "i'm": {
+   "ko_pron": "아임",
+   "meaning": "나는 ~이다 (I am)"
+  },
+  "it's": {
+   "ko_pron": "잇츠",
+   "meaning": "그것은 ~이다 (it is)"
+  },
+  "what's": {
+   "ko_pron": "왓츠",
+   "meaning": "무엇이 ~이니 (what is)"
+  },
+  "that's": {
+   "ko_pron": "댓츠",
+   "meaning": "그것은 ~이다 (that is)"
+  },
+  "i'd": {
+   "ko_pron": "아이드",
+   "meaning": "나는 ~하고 싶다 (I would)"
+  },
+  "i'll": {
+   "ko_pron": "아일",
+   "meaning": "내가 ~할게 (I will)"
+  },
+  "let's": {
+   "ko_pron": "렛츠",
+   "meaning": "~하자"
+  },
+  "mom's": {
+   "ko_pron": "맘즈",
+   "meaning": "엄마의"
+  },
+  "hi": {
+   "ko_pron": "하이",
+   "meaning": "안녕"
+  },
+  "okay": {
+   "ko_pron": "오케이",
+   "meaning": "좋아, 괜찮아"
+  },
+  "sure": {
+   "ko_pron": "슈어",
+   "meaning": "물론, 그럼요"
+  },
+  "thank": {
+   "ko_pron": "땡크",
+   "meaning": "고마워하다 (thank you = 고마워요)"
+  },
+  "excuse": {
+   "ko_pron": "익스큐즈",
+   "meaning": "용서하다 (excuse me = 실례합니다)"
+  },
+  "fine": {
+   "ko_pron": "파인",
+   "meaning": "괜찮은, 좋은"
+  },
+  "well": {
+   "ko_pron": "웰",
+   "meaning": "잘, 건강하게"
+  },
+  "maybe": {
+   "ko_pron": "메이비",
+   "meaning": "아마"
+  },
+  "just": {
+   "ko_pron": "저스트",
+   "meaning": "그냥, ~만"
+  },
+  "much": {
+   "ko_pron": "머치",
+   "meaning": "많이 (how much = 얼마)"
+  },
+  "many": {
+   "ko_pron": "메니",
+   "meaning": "많은 (how many = 몇 개, 몇 명)"
+  },
+  "anything": {
+   "ko_pron": "애니띵",
+   "meaning": "뭔가, 무엇이든"
+  },
+  "someone": {
+   "ko_pron": "썸원",
+   "meaning": "누군가"
+  },
+  "since": {
+   "ko_pron": "신스",
+   "meaning": "~부터"
+  },
+  "after": {
+   "ko_pron": "애프터",
+   "meaning": "~ 뒤에"
+  },
+  "time": {
+   "ko_pron": "타임",
+   "meaning": "시간"
+  },
+  "times": {
+   "ko_pron": "타임즈",
+   "meaning": "번 (three times = 세 번)"
+  },
+  "minutes": {
+   "ko_pron": "미닛츠",
+   "meaning": "분"
+  },
+  "five-minute": {
+   "ko_pron": "파이브 미닛",
+   "meaning": "5분 걸리는"
+  },
+  "last": {
+   "ko_pron": "라스트",
+   "meaning": "지난 (last night = 어젯밤)"
+  },
+  "next": {
+   "ko_pron": "넥스트",
+   "meaning": "다음"
+  },
+  "late": {
+   "ko_pron": "레이트",
+   "meaning": "늦게"
+  },
+  "half": {
+   "ko_pron": "해프",
+   "meaning": "반"
+  },
+  "out": {
+   "ko_pron": "아웃",
+   "meaning": "밖으로 (check out = 체크아웃하다)"
+  },
+  "off": {
+   "ko_pron": "오프",
+   "meaning": "떨어져 (get off = 내리다)"
+  },
+  "over": {
+   "ko_pron": "오버",
+   "meaning": "저쪽에 (over there = 저기)"
+  },
+  "ahead": {
+   "ko_pron": "어헤드",
+   "meaning": "앞으로 (go ahead = 그렇게 하세요)"
+  },
+  "back": {
+   "ko_pron": "백",
+   "meaning": "뒤쪽"
+  },
+  "straight": {
+   "ko_pron": "스트레이트",
+   "meaning": "똑바로"
+  },
+  "downtown": {
+   "ko_pron": "다운타운",
+   "meaning": "시내로"
+  },
+  "turn": {
+   "ko_pron": "턴",
+   "meaning": "돌다, 꺾다"
+  },
+  "check": {
+   "ko_pron": "체크",
+   "meaning": "확인하다 (check in = 체크인하다)"
+  },
+  "keep": {
+   "ko_pron": "킵",
+   "meaning": "맡아 두다, 가지다"
+  },
+  "send": {
+   "ko_pron": "센드",
+   "meaning": "보내다"
+  },
+  "stay": {
+   "ko_pron": "스테이",
+   "meaning": "머무르다"
+  },
+  "staying": {
+   "ko_pron": "스테잉",
+   "meaning": "머무르는 중"
+  },
+  "visit": {
+   "ko_pron": "비짓",
+   "meaning": "방문"
+  },
+  "meet": {
+   "ko_pron": "밋",
+   "meaning": "만나다"
+  },
+  "leave": {
+   "ko_pron": "리브",
+   "meaning": "떠나다, 출발하다"
+  },
+  "order": {
+   "ko_pron": "오더",
+   "meaning": "주문하다"
+  },
+  "recommend": {
+   "ko_pron": "레커멘드",
+   "meaning": "추천하다"
+  },
+  "exchange": {
+   "ko_pron": "익스체인지",
+   "meaning": "바꾸다, 환전하다"
+  },
+  "sell": {
+   "ko_pron": "셀",
+   "meaning": "팔다"
+  },
+  "heat": {
+   "ko_pron": "히트",
+   "meaning": "데우다"
+  },
+  "lose": {
+   "ko_pron": "루즈",
+   "meaning": "잃어버리다"
+  },
+  "lost": {
+   "ko_pron": "로스트",
+   "meaning": "잃어버린, 길을 잃은"
+  },
+  "missing": {
+   "ko_pron": "미싱",
+   "meaning": "없어진"
+  },
+  "threw": {
+   "ko_pron": "쓰루",
+   "meaning": "던졌다 (throw up = 토하다)"
+  },
+  "taken": {
+   "ko_pron": "테이큰",
+   "meaning": "차지한 (누가 이미 앉은)"
+  },
+  "included": {
+   "ko_pron": "인클루디드",
+   "meaning": "포함된"
+  },
+  "ready": {
+   "ko_pron": "레디",
+   "meaning": "준비된"
+  },
+  "free": {
+   "ko_pron": "프리",
+   "meaning": "무료의, 비어 있는"
+  },
+  "wrong": {
+   "ko_pron": "롱",
+   "meaning": "잘못된 (What's wrong? = 어디가 안 좋아요?)"
+  },
+  "bigger": {
+   "ko_pron": "비거",
+   "meaning": "더 큰"
+  },
+  "smaller": {
+   "ko_pron": "스몰러",
+   "meaning": "더 작은"
+  },
+  "less": {
+   "ko_pron": "레스",
+   "meaning": "덜"
+  },
+  "delicious": {
+   "ko_pron": "딜리셔스",
+   "meaning": "맛있는"
+  },
+  "allergic": {
+   "ko_pron": "얼러직",
+   "meaning": "알레르기가 있는"
+  },
+  "hotel": {
+   "ko_pron": "호텔",
+   "meaning": "호텔"
+  },
+  "city": {
+   "ko_pron": "시티",
+   "meaning": "도시"
+  },
+  "seat": {
+   "ko_pron": "시트",
+   "meaning": "자리, 좌석"
+  },
+  "belt": {
+   "ko_pron": "벨트",
+   "meaning": "벨트 (seat belt = 안전벨트)"
+  },
+  "number": {
+   "ko_pron": "넘버",
+   "meaning": "번호"
+  },
+  "sightseeing": {
+   "ko_pron": "사이트씽",
+   "meaning": "관광"
+  },
+  "purpose": {
+   "ko_pron": "퍼포스",
+   "meaning": "목적"
+  },
+  "trip": {
+   "ko_pron": "트립",
+   "meaning": "여행 (round trip = 왕복)"
+  },
+  "way": {
+   "ko_pron": "웨이",
+   "meaning": "길, 방향 (one way = 편도)"
+  },
+  "platform": {
+   "ko_pron": "플랫폼",
+   "meaning": "승강장"
+  },
+  "student": {
+   "ko_pron": "스튜던트",
+   "meaning": "학생"
+  },
+  "discount": {
+   "ko_pron": "디스카운트",
+   "meaning": "할인"
+  },
+  "adults": {
+   "ko_pron": "어덜츠",
+   "meaning": "어른들"
+  },
+  "id": {
+   "ko_pron": "아이디",
+   "meaning": "신분증"
+  },
+  "office": {
+   "ko_pron": "오피스",
+   "meaning": "사무실, 파는 곳 (ticket office = 매표소)"
+  },
+  "breakfast": {
+   "ko_pron": "브렉퍼스트",
+   "meaning": "아침밥"
+  },
+  "reservation": {
+   "ko_pron": "레저베이션",
+   "meaning": "예약"
+  },
+  "password": {
+   "ko_pron": "패스워드",
+   "meaning": "비밀번호"
+  },
+  "wi-fi": {
+   "ko_pron": "와이파이",
+   "meaning": "와이파이"
+  },
+  "wake-up": {
+   "ko_pron": "웨이크업",
+   "meaning": "깨우는 (wake-up call = 모닝콜)"
+  },
+  "air": {
+   "ko_pron": "에어",
+   "meaning": "공기 (air conditioner = 에어컨)"
+  },
+  "conditioner": {
+   "ko_pron": "컨디셔너",
+   "meaning": "조절기 (air conditioner = 에어컨)"
+  },
+  "baggage": {
+   "ko_pron": "배기지",
+   "meaning": "짐 (baggage claim = 짐 찾는 곳)"
+  },
+  "claim": {
+   "ko_pron": "클레임",
+   "meaning": "찾아가기 (baggage claim = 짐 찾는 곳)"
+  },
+  "exit": {
+   "ko_pron": "엑싯",
+   "meaning": "출구"
+  },
+  "menu": {
+   "ko_pron": "메뉴",
+   "meaning": "메뉴"
+  },
+  "bill": {
+   "ko_pron": "빌",
+   "meaning": "계산서"
+  },
+  "cash": {
+   "ko_pron": "캐시",
+   "meaning": "현금"
+  },
+  "credit": {
+   "ko_pron": "크레딧",
+   "meaning": "신용 (credit card = 신용카드)"
+  },
+  "refund": {
+   "ko_pron": "리펀드",
+   "meaning": "환불"
+  },
+  "size": {
+   "ko_pron": "사이즈",
+   "meaning": "크기, 치수"
+  },
+  "fitting": {
+   "ko_pron": "피팅",
+   "meaning": "입어 보기 (fitting room = 탈의실)"
+  },
+  "corner": {
+   "ko_pron": "코너",
+   "meaning": "모퉁이"
+  },
+  "zoo": {
+   "ko_pron": "주",
+   "meaning": "동물원"
+  },
+  "trunk": {
+   "ko_pron": "트렁크",
+   "meaning": "트렁크"
+  },
+  "chocolate": {
+   "ko_pron": "초콜릿",
+   "meaning": "초콜릿"
+  },
+  "sugar": {
+   "ko_pron": "슈거",
+   "meaning": "설탕"
+  },
+  "cream": {
+   "ko_pron": "크림",
+   "meaning": "크림 (ice cream = 아이스크림)"
+  },
+  "freezer": {
+   "ko_pron": "프리저",
+   "meaning": "냉동고"
+  },
+  "batteries": {
+   "ko_pron": "배터리즈",
+   "meaning": "건전지"
+  },
+  "atm": {
+   "ko_pron": "에이티엠",
+   "meaning": "현금 인출기"
+  },
+  "receipt": {
+   "ko_pron": "리시트",
+   "meaning": "영수증"
+  },
+  "kids": {
+   "ko_pron": "키즈",
+   "meaning": "아이들"
+  },
+  "meals": {
+   "ko_pron": "밀즈",
+   "meaning": "식사, 끼니"
+  },
+  "pharmacy": {
+   "ko_pron": "파머시",
+   "meaning": "약국"
+  },
+  "police": {
+   "ko_pron": "폴리스",
+   "meaning": "경찰"
+  },
+  "ambulance": {
+   "ko_pron": "앰뷸런스",
+   "meaning": "구급차"
+  },
+  "color": {
+   "ko_pron": "컬러",
+   "meaning": "색깔"
+  },
+  "course": {
+   "ko_pron": "코스",
+   "meaning": "진행 (of course = 물론)"
+  },
+  "korea": {
+   "ko_pron": "코리아",
+   "meaning": "한국"
+  },
+  "3": {
+   "ko_pron": "쓰리",
+   "meaning": "3, 셋"
+  },
+  "5": {
+   "ko_pron": "파이브",
+   "meaning": "5, 다섯"
+  },
+  "7": {
+   "ko_pron": "세븐",
+   "meaning": "7, 일곱"
+  },
+  "10": {
+   "ko_pron": "텐",
+   "meaning": "10, 열"
+  },
+  "25": {
+   "ko_pron": "트웬티 파이브",
+   "meaning": "25, 스물다섯"
+  },
+  "30": {
+   "ko_pron": "써티",
+   "meaning": "30, 서른"
+  },
+  "40": {
+   "ko_pron": "포티",
+   "meaning": "40, 마흔"
+  },
+  "502": {
+   "ko_pron": "파이브 오 투",
+   "meaning": "502 (방 번호)"
+  },
+  "minji": {
+   "ko_pron": "민지",
+   "meaning": "민지 (이름)"
+  }
+ }
+}

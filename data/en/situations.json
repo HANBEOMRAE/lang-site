@@ -23,7 +23,13 @@
       "who": "직원",
       "text": "How long will you stay?",
       "ko_pron": "하우 롱 윌 유 스테이?",
-      "meaning": "얼마나 머물러요?"
+      "meaning": "얼마나 머물러요?",
+      "words": {
+       "long": {
+        "ko_pron": "롱",
+        "meaning": "(how long = 얼마나 오래)"
+       }
+      }
      },
      {
       "who": "나",
@@ -104,13 +110,25 @@
     "text": "Is there free Wi-Fi?",
     "ko_pron": "이즈 데어 프리 와이파이?",
     "meaning": "무료 와이파이 있어요?",
-    "freq": 2
+    "freq": 2,
+    "words": {
+     "there": {
+      "ko_pron": "데어",
+      "meaning": "(there is = ~이 있다)"
+     }
+    }
    },
    {
     "text": "Where do I get a taxi?",
     "ko_pron": "웨어 두 아이 겟 어 택시?",
     "meaning": "택시 어디서 타요?",
-    "freq": 2
+    "freq": 2,
+    "words": {
+     "get": {
+      "ko_pron": "겟",
+      "meaning": "잡다, 타다"
+     }
+    }
    },
    {
     "text": "I'm from Korea.",
@@ -138,13 +156,25 @@
       "who": "직원",
       "text": "One way or round trip?",
       "ko_pron": "원 웨이 오어 라운드 트립?",
-      "meaning": "편도요, 왕복이요?"
+      "meaning": "편도요, 왕복이요?",
+      "words": {
+       "round": {
+        "ko_pron": "라운드",
+        "meaning": "(round trip = 왕복)"
+       }
+      }
      },
      {
       "who": "나",
       "text": "Round trip, please.",
       "ko_pron": "라운드 트립, 플리즈",
-      "meaning": "왕복이요."
+      "meaning": "왕복이요.",
+      "words": {
+       "round": {
+        "ko_pron": "라운드",
+        "meaning": "(round trip = 왕복)"
+       }
+      }
      },
      {
       "who": "직원",
@@ -185,7 +215,13 @@
       "who": "나",
       "text": "Is there a student discount?",
       "ko_pron": "이즈 데어 어 스튜던트 디스카운트?",
-      "meaning": "학생 할인 있어요?"
+      "meaning": "학생 할인 있어요?",
+      "words": {
+       "there": {
+        "ko_pron": "데어",
+        "meaning": "(there is = ~이 있다)"
+       }
+      }
      },
      {
       "who": "직원",
@@ -231,7 +267,13 @@
     "text": "Can I change my ticket?",
     "ko_pron": "캔 아이 체인지 마이 티킷?",
     "meaning": "표 바꿀 수 있어요?",
-    "freq": 1
+    "freq": 1,
+    "words": {
+     "change": {
+      "ko_pron": "체인지",
+      "meaning": "바꾸다"
+     }
+    }
    },
    {
     "text": "Does this train go to Boston?",
@@ -239,7 +281,13 @@
     "meaning": "이 기차 보스턴 가요?",
     "freq": 1
    }
-  ]
+  ],
+  "words": {
+   "boston": {
+    "ko_pron": "보스턴",
+    "meaning": "보스턴 (미국 도시)"
+   }
+  }
  },
  {
   "scene": "호텔",
@@ -253,7 +301,18 @@
       "who": "나",
       "text": "Hi, I'd like to check in.",
       "ko_pron": "하이, 아이드 라이크 투 체크 인",
-      "meaning": "안녕하세요, 체크인하려고요."
+      "meaning": "안녕하세요, 체크인하려고요.",
+      "words": {
+       "in": {
+        "ko_pron": "인",
+        "meaning": "(check in = 체크인하다)",
+        "fw": false
+       },
+       "like": {
+        "ko_pron": "라이크",
+        "meaning": "(would like = ~하고 싶어요)"
+       }
+      }
      },
      {
       "who": "직원",
@@ -294,7 +353,13 @@
       "who": "나",
       "text": "The air conditioner doesn't work.",
       "ko_pron": "디 에어 컨디셔너 더즌 워크",
-      "meaning": "에어컨이 안 돼요."
+      "meaning": "에어컨이 안 돼요.",
+      "words": {
+       "work": {
+        "ko_pron": "워크",
+        "meaning": "작동하다"
+       }
+      }
      },
      {
       "who": "직원",
@@ -358,9 +423,21 @@
     "text": "Can I have a wake-up call?",
     "ko_pron": "캔 아이 해브 어 웨이크업 콜?",
     "meaning": "모닝콜 해 주실래요?",
-    "freq": 1
+    "freq": 1,
+    "words": {
+     "call": {
+      "ko_pron": "콜",
+      "meaning": "전화 (wake-up call = 모닝콜)"
+     }
+    }
    }
-  ]
+  ],
+  "words": {
+   "kim": {
+    "ko_pron": "킴",
+    "meaning": "김 (성)"
+   }
+  }
  },
  {
   "scene": "식당",
@@ -392,7 +469,13 @@
       "who": "나",
       "text": "I'd like this, please.",
       "ko_pron": "아이드 라이크 디스, 플리즈",
-      "meaning": "이걸로 주세요."
+      "meaning": "이걸로 주세요.",
+      "words": {
+       "like": {
+        "ko_pron": "라이크",
+        "meaning": "(would like = ~ 주세요)"
+       }
+      }
      },
      {
       "who": "직원",
@@ -433,13 +516,27 @@
       "who": "나",
       "text": "Can I take this to go?",
       "ko_pron": "캔 아이 테이크 디스 투 고?",
-      "meaning": "이거 포장해 가도 돼요?"
+      "meaning": "이거 포장해 가도 돼요?",
+      "words": {
+       "to": {
+        "ko_pron": "투",
+        "meaning": "(to go = 가져가기)",
+        "fw": false
+       }
+      }
      },
      {
       "who": "직원",
       "text": "Of course.",
       "ko_pron": "오브 코스",
-      "meaning": "물론이죠."
+      "meaning": "물론이죠.",
+      "words": {
+       "of": {
+        "ko_pron": "오브",
+        "meaning": "(of course = 물론)",
+        "fw": false
+       }
+      }
      }
     ]
    }
@@ -507,7 +604,14 @@
       "who": "나",
       "text": "Do you have this in a bigger size?",
       "ko_pron": "두 유 해브 디스 인 어 비거 사이즈?",
-      "meaning": "이거 더 큰 사이즈 있어요?"
+      "meaning": "이거 더 큰 사이즈 있어요?",
+      "words": {
+       "in": {
+        "ko_pron": "인",
+        "meaning": "~로 (크기·색깔)",
+        "fw": false
+       }
+      }
      },
      {
       "who": "직원",
@@ -519,7 +623,14 @@
       "who": "나",
       "text": "Can I try it on?",
       "ko_pron": "캔 아이 트라이 잇 온?",
-      "meaning": "입어 봐도 돼요?"
+      "meaning": "입어 봐도 돼요?",
+      "words": {
+       "on": {
+        "ko_pron": "온",
+        "meaning": "(try on = 입어 보다)",
+        "fw": false
+       }
+      }
      },
      {
       "who": "직원",
@@ -570,7 +681,13 @@
     "text": "Do you have a smaller one?",
     "ko_pron": "두 유 해브 어 스몰러 원?",
     "meaning": "더 작은 거 있어요?",
-    "freq": 2
+    "freq": 2,
+    "words": {
+     "one": {
+      "ko_pron": "원",
+      "meaning": "것 (앞에서 말한 물건)"
+     }
+    }
    },
    {
     "text": "Can I get a discount?",
@@ -582,7 +699,13 @@
     "text": "Do you take credit cards?",
     "ko_pron": "두 유 테이크 크레딧 카즈?",
     "meaning": "카드 돼요?",
-    "freq": 2
+    "freq": 2,
+    "words": {
+     "take": {
+      "ko_pron": "테이크",
+      "meaning": "받다"
+     }
+    }
    },
    {
     "text": "Can I get a refund?",
@@ -622,7 +745,13 @@
       "who": "행인",
       "text": "Go straight two blocks.",
       "ko_pron": "고 스트레잇 투 블락스",
-      "meaning": "두 블록 직진하세요."
+      "meaning": "두 블록 직진하세요.",
+      "words": {
+       "blocks": {
+        "ko_pron": "블락스",
+        "meaning": "블록 (길 한 구간)"
+       }
+      }
      },
      {
       "who": "나",
@@ -640,7 +769,14 @@
       "who": "나",
       "text": "Thank you so much.",
       "ko_pron": "땡큐 쏘 머치",
-      "meaning": "정말 고마워요."
+      "meaning": "정말 고마워요.",
+      "words": {
+       "so": {
+        "ko_pron": "쏘",
+        "meaning": "정말",
+        "fw": false
+       }
+      }
      }
     ]
    },
@@ -657,7 +793,14 @@
       "who": "행인",
       "text": "Where do you want to go?",
       "ko_pron": "웨어 두 유 원 투 고?",
-      "meaning": "어디 가고 싶어요?"
+      "meaning": "어디 가고 싶어요?",
+      "words": {
+       "to": {
+        "ko_pron": "투",
+        "meaning": "(to go = 가져가기)",
+        "fw": false
+       }
+      }
      },
      {
       "who": "나",
@@ -772,7 +915,13 @@
       "who": "친구",
       "text": "How old are you?",
       "ko_pron": "하우 올드 아 유?",
-      "meaning": "몇 살이야?"
+      "meaning": "몇 살이야?",
+      "words": {
+       "old": {
+        "ko_pron": "올드",
+        "meaning": "(how old = 몇 살)"
+       }
+      }
      },
      {
       "who": "나",
@@ -838,7 +987,17 @@
     "meaning": "우리 친구 할래?",
     "freq": 2
    }
-  ]
+  ],
+  "words": {
+   "emma": {
+    "ko_pron": "엠마",
+    "meaning": "엠마 (이름)"
+   },
+   "seoul": {
+    "ko_pron": "서울",
+    "meaning": "서울"
+   }
+  }
  },
  {
   "scene": "교통",
@@ -876,7 +1035,13 @@
       "who": "나",
       "text": "Please tell me when to get off.",
       "ko_pron": "플리즈 텔 미 웬 투 겟 오프",
-      "meaning": "내릴 때 알려 주세요."
+      "meaning": "내릴 때 알려 주세요.",
+      "words": {
+       "get": {
+        "ko_pron": "겟",
+        "meaning": "(get off = 내리다)"
+       }
+      }
      },
      {
       "who": "기사",
@@ -905,13 +1070,30 @@
       "who": "기사",
       "text": "Okay. Put on your seat belt.",
       "ko_pron": "오케이. 풋 온 유어 씻 벨트",
-      "meaning": "네. 안전벨트 매세요."
+      "meaning": "네. 안전벨트 매세요.",
+      "words": {
+       "on": {
+        "ko_pron": "온",
+        "meaning": "(put on = 매다, 입다)",
+        "fw": false
+       }
+      }
      },
      {
       "who": "나",
       "text": "How long does it take?",
       "ko_pron": "하우 롱 더즈 잇 테이크?",
-      "meaning": "얼마나 걸려요?"
+      "meaning": "얼마나 걸려요?",
+      "words": {
+       "long": {
+        "ko_pron": "롱",
+        "meaning": "(how long = 얼마나 오래)"
+       },
+       "take": {
+        "ko_pron": "테이크",
+        "meaning": "(시간이) 걸리다"
+       }
+      }
      },
      {
       "who": "기사",
@@ -933,7 +1115,13 @@
     "text": "Where is the bus stop?",
     "ko_pron": "웨어 이즈 더 버스 스탑?",
     "meaning": "버스 정류장이 어디예요?",
-    "freq": 2
+    "freq": 2,
+    "words": {
+     "stop": {
+      "ko_pron": "스탑",
+      "meaning": "정류장"
+     }
+    }
    },
    {
     "text": "Where is the subway station?",
@@ -945,7 +1133,13 @@
     "text": "Is this the right train?",
     "ko_pron": "이즈 디스 더 라잇 트레인?",
     "meaning": "이 기차 맞아요?",
-    "freq": 2
+    "freq": 2,
+    "words": {
+     "right": {
+      "ko_pron": "라잇",
+      "meaning": "맞는"
+     }
+    }
    },
    {
     "text": "Where do I get off?",
@@ -957,7 +1151,13 @@
     "text": "Can you open the trunk?",
     "ko_pron": "캔 유 오픈 더 트렁크?",
     "meaning": "트렁크 열어 주실래요?",
-    "freq": 1
+    "freq": 1,
+    "words": {
+     "open": {
+      "ko_pron": "오픈",
+      "meaning": "열다"
+     }
+    }
    },
    {
     "text": "Keep the change.",
@@ -979,7 +1179,13 @@
       "who": "직원",
       "text": "Hi! What can I get you?",
       "ko_pron": "하이! 왓 캔 아이 겟 유?",
-      "meaning": "안녕하세요! 뭐 드릴까요?"
+      "meaning": "안녕하세요! 뭐 드릴까요?",
+      "words": {
+       "get": {
+        "ko_pron": "겟",
+        "meaning": "가져다주다"
+       }
+      }
      },
      {
       "who": "나",
@@ -1003,7 +1209,14 @@
       "who": "직원",
       "text": "For here or to go?",
       "ko_pron": "포 히어 오어 투 고?",
-      "meaning": "드시고 가세요, 가져가세요?"
+      "meaning": "드시고 가세요, 가져가세요?",
+      "words": {
+       "to": {
+        "ko_pron": "투",
+        "meaning": "(to go = 가져가기)",
+        "fw": false
+       }
+      }
      },
      {
       "who": "나",
@@ -1118,7 +1331,13 @@
       "who": "나",
       "text": "Do you have ice cream?",
       "ko_pron": "두 유 해브 아이스크림?",
-      "meaning": "아이스크림 있어요?"
+      "meaning": "아이스크림 있어요?",
+      "words": {
+       "ice": {
+        "ko_pron": "아이스",
+        "meaning": "(ice cream = 아이스크림)"
+       }
+      }
      },
      {
       "who": "직원",
@@ -1147,7 +1366,13 @@
       "who": "나",
       "text": "Can you heat this up?",
       "ko_pron": "캔 유 힛 디스 업?",
-      "meaning": "이거 데워 주실래요?"
+      "meaning": "이거 데워 주실래요?",
+      "words": {
+       "up": {
+        "ko_pron": "업",
+        "meaning": "(heat up = 데우다)"
+       }
+      }
      },
      {
       "who": "직원",
@@ -1193,7 +1418,13 @@
     "text": "Is there an ATM?",
     "ko_pron": "이즈 데어 언 에이티엠?",
     "meaning": "현금 인출기 있어요?",
-    "freq": 1
+    "freq": 1,
+    "words": {
+     "there": {
+      "ko_pron": "데어",
+      "meaning": "(there is = ~이 있다)"
+     }
+    }
    },
    {
     "text": "I need a phone charger.",
@@ -1268,7 +1499,13 @@
       "who": "나",
       "text": "I have a cold. Do you have medicine?",
       "ko_pron": "아이 해브 어 콜드. 두 유 해브 메디슨?",
-      "meaning": "감기에 걸렸어요. 약 있어요?"
+      "meaning": "감기에 걸렸어요. 약 있어요?",
+      "words": {
+       "cold": {
+        "ko_pron": "콜드",
+        "meaning": "감기"
+       }
+      }
      },
      {
       "who": "약사",
@@ -1338,7 +1575,13 @@
     "text": "I threw up.",
     "ko_pron": "아이 쓰루 업",
     "meaning": "토했어요.",
-    "freq": 1
+    "freq": 1,
+    "words": {
+     "up": {
+      "ko_pron": "업",
+      "meaning": "(throw up = 토하다)"
+     }
+    }
    }
   ]
  },
@@ -1447,7 +1690,13 @@
     "text": "Where is the lost and found?",
     "ko_pron": "웨어 이즈 더 로스트 앤 파운드?",
     "meaning": "분실물 센터가 어디예요?",
-    "freq": 1
+    "freq": 1,
+    "words": {
+     "found": {
+      "ko_pron": "파운드",
+      "meaning": "찾은 (lost and found = 분실물 센터)"
+     }
+    }
    },
    {
     "text": "Someone took my bag.",

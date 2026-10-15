@@ -681,21 +681,96 @@ def check_freq_pairs():
             warnings.append(f"영어·일본어 등급 차이 ({where}): {e.get('text')} {e['freq']} / {j.get('text')} {j['freq']}")
     print("검사함: 영어·일본어 같은 짝 등급")
 
+# ── 회화 문장 단어 뜻 ──
+# 찾는 순서 (views.js glossLookup과 같다): 문장 words의 "단어@n" → 문장 words → 장면 words → 공용 glossary.json → 자동으로 찾기
+# 자동으로 찾기(영어): 기초 단어(한 단어) → 동사 → 작은 말 forms → 동사의 바뀐 모양·명사 복수형(기본형의 뜻)
+EN_IRREGULAR = {"go": ["went", "goes", "gone"], "have": ["has", "had"], "eat": ["ate"], "drink": ["drank"], "see": ["saw"], "say": ["said"],
+    "take": ["took"], "give": ["gave"], "get": ["got"], "make": ["made"], "know": ["knew"], "think": ["thought"], "come": ["came"],
+    "sleep": ["slept"], "buy": ["bought"], "do": ["does", "did"], "find": ["found"], "tell": ["told"], "feel": ["felt"], "stand": ["stood"],
+    "sit": ["sat"], "wear": ["wore"], "forget": ["forgot"], "bring": ["brought"], "understand": ["understood"], "ride": ["rode"],
+    "write": ["wrote"], "draw": ["drew"], "sing": ["sang"], "pay": ["paid"]}
+
+def en_verb_forms(w):
+    out = [w + "s", w + "es", w + "ing", w + "ed", w + "d", *EN_IRREGULAR.get(w, [])]
+    if w.endswith("e"): out.append(w[:-1] + "ing")
+    if len(w) > 1 and w.endswith("y") and w[-2] not in "aeiou": out += [w[:-1] + "ies", w[:-1] + "ied"]
+    if re.search(r"[^aeiou][aeiou][pgnt]$", w): out += [w + w[-1] + "ing", w + w[-1] + "ed"]
+    return out
+
+def glossary(lang):
+    try:
+        return {k.lower(): v for k, v in json.loads((ROOT / f"data/{lang}/glossary.json").read_text(encoding="utf-8"))["words"].items()}
+    except Exception:
+        return {}
+
+def en_auto_index():
+    L = lambda p: json.loads((ROOT / "data" / p).read_text(encoding="utf-8"))
+    idx, later = {}, {}
+    try:
+        words, verbs, fw = L("en/words.json"), L("en/verbs.json"), L("en/function_words.json")
+    except Exception:
+        return idx
+    for c in words:
+        for it in c.get("items", []):
+            t = it.get("text", "").lower()
+            if " " not in t:
+                idx.setdefault(t, it)
+                for f in (t + "s", t + "es"): later.setdefault(f, it)
+    for c in verbs:
+        for it in c.get("items", []):
+            t = it.get("text", "").lower()
+            idx.setdefault(t, it)
+            for f in en_verb_forms(t): later.setdefault(f, it)
+    for it in fw.get("items", []):
+        for f in it.get("forms", []): idx.setdefault(f, it)
+    for k, v in later.items(): idx.setdefault(k, v)
+    return idx
+
+def check_gloss_entry(g, where):
+    if not isinstance(g, dict) or not str(g.get("ko_pron", "")).strip() or not str(g.get("meaning", "")).strip():
+        problems.append(f"{where}: 뜻에 ko_pron·meaning이 있어야 해요")
+
+def check_en_line_words(s, l, where, gl, auto):
+    """영어 회화 문장 하나의 모든 단어에 뜻이 있는지."""
+    lw = {k.lower(): v for k, v in (l.get("words") or {}).items()}
+    sw = {k.lower(): v for k, v in (s.get("words") or {}).items()}
+    for k, v in lw.items(): check_gloss_entry(v, f"{where} > words '{k}'")
+    seen = {}
+    for m in WORD.finditer(str(l.get("text", ""))):
+        k = m.group().lower()
+        seen[k] = seen.get(k, 0) + 1
+        if not (lw.get(f"{k}@{seen[k]}") or lw.get(k) or sw.get(k) or gl.get(k) or auto.get(k)):
+            problems.append(f"{where}: '{m.group()}' 뜻이 없어요 (문장·장면 words나 glossary.json에)")
+
+def check_glossary(data, name):
+    for k, v in (data.get("words") or {}).items():
+        if k != k.lower():
+            problems.append(f"{name} > '{k}': 키는 소문자로 써요")
+        check_gloss_entry(v, f"{name} > '{k}'")
+
 def check_situations(data, name):
+    en = name.startswith("en/")
+    gl, auto = (glossary("en"), en_auto_index()) if en else ({}, {})
     for s in data:
         need(s, ["scene"], f"{name} 장면")
+        for k, v in (s.get("words") or {}).items():
+            check_gloss_entry(v, f"{name} > {s.get('scene')} > 장면 words '{k}'")
         for d in s.get("dialogues", []):
             for k, l in enumerate(d.get("lines", [])):
                 w = f"{name} > {s.get('scene')} > {d.get('title')} > {k + 1}번 줄"
                 need(l, ["who"] + BASIC, w)
                 if name.startswith("ja/"):
                     check_kanji_text(l.get("text"), l.get("kanji_text"), w)
+                if en:
+                    check_en_line_words(s, l, w, gl, auto)
         for k, ph in enumerate(s.get("phrases", [])):
             w = f"{name} > {s.get('scene')} > 핵심 문장 {k + 1}번"
             need(ph, BASIC, w)
             check_freq(ph, w)
             if name.startswith("ja/"):
                 check_kanji_text(ph.get("text"), ph.get("kanji_text"), w)
+            if en:
+                check_en_line_words(s, ph, w, gl, auto)
 
 def check_conjugation(data, name):
     gids = {g.get("id") for g in data.get("groups", [])}
@@ -772,13 +847,14 @@ def check_conjugation(data, name):
             check_quiz(q, labels, f"{where} > 퀴즈 {k + 1}번", ja=True)
 
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
-            "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs}
+            "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs,
+            "glossary": check_glossary}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
                     "en/pattern_compare": check_pattern_compare, "en/tips": check_tips,
                     "en/function_words": check_function_words}
 # 검사기마다 기대하는 맨 바깥 모양
-SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict,
+SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict, check_glossary: dict,
           check_function_words: dict}
 
 def check_offline():

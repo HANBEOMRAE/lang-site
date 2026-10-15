@@ -426,7 +426,7 @@ function bindStar(key, id = "starBtn") {
     store.set("stars", on ? [...list, key] : list.filter(k => k !== key));
     b.classList.toggle("on", on);
     b.setAttribute("aria-pressed", on);
-    b.textContent = id === "starBtn" ? (on ? "★" : "☆") : (on ? "★ 헷갈린 것" : "☆ 헷갈려요");
+    b.textContent = id === "starInline" ? (on ? "★ 헷갈린 것" : "☆ 헷갈려요") : (on ? "★" : "☆");
     toast(on ? "헷갈린 것에 넣었어요" : "헷갈린 것에서 뺐어요");
   };
 }
@@ -443,6 +443,25 @@ async function resolveStar(lang, key) {
   const L = LANGS[lang];
   const [, secId, category, ...rest] = key.split("/");
   const text = rest.join("/");
+  if (secId === "gw") {                      // 회화 문장 단어 (카드가 없는 말): 그 장면에서 처음 나오는 문장을 예문으로
+    const sit = L.sections.find(s => s.type === "situations" && s.ready);
+    try {
+      const data = await loadData(lang, sit.id), gi = await loadGlossIndex(lang);
+      const s = data.find(x => x.scene === category);
+      for (const ln of s ? [...s.dialogues.flatMap(d => d.lines), ...s.phrases] : []) {
+        const seen = {};
+        for (const m of glossTokens(lang, ln)) {
+          seen[m.k] = (seen[m.k] || 0) + 1;
+          if (m.k !== text) continue;
+          const g = glossLookup(gi, s, ln, m.k, seen[m.k]);
+          if (!g) continue;
+          return { kind: "word", src: `${sit.name} · ${s.scene}`, it: { text: m.word, kanji: g.kanji, ko_pron: g.ko_pron, meaning: g.meaning,
+            example: plainText(ln.text), example_ko_pron: ln.ko_pron, example_kanji_text: ln.kanji_text, example_meaning: ln.meaning } };
+        }
+      }
+    } catch {}
+    return null;
+  }
   const sec = L.sections.find(s => s.id === secId && s.ready);
   if (!sec) return null;
   let data;
@@ -708,9 +727,10 @@ function fwLinks(idx, key, g) {
   return targets.map(t => ({ hash: t.hash, label: targets.length > 1 ? `${t.stage}: ${t.text}` : `더 알아보기: ${t.text}` }));
 }
 
-// card: 말풍선을 넣을 상자(position: relative). lookup(단어 요소) → { ko_pron, meaning } — 찾는 규칙은 화면마다 다르다.
-// fwIdx가 있으면 작은 말에 "더 알아보기" 버튼을 붙인다.
-function bindWordGloss(lang, card, lookup, fwIdx = null) {
+// card: 말풍선을 넣을 상자(position: relative). lookup(단어 요소) → 뜻 g — 찾는 규칙은 화면마다 다르다.
+//  g: { ko_pron, meaning, kanji?, base?(기본형), form?(활용형 이름·조사 등 한 줄 설명), links?[{hash, label}] }
+// fwIdx가 있으면 작은 말에 "더 알아보기" 버튼을 붙인다. opts.starOf(el, g)가 key를 주면 ☆(헷갈린 것)를 붙인다.
+function bindWordGloss(lang, card, lookup, fwIdx = null, opts = {}) {
   card.querySelectorAll(".w").forEach(el => {
     const open = e => {
       e.stopPropagation();
@@ -721,14 +741,22 @@ function bindWordGloss(lang, card, lookup, fwIdx = null) {
       if (!g) return;
       const box = document.createElement("div");
       box.className = "gloss"; box.from = el;
+      const key = opts.starOf ? opts.starOf(el, g) : null;
       box.innerHTML = `<span class="g-text"><b lang="${lang}">${esc(el.dataset.word)}</b>
+          ${g.kanji ? `<span class="g-kanji" lang="${lang}">${esc(g.kanji)}</span>` : ""}
+          ${g.base ? `<span class="g-base">기본형 <span lang="${lang}">${esc(g.base)}</span>${g.form ? ` · ${esc(g.form)}` : ""}</span>`
+                   : g.form ? `<span class="g-base">${esc(g.form)}</span>` : ""}
           <span class="g-pron">${esc(g.ko_pron)}</span><span class="g-mean">${esc(g.meaning)}</span></span>
-        <button class="mini-speak" aria-label="${esc(el.dataset.word)} 발음 듣기">🔊</button>`;
-      const links = fwLinks(fwIdx, el.dataset.k, g);
+        <span class="g-btns">
+          <button class="mini-speak g-say" aria-label="${esc(el.dataset.word)} 발음 듣기">🔊</button>
+          ${key ? `<button class="g-star ${starList().includes(key) ? "on" : ""}" id="glossStar" aria-label="헷갈린 것으로 표시">${starList().includes(key) ? "★" : "☆"}</button>` : ""}
+        </span>`;
+      const links = [...(g.links || []), ...fwLinks(fwIdx, el.dataset.k, g)];
       if (links.length) box.insertAdjacentHTML("beforeend", `<span class="g-more">${links.map(l =>
         `<button class="chip g-link" data-go="${esc(l.hash)}">${esc(l.label)} →</button>`).join("")}</span>`);
       card.appendChild(box);
-      box.querySelector("button").onclick = ev => { ev.stopPropagation(); tts.speak(el.dataset.word, LANGS[lang].voice, ev.currentTarget); };
+      box.querySelector(".g-say").onclick = ev => { ev.stopPropagation(); tts.speak(el.dataset.word, LANGS[lang].voice, ev.currentTarget); };
+      if (key) bindStar(key, "glossStar");
       // 누른 단어 바로 아래, 카드 안쪽에 맞춘다
       const cr = card.getBoundingClientRect(), wr = el.getBoundingClientRect();
       const w = box.offsetWidth;
@@ -739,6 +767,65 @@ function bindWordGloss(lang, card, lookup, fwIdx = null) {
     el.addEventListener("click", open);
     el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); } });
   });
+}
+
+// ── 회화 문장 단어 뜻 ─────────────────────────────
+// 찾는 순서 (validate.py check_situations와 같다):
+//  문장 words의 "단어@n" → 문장 words → 장면 words → 공용 data/<언어>/glossary.json → 자동으로 찾기
+//  자동으로 찾기(영어): 기초 단어(한 단어) → 동사 → 작은 말 forms → 동사의 바뀐 모양·명사 복수형(기본형의 뜻, "기본형 go")
+// 단어 카드가 있는 말의 ☆는 그 카드 key, 나머지는 "언어/gw/장면/단어"(헷갈린 것 단어 탭, resolveStar).
+const glossCache = {};
+const loadGlossIndex = lang => glossCache[lang] ||= buildGlossIndex(lang).catch(e => { delete glossCache[lang]; throw e; });
+async function buildGlossIndex(lang) {
+  const L = LANGS[lang];
+  const get = async id => { const s = L.sections.find(x => x.id === id && x.ready); if (!s) return null;
+    try { return { s, d: await loadData(lang, s.id) }; } catch { return null; } };
+  let glossary = {};
+  try { glossary = (await loadData(lang, "glossary")).words || {}; } catch {}
+  const auto = {}, later = {};
+  const put = (m, k, v) => { if (!(k in m)) m[k] = v; };
+  const words = await get("words"), verbs = await get("verbs"), fw = await get("function_words");
+  if (lang === "en") {
+    if (words) words.d.forEach(c => c.items.forEach(it => {
+      const t = it.text.toLowerCase();
+      if (t.includes(" ")) return;
+      const g = { ko_pron: it.ko_pron, meaning: it.meaning, star: starKey(lang, words.s.id, c.category, it.text) };
+      put(auto, t, g);
+      for (const f of [t + "s", t + "es"]) put(later, f, { ...g, base: it.text });
+    }));
+    if (verbs) verbs.d.forEach(c => c.items.forEach(it => {
+      const t = it.text.toLowerCase();
+      const g = { ko_pron: it.ko_pron, meaning: it.meaning, star: starKey(lang, verbs.s.id, c.category, it.text) };
+      put(auto, t, g);
+      for (const f of enForms(t).slice(1)) put(later, f, { ...g, base: it.text });
+    }));
+    if (fw) fw.d.items.forEach(it => it.forms.forEach(f => put(auto, f, { ko_pron: it.ko_pron, meaning: it.meaning })));
+    for (const [k, v] of Object.entries(later)) put(auto, k, v);
+  }
+  return { glossary: Object.fromEntries(Object.entries(glossary).map(([k, v]) => [k.toLowerCase(), v])), auto };
+}
+// 문장의 단어 조각 [{ k: 찾는 키, word: 보이는 글자 }] (영어: 단어 단위)
+function glossTokens(lang, line) {
+  return [...plainText(line.text).matchAll(WORD_RE)].map(m => ({ k: m[0].toLowerCase(), word: m[0] }));
+}
+function glossLookup(gi, scene, line, k, n) {
+  const lw = line.words || {}, sw = scene.words || {};
+  return lw[`${k}@${n}`] || lw[k] || sw[k] || gi.glossary[k] || gi.auto[k] || null;
+}
+// 회화 화면: 대화 말풍선·핵심 문장 줄의 단어를 누르면 뜻 (단어가 아닌 곳을 누르면 지금처럼 문장 전체 듣기)
+async function bindSceneGloss(lang, sec, s) {
+  let gi;
+  try { gi = await loadGlossIndex(lang); } catch { return; }
+  const fwIdx = await loadFwIndex(lang);
+  const lineOf = el => {
+    const b = el.closest(".bubble");
+    if (b) return s.dialogues[b.dataset.d].lines[b.dataset.k];
+    const r = el.closest("[data-ph]");
+    return r ? s.phrases[r.dataset.ph] : null;
+  };
+  const lookup = el => { const ln = lineOf(el); return ln ? glossLookup(gi, s, ln, el.dataset.k, el.dataset.n) : null; };
+  const starOf = (el, g) => g.star || starKey(lang, "gw", s.scene, el.dataset.k);
+  app.querySelectorAll(".dialogue, .phrase-list").forEach(box => bindWordGloss(lang, box, lookup, fwIdx, { starOf }));
 }
 
 // ── 💡 알아두기 (data/<언어>/tips.json) ─────────────
@@ -900,7 +987,7 @@ async function viewScene(lang, sec, sIdx) {
   const line = (l, d, k) => `
     <button class="bubble ${l.who === "나" ? "me" : ""}" data-d="${d}" data-k="${k}">
       <span class="who">${esc(l.who)}</span>
-      <span class="say" lang="${lang}">${esc(l.text)}</span>
+      <span class="say" lang="${lang}">${tipSentenceHTML(l.text)}</span>
       <span class="${H()}"><span class="pron-s">${esc(l.ko_pron)}</span>
       <span class="mean-s">${esc(l.meaning)}</span></span>
     </button>`;
@@ -916,10 +1003,10 @@ async function viewScene(lang, sec, sIdx) {
         <div class="talk">${d.lines.map((l, k) => line(l, di, k)).join("")}</div>
       </section>`).join("")}
     <h2 class="group">꼭 필요한 문장</h2>
-    <div class="list">
+    <div class="list phrase-list">
       ${s.phrases.map((ph, k) => `
         <button class="row phrase" data-ph="${k}">
-          <span class="label"><strong lang="${lang}">${esc(ph.text)}</strong>
+          <span class="label"><strong lang="${lang}">${tipSentenceHTML(ph.text)}</strong>
             <small class="${H()}">${esc(ph.ko_pron)} · ${esc(ph.meaning)}</small></span>
           <span class="mini-speak" aria-hidden="true">🔊</span>
         </button>`).join("")}
@@ -945,6 +1032,7 @@ async function viewScene(lang, sec, sIdx) {
     tts.speak(ph.text, L.voice);
     attachInlineTools(b, lang, [ph.text, ph.kanji_text], false, starKey(lang, sec.id, s.scene, ph.text));
   }));
+  await bindSceneGloss(lang, sec, s);
   bindHideToggle(() => viewScene(lang, sec, sIdx));
 }
 
@@ -1525,14 +1613,17 @@ const PATH_MAX = 10;
 const pathCache = {};
 const loadPath = lang => pathCache[lang] ||= buildPath(lang).catch(e => { delete pathCache[lang]; throw e; });
 
-// 영어 동사가 문장에서 바뀐 모양 (규칙 + 자주 쓰는 불규칙)
+// 영어 동사가 문장에서 바뀐 모양 (규칙 + 자주 쓰는 불규칙). validate.py en_verb_forms와 같은 규칙.
 const EN_IRREGULAR = { go: ["went", "goes", "gone"], have: ["has", "had"], eat: ["ate"], drink: ["drank"], see: ["saw"], say: ["said"],
   take: ["took"], give: ["gave"], get: ["got"], make: ["made"], know: ["knew"], think: ["thought"], come: ["came"], sleep: ["slept"],
-  buy: ["bought"], do: ["does", "did", "don't"], find: ["found"], tell: ["told"], feel: ["felt"], stand: ["stood"], sit: ["sat"] };
+  buy: ["bought"], do: ["does", "did"], find: ["found"], tell: ["told"], feel: ["felt"], stand: ["stood"], sit: ["sat"],
+  wear: ["wore"], forget: ["forgot"], bring: ["brought"], understand: ["understood"], ride: ["rode"], write: ["wrote"],
+  draw: ["drew"], sing: ["sang"], pay: ["paid"] };
 function enForms(w) {
   const out = [w, w + "s", w + "es", w + "ing", w + "ed", w + "d", ...(EN_IRREGULAR[w] || [])];
   if (w.endsWith("e")) out.push(w.slice(0, -1) + "ing");
-  if (/[^aeiou][aeiou][pgnt]$/.test(w)) out.push(w + w.at(-1) + "ing");   // run → running, sit → sitting
+  if (w.length > 1 && w.endsWith("y") && !"aeiou".includes(w.at(-2))) out.push(w.slice(0, -1) + "ies", w.slice(0, -1) + "ied");
+  if (/[^aeiou][aeiou][pgnt]$/.test(w)) out.push(w + w.at(-1) + "ing", w + w.at(-1) + "ed");   // run → running, stop → stopped
   return out;
 }
 // 일본어 단어 뒤에 붙는 말 (みず → みずを, おみず: 앞에 お)

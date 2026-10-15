@@ -83,6 +83,13 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   (views.js `fwLinks`, validate.py `check_fw_links`가 같은 규칙.)
 - 퀴즈는 일본어 조사·패턴 비교·작은 말이 같은 형식이다(README "퀴즈 형식", validate.py `check_quiz`).
 
+## 회화 문장 단어별 뜻 (`situations.json`, `glossary.json`)
+
+- 찾는 순서: 문장 `words`의 `단어@n` → 문장 `words` → 장면 `words` → `data/<언어>/glossary.json` → 자동으로 찾기(기초 단어·동사·작은 말, 영어 동사 바뀐 모양·복수형)
+  (views.js `glossLookup`·`buildGlossIndex`, validate.py `check_situations`가 같은 규칙. 영어 동사 바뀐 모양 목록은 views.js `EN_IRREGULAR`·`enForms`와 validate.py `EN_IRREGULAR`·`en_verb_forms`를 함께 고친다.)
+- 카드에 있는 말은 다시 적지 않는다. 카드 뜻이 그 문장에서 다르면(That's right의 right) 문장 `words`에 적는다. 여러 장면에 나오는 말은 glossary에 한 번.
+- 새 회화 문장을 넣으면 모든 단어에 뜻이 있어야 검사를 통과한다.
+
 ## 💡 알아두기 (`data/en/tips.json`)
 
 - 설명은 `tips.json` 한 곳에만 쓰고, 패턴은 `tip_ids`로 가리킨다. 관련 패턴 목록은 따로 적지 않는다(views.js `viewTips`가 `tip_ids`를 거꾸로 찾는다).
