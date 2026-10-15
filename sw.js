@@ -35,6 +35,8 @@ const PRECACHE = [
   "data/en/glossary.json",
   "data/en/lessons.json",
   "data/ja/glossary.json",
+  "data/ja/lessons.json",
+  "data/ja/tips.json",
   "data/en/situations.json",
   "data/en/pairs.json",
   "data/ja/pairs.json",

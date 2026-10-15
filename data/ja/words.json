@@ -231,6 +231,18 @@
     "example_ko_pron": "다이조-부?",
     "example_meaning": "괜찮아?",
     "example_freq": 3
+   },
+   {
+    "text": "よろしく おねがいします",
+    "kanji": "よろしくお願いします",
+    "ko_pron": "요로시쿠 오네가이시마스",
+    "meaning": "잘 부탁합니다 (처음 만났을 때)",
+    "freq": 3,
+    "example": "ミンジです。よろしく おねがいします。",
+    "example_kanji_text": "ミンジです。よろしくお願いします。",
+    "example_ko_pron": "민지데스. 요로시쿠 오네가이시마스.",
+    "example_meaning": "민지예요. 잘 부탁해요.",
+    "example_freq": 3
    }
   ]
  },
@@ -1289,6 +1301,18 @@
     "example_ko_pron": "피-만가 키라이.",
     "example_meaning": "피망이 싫어.",
     "example_freq": 1
+   },
+   {
+    "text": "げんき",
+    "kanji": "元気",
+    "ko_pron": "겐키",
+    "meaning": "건강한, 잘 지내는",
+    "freq": 3,
+    "example": "げんき？",
+    "example_kanji_text": "元気？",
+    "example_ko_pron": "겐키?",
+    "example_meaning": "잘 지내?",
+    "example_freq": 3
    }
   ]
  },

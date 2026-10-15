@@ -386,14 +386,17 @@ def check_tips(data, name):
     어느 패턴에서도 가리키지 않는 설명(경고).
     단어 뜻 찾는 순서는 views.js bindTips와 같다: 예문 words의 '단어@몇번째' → 예문 words → 설명 words."""
     lang = name.split("/")[0]
+    used = set()
     try:
-        used = {t for p in json.loads((ROOT / f"data/{lang}/patterns.json").read_text(encoding="utf-8"))
-                for t in (p.get("tip_ids") or [])}
-        if (ROOT / f"data/{lang}/lessons.json").exists():         # 레슨 핵심 재료로 쓰는 설명도 쓰이는 것
-            used |= {c["ref"][4:] for u in json.loads((ROOT / f"data/{lang}/lessons.json").read_text(encoding="utf-8")).get("units", [])
-                     for l in u.get("lessons", []) for c in l.get("core", []) if str(c.get("ref", "")).startswith("tip:")}
+        used |= {t for p in json.loads((ROOT / f"data/{lang}/patterns.json").read_text(encoding="utf-8"))
+                 for t in (p.get("tip_ids") or [])}
     except Exception:
-        used = set()
+        pass
+    try:                                                          # 레슨 핵심 재료로 쓰는 설명도 쓰이는 것
+        used |= {c["ref"][4:] for u in json.loads((ROOT / f"data/{lang}/lessons.json").read_text(encoding="utf-8")).get("units", [])
+                 for l in u.get("lessons", []) for c in l.get("core", []) if str(c.get("ref", "")).startswith("tip:")}
+    except Exception:
+        pass
     ids = set()
     for i, t in enumerate(data.get("tips", [])):
         where = f"{name} > {i + 1}번 ({t.get('title', '?')})"
@@ -934,6 +937,8 @@ def lesson_word(src, ref):
                 if c.get("category") == cat:
                     it = next((i for i in c.get("items", []) if i.get("text") == text), None)
                     if it:
+                        if src["lang"] == "ja":                     # おなまえ = お + なまえ
+                            return it, [text, "お" + text]
                         t = text.lower()
                         forms = [t] + (en_verb_forms(t) if kind == "v" else [t + "s", t + "es"])
                         return it, forms
@@ -986,7 +991,8 @@ def lesson_core_texts(src, item):
     if kind == "ph" and "/" in rest:
         sc, _, text = rest.partition("/")
         s = next((x for x in src["situations"] if x.get("scene") == sc), None)
-        return [text] if s and any(ph.get("text") == text for ph in s.get("phrases", [])) else None
+        ph = s and next((x for x in s.get("phrases", []) if x.get("text") == text), None)
+        return [ph.get("seg") or text if src["lang"] == "ja" else text] if ph else None
     if kind == "tip":
         t = next((x for x in src["tips"].get("tips", []) if x.get("id") == rest), None)
         return [str(e.get("text", "")).replace("[", "").replace("]", "") for e in t.get("examples", [])] if t else None
@@ -1039,7 +1045,7 @@ def check_lessons(data, name):
             for item in les.get("dialogues", []):
                 r = lesson_dialogue(src, own, item)
                 if not r: problems.append(f"{where}: 대화 '{item.get('ref')}'(lines {item.get('lines')})를 찾을 수 없어요"); continue
-                dlg_texts += [l.get("text", "") for l in r[0]]
+                dlg_texts += [l.get("seg") or l.get("text", "") if lang == "ja" else l.get("text", "") for l in r[0]]
             # 핵심
             core_texts = []
             for item in les.get("core", []):
@@ -1091,7 +1097,7 @@ CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards
             "glossary": check_glossary, "lessons": check_lessons}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
-                    "en/pattern_compare": check_pattern_compare, "en/tips": check_tips,
+                    "en/pattern_compare": check_pattern_compare, "en/tips": check_tips, "ja/tips": check_tips,
                     "en/function_words": check_function_words}
 # 검사기마다 기대하는 맨 바깥 모양
 SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict, check_glossary: dict, check_lessons: dict,

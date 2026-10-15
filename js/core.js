@@ -21,6 +21,8 @@ const LANGS = {
   ja: {
     name: "일본어", big: "あ", desc: "기초 단어, 조사, 동사 변형까지",
     voice: "ja-JP",
+    tips: true,    // data/ja/tips.json (💡 알아두기)
+    lessons: true, // data/ja/lessons.json (📘 수업)
     sections: [
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "particles",  type: "particles",  unit: "조사", name: "조사",       desc: "は·の·も → を·に·で·へ → と·が, 헷갈리는 조사 비교", ready: true },

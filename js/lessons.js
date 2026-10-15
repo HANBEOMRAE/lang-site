@@ -506,6 +506,7 @@ function lessonCoreHTML(lang, c, ci) {
       <div class="note explain core-word"><p class="core-word-big" lang="${lang}">${esc(it.text)}</p>
         <p><strong>${esc(it.meaning)}</strong> · ${esc(it.ko_pron)}</p>
         ${it.explain ? chunksHTML(it.explain) : it.role ? `<span class="ex-line">${esc(it.role)}</span>` : ""}
+        ${it.note ? `<span class="ex-line">💡 ${noBreakJa(it.note)}</span>` : ""}
         <button class="chip" data-go="${c.w.hash}">${esc(c.w.src)}에서 자세히 →</button></div>
     </section>`;
 }

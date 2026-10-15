@@ -160,7 +160,7 @@ function viewLang(lang) {
       ${L.tips ? `
       <button class="row tips-row" data-go="#/${lang}/tips">
         <span class="em" aria-hidden="true">💡</span>
-        <span class="label"><strong>알아두기 모음</strong><small>헷갈리기 쉬운 규칙과 관련 패턴</small></span>
+        <span class="label"><strong>알아두기 모음</strong><small>헷갈리기 쉬운 규칙${L.sections.some(s => s.type === "patterns" && s.ready) ? "과 관련 패턴" : ""}</small></span>
       </button>` : ""}
     </div>`;
   fillContinue(lang);
@@ -965,7 +965,7 @@ function bindTips(lang, tips, fwIdx = null) {
     // 🔊 설명 듣기: 설명 줄 → 예문(영어 → 뜻)
     const lis = [...box.querySelectorAll(".tip-body li")], exEls = [...box.querySelectorAll(".tip-ex")];
     bindListen(`listenTip${box.dataset.t}`, [...t.body.map((ln, i) => ({ el: lis[i], chunks: ln })),
-                                             ...t.examples.map((ex, i) => ({ el: exEls[i], chunks: exampleChunks(ex) }))]);
+                                             ...t.examples.map((ex, i) => ({ el: exEls[i], chunks: exampleChunks(ex, lang) }))]);
   });
 }
 
@@ -986,7 +986,7 @@ async function viewTips(lang, idx) {
           <button class="row" data-go="${t.see && t.seeHash ? esc(t.seeHash) : `${base}/${k}`}">
             <span class="em" aria-hidden="true">💡</span>
             <span class="label"><strong>${esc(t.title)}</strong>
-              <small>${t.see && t.seeHash ? `${esc(t.seeLabel)}에서 보기 · ` : ""}관련 패턴 ${related(t).length}개</small></span>
+              <small>${t.see && t.seeHash ? `${esc(t.seeLabel)}에서 보기 · ` : ""}${psec ? `관련 패턴 ${related(t).length}개` : esc(chunksText(t.body || []).slice(0, 40)) + "…"}</small></span>
           </button>`).join("")}
       </div>`;
     return;
@@ -1266,7 +1266,7 @@ function listenHTML(id) {
   return `<span class="listen"><button class="chip listen-btn" id="${id}" hidden aria-label="설명 듣기">🔊 설명 듣기</button>
     <small class="listen-note" id="${id}Note" hidden></small></span>`;
 }
-const exampleChunks = ex => [{ lang: "en", text: plainText(ex.text) }, { lang: "ko", text: ex.meaning }];
+const exampleChunks = (ex, lang = "en") => [{ lang, text: plainText(ex.text) }, { lang: "ko", text: ex.meaning }];   // 예문은 그 언어 목소리로
 function bindListen(id, parts) {
   const btn = document.getElementById(id), note = document.getElementById(`${id}Note`);
   if (!btn || !parts.length) return;
@@ -1390,7 +1390,7 @@ async function viewParticle(lang, sec, idx) {
     const lines = [...app.querySelectorAll("#explain .ex-line")], rows = [...app.querySelectorAll(".particle-ex")];
     const exs = p.uses.flatMap(u => u.examples);
     bindListen("listenExplain", [...p.explain.map((ln, i) => ({ el: lines[i], chunks: ln })),
-                                 ...exs.map((ex, i) => ({ el: rows[i], chunks: exampleChunks(ex) }))]);
+                                 ...exs.map((ex, i) => ({ el: rows[i], chunks: exampleChunks(ex, lang) }))]);
   }
   fitWord();
   bindHideToggle(() => viewParticle(lang, sec, idx));
@@ -1448,7 +1448,7 @@ async function viewCompare(lang, sec, k) {
     const boxes = [...app.querySelectorAll(".pair-side")], rows = [...app.querySelectorAll(".particle-ex")];
     bindListen("listenCompare", [
       ...c.sides.map((s, i) => ({ el: boxes[i], chunks: [{ lang: lang, text: s.label }, ...s.point.flat()] })),
-      ...c.examples.map((ex, i) => ({ el: rows[i], chunks: exampleChunks(ex) }))]);
+      ...c.examples.map((ex, i) => ({ el: rows[i], chunks: exampleChunks(ex, lang) }))]);
   }
   bindHideToggle(() => viewCompare(lang, sec, k));
 }
