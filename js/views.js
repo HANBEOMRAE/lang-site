@@ -32,6 +32,13 @@ function remember(lang, ref) {
 }
 async function resolvePlace(lang, ref) {
   const L = LANGS[lang];
+  if (ref && ref.kind === "path") {          // 자주 쓰는 말부터: 항목 key(이름)로 지금 번호를 찾는다
+    try {
+      const p = await loadPath(lang);
+      const i = p.items.findIndex(x => x.key === ref.key);
+      return i < 0 ? null : { hash: `#/${lang}/path/${i}`, label: `${L.name} · 자주 쓰는 말부터 · ${i + 1}/${p.items.length}` };
+    } catch { return null; }
+  }
   const sec = ref && L.sections.find(s => s.id === ref.sec && s.ready);
   if (!sec) return null;
   const base = `#/${lang}/${sec.id}`, head = `${L.name} · ${sec.name}`;
@@ -122,6 +129,12 @@ function viewLang(lang) {
   setHeader(L.name, "#/");
   app.innerHTML = `
     <div class="list continue-list" id="continueList" hidden></div>
+    <div class="list path-list">
+      <button class="row path-row" data-go="#/${lang}/path">
+        <span class="em" aria-hidden="true">⭐</span>
+        <span class="label"><strong>자주 쓰는 말부터</strong><small>매일 쓰는 단어와 문장을 섹션을 넘나들며 묶음으로</small></span>
+      </button>
+    </div>
     <p class="lead">위에서부터 차례로 공부해요.</p>
     <div class="list">
       ${L.sections.map((s, i) => `
@@ -202,7 +215,7 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
 function cardHTML(lang, it, key) {
   return `
       <article class="card" id="card">
-        ${starButton(key)}
+        ${key ? starButton(key) : ""}
         <p class="word" lang="${lang}">${wordHTML(it.text)}</p>
         ${it.kanji ? `<p class="kanji-big" lang="${lang}">${esc(it.kanji)}</p>` : ""}
         <div class="${H()}">
@@ -400,6 +413,10 @@ function bindStar(key) {
   };
 }
 
+// 일본어 동사 변형의 동사 하나를 단어 카드 모양으로 (헷갈린 단어·학습 길이 같이 쓴다)
+const verbCardItem = v => ({ text: v.text, kanji: v.kanji, ko_pron: v.ko_pron, meaning: v.meaning, note: v.note,
+  example: v.example?.text, example_ko_pron: v.example?.ko_pron, example_kanji_text: v.example?.kanji_text, example_meaning: v.example?.meaning });
+
 // 모아 보기 화면에서 ★를 풀어도 지금 넘기던 순서는 그대로 둔다. 다른 화면으로 나가면 비운다(app.js).
 let starSnap = null;
 
@@ -423,8 +440,7 @@ async function viewStars(lang, idx) {
       if (it) found = { it, src: `${sec.name} · ${cat.category}` };
     } else if (data && sec.type === "conjugation") {
       const v = data.verbs.find(x => x.text === text);
-      if (v) found = { src: sec.name, it: { text: v.text, kanji: v.kanji, ko_pron: v.ko_pron, meaning: v.meaning, note: v.note,
-        example: v.example?.text, example_ko_pron: v.example?.ko_pron, example_kanji_text: v.example?.kanji_text, example_meaning: v.example?.meaning } };
+      if (v) found = { src: sec.name, it: verbCardItem(v) };
     }
     if (found) cards.push({ key, ...found }); else missing.push(key);
   }
@@ -1444,4 +1460,198 @@ async function viewWeak(lang, sec) {
             ${x.n ? `<span class="bar weak-bar"><i style="width:${Math.round(x.rate * 100)}%"></i></span>` : ""}</span>
         </button>`).join("")}
     </div>`;
+}
+
+// ── ⭐ 자주 쓰는 말부터: 섹션을 넘나드는 학습 길 ──────────
+// 3등급(매일 쓰는 말)만 모아 10개 안팎 묶음으로 짠다.
+// 묶음: 새 단어 카드 → 그 단어가 바로 나오는 문장 (예: water · need → "I need water.") → 끝에 맞장구·반응 하나.
+//  문장은 새 3등급 단어가 가장 많이 나오는 것부터 고른다(같으면 회화 문장 → 패턴 문장 → 단어 예문 → 조사 예문 순서).
+//  문장이 다 떨어지면 남은 카드끼리 묶는다(카드에도 예문이 있다).
+// 항목 key는 이름으로 만든다(데이터 순서가 바뀌어도 이어서 하기가 같은 항목을 찾게):
+//  카드 w/섹션/주제/단어 · fw/작은말id · pt/조사 · jv/동사, 문장 pf/틀/바꿔넣는말 · ph/장면/문장 · wx/주제/단어 · px/조사/예문
+const PATH_MAX = 10;
+const pathCache = {};
+const loadPath = lang => pathCache[lang] ||= buildPath(lang).catch(e => { delete pathCache[lang]; throw e; });
+
+// 영어 동사가 문장에서 바뀐 모양 (규칙 + 자주 쓰는 불규칙)
+const EN_IRREGULAR = { go: ["went", "goes", "gone"], have: ["has", "had"], eat: ["ate"], drink: ["drank"], see: ["saw"], say: ["said"],
+  take: ["took"], give: ["gave"], get: ["got"], make: ["made"], know: ["knew"], think: ["thought"], come: ["came"], sleep: ["slept"],
+  buy: ["bought"], do: ["does", "did", "don't"], find: ["found"], tell: ["told"], feel: ["felt"], stand: ["stood"], sit: ["sat"] };
+function enForms(w) {
+  const out = [w, w + "s", w + "es", w + "ing", w + "ed", w + "d", ...(EN_IRREGULAR[w] || [])];
+  if (w.endsWith("e")) out.push(w.slice(0, -1) + "ing");
+  if (/[^aeiou][aeiou][pgnt]$/.test(w)) out.push(w + w.at(-1) + "ing");   // run → running, sit → sitting
+  return out;
+}
+// 일본어 단어 뒤에 붙는 말 (みず → みずを, おみず: 앞에 お)
+const JA_TAILS = ["", "は", "が", "を", "に", "で", "と", "も", "の", "へ", "よ", "ね", "か", "だ", "だよ", "です", "ですか", "でした", "から", "まで", "や"];
+const JA_VERB_TAILS = ["", "よ", "ね", "の", "か", "から"];   // 동사 활용형 뒤 (いくら 속의 いく처럼 다른 말을 잡지 않게)
+const jaTokens = s => plainText(s).split(/[\s、。？！]+/).filter(Boolean);
+const enTokens = s => ` ${(plainText(s).match(WORD_RE) || []).map(w => w.toLowerCase()).join(" ")} `;
+
+async function buildPath(lang) {
+  const L = LANGS[lang];
+  const get = async id => {
+    const s = L.sections.find(x => x.id === id && x.ready);
+    if (!s) return null;
+    try { return { s, d: await loadData(lang, s.id) }; } catch { return null; }
+  };
+  const cards = [], closers = [], sents = [];
+  // ── 카드 ──
+  for (const id of ["words", "verbs"]) {
+    const x = await get(id);
+    if (!x) continue;
+    if (x.s.type === "cards") {
+      x.d.forEach(c => c.items.forEach(it => {
+        if (it.freq !== 3) return;
+        const card = { type: "card", key: `w/${id}/${c.category}/${it.text}`, src: `${x.s.name} · ${c.category}`, it,
+                       star: starKey(lang, id, c.category, it.text), words: [it.text] };
+        (c.category === "맞장구·반응" ? closers : cards).push(card);
+      }));
+    } else if (x.s.type === "conjugation") {
+      x.d.verbs.forEach(v => {
+        if (v.freq !== 3) return;
+        cards.push({ type: "card", key: `jv/${v.text}`, src: x.s.name, it: verbCardItem(v), star: starKey(lang, id, "-", v.text),
+                     words: [v.text, ...Object.values(v.forms).map(f => f.text).filter(t => t.length >= 3)], verb: true });
+      });
+    }
+  }
+  const fw = await get("function_words");
+  if (fw) fw.d.items.forEach(it => {
+    if (it.freq !== 3) return;
+    const ex = it.uses[0]?.examples[0];
+    cards.push({ type: "card", key: `fw/${it.id}`, src: fw.s.name, star: null, words: it.forms,
+                 it: { text: it.text, ko_pron: it.ko_pron, meaning: it.meaning, example: ex && plainText(ex.text), example_meaning: ex?.meaning } });
+  });
+  const pt = await get("particles");
+  if (pt) pt.d.particles.forEach(p => {
+    if (p.freq !== 3) return;
+    cards.push({ type: "card", key: `pt/${p.text}`, src: pt.s.name, star: null, words: [],
+                 it: { text: p.text, ko_pron: p.ko_pron, meaning: p.meaning, note: p.role } });
+  });
+  // ── 문장 ──
+  const sit = await get("situations");
+  if (sit) sit.d.forEach(s => s.phrases.forEach(ph => {
+    if (ph.freq === 3) sents.push({ type: "sentence", key: `ph/${s.scene}/${ph.text}`, src: `${sit.s.name} · ${s.scene}`,
+                                    text: ph.text, ko_pron: ph.ko_pron, meaning: ph.meaning, kanji_text: ph.kanji_text });
+  }));
+  const pat = await get("patterns");
+  if (pat) pat.d.forEach(p => p.fills.forEach(f => {
+    if (p.freq === 3 && f.freq === 3) sents.push({ type: "sentence", key: `pf/${p.pattern}/${f.text}`, src: `${pat.s.name} · ${p.pattern}`,
+      text: p.pattern.replace("___", f.text), ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, pattern: p, fill: f });
+  }));
+  const jw = lang === "ja" ? await get("words") : null;
+  if (jw) jw.d.forEach(c => c.items.forEach(it => {
+    if (it.example && it.example_freq === 3) sents.push({ type: "sentence", key: `wx/${c.category}/${it.text}`, src: `${jw.s.name} · ${c.category} 예문`,
+      text: it.example, ko_pron: it.example_ko_pron, meaning: it.example_meaning, kanji_text: it.example_kanji_text, hints: [`w/words/${c.category}/${it.text}`] });
+  }));
+  if (pt) pt.d.particles.forEach(p => p.uses.forEach(u => u.examples.forEach(ex => {
+    if (ex.freq === 3) sents.push({ type: "sentence", key: `px/${p.text}/${ex.text}`, src: `${pt.s.name} ${p.text} 예문`,
+      text: ex.text, ko_pron: ex.ko_pron, meaning: ex.meaning, kanji_text: ex.kanji_text, hints: [`pt/${p.text}`] });
+  })));
+
+  // this·in처럼 기초 단어와 작은 말에 다 있는 말은 단어 카드(☆가 되는 쪽)만 남긴다.
+  // (일본어 숫자 に와 조사 に처럼 글자만 같고 다른 말은 그대로 둔다)
+  const wordTexts = new Set(cards.filter(c => c.key.startsWith("w/")).map(c => c.it.text.toLowerCase()));
+  for (let k = cards.length - 1; k >= 0; k--)
+    if (cards[k].key.startsWith("fw/") && wordTexts.has(cards[k].it.text.toLowerCase())) cards.splice(k, 1);
+  // 문장에 그 카드 단어가 나오는지
+  const inSentence = lang === "ja"
+    ? (c, s) => { s.toks ||= jaTokens(s.text);
+        return c.words.some(w => w.length >= 2 && s.toks.some(t => c.verb ? JA_VERB_TAILS.some(tail => t === w + tail) :
+          JA_TAILS.some(tail => t === w + tail || t === "お" + w + tail))); }
+    : (c, s) => { s.toks ||= enTokens(s.text);
+        return c.words.some(w => (c.key.startsWith("w/verbs/") ? enForms(w.toLowerCase()) : [w.toLowerCase()]).some(f => s.toks.includes(` ${f} `))); };
+  const used = new Set();
+  const newCards = s => cards.filter(c => !used.has(c.key) && ((s.hints || []).includes(c.key) || inSentence(c, s)));
+
+  const bundles = [];
+  const left = [...sents];
+  const close = b => { const r = closers.shift(); if (r) b.push(r); bundles.push(b); };
+  while (left.length) {
+    const b = [];
+    while (left.length && b.length < PATH_MAX - 1) {
+      let best = 0, bestCards = newCards(left[0]);
+      left.forEach((s, i) => { if (i) { const cs = newCards(s); if (cs.length > bestCards.length) { best = i; bestCards = cs; } } });
+      const take = bestCards.slice(0, 4);
+      if (b.length && b.length + take.length + 1 > PATH_MAX - 1) break;
+      take.forEach(c => { used.add(c.key); b.push(c); });
+      b.push(left.splice(best, 1)[0]);
+    }
+    close(b);
+  }
+  const rest = cards.filter(c => !used.has(c.key));
+  for (let i = 0; i < rest.length; i += PATH_MAX - 1) close(rest.slice(i, i + PATH_MAX - 1));
+  while (closers.length) bundles.push(closers.splice(0, PATH_MAX));
+  const items = bundles.flatMap((b, k) => b.map(x => ({ ...x, bundle: k })));
+  return { bundles, items, start: bundles.map((b, k) => items.findIndex(x => x.bundle === k)) };
+}
+
+// 묶음 목록
+async function viewPathList(lang) {
+  setHeader("자주 쓰는 말부터", `#/${lang}`);
+  app.innerHTML = `<p class="lead">불러오는 중…</p>`;
+  let p;
+  try { p = await loadPath(lang); } catch (e) { return errorView(e); }
+  const short = x => x.type === "card" ? x.it.text : plainText(x.text);
+  app.innerHTML = `
+    <p class="lead">매일 쓰는 말만 모아 ${p.bundles.length}묶음, ${p.items.length}개로 짰어요. 단어를 보고 바로 그 단어가 나오는 문장으로 써 봐요.</p>
+    <div class="list">
+      ${p.bundles.map((b, k) => `
+        <button class="row" data-go="#/${lang}/path/${p.start[k]}">
+          <span class="step">${k + 1}</span>
+          <span class="label"><strong lang="${lang}">${esc(b.filter(x => x.type === "sentence").map(short).join(" / ") || b.slice(0, 4).map(short).join(" · "))}</strong>
+            <small lang="${lang}">${esc(b.filter(x => x.type === "card").map(short).join(" · "))}</small></span>
+          <span class="count">${b.length}개</span>
+        </button>`).join("")}
+    </div>`;
+}
+
+// 한 항목 (카드 또는 문장)
+async function viewPath(lang, idx) {
+  const L = LANGS[lang];
+  let p;
+  try { p = await loadPath(lang); } catch (e) { return errorView(e); }
+  const n = p.items.length;
+  if (!n) { location.hash = `#/${lang}`; return; }
+  const i = Math.min(Math.max(idx || 0, 0), n - 1);
+  const x = p.items[i];
+  setHeader("자주 쓰는 말부터", `#/${lang}/path`);
+  remember(lang, { sec: "path", kind: "path", key: x.key });
+  const go = j => { location.hash = `#/${lang}/path/${(j + n) % n}`; };
+  const next = () => go(i === n - 1 ? 0 : i + 1), prev = () => { if (i > 0) go(i - 1); };
+  const head = `
+      <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
+      <p class="star-src">묶음 ${x.bundle + 1} · ${esc(x.src)}</p>`;
+
+  if (x.type === "card") {
+    app.innerHTML = `<div class="viewer">${head}${cardHTML(lang, x.it, x.star)}${navHTML(i, n)}</div>`;
+    bindCard(lang, x.it, x.star, next, prev);
+  } else {
+    const plain = plainText(x.text);
+    app.innerHTML = `
+      <div class="viewer">${head}
+        <article class="card" id="card">
+          <p class="sentence" lang="${lang}">${x.pattern ? sentenceHTML(x.pattern.pattern, x.fill.text) : markParticle(x.text)}</p>
+          <div class="${H()}">
+            <p class="pron">${esc(x.ko_pron)}</p>
+            <p class="meaning">${esc(x.meaning)}</p>
+          </div>
+          <button class="speak" id="speak" aria-label="문장 듣기">🔊</button>
+          ${sayToolsHTML("saySentence")}
+        </article>
+        ${navHTML(i, n)}
+      </div>`;
+    document.getElementById("speak").onclick = e => tts.speak(plain, L.voice, e.currentTarget);
+    document.getElementById("prev").onclick = prev;
+    document.getElementById("next").onclick = next;
+    addSwipe(document.getElementById("card"), next, prev);
+    bindSayTools(document.getElementById("saySentence"), lang, [plain, x.kanji_text]);
+    if (x.pattern) {
+      const pw = x.pattern.words || {}, fw = x.fill.words || {};
+      bindWordGloss(lang, document.getElementById("card"),
+        el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], await loadFwIndex(lang));
+    }
+  }
+  bindHideToggle(() => viewPath(lang, i));
 }

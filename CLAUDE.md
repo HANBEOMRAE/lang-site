@@ -21,6 +21,9 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표), `particles`(일본어 조사·영어 작은 말, `#/<언어>/<섹션>/vs/<n>`은 비교).
   `particles` 화면은 두 모양을 다 읽는다: 조사(`particles`, 비교 `pair`+`points`)와 작은 말(`items`, `explain`, 비교 `sides`). views.js `entriesOf`·`compareSides` 참고.
   일본어 동사 변형의 `compare`(ある·いる)도 `sides` 모양으로 같은 비교 화면을 쓴다(`#/ja/verbs/vs/<n>`). 동사 표·상세의 순서는 `verbOrder`(그룹 → freq 높은 것 먼저).
+- ⭐ 자주 쓰는 말부터(`#/<언어>/path`): views.js `buildPath`가 데이터에서 3등급만 모아 묶음을 짠다(데이터 파일 없음, 언어별로 한 번 만들어 둔다).
+  묶음 = 새 단어 카드 → 그 카드가 나오는 문장(새 카드가 가장 많이 나오는 문장부터) → 맞장구·반응 하나. 항목 key는 이름 기준(`w/섹션/주제/단어`, `pf/틀/말` 등)이라
+  이어서 하기(`lastPlace`의 `kind: "path"`)가 데이터가 바뀌어도 같은 항목을 찾는다. 새 3등급 단어·문장을 넣으면 길이 저절로 바뀐다.
 - 일본어 단어 주제는 영어 단어 주제 순서의 앞부분(1~21번)과 같은 이름·순서로 둔다. 새 주제를 넣을 때는 두 언어에 같은 자리로 넣는다.
 - 조사 예문의 `[조사]` 표시는 화면에서 강조(`markParticle`)로, 발음 듣기·검사에서는 괄호를 뺀 문장(`plainText`)으로 쓴다.
   `uses`는 쓰임별 묶음, `words`는 예문에 쓴 `ja/words.json` 단어 목록이다.

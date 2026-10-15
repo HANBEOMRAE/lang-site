@@ -6,6 +6,7 @@
 //  #/en/situations          장면 목록        #/en/situations/3 장면 3
 //  #/ja/verbs               동사 변형 표     #/ja/verbs/4      5번째 동사 상세
 //  #/ja/stars               헷갈린 단어(☆) 모아 보기   #/ja/stars/2  3번째 카드
+//  #/en/path                ⭐ 자주 쓰는 말부터 (묶음 목록)   #/en/path/12  13번째 항목
 //  #/en/tips                💡 알아두기 모음  #/en/tips/1       2번째 설명 (LANGS의 tips: true인 언어만)
 //  #/en/pairs               발음 연습 목록   #/en/pairs/0      짝 연습   #/en/pairs/weak  내 발음 약점
 //  #/en/function_words      작은 말 목록     #/en/function_words/7  8번째 말   #/en/function_words/vs/0  비교 (조사와 같은 화면)
@@ -23,6 +24,7 @@ function route() {
   if (secId !== "stars") starSnap = null;     // 헷갈린 단어 모아 보기에서 나가면 순서를 새로 정한다
   if (!secId) return viewLang(lang);
   if (secId === "stars") return viewStars(lang, a === undefined ? 0 : Number(a));
+  if (secId === "path") return a === undefined ? viewPathList(lang) : viewPath(lang, Number(a));
   if (secId === "tips") return LANGS[lang].tips ? viewTips(lang, a === undefined ? undefined : Number(a)) : viewLang(lang);
   const sec = LANGS[lang].sections.find(s => s.id === secId && s.ready);
   if (!sec) return viewLang(lang);
