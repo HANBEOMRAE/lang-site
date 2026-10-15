@@ -742,6 +742,58 @@ def check_en_line_words(s, l, where, gl, auto):
         if not (lw.get(f"{k}@{seen[k]}") or lw.get(k) or sw.get(k) or gl.get(k) or auto.get(k)):
             problems.append(f"{where}: '{m.group()}' 뜻이 없어요 (문장·장면 words나 glossary.json에)")
 
+# 일본어: 줄마다 seg("きっぷ/は いくら/ですか。")로 단어·조사를 나눈다. 띄어쓰기·、。？！ 사이가 덩어리, "/"가 조각.
+# 자동으로 찾기(일본어): 덩어리 맨 앞이 아닌 조각이 조사(は·を·に…)면 조사 → 기초 단어(お+단어도) → 동사 기본형·활용형
+JA_SEP = re.compile(r"[\s、。？！]+")
+
+def ja_units(seg):
+    """[(조각, 덩어리 맨 앞이 아닌지)]"""
+    out = []
+    for chunk in JA_SEP.split(str(seg)):
+        if chunk:
+            out += [(u, i > 0) for i, u in enumerate(chunk.split("/"))]
+    return out
+
+def ja_auto_index():
+    L = lambda p: json.loads((ROOT / "data" / p).read_text(encoding="utf-8"))
+    try:
+        words, verbs, parts = L("ja/words.json"), L("ja/verbs.json"), L("ja/particles.json")
+    except Exception:
+        return {}, set(), set()
+    idx = {}
+    for c in words:
+        for it in c.get("items", []):
+            idx.setdefault(it.get("text"), it)
+    for c in words:
+        for it in c.get("items", []):
+            idx.setdefault("お" + it.get("text", ""), it)
+    for v in verbs.get("verbs", []):
+        idx.setdefault(v.get("text"), v)
+        for f in (v.get("forms") or {}).values():
+            idx.setdefault(f.get("text"), v)
+    return idx, {p.get("text") for p in parts.get("particles", [])}, {v.get("text") for v in verbs.get("verbs", [])}
+
+def check_ja_line_words(s, l, where, gl, auto, particles, verb_texts):
+    seg = l.get("seg")
+    if not str(seg or "").strip():
+        problems.append(f"{where}: seg(단어·조사 나누기)가 없어요")
+        return
+    if str(seg).replace("/", "") != l.get("text"):
+        problems.append(f"{where}: seg에서 /를 빼면 text와 같아야 해요 — '{seg}'")
+    lw, sw = l.get("words") or {}, s.get("words") or {}
+    for k, v in lw.items(): check_gloss_entry(v, f"{where} > words '{k}'")
+    seen = {}
+    for u, mid in ja_units(seg):
+        if not u:
+            problems.append(f"{where}: seg에 빈 조각이 있어요 ('//' 또는 덩어리 끝의 '/')")
+            continue
+        seen[u] = seen.get(u, 0) + 1
+        g = lw.get(f"{u}@{seen[u]}") or lw.get(u) or sw.get(u) or gl.get(u)
+        if not g and not (mid and u in particles) and u not in auto:
+            problems.append(f"{where}: '{u}' 뜻이 없어요 (문장·장면 words나 glossary.json에)")
+        if isinstance(g, dict) and g.get("base") and g["base"] not in verb_texts:
+            problems.append(f"{where}: '{u}'의 base '{g['base']}'가 동사 변형 표에 없어요")
+
 def check_glossary(data, name):
     for k, v in (data.get("words") or {}).items():
         if k != k.lower():
@@ -751,6 +803,14 @@ def check_glossary(data, name):
 def check_situations(data, name):
     en = name.startswith("en/")
     gl, auto = (glossary("en"), en_auto_index()) if en else ({}, {})
+    if not en:
+        gl = glossary("ja")
+        ja_auto, ja_parts, ja_verbs = ja_auto_index()
+        for k, v in gl.items():
+            if isinstance(v, dict) and v.get("base") and v["base"] not in ja_verbs:
+                problems.append(f"ja/glossary.json > '{k}': base '{v['base']}'가 동사 변형 표에 없어요")
+    words_of = (lambda s, l, w: check_en_line_words(s, l, w, gl, auto)) if en else \
+               (lambda s, l, w: check_ja_line_words(s, l, w, gl, ja_auto, ja_parts, ja_verbs))
     for s in data:
         need(s, ["scene"], f"{name} 장면")
         for k, v in (s.get("words") or {}).items():
@@ -761,16 +821,14 @@ def check_situations(data, name):
                 need(l, ["who"] + BASIC, w)
                 if name.startswith("ja/"):
                     check_kanji_text(l.get("text"), l.get("kanji_text"), w)
-                if en:
-                    check_en_line_words(s, l, w, gl, auto)
+                words_of(s, l, w)
         for k, ph in enumerate(s.get("phrases", [])):
             w = f"{name} > {s.get('scene')} > 핵심 문장 {k + 1}번"
             need(ph, BASIC, w)
             check_freq(ph, w)
             if name.startswith("ja/"):
                 check_kanji_text(ph.get("text"), ph.get("kanji_text"), w)
-            if en:
-                check_en_line_words(s, ph, w, gl, auto)
+            words_of(s, ph, w)
 
 def check_conjugation(data, name):
     gids = {g.get("id") for g in data.get("groups", [])}

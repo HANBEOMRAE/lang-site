@@ -89,6 +89,9 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   (views.js `glossLookup`·`buildGlossIndex`, validate.py `check_situations`가 같은 규칙. 영어 동사 바뀐 모양 목록은 views.js `EN_IRREGULAR`·`enForms`와 validate.py `EN_IRREGULAR`·`en_verb_forms`를 함께 고친다.)
 - 카드에 있는 말은 다시 적지 않는다. 카드 뜻이 그 문장에서 다르면(That's right의 right) 문장 `words`에 적는다. 여러 장면에 나오는 말은 glossary에 한 번.
 - 새 회화 문장을 넣으면 모든 단어에 뜻이 있어야 검사를 통과한다.
+- 일본어 회화 문장에는 `seg`(단어/조사 나누기, `/`를 빼면 `text`)를 꼭 넣는다. 조사는 따로 나누고(`きっぷ/は`), です·ですか·か·よ·ね도 나눈다(`いくら/ですか`).
+  동사 활용형은 나누지 않는다(`いきます/か`). 조사 판정은 덩어리 맨 앞이 아닌 조각만(views.js `glossTokens`, validate.py `ja_units`).
+  동사 변형 표의 활용형과 모양이 같은데 다른 동사면(よんで = よぶ, あって = あう, きて = きる) 문장 `words`에 뜻을 적는다.
 
 ## 💡 알아두기 (`data/en/tips.json`)
 

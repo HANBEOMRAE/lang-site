@@ -453,7 +453,7 @@ async function resolveStar(lang, key) {
         for (const m of glossTokens(lang, ln)) {
           seen[m.k] = (seen[m.k] || 0) + 1;
           if (m.k !== text) continue;
-          const g = glossLookup(gi, s, ln, m.k, seen[m.k]);
+          const g = glossLookup(gi, s, ln, m.k, seen[m.k], m.mid);
           if (!g) continue;
           return { kind: "word", src: `${sit.name} · ${s.scene}`, it: { text: m.word, kanji: g.kanji, ko_pron: g.ko_pron, meaning: g.meaning,
             example: plainText(ln.text), example_ko_pron: ln.ko_pron, example_kanji_text: ln.kanji_text, example_meaning: ln.meaning } };
@@ -802,16 +802,56 @@ async function buildGlossIndex(lang) {
     if (fw) fw.d.items.forEach(it => it.forms.forEach(f => put(auto, f, { ko_pron: it.ko_pron, meaning: it.meaning })));
     for (const [k, v] of Object.entries(later)) put(auto, k, v);
   }
-  return { glossary: Object.fromEntries(Object.entries(glossary).map(([k, v]) => [k.toLowerCase(), v])), auto };
+  // 일본어: 기초 단어(お+단어도) → 동사 기본형·활용형("기본형 いく · ます형", 동사 변형 표로), 조사는 덩어리 맨 앞이 아닐 때만
+  const particles = {}, verbLinks = {};
+  if (lang === "ja") {
+    if (words) {
+      words.d.forEach(c => c.items.forEach(it => put(auto, it.text,
+        { ko_pron: it.ko_pron, meaning: it.meaning, kanji: it.kanji, star: starKey(lang, words.s.id, c.category, it.text) })));
+      words.d.forEach(c => c.items.forEach(it => put(auto, "お" + it.text,
+        { ko_pron: "오" + it.ko_pron, meaning: it.meaning, form: `お + ${it.text} (공손하게)`, star: starKey(lang, words.s.id, c.category, it.text) })));
+    }
+    if (verbs) verbs.d.verbs.forEach((v, i) => {
+      const links = [{ hash: `#/${lang}/${verbs.s.id}/${i}`, label: "동사 변형 보기" }];
+      const star = starKey(lang, verbs.s.id, "-", v.text);
+      verbLinks[v.text] = links;
+      put(auto, v.text, { ko_pron: v.ko_pron, meaning: v.meaning, kanji: v.kanji, form: "기본형", star, links });
+      verbs.d.forms.forEach(f => { const x = v.forms[f.id];
+        if (x) put(auto, x.text, { ko_pron: x.ko_pron, meaning: x.meaning, base: v.text, form: f.name, star, links }); });
+    });
+    const pt = await get("particles");
+    if (pt) pt.d.particles.forEach((p, i) => { particles[p.text] = { ko_pron: p.ko_pron, meaning: p.meaning, form: "조사",
+      links: [{ hash: `#/${lang}/${pt.s.id}/${i}`, label: `더 알아보기: 조사 ${p.text}` }] }; });
+  }
+  return { glossary: Object.fromEntries(Object.entries(glossary).map(([k, v]) => [lang === "en" ? k.toLowerCase() : k, v])),
+           auto, particles, verbLinks };
 }
-// 문장의 단어 조각 [{ k: 찾는 키, word: 보이는 글자 }] (영어: 단어 단위)
+// 문장의 단어 조각 [{ k: 찾는 키, word: 보이는 글자, mid: 덩어리 맨 앞이 아닌지 }]
+// 영어: 단어 단위. 일본어: seg("きっぷ/は いくら/ですか。")의 조각 (validate.py ja_units와 같다)
+const JA_SEP = /[\s、。？！]+/;
 function glossTokens(lang, line) {
-  return [...plainText(line.text).matchAll(WORD_RE)].map(m => ({ k: m[0].toLowerCase(), word: m[0] }));
+  if (lang === "ja") return String(line.seg || line.text).split(JA_SEP).filter(Boolean)
+    .flatMap(ch => ch.split("/").map((u, i) => ({ k: u, word: u, mid: i > 0 })));
+  return [...plainText(line.text).matchAll(WORD_RE)].map(m => ({ k: m[0].toLowerCase(), word: m[0], mid: false }));
 }
-function glossLookup(gi, scene, line, k, n) {
+function glossLookup(gi, scene, line, k, n, mid = false) {
   const lw = line.words || {}, sw = scene.words || {};
-  return lw[`${k}@${n}`] || lw[k] || sw[k] || gi.glossary[k] || gi.auto[k] || null;
+  const g = lw[`${k}@${n}`] || lw[k] || sw[k] || gi.glossary[k] || (mid && gi.particles[k]) || gi.auto[k] || null;
+  // 문장·공용 뜻에 base(동사 기본형)가 있으면 동사 변형 표로 가는 버튼
+  return g && g.base && !g.links && gi.verbLinks[g.base] ? { ...g, links: gi.verbLinks[g.base] } : g;
 }
+// 일본어 회화 문장: seg대로 조각마다 누를 수 있게 (띄어쓰기·문장부호는 그대로)
+function segHTML(seg) {
+  const seen = {};
+  return String(seg).split(/([\s、。？！]+)/).map(part => {
+    if (!part || JA_SEP.test(part) && part.replace(JA_SEP, "") === "") return esc(part);
+    return part.split("/").map((u, i) => {
+      seen[u] = (seen[u] || 0) + 1;
+      return `<span class="w" role="button" tabindex="0" data-k="${esc(u)}" data-n="${seen[u]}" data-mid="${i > 0 ? 1 : 0}" data-word="${esc(u)}">${esc(u)}</span>`;
+    }).join("");
+  }).join("");
+}
+const lineHTML = (lang, l) => lang === "ja" && l.seg ? segHTML(l.seg) : tipSentenceHTML(l.text);
 // 회화 화면: 대화 말풍선·핵심 문장 줄의 단어를 누르면 뜻 (단어가 아닌 곳을 누르면 지금처럼 문장 전체 듣기)
 async function bindSceneGloss(lang, sec, s) {
   let gi;
@@ -823,9 +863,11 @@ async function bindSceneGloss(lang, sec, s) {
     const r = el.closest("[data-ph]");
     return r ? s.phrases[r.dataset.ph] : null;
   };
-  const lookup = el => { const ln = lineOf(el); return ln ? glossLookup(gi, s, ln, el.dataset.k, el.dataset.n) : null; };
+  const lookup = el => { const ln = lineOf(el); return ln ? glossLookup(gi, s, ln, el.dataset.k, el.dataset.n, el.dataset.mid === "1") : null; };
   const starOf = (el, g) => g.star || starKey(lang, "gw", s.scene, el.dataset.k);
   app.querySelectorAll(".dialogue, .phrase-list").forEach(box => bindWordGloss(lang, box, lookup, fwIdx, { starOf }));
+  // 일본어 조사 조각은 색으로 구분
+  if (lang === "ja") app.querySelectorAll(".say .w, .phrase .w").forEach(el => { if (lookup(el)?.form === "조사") el.classList.add("pt"); });
 }
 
 // ── 💡 알아두기 (data/<언어>/tips.json) ─────────────
@@ -987,7 +1029,7 @@ async function viewScene(lang, sec, sIdx) {
   const line = (l, d, k) => `
     <button class="bubble ${l.who === "나" ? "me" : ""}" data-d="${d}" data-k="${k}">
       <span class="who">${esc(l.who)}</span>
-      <span class="say" lang="${lang}">${tipSentenceHTML(l.text)}</span>
+      <span class="say" lang="${lang}">${lineHTML(lang, l)}</span>
       <span class="${H()}"><span class="pron-s">${esc(l.ko_pron)}</span>
       <span class="mean-s">${esc(l.meaning)}</span></span>
     </button>`;
@@ -1006,7 +1048,7 @@ async function viewScene(lang, sec, sIdx) {
     <div class="list phrase-list">
       ${s.phrases.map((ph, k) => `
         <button class="row phrase" data-ph="${k}">
-          <span class="label"><strong lang="${lang}">${tipSentenceHTML(ph.text)}</strong>
+          <span class="label"><strong lang="${lang}">${lineHTML(lang, ph)}</strong>
             <small class="${H()}">${esc(ph.ko_pron)} · ${esc(ph.meaning)}</small></span>
           <span class="mini-speak" aria-hidden="true">🔊</span>
         </button>`).join("")}
