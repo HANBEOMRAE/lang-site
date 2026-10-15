@@ -20,6 +20,8 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
 - `js/app.js`가 `#/<언어>/<섹션>/<a>/<b>` 주소를 읽고 섹션 `type`에 따라 `views.js`의 화면 함수를 고른다.
   type: `cards`, `patterns`, `situations`, `conjugation`(일본어 동사 변형 표), `particles`(일본어 조사·영어 작은 말, `#/<언어>/<섹션>/vs/<n>`은 비교).
   `particles` 화면은 두 모양을 다 읽는다: 조사(`particles`, 비교 `pair`+`points`)와 작은 말(`items`, `explain`, 비교 `sides`). views.js `entriesOf`·`compareSides` 참고.
+  일본어 동사 변형의 `compare`(ある·いる)도 `sides` 모양으로 같은 비교 화면을 쓴다(`#/ja/verbs/vs/<n>`). 동사 표·상세의 순서는 `verbOrder`(그룹 → freq 높은 것 먼저).
+- 일본어 단어 주제는 영어 단어 주제 순서의 앞부분(1~20번)과 같은 이름·순서로 둔다. 새 주제를 넣을 때는 두 언어에 같은 자리로 넣는다.
 - 조사 예문의 `[조사]` 표시는 화면에서 강조(`markParticle`)로, 발음 듣기·검사에서는 괄호를 뺀 문장(`plainText`)으로 쓴다.
   `uses`는 쓰임별 묶음, `words`는 예문에 쓴 `ja/words.json` 단어 목록이다.
 - 스크립트는 모듈 없이 `core.js → speech.js → views.js → app.js` 순서로 불러오는 전역 함수 방식이다.
@@ -37,7 +39,7 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   같은 `verbs.json`이라도 `en`은 카드 목록, `ja`는 `{groups, forms, verbs}`다.
 - 색은 `css/style.css` 맨 위 `:root` 변수만 쓴다(다크 모드 포함). 일본어 화면은 `body.lang-ja`에서 `--accent`가 빨강이 된다.
 - 기록은 `localStorage`에 둔다. `core.js`의 `store.get/set`(JSON, try/catch로 막힌 환경에서도 동작)을 쓴다.
-  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 단어, `"언어/섹션/주제/단어"` 목록 — 동사 변형은 주제 자리에 `-`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`.
+  키: `lastPlace`(이어서 하기, 언어별 `{ref, time}`), `stars`(헷갈린 단어, `"언어/섹션/주제/단어"` 목록 — 동사 변형은 주제 자리에 `-`), `pairStats`(발음 연습, `"언어/짝id"`별 `{right, wrong, last}`), `speechNotice`(🎤 안내를 봤는지), `hideMeaning`, `conjFreqOnly`(동사 표 "자주 쓰는 동사만").
   이어서 하기와 ☆는 번호가 아니라 이름(섹션·주제·항목 text, 패턴 틀·바꿔 넣는 말, 비교 id, 장면 이름)으로 저장하고, 열 때 지금 번호를 찾는다
   (views.js `resolvePlace`). 주제 이름이나 항목 `text`를 바꾸면 그 기록은 찾을 수 없게 되어 조용히 빠진다(☆는 "찾을 수 없는 표시"로 알림).
 - 오프라인(PWA): `sw.js`가 `PRECACHE`(화면 파일·데이터 전체)를 저장하고 저장본을 먼저 쓴다. 페이지를 열 때마다 뒤에서 새 버전을 확인해

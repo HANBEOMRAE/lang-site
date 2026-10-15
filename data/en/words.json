@@ -98,6 +98,54 @@
     "freq": 3,
     "example": "More, please.",
     "example_meaning": "더 주세요."
+   },
+   {
+    "text": "excuse me",
+    "ko_pron": "익스큐즈 미",
+    "meaning": "실례합니다",
+    "freq": 3,
+    "example": "Excuse me, where is the bathroom?",
+    "example_meaning": "실례합니다, 화장실이 어디예요?"
+   },
+   {
+    "text": "good night",
+    "ko_pron": "굿 나잇",
+    "meaning": "잘 자",
+    "freq": 3,
+    "example": "Good night, mom.",
+    "example_meaning": "엄마, 잘 자요."
+   },
+   {
+    "text": "again",
+    "ko_pron": "어게인",
+    "meaning": "다시, 또",
+    "freq": 3,
+    "example": "Say it again, please.",
+    "example_meaning": "다시 말해 주세요."
+   },
+   {
+    "text": "OK",
+    "ko_pron": "오케이",
+    "meaning": "좋아, 알았어",
+    "freq": 3,
+    "example": "OK, let's go.",
+    "example_meaning": "알았어, 가자."
+   },
+   {
+    "text": "you're welcome",
+    "ko_pron": "유어 웰컴",
+    "meaning": "천만에요",
+    "freq": 2,
+    "example": "You're welcome!",
+    "example_meaning": "천만에요!"
+   },
+   {
+    "text": "name",
+    "ko_pron": "네임",
+    "meaning": "이름",
+    "freq": 2,
+    "example": "What's your name?",
+    "example_meaning": "이름이 뭐야?"
    }
   ]
  },
@@ -168,6 +216,30 @@
     "freq": 3,
     "example": "You are my friend.",
     "example_meaning": "너는 내 친구야."
+   },
+   {
+    "text": "boy",
+    "ko_pron": "보이",
+    "meaning": "남자아이",
+    "freq": 2,
+    "example": "He is a boy.",
+    "example_meaning": "그 애는 남자아이야."
+   },
+   {
+    "text": "girl",
+    "ko_pron": "걸",
+    "meaning": "여자아이",
+    "freq": 2,
+    "example": "She is a girl.",
+    "example_meaning": "그 애는 여자아이야."
+   },
+   {
+    "text": "people",
+    "ko_pron": "피플",
+    "meaning": "사람들",
+    "freq": 2,
+    "example": "Many people are here.",
+    "example_meaning": "여기 사람이 많아."
    }
   ]
  },
@@ -464,6 +536,14 @@
     "freq": 2,
     "example": "One more cookie, please.",
     "example_meaning": "쿠키 하나 더 주세요."
+   },
+   {
+    "text": "food",
+    "ko_pron": "푸드",
+    "meaning": "음식",
+    "freq": 3,
+    "example": "I like this food.",
+    "example_meaning": "이 음식 좋아."
    }
   ]
  },
@@ -954,6 +1034,30 @@
     "freq": 3,
     "example": "Where is my phone?",
     "example_meaning": "내 전화기 어디 있어?"
+   },
+   {
+    "text": "house",
+    "ko_pron": "하우스",
+    "meaning": "집",
+    "freq": 2,
+    "example": "This is my house.",
+    "example_meaning": "여기가 우리 집이야."
+   },
+   {
+    "text": "room",
+    "ko_pron": "룸",
+    "meaning": "방",
+    "freq": 2,
+    "example": "Clean your room.",
+    "example_meaning": "방 치워."
+   },
+   {
+    "text": "thing",
+    "ko_pron": "띵",
+    "meaning": "것, 물건",
+    "freq": 2,
+    "example": "What is this thing?",
+    "example_meaning": "이건 뭐야?"
    }
   ]
  },
@@ -1470,6 +1574,100 @@
     "freq": 1,
     "example": "I can count to one hundred!",
     "example_meaning": "나는 100까지 셀 수 있어!"
+   }
+  ]
+ },
+ {
+  "category": "자주 붙이는 말",
+  "emoji": "➕",
+  "items": [
+   {
+    "text": "very",
+    "ko_pron": "베리",
+    "meaning": "아주, 정말",
+    "freq": 3,
+    "example": "It's very big.",
+    "example_meaning": "아주 커."
+   },
+   {
+    "text": "not",
+    "ko_pron": "낫",
+    "meaning": "~아니다, 안",
+    "freq": 3,
+    "example": "I'm not hungry.",
+    "example_meaning": "배 안 고파."
+   },
+   {
+    "text": "all",
+    "ko_pron": "올",
+    "meaning": "모두, 다",
+    "freq": 3,
+    "example": "I ate it all.",
+    "example_meaning": "다 먹었어."
+   },
+   {
+    "text": "some",
+    "ko_pron": "섬",
+    "meaning": "조금, 약간",
+    "freq": 3,
+    "example": "Can I have some milk?",
+    "example_meaning": "우유 좀 줄래?"
+   },
+   {
+    "text": "too",
+    "ko_pron": "투",
+    "meaning": "너무, ~도",
+    "freq": 3,
+    "example": "It's too hot.",
+    "example_meaning": "너무 더워."
+   },
+   {
+    "text": "together",
+    "ko_pron": "투게더",
+    "meaning": "함께, 같이",
+    "freq": 2,
+    "example": "Let's play together.",
+    "example_meaning": "같이 놀자."
+   },
+   {
+    "text": "little",
+    "ko_pron": "리틀",
+    "meaning": "작은, 조금",
+    "freq": 2,
+    "example": "Just a little.",
+    "example_meaning": "조금만."
+   },
+   {
+    "text": "nice",
+    "ko_pron": "나이스",
+    "meaning": "좋은, 멋진",
+    "freq": 2,
+    "example": "Nice to meet you.",
+    "example_meaning": "만나서 반가워."
+   },
+   {
+    "text": "new",
+    "ko_pron": "뉴",
+    "meaning": "새로운",
+    "freq": 2,
+    "example": "I have new shoes.",
+    "example_meaning": "새 신발이 있어."
+   },
+   {
+    "text": "old",
+    "ko_pron": "올드",
+    "meaning": "오래된, 나이 든",
+    "freq": 2,
+    "example": "This bag is old.",
+    "example_meaning": "이 가방은 오래됐어."
+   },
+   {
+    "text": "fun",
+    "ko_pron": "펀",
+    "meaning": "재미있는",
+    "freq": 2,
+    "example": "This is fun!",
+    "example_meaning": "이거 재밌다!"
    }
   ]
  },

@@ -364,5 +364,193 @@
     "example_meaning": "놀자."
    }
   ]
+ },
+ {
+  "category": "자주 쓰는 동사 2",
+  "emoji": "⭐",
+  "items": [
+   {
+    "text": "get",
+    "ko_pron": "겟",
+    "meaning": "받다, 얻다",
+    "freq": 3,
+    "example": "Can I get some water?",
+    "example_meaning": "물 좀 받을 수 있을까요?"
+   },
+   {
+    "text": "make",
+    "ko_pron": "메이크",
+    "meaning": "만들다",
+    "freq": 3,
+    "example": "Let's make a cake.",
+    "example_meaning": "케이크 만들자."
+   },
+   {
+    "text": "put",
+    "ko_pron": "풋",
+    "meaning": "놓다, 넣다",
+    "freq": 3,
+    "example": "Put it on the table.",
+    "example_meaning": "탁자 위에 놓아."
+   },
+   {
+    "text": "try",
+    "ko_pron": "트라이",
+    "meaning": "해 보다",
+    "freq": 3,
+    "example": "Try this.",
+    "example_meaning": "이거 해 봐."
+   },
+   {
+    "text": "call",
+    "ko_pron": "콜",
+    "meaning": "부르다, 전화하다",
+    "freq": 3,
+    "example": "Call mom.",
+    "example_meaning": "엄마한테 전화해."
+   },
+   {
+    "text": "do",
+    "ko_pron": "두",
+    "meaning": "하다",
+    "freq": 3,
+    "example": "Do it again.",
+    "example_meaning": "다시 해 봐."
+   },
+   {
+    "text": "use",
+    "ko_pron": "유즈",
+    "meaning": "쓰다, 사용하다",
+    "freq": 3,
+    "example": "Can I use this?",
+    "example_meaning": "이거 써도 돼?"
+   },
+   {
+    "text": "let",
+    "ko_pron": "렛",
+    "meaning": "~하게 해 주다",
+    "freq": 2,
+    "example": "Let me see.",
+    "example_meaning": "어디 보자."
+   },
+   {
+    "text": "bring",
+    "ko_pron": "브링",
+    "meaning": "가져오다",
+    "freq": 2,
+    "example": "Bring your bag.",
+    "example_meaning": "가방 가져와."
+   },
+   {
+    "text": "show",
+    "ko_pron": "쇼",
+    "meaning": "보여 주다",
+    "freq": 2,
+    "example": "Show me.",
+    "example_meaning": "보여 줘."
+   },
+   {
+    "text": "understand",
+    "ko_pron": "언더스탠드",
+    "meaning": "이해하다, 알아듣다",
+    "freq": 2,
+    "example": "I understand.",
+    "example_meaning": "알겠어."
+   },
+   {
+    "text": "forget",
+    "ko_pron": "포겟",
+    "meaning": "잊다",
+    "freq": 2,
+    "example": "Don't forget your hat.",
+    "example_meaning": "모자 잊지 마."
+   }
+  ]
+ },
+ {
+  "category": "놀고 배우는 동사",
+  "emoji": "🎨",
+  "items": [
+   {
+    "text": "read",
+    "ko_pron": "리드",
+    "meaning": "읽다",
+    "freq": 3,
+    "example": "Read me a book.",
+    "example_meaning": "책 읽어 줘."
+   },
+   {
+    "text": "wear",
+    "ko_pron": "웨어",
+    "meaning": "입다, 쓰다, 신다",
+    "freq": 3,
+    "example": "Wear your coat.",
+    "example_meaning": "코트 입어."
+   },
+   {
+    "text": "cry",
+    "ko_pron": "크라이",
+    "meaning": "울다",
+    "freq": 3,
+    "example": "Don't cry.",
+    "example_meaning": "울지 마."
+   },
+   {
+    "text": "write",
+    "ko_pron": "라이트",
+    "meaning": "쓰다(글씨)",
+    "freq": 2,
+    "example": "Write your name.",
+    "example_meaning": "이름 써."
+   },
+   {
+    "text": "draw",
+    "ko_pron": "드로",
+    "meaning": "그리다",
+    "freq": 2,
+    "example": "Let's draw a cat.",
+    "example_meaning": "고양이 그리자."
+   },
+   {
+    "text": "sing",
+    "ko_pron": "싱",
+    "meaning": "노래하다",
+    "freq": 2,
+    "example": "Let's sing a song.",
+    "example_meaning": "노래 부르자."
+   },
+   {
+    "text": "ride",
+    "ko_pron": "라이드",
+    "meaning": "타다",
+    "freq": 2,
+    "example": "I can ride a bike.",
+    "example_meaning": "나 자전거 탈 수 있어."
+   },
+   {
+    "text": "laugh",
+    "ko_pron": "래프",
+    "meaning": "웃다",
+    "freq": 2,
+    "example": "Don't laugh!",
+    "example_meaning": "웃지 마!"
+   },
+   {
+    "text": "live",
+    "ko_pron": "리브",
+    "meaning": "살다",
+    "freq": 2,
+    "example": "I live in Seoul.",
+    "example_meaning": "나는 서울에 살아."
+   },
+   {
+    "text": "work",
+    "ko_pron": "워크",
+    "meaning": "일하다",
+    "freq": 2,
+    "example": "Dad works at a bank.",
+    "example_meaning": "아빠는 은행에서 일해."
+   }
+  ]
  }
 ]

@@ -195,6 +195,42 @@
     "example_ko_pron": "이츠모 아리가토- 고자이마스.",
     "example_meaning": "늘 고맙습니다.",
     "example_freq": 2
+   },
+   {
+    "text": "それ",
+    "kanji": null,
+    "ko_pron": "소레",
+    "meaning": "그것",
+    "freq": 3,
+    "example": "それ なに？",
+    "example_kanji_text": "それ何？",
+    "example_ko_pron": "소레 나니?",
+    "example_meaning": "그거 뭐야?",
+    "example_freq": 3
+   },
+   {
+    "text": "あれ",
+    "kanji": null,
+    "ko_pron": "아레",
+    "meaning": "저것",
+    "freq": 2,
+    "example": "あれ みて！",
+    "example_kanji_text": "あれ見て！",
+    "example_ko_pron": "아레 미테!",
+    "example_meaning": "저거 봐!",
+    "example_freq": 2
+   },
+   {
+    "text": "だいじょうぶ",
+    "kanji": "大丈夫",
+    "ko_pron": "다이조-부",
+    "meaning": "괜찮아",
+    "freq": 3,
+    "example": "だいじょうぶ？",
+    "example_kanji_text": "大丈夫？",
+    "example_ko_pron": "다이조-부?",
+    "example_meaning": "괜찮아?",
+    "example_freq": 3
    }
   ]
  },
@@ -320,6 +356,67 @@
     "example_kanji_text": "友達になろう。",
     "example_ko_pron": "토모다치니 나로-.",
     "example_meaning": "친구 하자.",
+    "example_freq": 2
+   },
+   {
+    "text": "わたし",
+    "kanji": "私",
+    "ko_pron": "와타시",
+    "meaning": "나, 저",
+    "freq": 3,
+    "example": "わたしは ごさいです。",
+    "example_kanji_text": "私は五歳です。",
+    "example_ko_pron": "와타시와 고사이데스.",
+    "example_meaning": "나는 다섯 살이에요.",
+    "example_freq": 2
+   },
+   {
+    "text": "なまえ",
+    "kanji": "名前",
+    "ko_pron": "나마에",
+    "meaning": "이름",
+    "freq": 3,
+    "example": "なまえは なに？",
+    "example_kanji_text": "名前は何？",
+    "example_ko_pron": "나마에와 나니?",
+    "example_meaning": "이름이 뭐야?",
+    "example_freq": 3
+   },
+   {
+    "text": "みんな",
+    "kanji": null,
+    "ko_pron": "민나",
+    "meaning": "모두, 다들",
+    "freq": 3,
+    "example": "みんなで あそぼう。",
+    "example_kanji_text": "みんなで遊ぼう。",
+    "example_ko_pron": "민나데 아소보-.",
+    "example_meaning": "다 같이 놀자.",
+    "example_freq": 3
+   },
+   {
+    "text": "あなた",
+    "kanji": null,
+    "ko_pron": "아나타",
+    "meaning": "너, 당신",
+    "freq": 2,
+    "note": "일상 대화에서는 이름을 불러서 자주 쓰지 않아요.",
+    "example": "あなたは だれ？",
+    "example_kanji_text": "あなたは誰？",
+    "example_ko_pron": "아나타와 다레?",
+    "example_meaning": "너는 누구야?",
+    "example_freq": 1
+   },
+   {
+    "text": "ひと",
+    "kanji": "人",
+    "ko_pron": "히토",
+    "meaning": "사람",
+    "freq": 2,
+    "example": "ひとが いっぱい。",
+    "example_kanji_text": "人がいっぱい。",
+    "example_ko_pron": "히토가 잇파이.",
+    "example_meaning": "사람이 많아.",
     "example_freq": 2
    }
   ]
@@ -958,6 +1055,90 @@
     "example_ko_pron": "코와쿠 나이요.",
     "example_meaning": "안 무서워.",
     "example_freq": 2
+   },
+   {
+    "text": "おいしい",
+    "kanji": "美味しい",
+    "ko_pron": "오이시-",
+    "meaning": "맛있는",
+    "freq": 3,
+    "example": "これ、おいしい！",
+    "example_kanji_text": "これ、美味しい！",
+    "example_ko_pron": "코레, 오이시-!",
+    "example_meaning": "이거 맛있어!",
+    "example_freq": 3
+   },
+   {
+    "text": "すき",
+    "kanji": "好き",
+    "ko_pron": "스키",
+    "meaning": "좋아하는",
+    "freq": 3,
+    "example": "いちごが すき。",
+    "example_kanji_text": "苺が好き。",
+    "example_ko_pron": "이치고가 스키.",
+    "example_meaning": "딸기 좋아.",
+    "example_freq": 2
+   },
+   {
+    "text": "ほしい",
+    "kanji": "欲しい",
+    "ko_pron": "호시-",
+    "meaning": "갖고 싶은",
+    "freq": 3,
+    "example": "これ ほしい！",
+    "example_kanji_text": "これ欲しい！",
+    "example_ko_pron": "코레 호시-!",
+    "example_meaning": "이거 갖고 싶어!",
+    "example_freq": 3
+   },
+   {
+    "text": "だめ",
+    "kanji": null,
+    "ko_pron": "다메",
+    "meaning": "안 돼",
+    "freq": 3,
+    "example": "だめ！ さわらないで。",
+    "example_kanji_text": "だめ！触らないで。",
+    "example_ko_pron": "다메! 사와라나이데.",
+    "example_meaning": "안 돼! 만지지 마.",
+    "example_freq": 3
+   },
+   {
+    "text": "たのしい",
+    "kanji": "楽しい",
+    "ko_pron": "타노시-",
+    "meaning": "즐거운, 재미있는",
+    "freq": 2,
+    "example": "がっこう たのしい！",
+    "example_kanji_text": "学校楽しい！",
+    "example_ko_pron": "갓코- 타노시-!",
+    "example_meaning": "학교 재밌어!",
+    "example_freq": 2
+   },
+   {
+    "text": "かわいい",
+    "kanji": "可愛い",
+    "ko_pron": "카와이-",
+    "meaning": "귀여운",
+    "freq": 2,
+    "example": "この いぬ、かわいい！",
+    "example_kanji_text": "この犬、可愛い！",
+    "example_ko_pron": "코노 이누, 카와이-!",
+    "example_meaning": "이 강아지 귀여워!",
+    "example_freq": 2
+   },
+   {
+    "text": "きらい",
+    "kanji": "嫌い",
+    "ko_pron": "키라이",
+    "meaning": "싫어하는",
+    "freq": 2,
+    "example": "ピーマンが きらい。",
+    "example_kanji_text": "ピーマンが嫌い。",
+    "example_ko_pron": "피-만가 키라이.",
+    "example_meaning": "피망이 싫어.",
+    "example_freq": 1
    }
   ]
  },
@@ -1936,6 +2117,42 @@
     "example_ko_pron": "소토데 아소보-.",
     "example_meaning": "밖에서 놀자.",
     "example_freq": 2
+   },
+   {
+    "text": "ここ",
+    "kanji": null,
+    "ko_pron": "코코",
+    "meaning": "여기",
+    "freq": 3,
+    "example": "ここに すわって。",
+    "example_kanji_text": "ここに座って。",
+    "example_ko_pron": "코코니 스왓테.",
+    "example_meaning": "여기 앉아.",
+    "example_freq": 3
+   },
+   {
+    "text": "そこ",
+    "kanji": null,
+    "ko_pron": "소코",
+    "meaning": "거기",
+    "freq": 2,
+    "example": "そこに おいて。",
+    "example_kanji_text": "そこに置いて。",
+    "example_ko_pron": "소코니 오이테.",
+    "example_meaning": "거기 놓아.",
+    "example_freq": 2
+   },
+   {
+    "text": "あそこ",
+    "kanji": null,
+    "ko_pron": "아소코",
+    "meaning": "저기",
+    "freq": 2,
+    "example": "あそこに いるよ。",
+    "example_kanji_text": "あそこにいるよ。",
+    "example_ko_pron": "아소코니 이루요.",
+    "example_meaning": "저기 있어.",
+    "example_freq": 2
    }
   ]
  },
@@ -2236,6 +2453,96 @@
     "example_ko_pron": "햐쿠마데 카조에라레루요!",
     "example_meaning": "100까지 셀 수 있어!",
     "example_freq": 1
+   }
+  ]
+ },
+ {
+  "category": "자주 붙이는 말",
+  "emoji": "➕",
+  "items": [
+   {
+    "text": "ちょっと",
+    "kanji": null,
+    "ko_pron": "촛토",
+    "meaning": "조금, 잠깐",
+    "freq": 3,
+    "example": "ちょっと まって。",
+    "example_kanji_text": "ちょっと待って。",
+    "example_ko_pron": "촛토 맛테.",
+    "example_meaning": "잠깐 기다려.",
+    "example_freq": 3
+   },
+   {
+    "text": "もう",
+    "kanji": null,
+    "ko_pron": "모-",
+    "meaning": "벌써, 이제, 더",
+    "freq": 3,
+    "example": "もう いっかい！",
+    "example_kanji_text": "もう一回！",
+    "example_ko_pron": "모- 잇카이!",
+    "example_meaning": "한 번 더!",
+    "example_freq": 3
+   },
+   {
+    "text": "すこし",
+    "kanji": "少し",
+    "ko_pron": "스코시",
+    "meaning": "조금",
+    "freq": 2,
+    "example": "すこし ちょうだい。",
+    "example_kanji_text": "少しちょうだい。",
+    "example_ko_pron": "스코시 초-다이.",
+    "example_meaning": "조금 줘.",
+    "example_freq": 2
+   },
+   {
+    "text": "たくさん",
+    "kanji": null,
+    "ko_pron": "타쿠산",
+    "meaning": "많이",
+    "freq": 2,
+    "example": "たくさん たべてね。",
+    "example_kanji_text": "たくさん食べてね。",
+    "example_ko_pron": "타쿠산 타베테네.",
+    "example_meaning": "많이 먹어.",
+    "example_freq": 2
+   },
+   {
+    "text": "いっしょに",
+    "kanji": "一緒に",
+    "ko_pron": "잇쇼니",
+    "meaning": "같이, 함께",
+    "freq": 2,
+    "example": "いっしょに いこう。",
+    "example_kanji_text": "一緒に行こう。",
+    "example_ko_pron": "잇쇼니 이코-.",
+    "example_meaning": "같이 가자.",
+    "example_freq": 2
+   },
+   {
+    "text": "まだ",
+    "kanji": null,
+    "ko_pron": "마다",
+    "meaning": "아직",
+    "freq": 2,
+    "example": "まだ ねむく ない。",
+    "example_kanji_text": "まだ眠くない。",
+    "example_ko_pron": "마다 네무쿠 나이.",
+    "example_meaning": "아직 안 졸려.",
+    "example_freq": 2
+   },
+   {
+    "text": "ゆっくり",
+    "kanji": null,
+    "ko_pron": "윳쿠리",
+    "meaning": "천천히",
+    "freq": 2,
+    "example": "ゆっくり たべて。",
+    "example_kanji_text": "ゆっくり食べて。",
+    "example_ko_pron": "윳쿠리 타베테.",
+    "example_meaning": "천천히 먹어.",
+    "example_freq": 2
    }
   ]
  }

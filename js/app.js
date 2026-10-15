@@ -34,7 +34,8 @@ function route() {
     case "patterns":   return A === undefined ? viewPatternList(lang, sec)
                             : a === "vs" ? viewPatternCompare(lang, sec, B) : viewPattern(lang, sec, A, B);
     case "situations": return A === undefined ? viewSceneList(lang, sec)  : viewScene(lang, sec, A);
-    case "conjugation": return A === undefined ? viewConjTable(lang, sec) : viewVerb(lang, sec, A);
+    case "conjugation": return A === undefined ? viewConjTable(lang, sec)
+                            : a === "vs" ? viewCompare(lang, sec, B) : viewVerb(lang, sec, A);
     case "pairs":      return A === undefined ? viewPairList(lang, sec)
                             : a === "weak" ? viewWeak(lang, sec) : viewPairs(lang, sec, A);
     case "particles":  return A === undefined ? viewParticleList(lang, sec)

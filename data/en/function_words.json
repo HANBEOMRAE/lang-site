@@ -2475,6 +2475,109 @@
    ]
   },
   {
+   "id": "it",
+   "stage": "person",
+   "text": "it",
+   "ko_pron": "잇",
+   "meaning": "그것",
+   "freq": 3,
+   "forms": [
+    "it"
+   ],
+   "explain": [
+    [
+     {
+      "lang": "ko",
+      "text": "물건 하나를 가리킬 때 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "I like it."
+     },
+     {
+      "lang": "ko",
+      "text": " 그거 좋아."
+     }
+    ],
+    [
+     {
+      "lang": "ko",
+      "text": "날씨나 시간을 말할 때도 써요. "
+     },
+     {
+      "lang": "en",
+      "text": "It's hot."
+     },
+     {
+      "lang": "ko",
+      "text": " 더워. 이때는 '그것'으로 옮기지 않아요."
+     }
+    ]
+   ],
+   "uses": [
+    {
+     "name": "그것",
+     "desc": "앞에서 말한 물건",
+     "examples": [
+      {
+       "text": "I like [it].",
+       "ko_pron": "아이 라이크 잇.",
+       "meaning": "그거 좋아.",
+       "words": [
+        "like"
+       ]
+      },
+      {
+       "text": "Where is [it]?",
+       "ko_pron": "웨어 이즈 잇?",
+       "meaning": "그거 어디 있어?",
+       "words": [
+        "where"
+       ]
+      },
+      {
+       "text": "Give [it] to me.",
+       "ko_pron": "기브 잇 투 미.",
+       "meaning": "그거 나한테 줘.",
+       "words": [
+        "give"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "날씨·시간",
+     "desc": "'그것'으로 옮기지 않아요",
+     "examples": [
+      {
+       "text": "[It]'s hot.",
+       "ko_pron": "잇츠 핫.",
+       "meaning": "더워.",
+       "words": [
+        "hot"
+       ]
+      },
+      {
+       "text": "[It]'s raining.",
+       "ko_pron": "잇츠 레이닝.",
+       "meaning": "비가 와.",
+       "words": [
+        "rain"
+       ]
+      },
+      {
+       "text": "What time is [it]?",
+       "ko_pron": "왓 타임 이즈 잇?",
+       "meaning": "지금 몇 시야?",
+       "words": [
+        "what time"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "he-him",
    "stage": "person",
    "text": "he · him",

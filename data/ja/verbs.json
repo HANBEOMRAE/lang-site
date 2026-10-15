@@ -281,6 +281,426 @@
         "tai":  { "text": "きたい", "ko_pron": "키타이", "meaning": "오고 싶다" }
       },
       "example": { "text": "ここに きて。", "kanji_text": "ここに来て。", "ko_pron": "코코니 키테.", "meaning": "여기로 와." }
+    },
+    {
+      "id": "aru",
+      "group": "g1",
+      "text": "ある",
+      "kanji": null,
+      "ko_pron": "아루",
+      "meaning": "있다 (물건)",
+      "freq": 3,
+      "note": "물건은 ある, 사람·동물은 いる. ない형은 あらない가 아니라 ない",
+      "forms": {
+        "masu": { "text": "あります", "ko_pron": "아리마스", "meaning": "있습니다" },
+        "te":   { "text": "あって",  "ko_pron": "앗테",   "meaning": "있고 / 있어서" },
+        "ta":   { "text": "あった",  "ko_pron": "앗타",   "meaning": "있었다" },
+        "nai":  { "text": "ない",   "ko_pron": "나이",   "meaning": "없다" },
+        "tai":  { "text": "ありたい", "ko_pron": "아리타이", "meaning": "있고 싶다 (거의 안 써요)" }
+      },
+      "example": { "text": "つくえの うえに ほんが あります。", "kanji_text": "机の上に本があります。", "ko_pron": "츠쿠에노 우에니 혼가 아리마스.", "meaning": "책상 위에 책이 있어요." }
+    },
+    {
+      "id": "iru",
+      "group": "g2",
+      "text": "いる",
+      "kanji": null,
+      "ko_pron": "이루",
+      "meaning": "있다 (사람·동물)",
+      "freq": 3,
+      "note": "사람·동물은 いる, 물건은 ある",
+      "forms": {
+        "masu": { "text": "います", "ko_pron": "이마스", "meaning": "있습니다" },
+        "te":   { "text": "いて",  "ko_pron": "이테",  "meaning": "있고 / 있어서" },
+        "ta":   { "text": "いた",  "ko_pron": "이타",  "meaning": "있었다" },
+        "nai":  { "text": "いない", "ko_pron": "이나이", "meaning": "없다" },
+        "tai":  { "text": "いたい", "ko_pron": "이타이", "meaning": "있고 싶다" }
+      },
+      "example": { "text": "こうえんに ねこが います。", "kanji_text": "公園に猫がいます。", "ko_pron": "코-엔니 네코가 이마스.", "meaning": "공원에 고양이가 있어요." }
+    },
+    {
+      "id": "wakaru",
+      "group": "g1",
+      "text": "わかる",
+      "kanji": "分かる",
+      "ko_pron": "와카루",
+      "meaning": "알다, 이해하다",
+      "freq": 3,
+      "note": "る로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "わかります", "ko_pron": "와카리마스", "meaning": "압니다" },
+        "te":   { "text": "わかって",  "ko_pron": "와캇테",   "meaning": "알고 / 알아서" },
+        "ta":   { "text": "わかった",  "ko_pron": "와캇타",   "meaning": "알았다" },
+        "nai":  { "text": "わからない", "ko_pron": "와카라나이", "meaning": "모른다" },
+        "tai":  { "text": "わかりたい", "ko_pron": "와카리타이", "meaning": "알고 싶다" }
+      },
+      "example": { "text": "わかりました。", "kanji_text": "分かりました。", "ko_pron": "와카리마시타.", "meaning": "알겠어요." }
+    },
+    {
+      "id": "iu",
+      "group": "g1",
+      "text": "いう",
+      "kanji": "言う",
+      "ko_pron": "유-",
+      "meaning": "말하다",
+      "freq": 3,
+      "note": "글자는 いう, 소리는 ゆう. う로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "いいます", "ko_pron": "이-마스", "meaning": "말합니다" },
+        "te":   { "text": "いって",  "ko_pron": "잇테",   "meaning": "말하고 / 말해서" },
+        "ta":   { "text": "いった",  "ko_pron": "잇타",   "meaning": "말했다" },
+        "nai":  { "text": "いわない", "ko_pron": "이와나이", "meaning": "말 안 한다" },
+        "tai":  { "text": "いいたい", "ko_pron": "이-타이", "meaning": "말하고 싶다" }
+      },
+      "example": { "text": "なんて いったの？", "kanji_text": "何て言ったの？", "ko_pron": "난테 잇타노?", "meaning": "뭐라고 했어?" }
+    },
+    {
+      "id": "okiru",
+      "group": "g2",
+      "text": "おきる",
+      "kanji": "起きる",
+      "ko_pron": "오키루",
+      "meaning": "일어나다",
+      "freq": 3,
+      "note": "2형: る를 떼고 붙이면 끝",
+      "forms": {
+        "masu": { "text": "おきます", "ko_pron": "오키마스", "meaning": "일어납니다" },
+        "te":   { "text": "おきて",  "ko_pron": "오키테",  "meaning": "일어나고 / 일어나서" },
+        "ta":   { "text": "おきた",  "ko_pron": "오키타",  "meaning": "일어났다" },
+        "nai":  { "text": "おきない", "ko_pron": "오키나이", "meaning": "안 일어난다" },
+        "tai":  { "text": "おきたい", "ko_pron": "오키타이", "meaning": "일어나고 싶다" }
+      },
+      "example": { "text": "ろくじに おきます。", "kanji_text": "六時に起きます。", "ko_pron": "로쿠지니 오키마스.", "meaning": "여섯 시에 일어나요." }
+    },
+    {
+      "id": "hairu",
+      "group": "g1",
+      "text": "はいる",
+      "kanji": "入る",
+      "ko_pron": "하이루",
+      "meaning": "들어가다",
+      "freq": 2,
+      "note": "모양은 2형 같지만 1형: て형은 はいって",
+      "forms": {
+        "masu": { "text": "はいります", "ko_pron": "하이리마스", "meaning": "들어갑니다" },
+        "te":   { "text": "はいって",  "ko_pron": "하잇테",   "meaning": "들어가고 / 들어가서" },
+        "ta":   { "text": "はいった",  "ko_pron": "하잇타",   "meaning": "들어갔다" },
+        "nai":  { "text": "はいらない", "ko_pron": "하이라나이", "meaning": "안 들어간다" },
+        "tai":  { "text": "はいりたい", "ko_pron": "하이리타이", "meaning": "들어가고 싶다" }
+      },
+      "example": { "text": "おふろに はいります。", "kanji_text": "お風呂に入ります。", "ko_pron": "오후로니 하이리마스.", "meaning": "목욕해요." }
+    },
+    {
+      "id": "deru",
+      "group": "g2",
+      "text": "でる",
+      "kanji": "出る",
+      "ko_pron": "데루",
+      "meaning": "나가다, 나오다",
+      "freq": 2,
+      "note": "2형: る를 떼고 붙이면 끝",
+      "forms": {
+        "masu": { "text": "でます", "ko_pron": "데마스", "meaning": "나갑니다" },
+        "te":   { "text": "でて",  "ko_pron": "데테",  "meaning": "나가고 / 나가서" },
+        "ta":   { "text": "でた",  "ko_pron": "데타",  "meaning": "나갔다" },
+        "nai":  { "text": "でない", "ko_pron": "데나이", "meaning": "안 나간다" },
+        "tai":  { "text": "でたい", "ko_pron": "데타이", "meaning": "나가고 싶다" }
+      },
+      "example": { "text": "そとに でよう。", "kanji_text": "外に出よう。", "ko_pron": "소토니 데요-.", "meaning": "밖에 나가자." }
+    },
+    {
+      "id": "tsukau",
+      "group": "g1",
+      "text": "つかう",
+      "kanji": "使う",
+      "ko_pron": "츠카우",
+      "meaning": "쓰다, 사용하다",
+      "freq": 2,
+      "note": "う로 끝나는 1형: て형은 って, ない형은 わない",
+      "forms": {
+        "masu": { "text": "つかいます", "ko_pron": "츠카이마스", "meaning": "씁니다" },
+        "te":   { "text": "つかって",  "ko_pron": "츠캇테",   "meaning": "쓰고 / 써서" },
+        "ta":   { "text": "つかった",  "ko_pron": "츠캇타",   "meaning": "썼다" },
+        "nai":  { "text": "つかわない", "ko_pron": "츠카와나이", "meaning": "안 쓴다" },
+        "tai":  { "text": "つかいたい", "ko_pron": "츠카이타이", "meaning": "쓰고 싶다" }
+      },
+      "example": { "text": "この ペン、つかって いい？", "kanji_text": "このペン、使っていい？", "ko_pron": "코노 펜, 츠캇테 이-?", "meaning": "이 펜 써도 돼?" }
+    },
+    {
+      "id": "kiku",
+      "group": "g1",
+      "text": "きく",
+      "kanji": "聞く",
+      "ko_pron": "키쿠",
+      "meaning": "듣다, 묻다",
+      "freq": 2,
+      "note": "く로 끝나는 1형: て형은 いて",
+      "forms": {
+        "masu": { "text": "ききます", "ko_pron": "키키마스", "meaning": "듣습니다" },
+        "te":   { "text": "きいて",  "ko_pron": "키-테",  "meaning": "듣고 / 들어서" },
+        "ta":   { "text": "きいた",  "ko_pron": "키-타",  "meaning": "들었다" },
+        "nai":  { "text": "きかない", "ko_pron": "키카나이", "meaning": "안 듣는다" },
+        "tai":  { "text": "ききたい", "ko_pron": "키키타이", "meaning": "듣고 싶다" }
+      },
+      "example": { "text": "おんがくを ききます。", "kanji_text": "音楽を聞きます。", "ko_pron": "온가쿠오 키키마스.", "meaning": "음악을 들어요." }
+    },
+    {
+      "id": "au",
+      "group": "g1",
+      "text": "あう",
+      "kanji": "会う",
+      "ko_pron": "아우",
+      "meaning": "만나다",
+      "freq": 2,
+      "note": "う로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "あいます", "ko_pron": "아이마스", "meaning": "만납니다" },
+        "te":   { "text": "あって",  "ko_pron": "앗테",   "meaning": "만나고 / 만나서" },
+        "ta":   { "text": "あった",  "ko_pron": "앗타",   "meaning": "만났다" },
+        "nai":  { "text": "あわない", "ko_pron": "아와나이", "meaning": "안 만난다" },
+        "tai":  { "text": "あいたい", "ko_pron": "아이타이", "meaning": "만나고 싶다" }
+      },
+      "example": { "text": "また あおうね。", "kanji_text": "また会おうね。", "ko_pron": "마타 아오-네.", "meaning": "또 만나자." }
+    },
+    {
+      "id": "motsu",
+      "group": "g1",
+      "text": "もつ",
+      "kanji": "持つ",
+      "ko_pron": "모츠",
+      "meaning": "들다, 가지다",
+      "freq": 2,
+      "note": "つ로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "もちます", "ko_pron": "모치마스", "meaning": "듭니다" },
+        "te":   { "text": "もって",  "ko_pron": "못테",   "meaning": "들고 / 들어서" },
+        "ta":   { "text": "もった",  "ko_pron": "못타",   "meaning": "들었다" },
+        "nai":  { "text": "もたない", "ko_pron": "모타나이", "meaning": "안 든다" },
+        "tai":  { "text": "もちたい", "ko_pron": "모치타이", "meaning": "들고 싶다" }
+      },
+      "example": { "text": "かばんを もって。", "kanji_text": "かばんを持って。", "ko_pron": "카반오 못테.", "meaning": "가방 들어." }
+    },
+    {
+      "id": "suwaru",
+      "group": "g1",
+      "text": "すわる",
+      "kanji": "座る",
+      "ko_pron": "스와루",
+      "meaning": "앉다",
+      "freq": 2,
+      "note": "る로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "すわります", "ko_pron": "스와리마스", "meaning": "앉습니다" },
+        "te":   { "text": "すわって",  "ko_pron": "스왓테",   "meaning": "앉고 / 앉아서" },
+        "ta":   { "text": "すわった",  "ko_pron": "스왓타",   "meaning": "앉았다" },
+        "nai":  { "text": "すわらない", "ko_pron": "스와라나이", "meaning": "안 앉는다" },
+        "tai":  { "text": "すわりたい", "ko_pron": "스와리타이", "meaning": "앉고 싶다" }
+      },
+      "example": { "text": "いすに すわって。", "kanji_text": "椅子に座って。", "ko_pron": "이스니 스왓테.", "meaning": "의자에 앉아." }
+    },
+    {
+      "id": "tatsu",
+      "group": "g1",
+      "text": "たつ",
+      "kanji": "立つ",
+      "ko_pron": "타츠",
+      "meaning": "서다",
+      "freq": 2,
+      "note": "つ로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "たちます", "ko_pron": "타치마스", "meaning": "섭니다" },
+        "te":   { "text": "たって",  "ko_pron": "탓테",   "meaning": "서고 / 서서" },
+        "ta":   { "text": "たった",  "ko_pron": "탓타",   "meaning": "섰다" },
+        "nai":  { "text": "たたない", "ko_pron": "타타나이", "meaning": "안 선다" },
+        "tai":  { "text": "たちたい", "ko_pron": "타치타이", "meaning": "서고 싶다" }
+      },
+      "example": { "text": "みんな たって。", "kanji_text": "みんな立って。", "ko_pron": "민나 탓테.", "meaning": "다들 일어서." }
+    },
+    {
+      "id": "akeru",
+      "group": "g2",
+      "text": "あける",
+      "kanji": "開ける",
+      "ko_pron": "아케루",
+      "meaning": "열다",
+      "freq": 2,
+      "note": "2형: る를 떼고 붙이면 끝",
+      "forms": {
+        "masu": { "text": "あけます", "ko_pron": "아케마스", "meaning": "엽니다" },
+        "te":   { "text": "あけて",  "ko_pron": "아케테",  "meaning": "열고 / 열어서" },
+        "ta":   { "text": "あけた",  "ko_pron": "아케타",  "meaning": "열었다" },
+        "nai":  { "text": "あけない", "ko_pron": "아케나이", "meaning": "안 연다" },
+        "tai":  { "text": "あけたい", "ko_pron": "아케타이", "meaning": "열고 싶다" }
+      },
+      "example": { "text": "まどを あけて。", "kanji_text": "窓を開けて。", "ko_pron": "마도오 아케테.", "meaning": "창문 열어." }
+    },
+    {
+      "id": "shimeru",
+      "group": "g2",
+      "text": "しめる",
+      "kanji": "閉める",
+      "ko_pron": "시메루",
+      "meaning": "닫다",
+      "freq": 2,
+      "note": "2형: る를 떼고 붙이면 끝",
+      "forms": {
+        "masu": { "text": "しめます", "ko_pron": "시메마스", "meaning": "닫습니다" },
+        "te":   { "text": "しめて",  "ko_pron": "시메테",  "meaning": "닫고 / 닫아서" },
+        "ta":   { "text": "しめた",  "ko_pron": "시메타",  "meaning": "닫았다" },
+        "nai":  { "text": "しめない", "ko_pron": "시메나이", "meaning": "안 닫는다" },
+        "tai":  { "text": "しめたい", "ko_pron": "시메타이", "meaning": "닫고 싶다" }
+      },
+      "example": { "text": "ドアを しめて。", "kanji_text": "ドアを閉めて。", "ko_pron": "도아오 시메테.", "meaning": "문 닫아." }
+    },
+    {
+      "id": "tsukuru",
+      "group": "g1",
+      "text": "つくる",
+      "kanji": "作る",
+      "ko_pron": "츠쿠루",
+      "meaning": "만들다",
+      "freq": 2,
+      "note": "る로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "つくります", "ko_pron": "츠쿠리마스", "meaning": "만듭니다" },
+        "te":   { "text": "つくって",  "ko_pron": "츠쿳테",   "meaning": "만들고 / 만들어서" },
+        "ta":   { "text": "つくった",  "ko_pron": "츠쿳타",   "meaning": "만들었다" },
+        "nai":  { "text": "つくらない", "ko_pron": "츠쿠라나이", "meaning": "안 만든다" },
+        "tai":  { "text": "つくりたい", "ko_pron": "츠쿠리타이", "meaning": "만들고 싶다" }
+      },
+      "example": { "text": "ケーキを つくろう。", "kanji_text": "ケーキを作ろう。", "ko_pron": "케-키오 츠쿠로-.", "meaning": "케이크 만들자." }
+    }
+
+  ],
+  "compare": [
+    {
+      "id": "aru-iru",
+      "title": "ある와 いる",
+      "sides": [
+        {
+          "label": "ある",
+          "entry": "aru",
+          "point": [
+            [
+              {
+                "lang": "ko",
+                "text": "물건이나 식물이 있을 때"
+              }
+            ]
+          ]
+        },
+        {
+          "label": "いる",
+          "entry": "iru",
+          "point": [
+            [
+              {
+                "lang": "ko",
+                "text": "사람이나 동물처럼 스스로 움직이는 것이 있을 때"
+              }
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "side": 0,
+          "text": "りんごが [ある]。",
+          "kanji_text": "りんごがある。",
+          "ko_pron": "린고가 아루.",
+          "meaning": "사과가 있어.",
+          "why": "사과는 물건이라 ある",
+          "words": [
+            "りんご"
+          ]
+        },
+        {
+          "side": 1,
+          "text": "ねこが [いる]。",
+          "kanji_text": "猫がいる。",
+          "ko_pron": "네코가 이루.",
+          "meaning": "고양이가 있어.",
+          "why": "고양이는 동물이라 いる",
+          "words": [
+            "ねこ"
+          ]
+        },
+        {
+          "side": 0,
+          "text": "かぎが [ある]。",
+          "kanji_text": "鍵がある。",
+          "ko_pron": "카기가 아루.",
+          "meaning": "열쇠가 있어.",
+          "why": "열쇠는 물건이라 ある",
+          "words": [
+            "かぎ"
+          ]
+        },
+        {
+          "side": 1,
+          "text": "おかあさんが [いる]。",
+          "kanji_text": "お母さんがいる。",
+          "ko_pron": "오카-산가 이루.",
+          "meaning": "엄마가 있어.",
+          "why": "엄마는 사람이라 いる",
+          "words": [
+            "おかあさん"
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "text": "いぬが [___]。",
+          "kanji_text": "犬が[___]。",
+          "choices": [
+            "ある",
+            "いる"
+          ],
+          "answers": [
+            "いる"
+          ],
+          "ko_pron": "이누가 이루.",
+          "meaning": "개가 있어.",
+          "why": "개는 동물이라 いる",
+          "words": [
+            "いぬ"
+          ]
+        },
+        {
+          "text": "くつが [___]。",
+          "kanji_text": "靴が[___]。",
+          "choices": [
+            "ある",
+            "いる"
+          ],
+          "answers": [
+            "ある"
+          ],
+          "ko_pron": "쿠츠가 아루.",
+          "meaning": "신발이 있어.",
+          "why": "신발은 물건이라 ある",
+          "words": [
+            "くつ"
+          ]
+        },
+        {
+          "text": "ともだちが [___]。",
+          "kanji_text": "友達が[___]。",
+          "choices": [
+            "ある",
+            "いる"
+          ],
+          "answers": [
+            "いる"
+          ],
+          "ko_pron": "토모다치가 이루.",
+          "meaning": "친구가 있어.",
+          "why": "친구는 사람이라 いる",
+          "words": [
+            "ともだち"
+          ]
+        }
+      ]
     }
   ]
 }

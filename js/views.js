@@ -881,11 +881,20 @@ async function viewScene(lang, sec, sIdx) {
 }
 
 // ── 동사 변형: 그룹별 전체 표 ────────────────────
+// 표와 동사 화면(이전·다음)이 같은 순서를 쓴다: 그룹 순서 → 그룹 안에서 자주 쓰는 동사(freq 높은 것) 먼저 → 데이터 순서
+function verbOrder(data) {
+  const g = id => data.groups.findIndex(x => x.id === id);
+  return data.verbs.map((v, i) => i)
+    .sort((a, b) => g(data.verbs[a].group) - g(data.verbs[b].group) || (data.verbs[b].freq || 0) - (data.verbs[a].freq || 0) || a - b);
+}
+// "자주 쓰는 동사만"(3등급) 토글: 휴대폰에 기억한다 (store "conjFreqOnly")
 async function viewConjTable(lang, sec) {
   setHeader(sec.name, `#/${lang}`);
   app.innerHTML = `<p class="lead">불러오는 중…</p>`;
   let data;
   try { data = await loadData(lang, sec.id); } catch (e) { return errorView(e); }
+  const freqOnly = store.get("conjFreqOnly", false) === true;
+  const order = verbOrder(data).filter(i => !freqOnly || data.verbs[i].freq === 3);
   const head = `<tr><th scope="col">동사</th>${data.forms.map(f => `<th scope="col">${esc(f.name)}</th>`).join("")}</tr>`;
   const row = (v, i) => `
     <tr data-go="#/${lang}/${sec.id}/${i}">
@@ -902,13 +911,27 @@ async function viewConjTable(lang, sec) {
 
   app.innerHTML = `
     <div class="tools"><p class="lead conj-hint">줄을 누르면 자세히 봐요. 표는 옆으로 밀려요.</p>${hideToggle()}</div>
+    <div class="chips conj-filter">
+      <button class="chip toggle ${freqOnly ? "on" : ""}" id="freqToggle" aria-pressed="${freqOnly}">자주 쓰는 동사만</button>
+    </div>
     ${data.groups.map(g => {
-      const rows = data.verbs.map((v, i) => v.group === g.id ? row(v, i) : "").join("");
+      const rows = order.map(i => data.verbs[i].group === g.id ? row(data.verbs[i], i) : "").join("");
       return rows ? `
         <h2 class="group">${esc(g.name)}</h2>
         <p class="lead">${esc(g.desc)}</p>
         <div class="conj-wrap"><table class="conj"><thead>${head}</thead><tbody>${rows}</tbody></table></div>` : "";
-    }).join("")}`;
+    }).join("")}
+    ${(data.compare || []).length ? `
+      <h2 class="group">헷갈리는 동사</h2>
+      <div class="list">
+        ${data.compare.map((c, k) => `
+          <button class="row" data-go="#/${lang}/${sec.id}/vs/${k}">
+            <span class="em" aria-hidden="true">⚖️</span>
+            <span class="label"><strong lang="${lang}">${esc(c.title)}</strong>
+              <small>${compareSides(data, c).map(s => `${esc(s.label)}: ${esc(s.pointText)}`).join(" / ")}</small></span>
+          </button>`).join("")}
+      </div>` : ""}`;
+  document.getElementById("freqToggle").onclick = () => { store.set("conjFreqOnly", !freqOnly); viewConjTable(lang, sec); };
   bindHideToggle(() => viewConjTable(lang, sec));
 }
 
@@ -925,13 +948,14 @@ async function viewVerb(lang, sec, vIdx) {
   const v = data.verbs[vIdx];
   if (!v) { location.hash = `#/${lang}/${sec.id}`; return; }
   const n = data.verbs.length;
+  const order = verbOrder(data), pos = order.indexOf(vIdx);   // 표와 같은 순서로 넘긴다
   const g = data.groups.find(x => x.id === v.group);
   const base = `#/${lang}/${sec.id}`;
   setHeader(v.text, base);
   remember(lang, { sec: sec.id, kind: "verb", text: v.text });
 
   app.innerHTML = `
-    <div class="tools">${progressBar(vIdx, n)}${hideToggle()}</div>
+    <div class="tools">${progressBar(pos, n)}${hideToggle()}</div>
     <article class="card" id="card">
       ${starButton(starKey(lang, sec.id, "-", v.text))}
       ${g ? `<span class="badge">${esc(g.name)}</span>` : ""}
@@ -966,12 +990,12 @@ async function viewVerb(lang, sec, vIdx) {
         <button class="mini-speak" id="speakEx" aria-label="예문 듣기">🔊</button>
       </div>` : ""}
     <div class="nav">
-      <button id="prev" ${vIdx === 0 ? "disabled" : ""}>이전</button>
-      <button id="next" class="primary">${vIdx === n - 1 ? "처음부터" : "다음"}</button>
+      <button id="prev" ${pos === 0 ? "disabled" : ""}>이전</button>
+      <button id="next" class="primary">${pos === n - 1 ? "처음부터" : "다음"}</button>
     </div>`;
 
-  const next = () => { location.hash = `${base}/${vIdx === n - 1 ? 0 : vIdx + 1}`; };
-  const prev = () => { if (vIdx > 0) location.hash = `${base}/${vIdx - 1}`; };
+  const next = () => { location.hash = `${base}/${order[pos === n - 1 ? 0 : pos + 1]}`; };
+  const prev = () => { if (pos > 0) location.hash = `${base}/${order[pos - 1]}`; };
   document.getElementById("speakWord").onclick = e => tts.speak(v.text, L.voice, e.currentTarget);
   const ex = document.getElementById("speakEx");
   if (ex) ex.onclick = e => tts.speak(v.example.text, L.voice, e.currentTarget);
@@ -1011,7 +1035,7 @@ function bindSay(lang) {
 // ── 조사·작은 말 (같은 화면) ──────────────────────
 // 일본어 조사(ja/particles.json): particles, 비교는 pair + points{id: 글}, 예문 particle
 // 영어 작은 말(en/function_words.json): items, explain(조각 설명), 비교는 sides[{label, entry, point}], 예문 side
-const entriesOf = data => data.items || data.particles;
+const entriesOf = data => data.items || data.particles || data.verbs;   // 동사 변형의 ある/いる 비교도 같은 비교 화면
 const unitOf = sec => sec.unit || "조사";
 const particleById = (data, id) => entriesOf(data).find(p => p.id === id) || { text: "?" };
 // 받침이 있으면 a, 없으면 b (조사 → 조사를, 작은 말 → 작은 말을)

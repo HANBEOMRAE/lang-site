@@ -731,6 +731,44 @@ def check_conjugation(data, name):
         else:
             need(v["example"], BASIC, f"{where} > 예문")
             check_kanji_text(v["example"].get("text"), v["example"].get("kanji_text"), f"{where} > 예문")
+    # 헷갈리는 동사 비교 (ある/いる): 작은 말과 같은 sides 모양, 퀴즈는 공통 형식(check_quiz)
+    verbs = {v.get("id"): v.get("text") for v in data.get("verbs", [])}
+    known = ja_word_texts()
+    def jsentence(ex, w, mark):
+        need(ex, BASIC, w)
+        check_kanji_text(ex.get("text"), ex.get("kanji_text"), w)
+        if mark not in ex.get("text", ""):
+            problems.append(f"{w}: 예문에 {mark} 표시가 없어요")
+        for x in ex.get("words") or []:
+            if x not in known:
+                problems.append(f"{w}: '{x}'는 words.json에 없는 단어예요")
+    for i, c in enumerate(data.get("compare", [])):
+        where = f"{name} > 비교 {i + 1}번 ({c.get('title', '?')})"
+        need(c, ["id", "title"], where)
+        sides = c.get("sides") or []
+        if len(sides) != 2:
+            problems.append(f"{where}: sides는 두 쪽이에요")
+            continue
+        for s in sides:
+            if verbs.get(s.get("entry")) != s.get("label"):
+                problems.append(f"{where}: '{s.get('label')}'가 동사 '{s.get('entry')}'와 맞지 않아요")
+            check_chunks(s.get("point"), f"{where} > {s.get('label')} point", (1, 1))
+        labels = [s.get("label", "") for s in sides]
+        seen_sides = set()
+        for k, ex in enumerate(c.get("examples", [])):
+            w = f"{where} > 예문 {k + 1}번"
+            if ex.get("side") not in (0, 1):
+                problems.append(f"{w}: side는 0 또는 1이에요")
+                continue
+            seen_sides.add(ex["side"])
+            need(ex, ["why"], w)
+            jsentence(ex, w, f"[{labels[ex['side']]}]")
+        if seen_sides != {0, 1}:
+            problems.append(f"{where}: 두 쪽 모두 예문이 있어야 해요")
+        if not c.get("quiz"):
+            problems.append(f"{where}: 퀴즈가 없어요")
+        for k, q in enumerate(c.get("quiz", [])):
+            check_quiz(q, labels, f"{where} > 퀴즈 {k + 1}번", ja=True)
 
 CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards,
             "patterns": check_patterns, "situations": check_situations, "pairs": check_pairs}
