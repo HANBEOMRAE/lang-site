@@ -43,6 +43,8 @@ const PRECACHE = [
   "data/ja/words.json",
   "data/ja/verbs.json",
   "data/ja/particles.json",
+  "data/ja/patterns.json",
+  "data/ja/pattern_compare.json",
   "data/ja/situations.json"
 ];
 

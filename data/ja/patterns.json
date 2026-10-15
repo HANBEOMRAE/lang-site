@@ -1,0 +1,1823 @@
+[
+ {
+  "group": "부탁하기",
+  "pattern": "___を ください",
+  "seg": "___/を ください",
+  "ko_pron": "___오 쿠다사이",
+  "meaning": "~를 주세요",
+  "freq": 3,
+  "tip": "갖고 싶은 것 + を ください. 가게에서 가장 많이 써요.",
+  "tip_ids": ["kudasai"],
+  "words": {},
+  "fills": [
+   {
+    "text": "みず",
+    "kanji_text": "水をください",
+    "ko_pron": "미즈",
+    "meaning": "물 주세요",
+    "freq": 3
+   },
+   {
+    "text": "これ",
+    "kanji_text": "これをください",
+    "ko_pron": "코레",
+    "meaning": "이거 주세요",
+    "freq": 3
+   },
+   {
+    "text": "それ",
+    "kanji_text": "それをください",
+    "ko_pron": "소레",
+    "meaning": "그거 주세요",
+    "freq": 3
+   },
+   {
+    "text": "メニュー",
+    "kanji_text": "メニューをください",
+    "ko_pron": "메뉴-",
+    "meaning": "메뉴 주세요",
+    "freq": 2
+   },
+   {
+    "text": "ジュース",
+    "kanji_text": "ジュースをください",
+    "ko_pron": "주-스",
+    "meaning": "주스 주세요",
+    "freq": 2
+   },
+   {
+    "text": "パン",
+    "kanji_text": "パンをください",
+    "ko_pron": "판",
+    "meaning": "빵 주세요",
+    "freq": 2
+   },
+   {
+    "text": "りんご",
+    "kanji_text": "りんごをください",
+    "ko_pron": "린고",
+    "meaning": "사과 주세요",
+    "freq": 2
+   },
+   {
+    "text": "おかし",
+    "kanji_text": "お菓子をください",
+    "ko_pron": "오카시",
+    "meaning": "과자 주세요",
+    "freq": 2
+   },
+   {
+    "text": "スプーン",
+    "kanji_text": "スプーンをください",
+    "ko_pron": "스푸운",
+    "meaning": "숟가락 주세요",
+    "freq": 2
+   },
+   {
+    "text": "おはし",
+    "kanji_text": "お箸をください",
+    "ko_pron": "오하시",
+    "meaning": "젓가락 주세요",
+    "freq": 2
+   },
+   {
+    "text": "レシート",
+    "kanji_text": "レシートをください",
+    "ko_pron": "레시-토",
+    "meaning": "영수증 주세요",
+    "freq": 1
+   },
+   {
+    "text": "ふくろ",
+    "kanji_text": "袋をください",
+    "ko_pron": "후쿠로",
+    "meaning": "봉투 주세요",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "부탁하기",
+  "pattern": "___を おねがいします",
+  "seg": "___/を おねがいします",
+  "ko_pron": "___오 오네가이시마스",
+  "meaning": "~를 부탁해요",
+  "freq": 3,
+  "tip": "물건뿐 아니라 계산·체크인 같은 일을 부탁할 때도 써요.",
+  "tip_ids": ["kudasai"],
+  "words": {},
+  "fills": [
+   {
+    "text": "メニュー",
+    "kanji_text": "メニューをお願いします",
+    "ko_pron": "메뉴-",
+    "meaning": "메뉴 부탁해요",
+    "freq": 2
+   },
+   {
+    "text": "おかいけい",
+    "kanji_text": "お会計をお願いします",
+    "ko_pron": "오카이케-",
+    "meaning": "계산 부탁해요",
+    "freq": 3
+   },
+   {
+    "text": "おみず",
+    "kanji_text": "お水をお願いします",
+    "ko_pron": "오미즈",
+    "meaning": "물 부탁해요",
+    "freq": 2
+   },
+   {
+    "text": "チェックイン",
+    "kanji_text": "チェックインをお願いします",
+    "ko_pron": "쳇쿠인",
+    "meaning": "체크인 부탁해요",
+    "freq": 2
+   },
+   {
+    "text": "チェックアウト",
+    "kanji_text": "チェックアウトをお願いします",
+    "ko_pron": "쳇쿠아우토",
+    "meaning": "체크아웃 부탁해요",
+    "freq": 2
+   },
+   {
+    "text": "タクシー",
+    "kanji_text": "タクシーをお願いします",
+    "ko_pron": "타쿠시-",
+    "meaning": "택시 불러 주세요",
+    "freq": 2
+   },
+   {
+    "text": "おはし",
+    "kanji_text": "お箸をお願いします",
+    "ko_pron": "오하시",
+    "meaning": "젓가락 부탁해요",
+    "freq": 2
+   },
+   {
+    "text": "レシート",
+    "kanji_text": "レシートをお願いします",
+    "ko_pron": "레시-토",
+    "meaning": "영수증 부탁해요",
+    "freq": 1
+   },
+   {
+    "text": "ふくろ",
+    "kanji_text": "袋をお願いします",
+    "ko_pron": "후쿠로",
+    "meaning": "봉투 부탁해요",
+    "freq": 1
+   },
+   {
+    "text": "これ",
+    "kanji_text": "これをお願いします",
+    "ko_pron": "코레",
+    "meaning": "이거 부탁해요",
+    "freq": 3
+   },
+   {
+    "text": "モーニングコール",
+    "kanji_text": "モーニングコールをお願いします",
+    "ko_pron": "모-닌구코-루",
+    "meaning": "모닝콜 부탁해요",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "부탁하기",
+  "pattern": "___ ください",
+  "seg": "___ ください",
+  "ko_pron": "___ 쿠다사이",
+  "meaning": "~해 주세요",
+  "freq": 3,
+  "tip": "빈칸에 동사 て형 (まつ → まって). 동사 변형 표의 て형이에요.",
+  "words": {},
+  "fills": [
+   {
+    "text": "まって",
+    "kanji_text": "待ってください",
+    "ko_pron": "맛테",
+    "meaning": "기다려 주세요",
+    "freq": 3
+   },
+   {
+    "text": "みて",
+    "kanji_text": "見てください",
+    "ko_pron": "미테",
+    "meaning": "봐 주세요",
+    "freq": 3
+   },
+   {
+    "text": "きいて",
+    "kanji_text": "聞いてください",
+    "ko_pron": "키-테",
+    "meaning": "들어 주세요",
+    "freq": 2
+   },
+   {
+    "text": "すわって",
+    "kanji_text": "座ってください",
+    "ko_pron": "스왓테",
+    "meaning": "앉아 주세요",
+    "freq": 2
+   },
+   {
+    "text": "たって",
+    "kanji_text": "立ってください",
+    "ko_pron": "탓테",
+    "meaning": "일어서 주세요",
+    "freq": 2
+   },
+   {
+    "text": "あけて",
+    "kanji_text": "開けてください",
+    "ko_pron": "아케테",
+    "meaning": "열어 주세요",
+    "freq": 2
+   },
+   {
+    "text": "しめて",
+    "kanji_text": "閉めてください",
+    "ko_pron": "시메테",
+    "meaning": "닫아 주세요",
+    "freq": 2
+   },
+   {
+    "text": "よんで",
+    "kanji_text": "読んでください",
+    "ko_pron": "욘데",
+    "meaning": "읽어 주세요",
+    "freq": 2
+   },
+   {
+    "text": "かいて",
+    "kanji_text": "書いてください",
+    "ko_pron": "카이테",
+    "meaning": "써 주세요",
+    "freq": 2
+   },
+   {
+    "text": "ゆっくり はなして",
+    "kanji_text": "ゆっくり話してください",
+    "ko_pron": "윳쿠리 하나시테",
+    "meaning": "천천히 말해 주세요",
+    "freq": 2
+   },
+   {
+    "text": "つかって",
+    "kanji_text": "使ってください",
+    "ko_pron": "츠캇테",
+    "meaning": "사용해 주세요",
+    "freq": 1
+   },
+   {
+    "text": "きて",
+    "kanji_text": "来てください",
+    "ko_pron": "키테",
+    "meaning": "와 주세요",
+    "freq": 2
+   }
+  ]
+ },
+ {
+  "group": "부탁하기",
+  "pattern": "___ないで ください",
+  "seg": "___/ないで ください",
+  "ko_pron": "___나이데 쿠다사이",
+  "meaning": "~하지 마세요",
+  "freq": 2,
+  "tip": "빈칸에 ない를 뗀 모양 (いかない → いか)",
+  "words": {
+   "ないで": {
+    "ko_pron": "나이데",
+    "meaning": "~하지 말고 (ない + で)"
+   }
+  },
+  "fills": [
+   {
+    "text": "いか",
+    "kanji_text": "行かないでください",
+    "ko_pron": "이카",
+    "meaning": "가지 마세요",
+    "freq": 2,
+    "words": {
+     "いか": {
+      "ko_pron": "이카",
+      "meaning": "가다 (いかない에서 ない를 뗀 모양)",
+      "base": "いく"
+     }
+    }
+   },
+   {
+    "text": "ね",
+    "kanji_text": "寝ないでください",
+    "ko_pron": "네",
+    "meaning": "자지 마세요",
+    "freq": 2,
+    "words": {
+     "ね": {
+      "ko_pron": "네",
+      "meaning": "자다 (ねない에서 ない를 뗀 모양)",
+      "base": "ねる"
+     }
+    }
+   },
+   {
+    "text": "たべ",
+    "kanji_text": "食べないでください",
+    "ko_pron": "타베",
+    "meaning": "먹지 마세요",
+    "freq": 2,
+    "words": {
+     "たべ": {
+      "ko_pron": "타베",
+      "meaning": "먹다 (たべない에서 ない를 뗀 모양)",
+      "base": "たべる"
+     }
+    }
+   },
+   {
+    "text": "のま",
+    "kanji_text": "飲まないでください",
+    "ko_pron": "노마",
+    "meaning": "마시지 마세요",
+    "freq": 2,
+    "words": {
+     "のま": {
+      "ko_pron": "노마",
+      "meaning": "마시다 (のまない에서 ない를 뗀 모양)",
+      "base": "のむ"
+     }
+    }
+   },
+   {
+    "text": "さわら",
+    "kanji_text": "触らないでください",
+    "ko_pron": "사와라",
+    "meaning": "만지지 마세요",
+    "freq": 2,
+    "words": {
+     "さわら": {
+      "ko_pron": "사와라",
+      "meaning": "만지다 (さわらない에서 ない를 뗀 모양)"
+     }
+    }
+   },
+   {
+    "text": "はしら",
+    "kanji_text": "走らないでください",
+    "ko_pron": "하시라",
+    "meaning": "뛰지 마세요",
+    "freq": 2,
+    "words": {
+     "はしら": {
+      "ko_pron": "하시라",
+      "meaning": "달리다, 뛰다 (はしらない에서 ない를 뗀 모양)"
+     }
+    }
+   },
+   {
+    "text": "なか",
+    "kanji_text": "泣かないでください",
+    "ko_pron": "나카",
+    "meaning": "울지 마세요",
+    "freq": 2,
+    "words": {
+     "なか": {
+      "ko_pron": "나카",
+      "meaning": "울다 (なかない에서 ない를 뗀 모양)"
+     }
+    }
+   },
+   {
+    "text": "すわら",
+    "kanji_text": "座らないでください",
+    "ko_pron": "스와라",
+    "meaning": "앉지 마세요",
+    "freq": 1,
+    "words": {
+     "すわら": {
+      "ko_pron": "스와라",
+      "meaning": "앉다 (すわらない에서 ない를 뗀 모양)",
+      "base": "すわる"
+     }
+    }
+   },
+   {
+    "text": "あけ",
+    "kanji_text": "開けないでください",
+    "ko_pron": "아케",
+    "meaning": "열지 마세요",
+    "freq": 1,
+    "words": {
+     "あけ": {
+      "ko_pron": "아케",
+      "meaning": "열다 (あけない에서 ない를 뗀 모양)",
+      "base": "あける"
+     }
+    }
+   },
+   {
+    "text": "み",
+    "kanji_text": "見ないでください",
+    "ko_pron": "미",
+    "meaning": "보지 마세요",
+    "freq": 2,
+    "words": {
+     "み": {
+      "ko_pron": "미",
+      "meaning": "보다 (みない에서 ない를 뗀 모양)",
+      "base": "みる"
+     }
+    }
+   },
+   {
+    "text": "しめ",
+    "kanji_text": "閉めないでください",
+    "ko_pron": "시메",
+    "meaning": "닫지 마세요",
+    "freq": 1,
+    "words": {
+     "しめ": {
+      "ko_pron": "시메",
+      "meaning": "닫다 (しめない에서 ない를 뗀 모양)",
+      "base": "しめる"
+     }
+    }
+   },
+   {
+    "text": "わすれ",
+    "kanji_text": "忘れないでください",
+    "ko_pron": "와스레",
+    "meaning": "잊지 마세요",
+    "freq": 2,
+    "words": {
+     "わすれ": {
+      "ko_pron": "와스레",
+      "meaning": "잊다 (わすれない에서 ない를 뗀 모양)"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "group": "부탁하기",
+  "pattern": "___で おねがいします",
+  "seg": "___/で おねがいします",
+  "ko_pron": "___데 오네가이시마스",
+  "meaning": "~로 할게요, ~로 부탁해요",
+  "freq": 2,
+  "tip": "어떻게 할지(카드·포장·크기)를 고를 때.",
+  "words": {},
+  "fills": [
+   {
+    "text": "カード",
+    "kanji_text": "カードでお願いします",
+    "ko_pron": "카-도",
+    "meaning": "카드로 할게요",
+    "freq": 2
+   },
+   {
+    "text": "げんきん",
+    "kanji_text": "現金でお願いします",
+    "ko_pron": "겐킨",
+    "meaning": "현금으로 할게요",
+    "freq": 2
+   },
+   {
+    "text": "てんない",
+    "kanji_text": "店内でお願いします",
+    "ko_pron": "텐나이",
+    "meaning": "먹고 갈게요 (가게 안에서)",
+    "freq": 2
+   },
+   {
+    "text": "もちかえり",
+    "kanji_text": "持ち帰りでお願いします",
+    "ko_pron": "모치카에리",
+    "meaning": "포장해 주세요",
+    "freq": 2
+   },
+   {
+    "text": "ちいさい サイズ",
+    "kanji_text": "小さいサイズでお願いします",
+    "ko_pron": "치-사이 사이즈",
+    "meaning": "작은 사이즈로 할게요",
+    "freq": 1
+   },
+   {
+    "text": "おおきい サイズ",
+    "kanji_text": "大きいサイズでお願いします",
+    "ko_pron": "오-키- 사이즈",
+    "meaning": "큰 사이즈로 할게요",
+    "freq": 1
+   },
+   {
+    "text": "ふたり",
+    "kanji_text": "二人でお願いします",
+    "ko_pron": "후타리",
+    "meaning": "두 명이요",
+    "freq": 2
+   },
+   {
+    "text": "ひとり",
+    "kanji_text": "一人でお願いします",
+    "ko_pron": "히토리",
+    "meaning": "한 명이요",
+    "freq": 2
+   },
+   {
+    "text": "こおりなし",
+    "kanji_text": "氷なしでお願いします",
+    "ko_pron": "코-리나시",
+    "meaning": "얼음 빼고 주세요",
+    "freq": 1
+   },
+   {
+    "text": "ホット",
+    "kanji_text": "ホットでお願いします",
+    "ko_pron": "홋토",
+    "meaning": "따뜻한 걸로 할게요",
+    "freq": 1
+   },
+   {
+    "text": "アイス",
+    "kanji_text": "アイスでお願いします",
+    "ko_pron": "아이스",
+    "meaning": "차가운 걸로 할게요",
+    "freq": 1,
+    "words": {
+     "アイス": {
+      "ko_pron": "아이스",
+      "meaning": "차가운 것 (음료)"
+     }
+    }
+   },
+   {
+    "text": "これ",
+    "kanji_text": "これでお願いします",
+    "ko_pron": "코레",
+    "meaning": "이걸로 할게요",
+    "freq": 2
+   }
+  ]
+ },
+ {
+  "group": "묻기",
+  "pattern": "___は どこですか",
+  "seg": "___/は どこ/ですか",
+  "ko_pron": "___와 도코데스카?",
+  "meaning": "~는 어디예요?",
+  "freq": 3,
+  "tip": "찾는 곳·물건 + は どこですか.",
+  "words": {},
+  "fills": [
+   {
+    "text": "トイレ",
+    "kanji_text": "トイレはどこですか",
+    "ko_pron": "토이레",
+    "meaning": "화장실은 어디예요?",
+    "freq": 3
+   },
+   {
+    "text": "えき",
+    "kanji_text": "駅はどこですか",
+    "ko_pron": "에키",
+    "meaning": "역은 어디예요?",
+    "freq": 2
+   },
+   {
+    "text": "でぐち",
+    "kanji_text": "出口はどこですか",
+    "ko_pron": "데구치",
+    "meaning": "출구는 어디예요?",
+    "freq": 2
+   },
+   {
+    "text": "バスてい",
+    "kanji_text": "バス停はどこですか",
+    "ko_pron": "바스테-",
+    "meaning": "버스 정류장은 어디예요?",
+    "freq": 2
+   },
+   {
+    "text": "おかあさん",
+    "kanji_text": "お母さんはどこですか",
+    "ko_pron": "오카-산",
+    "meaning": "엄마는 어디 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "くうこう",
+    "kanji_text": "空港はどこですか",
+    "ko_pron": "쿠-코-",
+    "meaning": "공항은 어디예요?",
+    "freq": 1
+   },
+   {
+    "text": "ホテル",
+    "kanji_text": "ホテルはどこですか",
+    "ko_pron": "호테루",
+    "meaning": "호텔은 어디예요?",
+    "freq": 1
+   },
+   {
+    "text": "かぎ",
+    "kanji_text": "鍵はどこですか",
+    "ko_pron": "카기",
+    "meaning": "열쇠는 어디 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "わたしの かばん",
+    "seg": "わたし/の かばん",
+    "kanji_text": "私のかばんはどこですか",
+    "ko_pron": "와타시노 카반",
+    "meaning": "내 가방은 어디 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "エレベーター",
+    "kanji_text": "エレベーターはどこですか",
+    "ko_pron": "에레베-타-",
+    "meaning": "엘리베이터는 어디예요?",
+    "freq": 1
+   },
+   {
+    "text": "きっぷうりば",
+    "kanji_text": "切符売り場はどこですか",
+    "ko_pron": "킷푸우리바",
+    "meaning": "매표소는 어디예요?",
+    "freq": 1
+   },
+   {
+    "text": "レジ",
+    "kanji_text": "レジはどこですか",
+    "ko_pron": "레지",
+    "meaning": "계산대는 어디예요?",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "묻기",
+  "pattern": "___は ありますか",
+  "seg": "___/は あります/か",
+  "ko_pron": "___와 아리마스카?",
+  "meaning": "~ 있어요?",
+  "freq": 3,
+  "tip": "가게에 물건이 있는지 물을 때.",
+  "words": {},
+  "fills": [
+   {
+    "text": "みず",
+    "kanji_text": "水はありますか",
+    "ko_pron": "미즈",
+    "meaning": "물 있어요?",
+    "freq": 3
+   },
+   {
+    "text": "ちず",
+    "kanji_text": "地図はありますか",
+    "ko_pron": "치즈",
+    "meaning": "지도 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "トイレ",
+    "kanji_text": "トイレはありますか",
+    "ko_pron": "토이레",
+    "meaning": "화장실 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "ふくろ",
+    "kanji_text": "袋はありますか",
+    "ko_pron": "후쿠로",
+    "meaning": "봉투 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "でんち",
+    "kanji_text": "電池はありますか",
+    "ko_pron": "덴치",
+    "meaning": "건전지 있어요?",
+    "freq": 1
+   },
+   {
+    "text": "アイス",
+    "kanji_text": "アイスはありますか",
+    "ko_pron": "아이스",
+    "meaning": "아이스크림 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "おおきい サイズ",
+    "kanji_text": "大きいサイズはありますか",
+    "ko_pron": "오-키- 사이즈",
+    "meaning": "큰 사이즈 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "ワイファイ",
+    "kanji_text": "ワイファイはありますか",
+    "ko_pron": "와이화이",
+    "meaning": "와이파이 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "くすり",
+    "kanji_text": "薬はありますか",
+    "ko_pron": "쿠스리",
+    "meaning": "약 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "かさ",
+    "kanji_text": "傘はありますか",
+    "ko_pron": "카사",
+    "meaning": "우산 있어요?",
+    "freq": 2
+   },
+   {
+    "text": "タオル",
+    "kanji_text": "タオルはありますか",
+    "ko_pron": "타오루",
+    "meaning": "수건 있어요?",
+    "freq": 1
+   },
+   {
+    "text": "こどもの メニュー",
+    "seg": "こども/の メニュー",
+    "kanji_text": "子どものメニューはありますか",
+    "ko_pron": "코도모노 메뉴-",
+    "meaning": "어린이 메뉴 있어요?",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "묻기",
+  "pattern": "___は いくらですか",
+  "seg": "___/は いくら/ですか",
+  "ko_pron": "___와 이쿠라데스카?",
+  "meaning": "~는 얼마예요?",
+  "freq": 3,
+  "tip": "값을 물을 때.",
+  "words": {},
+  "fills": [
+   {
+    "text": "これ",
+    "kanji_text": "これはいくらですか",
+    "ko_pron": "코레",
+    "meaning": "이건 얼마예요?",
+    "freq": 3
+   },
+   {
+    "text": "それ",
+    "kanji_text": "それはいくらですか",
+    "ko_pron": "소레",
+    "meaning": "그건 얼마예요?",
+    "freq": 3
+   },
+   {
+    "text": "あれ",
+    "kanji_text": "あれはいくらですか",
+    "ko_pron": "아레",
+    "meaning": "저건 얼마예요?",
+    "freq": 2
+   },
+   {
+    "text": "きっぷ",
+    "kanji_text": "切符はいくらですか",
+    "ko_pron": "킷푸",
+    "meaning": "표는 얼마예요?",
+    "freq": 2
+   },
+   {
+    "text": "この かばん",
+    "kanji_text": "このかばんはいくらですか",
+    "ko_pron": "코노 카반",
+    "meaning": "이 가방은 얼마예요?",
+    "freq": 2
+   },
+   {
+    "text": "この りんご",
+    "kanji_text": "このりんごはいくらですか",
+    "ko_pron": "코노 린고",
+    "meaning": "이 사과는 얼마예요?",
+    "freq": 2
+   },
+   {
+    "text": "ジュース",
+    "kanji_text": "ジュースはいくらですか",
+    "ko_pron": "주-스",
+    "meaning": "주스는 얼마예요?",
+    "freq": 2
+   },
+   {
+    "text": "パン",
+    "kanji_text": "パンはいくらですか",
+    "ko_pron": "판",
+    "meaning": "빵은 얼마예요?",
+    "freq": 2
+   },
+   {
+    "text": "おとな",
+    "kanji_text": "大人はいくらですか",
+    "ko_pron": "오토나",
+    "meaning": "어른은 얼마예요?",
+    "freq": 1
+   },
+   {
+    "text": "こども",
+    "kanji_text": "子どもはいくらですか",
+    "ko_pron": "코도모",
+    "meaning": "아이는 얼마예요?",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "묻기",
+  "pattern": "___は なんですか",
+  "seg": "___/は なん/ですか",
+  "ko_pron": "___와 난데스카?",
+  "meaning": "~는 뭐예요?",
+  "freq": 3,
+  "tip": "무엇인지 물을 때. なに가 です 앞에서는 なん이 돼요.",
+  "tip_ids": ["kosoado"],
+  "words": {},
+  "fills": [
+   {
+    "text": "これ",
+    "kanji_text": "これは何ですか",
+    "ko_pron": "코레",
+    "meaning": "이건 뭐예요?",
+    "freq": 3
+   },
+   {
+    "text": "それ",
+    "kanji_text": "それは何ですか",
+    "ko_pron": "소레",
+    "meaning": "그건 뭐예요?",
+    "freq": 3
+   },
+   {
+    "text": "あれ",
+    "kanji_text": "あれは何ですか",
+    "ko_pron": "아레",
+    "meaning": "저건 뭐예요?",
+    "freq": 3
+   },
+   {
+    "text": "おなまえ",
+    "kanji_text": "お名前は何ですか",
+    "ko_pron": "오나마에",
+    "meaning": "이름이 뭐예요?",
+    "freq": 2
+   },
+   {
+    "text": "おすすめ",
+    "kanji_text": "おすすめは何ですか",
+    "ko_pron": "오스스메",
+    "meaning": "추천 메뉴는 뭐예요?",
+    "freq": 2
+   },
+   {
+    "text": "ワイファイの パスワード",
+    "seg": "ワイファイ/の パスワード",
+    "kanji_text": "ワイファイのパスワードは何ですか",
+    "ko_pron": "와이화이노 파스와-도",
+    "meaning": "와이파이 비밀번호는 뭐예요?",
+    "freq": 1
+   },
+   {
+    "text": "きょうの ごはん",
+    "seg": "きょう/の ごはん",
+    "kanji_text": "今日のご飯は何ですか",
+    "ko_pron": "쿄-노 고한",
+    "meaning": "오늘 밥은 뭐예요?",
+    "freq": 2
+   },
+   {
+    "text": "すきな いろ",
+    "kanji_text": "好きな色は何ですか",
+    "ko_pron": "스키나 이로",
+    "meaning": "좋아하는 색은 뭐예요?",
+    "freq": 2
+   },
+   {
+    "text": "この かんじ",
+    "kanji_text": "この漢字は何ですか",
+    "ko_pron": "코노 칸지",
+    "meaning": "이 한자는 뭐예요?",
+    "freq": 1
+   },
+   {
+    "text": "あの おと",
+    "kanji_text": "あの音は何ですか",
+    "ko_pron": "아노 오토",
+    "meaning": "저 소리는 뭐예요?",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "묻기",
+  "pattern": "___も いいですか",
+  "seg": "___/も いい/ですか",
+  "ko_pron": "___모 이-데스카?",
+  "meaning": "~해도 돼요?",
+  "freq": 2,
+  "tip": "빈칸에 동사 て형 + も いいですか.",
+  "words": {},
+  "fills": [
+   {
+    "text": "すわって",
+    "kanji_text": "座ってもいいですか",
+    "ko_pron": "스왓테",
+    "meaning": "앉아도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "たべて",
+    "kanji_text": "食べてもいいですか",
+    "ko_pron": "타베테",
+    "meaning": "먹어도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "みて",
+    "kanji_text": "見てもいいですか",
+    "ko_pron": "미테",
+    "meaning": "봐도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "あけて",
+    "kanji_text": "開けてもいいですか",
+    "ko_pron": "아케테",
+    "meaning": "열어도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "つかって",
+    "kanji_text": "使ってもいいですか",
+    "ko_pron": "츠캇테",
+    "meaning": "써도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "はいって",
+    "kanji_text": "入ってもいいですか",
+    "ko_pron": "하잇테",
+    "meaning": "들어가도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "かえって",
+    "kanji_text": "帰ってもいいですか",
+    "ko_pron": "카엣테",
+    "meaning": "돌아가도 돼요?",
+    "freq": 1
+   },
+   {
+    "text": "のんで",
+    "kanji_text": "飲んでもいいですか",
+    "ko_pron": "논데",
+    "meaning": "마셔도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "かいて",
+    "kanji_text": "書いてもいいですか",
+    "ko_pron": "카이테",
+    "meaning": "글씨 써도 돼요?",
+    "freq": 1
+   },
+   {
+    "text": "いって",
+    "kanji_text": "行ってもいいですか",
+    "ko_pron": "잇테",
+    "meaning": "가도 돼요?",
+    "freq": 2
+   },
+   {
+    "text": "あそんで",
+    "kanji_text": "遊んでもいいですか",
+    "ko_pron": "아손데",
+    "meaning": "놀아도 돼요?",
+    "freq": 2
+   }
+  ]
+ },
+ {
+  "group": "마음 말하기",
+  "pattern": "___たいです",
+  "seg": "___/たい/です",
+  "ko_pron": "___타이데스",
+  "meaning": "~하고 싶어요",
+  "freq": 3,
+  "tip": "빈칸에 ます를 뗀 모양 (たべます → たべ)",
+  "tip_ids": ["masu-stem"],
+  "words": {
+   "たい": {
+    "ko_pron": "타이",
+    "meaning": "~하고 싶다"
+   }
+  },
+  "fills": [
+   {
+    "text": "たべ",
+    "kanji_text": "食べたいです",
+    "ko_pron": "타베",
+    "meaning": "먹고 싶어요",
+    "freq": 3,
+    "words": {
+     "たべ": {
+      "ko_pron": "타베",
+      "meaning": "먹다 (たべます에서 ます를 뗀 모양)",
+      "base": "たべる"
+     }
+    }
+   },
+   {
+    "text": "のみ",
+    "kanji_text": "飲みたいです",
+    "ko_pron": "노미",
+    "meaning": "마시고 싶어요",
+    "freq": 3,
+    "words": {
+     "のみ": {
+      "ko_pron": "노미",
+      "meaning": "마시다 (のみます에서 ます를 뗀 모양)",
+      "base": "のむ"
+     }
+    }
+   },
+   {
+    "text": "いき",
+    "kanji_text": "行きたいです",
+    "ko_pron": "이키",
+    "meaning": "가고 싶어요",
+    "freq": 3,
+    "words": {
+     "いき": {
+      "ko_pron": "이키",
+      "meaning": "가다 (いきます에서 ます를 뗀 모양)",
+      "base": "いく"
+     }
+    }
+   },
+   {
+    "text": "ね",
+    "kanji_text": "寝たいです",
+    "ko_pron": "네",
+    "meaning": "자고 싶어요",
+    "freq": 2,
+    "words": {
+     "ね": {
+      "ko_pron": "네",
+      "meaning": "자다 (ねます에서 ます를 뗀 모양)",
+      "base": "ねる"
+     }
+    }
+   },
+   {
+    "text": "あそび",
+    "kanji_text": "遊びたいです",
+    "ko_pron": "아소비",
+    "meaning": "놀고 싶어요",
+    "freq": 3,
+    "words": {
+     "あそび": {
+      "ko_pron": "아소비",
+      "meaning": "놀다 (あそびます에서 ます를 뗀 모양)",
+      "base": "あそぶ"
+     }
+    }
+   },
+   {
+    "text": "かえり",
+    "kanji_text": "帰りたいです",
+    "ko_pron": "카에리",
+    "meaning": "집에 가고 싶어요",
+    "freq": 2,
+    "words": {
+     "かえり": {
+      "ko_pron": "카에리",
+      "meaning": "돌아가다 (かえります에서 ます를 뗀 모양)",
+      "base": "かえる"
+     }
+    }
+   },
+   {
+    "text": "よみ",
+    "kanji_text": "読みたいです",
+    "ko_pron": "요미",
+    "meaning": "읽고 싶어요",
+    "freq": 2,
+    "words": {
+     "よみ": {
+      "ko_pron": "요미",
+      "meaning": "읽다 (よみます에서 ます를 뗀 모양)",
+      "base": "よむ"
+     }
+    }
+   },
+   {
+    "text": "かい",
+    "kanji_text": "買いたいです",
+    "ko_pron": "카이",
+    "meaning": "사고 싶어요",
+    "freq": 2,
+    "words": {
+     "かい": {
+      "ko_pron": "카이",
+      "meaning": "사다 (かいます에서 ます를 뗀 모양)",
+      "base": "かう"
+     }
+    }
+   },
+   {
+    "text": "み",
+    "kanji_text": "見たいです",
+    "ko_pron": "미",
+    "meaning": "보고 싶어요",
+    "freq": 2,
+    "words": {
+     "み": {
+      "ko_pron": "미",
+      "meaning": "보다 (みます에서 ます를 뗀 모양)",
+      "base": "みる"
+     }
+    }
+   },
+   {
+    "text": "はなし",
+    "kanji_text": "話したいです",
+    "ko_pron": "하나시",
+    "meaning": "이야기하고 싶어요",
+    "freq": 1,
+    "words": {
+     "はなし": {
+      "ko_pron": "하나시",
+      "meaning": "이야기하다 (はなします에서 ます를 뗀 모양)",
+      "base": "はなす"
+     }
+    }
+   },
+   {
+    "text": "およぎ",
+    "kanji_text": "泳ぎたいです",
+    "ko_pron": "오요기",
+    "meaning": "수영하고 싶어요",
+    "freq": 1,
+    "words": {
+     "およぎ": {
+      "ko_pron": "오요기",
+      "meaning": "헤엄치다 (およぎます에서 ます를 뗀 모양)",
+      "base": "およぐ"
+     }
+    }
+   },
+   {
+    "text": "つくり",
+    "kanji_text": "作りたいです",
+    "ko_pron": "츠쿠리",
+    "meaning": "만들고 싶어요",
+    "freq": 1,
+    "words": {
+     "つくり": {
+      "ko_pron": "츠쿠리",
+      "meaning": "만들다 (つくります에서 ます를 뗀 모양)",
+      "base": "つくる"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "group": "마음 말하기",
+  "pattern": "___が すきです",
+  "seg": "___/が すき/です",
+  "ko_pron": "___가 스키데스",
+  "meaning": "~를 좋아해요",
+  "freq": 3,
+  "tip": "좋아하는 것 + が すきです. 한국어로는 '~를'이지만 일본어는 が.",
+  "words": {},
+  "fills": [
+   {
+    "text": "いぬ",
+    "kanji_text": "犬が好きです",
+    "ko_pron": "이누",
+    "meaning": "개를 좋아해요",
+    "freq": 3
+   },
+   {
+    "text": "ねこ",
+    "kanji_text": "猫が好きです",
+    "ko_pron": "네코",
+    "meaning": "고양이를 좋아해요",
+    "freq": 3
+   },
+   {
+    "text": "りんご",
+    "kanji_text": "りんごが好きです",
+    "ko_pron": "린고",
+    "meaning": "사과를 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "パン",
+    "kanji_text": "パンが好きです",
+    "ko_pron": "판",
+    "meaning": "빵을 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "サッカー",
+    "kanji_text": "サッカーが好きです",
+    "ko_pron": "삿카-",
+    "meaning": "축구를 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "おかあさん",
+    "kanji_text": "お母さんが好きです",
+    "ko_pron": "오카-산",
+    "meaning": "엄마를 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "えほん",
+    "kanji_text": "絵本が好きです",
+    "ko_pron": "에혼",
+    "meaning": "그림책을 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "あか",
+    "kanji_text": "赤が好きです",
+    "ko_pron": "아카",
+    "meaning": "빨간색을 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "なつ",
+    "kanji_text": "夏が好きです",
+    "ko_pron": "나츠",
+    "meaning": "여름을 좋아해요",
+    "freq": 1
+   },
+   {
+    "text": "ジュース",
+    "kanji_text": "ジュースが好きです",
+    "ko_pron": "주-스",
+    "meaning": "주스를 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "おえかき",
+    "kanji_text": "お絵かきが好きです",
+    "ko_pron": "오에카키",
+    "meaning": "그림 그리기를 좋아해요",
+    "freq": 2
+   },
+   {
+    "text": "うた",
+    "kanji_text": "歌が好きです",
+    "ko_pron": "우타",
+    "meaning": "노래를 좋아해요",
+    "freq": 2
+   }
+  ]
+ },
+ {
+  "group": "마음 말하기",
+  "pattern": "___が ほしいです",
+  "seg": "___/が ほしい/です",
+  "ko_pron": "___가 호시-데스",
+  "meaning": "~를 갖고 싶어요",
+  "freq": 2,
+  "tip": "가게에서 달라고 할 땐 ___を ください가 자연스러워요.",
+  "words": {},
+  "fills": [
+   {
+    "text": "みず",
+    "kanji_text": "水が欲しいです",
+    "ko_pron": "미즈",
+    "meaning": "물을 원해요",
+    "freq": 2
+   },
+   {
+    "text": "あたらしい くつ",
+    "kanji_text": "新しい靴が欲しいです",
+    "ko_pron": "아타라시- 쿠츠",
+    "meaning": "새 신발을 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "おかし",
+    "kanji_text": "お菓子が欲しいです",
+    "ko_pron": "오카시",
+    "meaning": "과자를 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "ジュース",
+    "kanji_text": "ジュースが欲しいです",
+    "ko_pron": "주-스",
+    "meaning": "주스를 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "ぼうし",
+    "kanji_text": "帽子が欲しいです",
+    "ko_pron": "보-시",
+    "meaning": "모자를 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "いぬ",
+    "kanji_text": "犬が欲しいです",
+    "ko_pron": "이누",
+    "meaning": "강아지를 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "ともだち",
+    "kanji_text": "友達が欲しいです",
+    "ko_pron": "토모다치",
+    "meaning": "친구가 있으면 좋겠어요",
+    "freq": 1
+   },
+   {
+    "text": "かばん",
+    "kanji_text": "かばんが欲しいです",
+    "ko_pron": "카반",
+    "meaning": "가방을 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "じてんしゃ",
+    "kanji_text": "自転車が欲しいです",
+    "ko_pron": "지텐샤",
+    "meaning": "자전거를 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "おもちゃ",
+    "kanji_text": "おもちゃが欲しいです",
+    "ko_pron": "오모차",
+    "meaning": "장난감을 갖고 싶어요",
+    "freq": 2
+   },
+   {
+    "text": "あかい ボール",
+    "kanji_text": "赤いボールが欲しいです",
+    "ko_pron": "아카이 보-루",
+    "meaning": "빨간 공을 갖고 싶어요",
+    "freq": 1
+   },
+   {
+    "text": "もっと じかん",
+    "kanji_text": "もっと時間が欲しいです",
+    "ko_pron": "못토 지칸",
+    "meaning": "시간이 더 있으면 좋겠어요",
+    "freq": 1
+   }
+  ]
+ },
+ {
+  "group": "함께하기·소개",
+  "pattern": "___ませんか",
+  "seg": "___/ませんか",
+  "ko_pron": "___마센카?",
+  "meaning": "같이 ~할래요?",
+  "freq": 2,
+  "tip": "빈칸에 ます를 뗀 모양 (いきます → いき)",
+  "tip_ids": ["masu-stem"],
+  "words": {
+   "ませんか": {
+    "ko_pron": "마센카",
+    "meaning": "~하지 않을래요? (같이 하자고 권할 때)"
+   }
+  },
+  "fills": [
+   {
+    "text": "いき",
+    "kanji_text": "行きませんか",
+    "ko_pron": "이키",
+    "meaning": "같이 갈래요?",
+    "freq": 2,
+    "words": {
+     "いき": {
+      "ko_pron": "이키",
+      "meaning": "가다 (いきます에서 ます를 뗀 모양)",
+      "base": "いく"
+     }
+    }
+   },
+   {
+    "text": "あそび",
+    "kanji_text": "遊びませんか",
+    "ko_pron": "아소비",
+    "meaning": "같이 놀래요?",
+    "freq": 2,
+    "words": {
+     "あそび": {
+      "ko_pron": "아소비",
+      "meaning": "놀다 (あそびます에서 ます를 뗀 모양)",
+      "base": "あそぶ"
+     }
+    }
+   },
+   {
+    "text": "たべ",
+    "kanji_text": "食べませんか",
+    "ko_pron": "타베",
+    "meaning": "같이 먹을래요?",
+    "freq": 2,
+    "words": {
+     "たべ": {
+      "ko_pron": "타베",
+      "meaning": "먹다 (たべます에서 ます를 뗀 모양)",
+      "base": "たべる"
+     }
+    }
+   },
+   {
+    "text": "のみ",
+    "kanji_text": "飲みませんか",
+    "ko_pron": "노미",
+    "meaning": "같이 마실래요?",
+    "freq": 1,
+    "words": {
+     "のみ": {
+      "ko_pron": "노미",
+      "meaning": "마시다 (のみます에서 ます를 뗀 모양)",
+      "base": "のむ"
+     }
+    }
+   },
+   {
+    "text": "み",
+    "kanji_text": "見ませんか",
+    "ko_pron": "미",
+    "meaning": "같이 볼래요?",
+    "freq": 2,
+    "words": {
+     "み": {
+      "ko_pron": "미",
+      "meaning": "보다 (みます에서 ます를 뗀 모양)",
+      "base": "みる"
+     }
+    }
+   },
+   {
+    "text": "かえり",
+    "kanji_text": "帰りませんか",
+    "ko_pron": "카에리",
+    "meaning": "같이 돌아갈래요?",
+    "freq": 1,
+    "words": {
+     "かえり": {
+      "ko_pron": "카에리",
+      "meaning": "돌아가다 (かえります에서 ます를 뗀 모양)",
+      "base": "かえる"
+     }
+    }
+   },
+   {
+    "text": "はなし",
+    "kanji_text": "話しませんか",
+    "ko_pron": "하나시",
+    "meaning": "이야기할래요?",
+    "freq": 1,
+    "words": {
+     "はなし": {
+      "ko_pron": "하나시",
+      "meaning": "이야기하다 (はなします에서 ます를 뗀 모양)",
+      "base": "はなす"
+     }
+    }
+   },
+   {
+    "text": "つくり",
+    "kanji_text": "作りませんか",
+    "ko_pron": "츠쿠리",
+    "meaning": "같이 만들래요?",
+    "freq": 1,
+    "words": {
+     "つくり": {
+      "ko_pron": "츠쿠리",
+      "meaning": "만들다 (つくります에서 ます를 뗀 모양)",
+      "base": "つくる"
+     }
+    }
+   },
+   {
+    "text": "およぎ",
+    "kanji_text": "泳ぎませんか",
+    "ko_pron": "오요기",
+    "meaning": "같이 수영할래요?",
+    "freq": 1,
+    "words": {
+     "およぎ": {
+      "ko_pron": "오요기",
+      "meaning": "헤엄치다 (およぎます에서 ます를 뗀 모양)",
+      "base": "およぐ"
+     }
+    }
+   },
+   {
+    "text": "すわり",
+    "kanji_text": "座りませんか",
+    "ko_pron": "스와리",
+    "meaning": "앉을래요?",
+    "freq": 1,
+    "words": {
+     "すわり": {
+      "ko_pron": "스와리",
+      "meaning": "앉다 (すわります에서 ます를 뗀 모양)",
+      "base": "すわる"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "group": "함께하기·소개",
+  "pattern": "___ましょう",
+  "seg": "___/ましょう",
+  "ko_pron": "___마쇼-",
+  "meaning": "~해요, ~합시다",
+  "freq": 3,
+  "tip": "빈칸에 ます를 뗀 모양 (たべます → たべ)",
+  "tip_ids": ["masu-stem"],
+  "words": {
+   "ましょう": {
+    "ko_pron": "마쇼-",
+    "meaning": "~합시다, ~해요"
+   }
+  },
+  "fills": [
+   {
+    "text": "いき",
+    "kanji_text": "行きましょう",
+    "ko_pron": "이키",
+    "meaning": "가요",
+    "freq": 3,
+    "words": {
+     "いき": {
+      "ko_pron": "이키",
+      "meaning": "가다 (いきます에서 ます를 뗀 모양)",
+      "base": "いく"
+     }
+    }
+   },
+   {
+    "text": "たべ",
+    "kanji_text": "食べましょう",
+    "ko_pron": "타베",
+    "meaning": "먹어요",
+    "freq": 3,
+    "words": {
+     "たべ": {
+      "ko_pron": "타베",
+      "meaning": "먹다 (たべます에서 ます를 뗀 모양)",
+      "base": "たべる"
+     }
+    }
+   },
+   {
+    "text": "あそび",
+    "kanji_text": "遊びましょう",
+    "ko_pron": "아소비",
+    "meaning": "놀아요",
+    "freq": 2,
+    "words": {
+     "あそび": {
+      "ko_pron": "아소비",
+      "meaning": "놀다 (あそびます에서 ます를 뗀 모양)",
+      "base": "あそぶ"
+     }
+    }
+   },
+   {
+    "text": "かえり",
+    "kanji_text": "帰りましょう",
+    "ko_pron": "카에리",
+    "meaning": "집에 가요",
+    "freq": 2,
+    "words": {
+     "かえり": {
+      "ko_pron": "카에리",
+      "meaning": "돌아가다 (かえります에서 ます를 뗀 모양)",
+      "base": "かえる"
+     }
+    }
+   },
+   {
+    "text": "まち",
+    "kanji_text": "待ちましょう",
+    "ko_pron": "마치",
+    "meaning": "기다려요",
+    "freq": 2,
+    "words": {
+     "まち": {
+      "ko_pron": "마치",
+      "meaning": "기다리다 (まちます에서 ます를 뗀 모양)",
+      "base": "まつ"
+     }
+    }
+   },
+   {
+    "text": "み",
+    "kanji_text": "見ましょう",
+    "ko_pron": "미",
+    "meaning": "봐요",
+    "freq": 2,
+    "words": {
+     "み": {
+      "ko_pron": "미",
+      "meaning": "보다 (みます에서 ます를 뗀 모양)",
+      "base": "みる"
+     }
+    }
+   },
+   {
+    "text": "のみ",
+    "kanji_text": "飲みましょう",
+    "ko_pron": "노미",
+    "meaning": "마셔요",
+    "freq": 2,
+    "words": {
+     "のみ": {
+      "ko_pron": "노미",
+      "meaning": "마시다 (のみます에서 ます를 뗀 모양)",
+      "base": "のむ"
+     }
+    }
+   },
+   {
+    "text": "つくり",
+    "kanji_text": "作りましょう",
+    "ko_pron": "츠쿠리",
+    "meaning": "만들어요",
+    "freq": 2,
+    "words": {
+     "つくり": {
+      "ko_pron": "츠쿠리",
+      "meaning": "만들다 (つくります에서 ます를 뗀 모양)",
+      "base": "つくる"
+     }
+    }
+   },
+   {
+    "text": "すわり",
+    "kanji_text": "座りましょう",
+    "ko_pron": "스와리",
+    "meaning": "앉아요",
+    "freq": 2,
+    "words": {
+     "すわり": {
+      "ko_pron": "스와리",
+      "meaning": "앉다 (すわります에서 ます를 뗀 모양)",
+      "base": "すわる"
+     }
+    }
+   },
+   {
+    "text": "ね",
+    "kanji_text": "寝ましょう",
+    "ko_pron": "네",
+    "meaning": "자요",
+    "freq": 2,
+    "words": {
+     "ね": {
+      "ko_pron": "네",
+      "meaning": "자다 (ねます에서 ます를 뗀 모양)",
+      "base": "ねる"
+     }
+    }
+   },
+   {
+    "text": "かい",
+    "kanji_text": "買いましょう",
+    "ko_pron": "카이",
+    "meaning": "사요",
+    "freq": 1,
+    "words": {
+     "かい": {
+      "ko_pron": "카이",
+      "meaning": "사다 (かいます에서 ます를 뗀 모양)",
+      "base": "かう"
+     }
+    }
+   },
+   {
+    "text": "はなし",
+    "kanji_text": "話しましょう",
+    "ko_pron": "하나시",
+    "meaning": "이야기해요",
+    "freq": 1,
+    "words": {
+     "はなし": {
+      "ko_pron": "하나시",
+      "meaning": "이야기하다 (はなします에서 ます를 뗀 모양)",
+      "base": "はなす"
+     }
+    }
+   }
+  ]
+ },
+ {
+  "group": "함께하기·소개",
+  "pattern": "___から きました",
+  "seg": "___/から きました",
+  "ko_pron": "___카라 키마시타",
+  "meaning": "~에서 왔어요",
+  "freq": 2,
+  "tip": "어디에서 왔는지 말할 때.",
+  "words": {},
+  "fills": [
+   {
+    "text": "かんこく",
+    "kanji_text": "韓国から来ました",
+    "ko_pron": "칸코쿠",
+    "meaning": "한국에서 왔어요",
+    "freq": 2
+   },
+   {
+    "text": "ソウル",
+    "kanji_text": "ソウルから来ました",
+    "ko_pron": "소우루",
+    "meaning": "서울에서 왔어요",
+    "freq": 2
+   },
+   {
+    "text": "にほん",
+    "kanji_text": "日本から来ました",
+    "ko_pron": "니혼",
+    "meaning": "일본에서 왔어요",
+    "freq": 1
+   },
+   {
+    "text": "アメリカ",
+    "kanji_text": "アメリカから来ました",
+    "ko_pron": "아메리카",
+    "meaning": "미국에서 왔어요",
+    "freq": 1
+   },
+   {
+    "text": "とうきょう",
+    "kanji_text": "東京から来ました",
+    "ko_pron": "토-쿄-",
+    "meaning": "도쿄에서 왔어요",
+    "freq": 1
+   },
+   {
+    "text": "おおさか",
+    "kanji_text": "大阪から来ました",
+    "ko_pron": "오-사카",
+    "meaning": "오사카에서 왔어요",
+    "freq": 1
+   },
+   {
+    "text": "がっこう",
+    "kanji_text": "学校から来ました",
+    "ko_pron": "갓코-",
+    "meaning": "학교에서 왔어요",
+    "freq": 2
+   },
+   {
+    "text": "こうえん",
+    "kanji_text": "公園から来ました",
+    "ko_pron": "코-엔",
+    "meaning": "공원에서 왔어요",
+    "freq": 1
+   },
+   {
+    "text": "プサン",
+    "kanji_text": "プサンから来ました",
+    "ko_pron": "푸산",
+    "meaning": "부산에서 왔어요",
+    "freq": 1
+   },
+   {
+    "text": "となりの まち",
+    "seg": "となり/の まち",
+    "kanji_text": "隣の町から来ました",
+    "ko_pron": "토나리노 마치",
+    "meaning": "이웃 마을에서 왔어요",
+    "freq": 1
+   }
+  ]
+ }
+]

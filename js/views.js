@@ -494,7 +494,7 @@ async function resolveStar(lang, key) {
     const p = data.find(x => x.pattern === category);
     const f = p && p.fills.find(x => x.text === text);
     return f ? { kind: "sentence", src: `${sec.name} · ${p.pattern}`, x: { text: p.pattern.replace("___", f.text),
-      ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, pattern: p, fill: f } } : null;
+      ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, kanji_text: f.kanji_text, pattern: p, fill: f } } : null;
   }
   if (sec.type === "situations") {
     const s = data.find(x => x.scene === category);
@@ -594,7 +594,7 @@ async function viewPatternList(lang, sec) {
   try { cmp = await loadData(lang, "pattern_compare"); } catch {}
   const groups = [...new Set(data.map(p => p.group))];
   app.innerHTML = `
-    <p class="lead">틀 하나에 말을 바꿔 넣으며 반복해요.</p>
+    <p class="lead">틀 하나에 말을 바꿔 넣으며 반복해요.${lang === "ja" ? " 일본어는 한국어와 말 순서가 같아서 빈칸(___)이 앞에 와요." : ""}</p>
     ${groups.map(g => `
       <h2 class="group">${esc(g)}</h2>
       <div class="list">
@@ -647,7 +647,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
         <div class="tip-panel" id="tipPanel" ${tipOpen ? "" : "hidden"}>${tips.map((t, k) => tipHTML(lang, t, k, k === tips.findIndex(x => !x.see))).join("")}</div>` : ""}
       <article class="card" id="card">
         ${starButton(starKey(lang, sec.id, p.pattern, f.text))}
-        <p class="sentence" lang="${lang}">${sentenceHTML(p.pattern, f.text)}</p>
+        <p class="sentence" lang="${lang}">${patternSentenceHTML(lang, p, f)}</p>
         <div class="${H()}">
           <p class="pron">${esc(pron)}</p>
           <p class="meaning">${esc(f.meaning)}</p>
@@ -673,10 +673,8 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
   document.getElementById("prev").onclick = prev;
   document.getElementById("next").onclick = next;
   addSwipe(document.getElementById("card"), next, prev);
-  const pw = p.words || {}, fw = f.words || {};
-  bindWordGloss(lang, document.getElementById("card"),
-    el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], fwIdx);
-  bindSayTools(document.getElementById("saySentence"), lang, [sentence]);
+  bindPatternGloss(lang, document.getElementById("card"), p, () => f);
+  bindSayTools(document.getElementById("saySentence"), lang, [sentence, f.kanji_text]);
   bindStar(starKey(lang, sec.id, p.pattern, f.text));
   const panel = document.getElementById("tipPanel");
   if (panel) {
@@ -715,6 +713,28 @@ function sentenceHTML(pattern, fillText) {
     return out + esc(s.slice(pos, b));
   };
   return `${piece(0, fs)}<span class="fill">${piece(fs, fe)}</span>${piece(fe, s.length)}`;
+}
+// 패턴 문장 그리기·단어 뜻 (패턴 화면·헷갈린 것·수업이 같이 쓴다)
+// 일본어는 틀 seg("___/を ください")의 ___ 자리에 말 seg("わたし/の かばん")를 넣어 조각 단위로 그린다.
+// 뜻 찾기: 틀 자리 → 패턴 words → 공용·자동, 바꿔 넣는 말 자리 → 그 말 words → 패턴 words → 공용·자동 (validate.py check_ja_patterns와 같다)
+function patternSentenceHTML(lang, p, f) {
+  if (lang !== "ja") return sentenceHTML(p.pattern, f.text);
+  const [a, b] = (p.seg || p.pattern).split("___"), seen = {};
+  return `${segHTML(a, seen)}<span class="fill">${segHTML(f.seg || f.text, seen, true)}</span>${segHTML(b, seen)}`;
+}
+function patternGloss(lang, gi, p, f, el) {
+  const k = el.dataset.k, pw = p.words || {}, fw = el.dataset.f === "1" ? f.words || {} : {};
+  if (lang !== "ja") return fw[k] || pw[k];
+  return glossLookup(gi, { words: pw }, { words: fw }, k, el.dataset.n, el.dataset.mid === "1");
+}
+// fillOf(단어 요소) → 그 문장의 바꿔 넣는 말
+async function bindPatternGloss(lang, box, p, fillOf) {
+  const fwIdx = await loadFwIndex(lang);
+  let gi = null;
+  if (lang === "ja") try { gi = await loadGlossIndex(lang); } catch { return; }
+  const lookup = el => patternGloss(lang, gi, p, fillOf(el), el);
+  bindWordGloss(lang, box, lookup, fwIdx, gi ? { starOf: (el, g) => g.star || null } : {});
+  if (gi) box.querySelectorAll(".w").forEach(el => { if (lookup(el)?.form === "조사") el.classList.add("pt"); });
 }
 
 function closeGloss() { document.querySelectorAll(".gloss").forEach(g => g.remove()); }
@@ -856,13 +876,14 @@ function glossLookup(gi, scene, line, k, n, mid = false) {
   return g && g.base && !g.links && gi.verbLinks[g.base] ? { ...g, links: gi.verbLinks[g.base] } : g;
 }
 // 일본어 회화 문장: seg대로 조각마다 누를 수 있게 (띄어쓰기·문장부호는 그대로)
-function segHTML(seg) {
-  const seen = {};
+// seen: 여러 조각으로 나눠 그릴 때(패턴 틀·말) 같은 단어 번호(@n)를 이어 센다. inFill: 패턴의 바꿔 넣는 말 자리(data-f)
+function segHTML(seg, seen = {}, inFill = false) {
   return String(seg).split(/([\s、。？！]+)/).map(part => {
     if (!part || JA_SEP.test(part) && part.replace(JA_SEP, "") === "") return esc(part);
     return part.split("/").map((u, i) => {
+      if (!u) return "";                                     // "___/を"처럼 / 앞이 비면 건너뛴다
       seen[u] = (seen[u] || 0) + 1;
-      return `<span class="w" role="button" tabindex="0" data-k="${esc(u)}" data-n="${seen[u]}" data-mid="${i > 0 ? 1 : 0}" data-word="${esc(u)}">${esc(u)}</span>`;
+      return `<span class="w" role="button" tabindex="0" data-k="${esc(u)}" data-n="${seen[u]}" data-mid="${i > 0 ? 1 : 0}" data-f="${inFill ? 1 : 0}" data-word="${esc(u)}">${esc(u)}</span>`;
     }).join("");
   }).join("");
 }
@@ -1682,7 +1703,7 @@ function sentenceCardHTML(lang, x, key) {
   return `
       <article class="card" id="card">
         ${key ? starButton(key) : ""}
-        <p class="sentence" lang="${lang}">${x.pattern ? sentenceHTML(x.pattern.pattern, x.fill.text) : markParticle(x.text)}</p>
+        <p class="sentence" lang="${lang}">${x.pattern ? patternSentenceHTML(lang, x.pattern, x.fill) : markParticle(x.text)}</p>
         <div class="${H()}">
           <p class="pron">${esc(x.ko_pron)}</p>
           <p class="meaning">${esc(x.meaning)}</p>
@@ -1699,9 +1720,5 @@ async function bindSentenceCard(lang, x, key, next, prev) {
   addSwipe(document.getElementById("card"), next, prev);
   bindSayTools(document.getElementById("saySentence"), lang, [plain, x.kanji_text]);
   if (key) bindStar(key);
-  if (x.pattern) {
-    const pw = x.pattern.words || {}, fw = x.fill.words || {};
-    bindWordGloss(lang, document.getElementById("card"),
-      el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], await loadFwIndex(lang));
-  }
+  if (x.pattern) await bindPatternGloss(lang, document.getElementById("card"), x.pattern, () => x.fill);
 }

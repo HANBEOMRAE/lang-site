@@ -26,6 +26,7 @@ const LANGS = {
     sections: [
       { id: "words",      type: "cards",      name: "기초 단어",   desc: "주제별 단어 카드", ready: true },
       { id: "particles",  type: "particles",  unit: "조사", name: "조사",       desc: "は·の·も → を·に·で·へ → と·が, 헷갈리는 조사 비교", ready: true },
+      { id: "patterns",   type: "patterns",   name: "문형",       desc: "___を ください처럼 틀에 말 바꿔 넣기", ready: true },
       { id: "verbs",      type: "conjugation", unit: "동사", name: "동사 변형",  desc: "1·2·3형 × ます·て·た·ない·たい형", ready: true },
       { id: "situations", type: "situations", name: "상황별 회화", desc: "공항·호텔·식당·교통·카페·병원 등 12개 장면", ready: true },
       { id: "pairs",      type: "pairs",      name: "발음 연습",   desc: "장음 · っ · か/が · ざ/じゃ 헷갈리는 짝", ready: true }

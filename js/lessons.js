@@ -293,7 +293,7 @@ function lessonCore(ctx, les) {
       if (!p) return null;
       const fills = (item.fills || p.fills.map(f => f.text)).map(t => p.fills.find(f => f.text === t)).filter(Boolean);
       return { kind, p, fills, hash: `#/${lang}/${ctx.pat.s.id}/${ctx.pat.d.indexOf(p)}/0`,
-               rows: fills.map(f => ({ text: p.pattern.replace("___", f.text), ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning,
+               rows: fills.map(f => ({ text: p.pattern.replace("___", f.text), ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, kanji_text: f.kanji_text,
                                        star: starKey(lang, ctx.pat.s.id, p.pattern, f.text), f })) };
     }
     if (kind === "ph" && ctx.sit) {
@@ -488,7 +488,7 @@ function lessonCoreHTML(lang, c, ci) {
       <p class="frame" lang="${lang}">${esc(before)}<span class="slot">?</span>${esc(after)}${c.p.tip ? `<small>${esc(c.p.tip)}</small>` : ""}</p>
       <div class="list phrase-list">${c.rows.map((r, k) => `
         <button class="row phrase" data-ci="${ci}" data-ri="${k}">
-          <span class="label"><strong lang="${lang}">${sentenceHTML(c.p.pattern, r.f.text)}</strong><small class="${H()}">${esc(r.ko_pron)} · ${esc(r.meaning)}</small></span>
+          <span class="label"><strong lang="${lang}">${patternSentenceHTML(lang, c.p, r.f)}</strong><small class="${H()}">${esc(r.ko_pron)} · ${esc(r.meaning)}</small></span>
           <span class="mini-speak" aria-hidden="true">🔊</span>
         </button>`).join("")}</div>
       <div class="chips related"><button class="chip" data-go="${c.hash}">패턴 영어에서 더 연습하기 →</button></div>
@@ -523,13 +523,7 @@ async function bindLessonCore(lang, core) {
       tts.speak(plainText(r.text), voice);
       attachInlineTools(b, lang, [r.text, r.kanji_text], false, r.star);
     }));
-    if (c.kind === "p") {
-      const pw = c.p.words || {};
-      bindWordGloss(lang, box.querySelector(".phrase-list"), el => {
-        const r = c.rows[el.closest("[data-ri]").dataset.ri], fw = r.f.words || {};
-        return el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k];
-      }, fwIdx);
-    }
+    if (c.kind === "p") bindPatternGloss(lang, box.querySelector(".phrase-list"), c.p, el => c.rows[el.closest("[data-ri]").dataset.ri].f);
     if (c.kind === "ph" && gi) bindWordGloss(lang, box.querySelector(".phrase-list"),
       el => glossLookup(gi, c.scene, c.rows[0].line, el.dataset.k, el.dataset.n, el.dataset.mid === "1"), fwIdx,
       { starOf: (el, g) => g.star || starKey(lang, "gw", c.scene.scene, el.dataset.k) });

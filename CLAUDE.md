@@ -81,6 +81,12 @@ python tools/build_preview.py   # dist/preview.html 한 파일 미리보기 (서
   (views.js `viewPattern`이 `bindWordGloss`에 넘기는 찾기 함수, validate.py `check_word_glosses`가 같은 규칙. 문장의 모든 단어에 뜻이 있어야 검사를 통과한다.)
 - 단어 키는 소문자. 문장부호는 떼고, I'm·don't·kids' 같은 말은 한 단어로 본다. `I'm ___ing`은 문장에 나오는 형태(eating)로 적는다.
 
+## 일본어 문형 (`data/ja/patterns.json`)
+
+- 영어 패턴과 같은 화면. 틀에 `seg`("___/を ください"), 바꿔 넣는 말에 `kanji_text`(문장 전체), 여러 조각이면 말에도 `seg`.
+- 문장 그리기·뜻 찾기는 views.js `patternSentenceHTML`·`patternGloss`(패턴 화면·헷갈린 것·수업이 같이 씀), 검사는 validate.py `check_ja_pattern_words`.
+- 동사가 바뀌는 자리는 말 `words`에 `base`(표에 있는 동사만)를 적는다. たい·ませんか·ましょう는 ます를 뗀 모양, ないで ください는 ない를 뗀 모양.
+
 ## 영어 작은 말 (`data/en/function_words.json`)과 "더 알아보기"
 
 - 예문은 `en/words.json`·`verbs.json`에 있는 기초 단어 위주로 쓰고, 쓴 단어(기본형)를 예문 `words`에 적는다.

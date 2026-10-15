@@ -260,6 +260,8 @@ def check_pattern_compare(data, name):
             sides.add(ex["side"])
             if f"[{prefixes[ex['side']]}]" not in ex.get("text", ""):
                 problems.append(f"{w}: 예문에 [{prefixes[ex['side']]}] 표시가 없어요")
+            if ja:
+                check_kanji_text(ex.get("text"), ex.get("kanji_text"), w)
         if sides != set(range(len(pair))):
             problems.append(f"{where}: 모든 틀에 예문이 있어야 해요")
         for k, q in enumerate(c.get("quiz", [])):
@@ -308,6 +310,10 @@ def tip_ids(lang):
 
 def check_patterns(data, name):
     known_tips = tip_ids(name.split("/")[0])
+    ja = name.startswith("ja/")
+    if ja:
+        ja_auto, ja_parts, ja_verbs = ja_auto_index()
+        ja_idx = (glossary("ja"), ja_auto, ja_parts, ja_verbs)
     for i, p in enumerate(data):
         where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
         need(p, ["group", "pattern", "ko_pron", "meaning"], where)
@@ -328,9 +334,15 @@ def check_patterns(data, name):
         if "___" not in p.get("ko_pron", ""):
             problems.append(f"{where}: ko_pron에 빈칸 ___ 이 없어요")
         fills = p.get("fills", [])
-        check_word_glosses(p, where)
-        if len(fills) not in FILL_COUNTS:
-            problems.append(f"{where}: 바꿔 넣을 말이 {len(fills)}개예요 ({' 또는 '.join(map(str, FILL_COUNTS))}개)")
+        if ja:
+            check_ja_pattern_words(p, where, *ja_idx)
+            if not JA_FILL_COUNTS[0] <= len(fills) <= JA_FILL_COUNTS[1]:
+                problems.append(f"{where}: 바꿔 넣을 말이 {len(fills)}개예요 ({JA_FILL_COUNTS[0]}~{JA_FILL_COUNTS[1]}개)")
+        else:
+            check_word_glosses(p, where)
+            if len(fills) not in FILL_COUNTS:
+                problems.append(f"{where}: 바꿔 넣을 말이 {len(fills)}개예요 ({' 또는 '.join(map(str, FILL_COUNTS))}개)")
+        asks = p.get("ko_pron" if ja else "pattern", "").endswith("?")   # 일본어 틀은 ?가 없어서 ko_pron으로 본다
         seen = set()
         for j, f in enumerate(fills):
             need(f, BASIC, f"{where} > 바꿔 넣을 말 {j + 1}번")
@@ -338,7 +350,7 @@ def check_patterns(data, name):
             if key in seen:
                 problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번: '{f.get('text')}'가 겹쳐요")
             seen.add(key)
-            if p.get("pattern", "").endswith("?") != f.get("meaning", "").endswith("?"):
+            if asks != f.get("meaning", "").endswith("?"):
                 problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번: 묻는 틀이면 뜻도 ?로 끝나요")
 
 WORD = re.compile(r"[A-Za-z0-9][A-Za-z0-9'\-]*")
@@ -369,8 +381,38 @@ def check_word_glosses(p, where):
             elif not str(g.get("meaning", "")).strip() or not str(g.get("ko_pron", "")).strip():
                 problems.append(f"{where} > 바꿔 넣을 말 {j + 1}번 ({text}): '{m.group()}'의 ko_pron·meaning이 비어 있어요")
 
-# 패턴마다 바꿔 넣을 말 개수
+def check_ja_pattern_words(p, where, gl, auto, particles, verb_texts):
+    """일본어 문형: 틀 seg("___/を ください")의 ___ 자리에 말 seg(없으면 text)를 넣은 문장의 모든 조각에 뜻이 있는지,
+    kanji_text, 동사 줄기의 base. 뜻 찾기는 views.js patternGloss와 같다:
+    틀 자리 → 패턴 words → glossary → (조사) → 자동, 바꿔 넣는 말 자리 → 그 말 words → 패턴 words → glossary → 자동."""
+    seg, pw = str(p.get("seg") or ""), p.get("words") or {}
+    if seg.count("___") != 1 or seg.replace("/", "") != p.get("pattern"):
+        problems.append(f"{where}: seg(틀 나누기)는 ___ 하나를 두고 /를 빼면 pattern과 같아야 해요 — '{seg}'")
+        return
+    for k, v in pw.items(): check_gloss_entry(v, f"{where} > words '{k}'")
+    before, after = seg.split("___")
+    for j, f in enumerate(p.get("fills", [])):
+        w = f"{where} > 바꿔 넣을 말 {j + 1}번 ({f.get('text', '?')})"
+        fseg, fw = str(f.get("seg") or f.get("text", "")), f.get("words") or {}
+        if fseg.replace("/", "") != f.get("text"):
+            problems.append(f"{w}: seg에서 /를 빼면 text와 같아야 해요 — '{fseg}'")
+        for k, v in fw.items(): check_gloss_entry(v, f"{w} > words '{k}'")
+        check_kanji_text(p.get("pattern", "").replace("___", f.get("text", "")), f.get("kanji_text"), w)
+        seen = {}
+        for piece, in_fill in ((before, False), (fseg, True), (after, False)):
+            for u, mid in ja_units(piece):
+                if not u: continue                       # "___/を"의 / 앞
+                seen[u] = seen.get(u, 0) + 1
+                lw = fw if in_fill else {}
+                g = lw.get(f"{u}@{seen[u]}") or lw.get(u) or pw.get(u) or gl.get(u)
+                if not g and not (mid and u in particles) and u not in auto:
+                    problems.append(f"{w}: '{u}' 뜻이 없어요 ({'말 words' if in_fill else '패턴 words'}나 glossary.json에)")
+                if isinstance(g, dict) and g.get("base") and g["base"] not in verb_texts:
+                    problems.append(f"{w}: '{u}'의 base '{g['base']}'가 동사 변형 표에 없어요")
+
+# 패턴마다 바꿔 넣을 말 개수 (일본어 문형은 10~12)
 FILL_COUNTS = (12,)
+JA_FILL_COUNTS = (10, 12)
 
 TIP_BODY = (3, 5)       # 설명 줄 수 ({lang, text} 조각 줄, check_chunks)
 
@@ -989,6 +1031,9 @@ def lesson_core_texts(src, item):
         fills = item.get("fills") or [f.get("text") for f in p.get("fills", [])]
         have = {f.get("text") for f in p.get("fills", [])}
         if any(f not in have for f in fills): return None
+        if src["lang"] == "ja":                            # 일본어는 조각(seg)으로
+            segs = {f.get("text"): f.get("seg") or f.get("text") for f in p.get("fills", [])}
+            return [str(p.get("seg") or rest).replace("___", segs[f]) for f in fills]
         return [rest.replace("___", f) for f in fills]
     if kind == "ph" and "/" in rest:
         sc, _, text = rest.partition("/")
@@ -1099,7 +1144,7 @@ CHECKERS = {"words": check_cards, "verbs": check_cards, "particles": check_cards
             "glossary": check_glossary, "lessons": check_lessons}
 # 같은 파일 이름이라도 언어에 따라 형식이 다를 때 (core.js의 섹션 type과 맞춘다)
 CHECKERS_BY_LANG = {"ja/verbs": check_conjugation, "ja/words": check_ja_cards, "ja/particles": check_particles,
-                    "en/pattern_compare": check_pattern_compare, "en/tips": check_tips, "ja/tips": check_tips,
+                    "en/pattern_compare": check_pattern_compare, "ja/pattern_compare": check_pattern_compare, "en/tips": check_tips, "ja/tips": check_tips,
                     "en/function_words": check_function_words}
 # 검사기마다 기대하는 맨 바깥 모양
 SHAPES = {check_conjugation: dict, check_particles: dict, check_pattern_compare: dict, check_pairs: dict, check_tips: dict, check_glossary: dict, check_lessons: dict,
