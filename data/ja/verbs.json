@@ -569,6 +569,78 @@
         "tai":  { "text": "つくりたい", "ko_pron": "츠쿠리타이", "meaning": "만들고 싶다" }
       },
       "example": { "text": "ケーキを つくろう。", "kanji_text": "ケーキを作ろう。", "ko_pron": "케-키오 츠쿠로-.", "meaning": "케이크 만들자." }
+    },
+    {
+      "id": "sawaru",
+      "group": "g1",
+      "text": "さわる",
+      "kanji": "触る",
+      "ko_pron": "사와루",
+      "meaning": "만지다",
+      "freq": 2,
+      "note": "る로 끝나는 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "さわります", "ko_pron": "사와리마스", "meaning": "만집니다" },
+        "te":   { "text": "さわって", "ko_pron": "사왓테", "meaning": "만지고 / 만져서" },
+        "ta":   { "text": "さわった", "ko_pron": "사왓타", "meaning": "만졌다" },
+        "nai":  { "text": "さわらない", "ko_pron": "사와라나이", "meaning": "안 만진다" },
+        "tai":  { "text": "さわりたい", "ko_pron": "사와리타이", "meaning": "만지고 싶다" }
+      },
+      "example": { "text": "ねこに さわりたい。", "kanji_text": "猫に触りたい。", "ko_pron": "네코니 사와리타이.", "meaning": "고양이 만지고 싶어." }
+    },
+    {
+      "id": "hashiru",
+      "group": "g1",
+      "text": "はしる",
+      "kanji": "走る",
+      "ko_pron": "하시루",
+      "meaning": "달리다, 뛰다",
+      "freq": 2,
+      "note": "しる로 끝나도 1형: て형은 って",
+      "forms": {
+        "masu": { "text": "はしります", "ko_pron": "하시리마스", "meaning": "달립니다" },
+        "te":   { "text": "はしって", "ko_pron": "하싯테", "meaning": "달리고 / 달려서" },
+        "ta":   { "text": "はしった", "ko_pron": "하싯타", "meaning": "달렸다" },
+        "nai":  { "text": "はしらない", "ko_pron": "하시라나이", "meaning": "안 달린다" },
+        "tai":  { "text": "はしりたい", "ko_pron": "하시리타이", "meaning": "달리고 싶다" }
+      },
+      "example": { "text": "こうえんで はしります。", "kanji_text": "公園で走ります。", "ko_pron": "코-엔데 하시리마스.", "meaning": "공원에서 달려요." }
+    },
+    {
+      "id": "naku",
+      "group": "g1",
+      "text": "なく",
+      "kanji": "泣く",
+      "ko_pron": "나쿠",
+      "meaning": "울다",
+      "freq": 2,
+      "note": "く로 끝나는 1형: て형은 いて",
+      "forms": {
+        "masu": { "text": "なきます", "ko_pron": "나키마스", "meaning": "웁니다" },
+        "te":   { "text": "ないて", "ko_pron": "나이테", "meaning": "울고 / 울어서" },
+        "ta":   { "text": "ないた", "ko_pron": "나이타", "meaning": "울었다" },
+        "nai":  { "text": "なかない", "ko_pron": "나카나이", "meaning": "안 운다" },
+        "tai":  { "text": "なきたい", "ko_pron": "나키타이", "meaning": "울고 싶다" }
+      },
+      "example": { "text": "なかないで。", "kanji_text": "泣かないで。", "ko_pron": "나카나이데.", "meaning": "울지 마." }
+    },
+    {
+      "id": "wasureru",
+      "group": "g2",
+      "text": "わすれる",
+      "kanji": "忘れる",
+      "ko_pron": "와스레루",
+      "meaning": "잊다, 깜빡하다",
+      "freq": 2,
+      "note": "2형: る를 떼고 붙이면 끝",
+      "forms": {
+        "masu": { "text": "わすれます", "ko_pron": "와스레마스", "meaning": "잊습니다" },
+        "te":   { "text": "わすれて", "ko_pron": "와스레테", "meaning": "잊고 / 잊어서" },
+        "ta":   { "text": "わすれた", "ko_pron": "와스레타", "meaning": "잊었다" },
+        "nai":  { "text": "わすれない", "ko_pron": "와스레나이", "meaning": "안 잊는다" },
+        "tai":  { "text": "わすれたい", "ko_pron": "와스레타이", "meaning": "잊고 싶다" }
+      },
+      "example": { "text": "かさを わすれました。", "kanji_text": "傘を忘れました。", "ko_pron": "카사오 와스레마시타.", "meaning": "우산을 깜빡했어요." }
     }
 
   ],
