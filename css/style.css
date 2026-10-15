@@ -115,7 +115,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outlin
 }
 .row.continue .em { color: var(--accent); font-size: 22px; }
 
-/* 헷갈린 단어 ☆ */
+/* 헷갈린 것 ☆ (단어·문장) */
+.star-tabs { margin: 0 0 12px; }
+.chip.star-chip.on { background: color-mix(in srgb, var(--speak) 30%, var(--surface)); border-color: var(--speak); color: var(--ink); }
 .card { position: relative; }
 .card:has(.star-btn) { padding-top: 56px; }   /* ☆(위 10px + 44px) 자리를 비워 큰 글자와 겹치지 않게 */
 .star-btn {

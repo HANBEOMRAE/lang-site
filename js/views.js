@@ -147,8 +147,9 @@ function viewLang(lang) {
     <div class="list">
       <button class="row star-row" data-go="#/${lang}/stars">
         <span class="em" aria-hidden="true">★</span>
-        <span class="label"><strong>헷갈린 단어</strong>
-          <small>☆ 표시한 카드 ${starList().filter(k => k.startsWith(`${lang}/`)).length}개</small></span>
+        <span class="label"><strong>헷갈린 것</strong>
+          <small>☆ 표시한 단어 ${starList().filter(k => k.startsWith(`${lang}/`) && !isSentenceKey(k)).length}개 ·
+            문장 ${starList().filter(k => k.startsWith(`${lang}/`) && isSentenceKey(k)).length}개</small></span>
       </button>
       ${L.sections.some(s => s.id === "pairs" && s.ready) ? `
       <button class="row weak-row" data-go="#/${lang}/pairs/weak">
@@ -211,7 +212,7 @@ async function viewCards(lang, sec, catIdx, itemIdx) {
   bindHideToggle(() => viewCards(lang, sec, catIdx, i));
 }
 
-// 단어 카드 한 장 (주제 카드·헷갈린 단어 모음이 함께 쓴다)
+// 단어 카드 한 장 (주제 카드·헷갈린 것·학습 길이 함께 쓴다)
 function cardHTML(lang, it, key) {
   return `
       <article class="card" id="card">
@@ -370,25 +371,37 @@ function speechNotice() {
     back.querySelector("#noticeOk").focus();
   });
 }
-// 목록(대화·핵심 문장·조사 예문)에서는 누른 문장 바로 아래에만 도구를 붙인다
-function attachInlineTools(afterEl, lang, answers, alignEnd = false) {
+// 목록(대화·핵심 문장·조사 예문)에서는 누른 문장 바로 아래에만 도구를 붙인다.
+// starKey가 있으면(회화 문장) 그 줄에 ☆ 헷갈려요 도 붙인다.
+function attachInlineTools(afterEl, lang, answers, alignEnd = false, starKeyOf = null) {
   speech.stop();
-  document.querySelectorAll(".say-tools.inline").forEach(t => t.remove());
+  document.querySelectorAll(".say-tools.inline, .inline-star").forEach(t => t.remove());
   recorder.clear();                          // 다른 문장으로 바꾸면 앞 문장 녹음은 지운다
-  if (!speech.supported() && !recorder.supported()) return;
+  const canSay = speech.supported() || recorder.supported();
+  if (!canSay && !starKeyOf) return;
   const wrap = document.createElement("div");
-  wrap.innerHTML = sayToolsHTML("sayInline", true, "따라 말하기");
+  wrap.innerHTML = canSay ? sayToolsHTML("sayInline", true, "따라 말하기")
+                          : `<div class="say-tools inline-star"></div>`;
   const box = wrap.firstElementChild;
   box.classList.add("inline");
   if (alignEnd) box.classList.add("end");
+  if (starKeyOf) {
+    const res = box.querySelector(".say-result");    // 도구 버튼들 옆, 인식 결과 줄 위
+    if (res) res.insertAdjacentHTML("beforebegin", starChipHTML(starKeyOf));
+    else box.insertAdjacentHTML("beforeend", starChipHTML(starKeyOf));
+  }
   afterEl.after(box);
-  bindSayTools(box, lang, answers);
+  if (canSay) bindSayTools(box, lang, answers);
+  if (starKeyOf) bindStar(starKeyOf, "starInline");
 }
 
-// ── 헷갈린 단어 ☆ ─────────────────────────────────
-// 카드 번호가 아니라 내용으로 저장한다: "언어/섹션/주제/단어" (동사 변형은 주제 자리에 "-").
-// 번호로 저장하면 단어를 추가할 때 다른 카드로 바뀐다. 주제까지 넣는 건 はな(코)·はな(꽃) 때문.
+// ── 헷갈린 것 ☆ (단어·문장) ─────────────────────────
+// 번호가 아니라 내용으로 저장한다: "언어/섹션/주제/항목". 번호로 저장하면 항목을 추가할 때 다른 것으로 바뀐다.
+//  단어: 카드 "언어/words/주제/단어", 동사 변형 "언어/verbs/-/동사" (주제까지 넣는 건 はな(코)·はな(꽃) 때문)
+//  문장: 패턴 "언어/patterns/틀/바꿔 넣는 말", 회화 "언어/situations/장면/문장"
 function starKey(lang, secId, category, text) { return `${lang}/${secId}/${category}/${text}`; }
+const SENTENCE_SECS = ["patterns", "situations"];
+const isSentenceKey = k => SENTENCE_SECS.includes(k.split("/")[1]);
 function starList() {
   const v = store.get("stars", []);
   return Array.isArray(v) ? v.filter(k => typeof k === "string") : [];
@@ -396,10 +409,15 @@ function starList() {
 function starButton(key) {
   const on = starList().includes(key);
   return `<button class="star-btn ${on ? "on" : ""}" id="starBtn" aria-pressed="${on}"
-    aria-label="헷갈린 단어로 표시">${on ? "★" : "☆"}</button>`;
+    aria-label="헷갈린 것으로 표시">${on ? "★" : "☆"}</button>`;
 }
-function bindStar(key) {
-  const b = document.getElementById("starBtn");
+// 문장 목록(대화·핵심 문장)에서 누른 문장 아래 도구 줄에 붙는 작은 ☆
+function starChipHTML(key) {
+  const on = starList().includes(key);
+  return `<button class="chip star-chip ${on ? "on" : ""}" id="starInline" aria-pressed="${on}" aria-label="헷갈린 것으로 표시">${on ? "★ 헷갈린 것" : "☆ 헷갈려요"}</button>`;
+}
+function bindStar(key, id = "starBtn") {
+  const b = document.getElementById(id);
   if (!b) return;
   b.onclick = e => {
     e.stopPropagation();
@@ -408,69 +426,101 @@ function bindStar(key) {
     store.set("stars", on ? [...list, key] : list.filter(k => k !== key));
     b.classList.toggle("on", on);
     b.setAttribute("aria-pressed", on);
-    b.textContent = on ? "★" : "☆";
-    toast(on ? "헷갈린 단어에 넣었어요" : "헷갈린 단어에서 뺐어요");
+    b.textContent = id === "starBtn" ? (on ? "★" : "☆") : (on ? "★ 헷갈린 것" : "☆ 헷갈려요");
+    toast(on ? "헷갈린 것에 넣었어요" : "헷갈린 것에서 뺐어요");
   };
 }
 
-// 일본어 동사 변형의 동사 하나를 단어 카드 모양으로 (헷갈린 단어·학습 길이 같이 쓴다)
+// 일본어 동사 변형의 동사 하나를 단어 카드 모양으로 (헷갈린 것·학습 길이 같이 쓴다)
 const verbCardItem = v => ({ text: v.text, kanji: v.kanji, ko_pron: v.ko_pron, meaning: v.meaning, note: v.note,
   example: v.example?.text, example_ko_pron: v.example?.ko_pron, example_kanji_text: v.example?.kanji_text, example_meaning: v.example?.meaning });
 
 // 모아 보기 화면에서 ★를 풀어도 지금 넘기던 순서는 그대로 둔다. 다른 화면으로 나가면 비운다(app.js).
 let starSnap = null;
 
-async function viewStars(lang, idx) {
+// 표시 하나를 실제 항목으로: { kind: "word", it, src } 또는 { kind: "sentence", x, src }. 찾을 수 없으면 null.
+async function resolveStar(lang, key) {
   const L = LANGS[lang];
-  setHeader("헷갈린 단어", `#/${lang}`);
+  const [, secId, category, ...rest] = key.split("/");
+  const text = rest.join("/");
+  const sec = L.sections.find(s => s.id === secId && s.ready);
+  if (!sec) return null;
+  let data;
+  try { data = await loadData(lang, sec.id); } catch { return null; }
+  if (sec.type === "cards") {
+    const cat = data.find(c => c.category === category);
+    const it = cat && cat.items.find(x => x.text === text);
+    return it ? { kind: "word", it, src: `${sec.name} · ${cat.category}` } : null;
+  }
+  if (sec.type === "conjugation") {
+    const v = data.verbs.find(x => x.text === text);
+    return v ? { kind: "word", it: verbCardItem(v), src: sec.name } : null;
+  }
+  if (sec.type === "patterns") {
+    const p = data.find(x => x.pattern === category);
+    const f = p && p.fills.find(x => x.text === text);
+    return f ? { kind: "sentence", src: `${sec.name} · ${p.pattern}`, x: { text: p.pattern.replace("___", f.text),
+      ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, pattern: p, fill: f } } : null;
+  }
+  if (sec.type === "situations") {
+    const s = data.find(x => x.scene === category);
+    const ln = s && [...s.dialogues.flatMap(d => d.lines), ...s.phrases].find(x => x.text === text);
+    return ln ? { kind: "sentence", src: `${sec.name} · ${s.scene}`, x: { text: ln.text, ko_pron: ln.ko_pron, meaning: ln.meaning, kanji_text: ln.kanji_text } } : null;
+  }
+  return null;
+}
+
+// 헷갈린 것: 단어 탭(#/언어/stars/3)과 문장 탭(#/언어/stars/s/0)
+async function viewStars(lang, tab, idx) {
+  setHeader("헷갈린 것", `#/${lang}`);
   if (!starSnap || starSnap.lang !== lang) {
     starSnap = { lang, keys: starList().filter(k => k.startsWith(`${lang}/`)) };
   }
-  // 표시를 실제 카드로 바꾼다. 찾을 수 없는 표시(주제 이름이 바뀌었거나 지워진 단어)는 따로 센다.
-  const cards = [], missing = [];
+  // 표시를 실제 항목으로 바꾼다. 찾을 수 없는 표시(주제 이름이 바뀌었거나 지워진 것)는 따로 센다.
+  const words = [], sents = [], missing = [];
   for (const key of starSnap.keys) {
-    const [, secId, category, ...rest] = key.split("/");
-    const text = rest.join("/");
-    const sec = L.sections.find(s => s.id === secId && s.ready);
-    let data = null, found = null;
-    if (sec) { try { data = await loadData(lang, sec.id); } catch {} }
-    if (data && sec.type === "cards") {
-      const cat = data.find(c => c.category === category);
-      const it = cat && cat.items.find(x => x.text === text);
-      if (it) found = { it, src: `${sec.name} · ${cat.category}` };
-    } else if (data && sec.type === "conjugation") {
-      const v = data.verbs.find(x => x.text === text);
-      if (v) found = { src: sec.name, it: verbCardItem(v) };
-    }
-    if (found) cards.push({ key, ...found }); else missing.push(key);
+    const r = await resolveStar(lang, key);
+    if (!r) missing.push(key);
+    else (r.kind === "word" ? words : sents).push({ key, ...r });
   }
+  const list = tab === "s" ? sents : words;
+  const base = tab === "s" ? `#/${lang}/stars/s` : `#/${lang}/stars`;
+  const tabs = `
+    <div class="chips star-tabs" role="tablist">
+      <button class="chip ${tab === "s" ? "" : "on"}" role="tab" aria-selected="${tab !== "s"}" data-go="#/${lang}/stars">단어 ${words.length}</button>
+      <button class="chip ${tab === "s" ? "on" : ""}" role="tab" aria-selected="${tab === "s"}" data-go="#/${lang}/stars/s/0">문장 ${sents.length}</button>
+    </div>`;
   const missingHTML = missing.length ? `
     <p class="lead missing">찾을 수 없는 표시 ${missing.length}개 · <button class="chip" id="dropMissing">지우기</button></p>` : "";
 
-  if (!cards.length) {
-    app.innerHTML = `${missingHTML}
-      <p class="lead">아직 ☆ 표시한 단어가 없어요.<br>단어 카드 오른쪽 위 ☆를 누르면 여기에 모여요.</p>`;
+  if (!list.length) {
+    app.innerHTML = `${tabs}${missingHTML}
+      <p class="lead">${tab === "s"
+        ? "아직 ☆ 표시한 문장이 없어요.<br>패턴 문장 카드의 ☆, 회화 문장을 눌렀을 때 나오는 ☆ 헷갈려요를 누르면 여기에 모여요."
+        : "아직 ☆ 표시한 단어가 없어요.<br>단어 카드 오른쪽 위 ☆를 누르면 여기에 모여요."}</p>`;
   } else {
-    const n = cards.length;
+    const n = list.length;
     const i = Math.min(Math.max(idx || 0, 0), n - 1);
-    const c = cards[i];
+    const c = list[i];
+    const go = j => { location.hash = `${base}/${(j + n) % n}`; };
+    const next = () => go(i === n - 1 ? 0 : i + 1), prev = () => { if (i > 0) go(i - 1); };
     app.innerHTML = `
       <div class="viewer">
-        ${missingHTML}
+        ${tabs}${missingHTML}
         <div class="tools">${progressBar(i, n)}${hideToggle()}</div>
         <p class="star-src">${esc(c.src)}</p>
-        ${cardHTML(lang, c.it, c.key)}
+        ${c.kind === "word" ? cardHTML(lang, c.it, c.key) : sentenceCardHTML(lang, c.x, c.key)}
         ${navHTML(i, n)}
       </div>`;
-    const go = j => { location.hash = `#/${lang}/stars/${(j + n) % n}`; };
-    bindCard(lang, c.it, c.key, () => go(i === n - 1 ? 0 : i + 1), () => { if (i > 0) go(i - 1); });
-    bindHideToggle(() => viewStars(lang, i));
+    if (c.kind === "word") bindCard(lang, c.it, c.key, next, prev);
+    else await bindSentenceCard(lang, c.x, c.key, next, prev);
+    bindHideToggle(() => viewStars(lang, tab, i));
   }
   const drop = document.getElementById("dropMissing");
   if (drop) drop.onclick = () => {
     store.set("stars", starList().filter(k => !missing.includes(k)));
     starSnap.keys = starSnap.keys.filter(k => !missing.includes(k));
-    viewStars(lang, idx);
+    viewStars(lang, tab, idx);
   };
 }
 
@@ -562,6 +612,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
         <button class="chip tip-toggle ${tipOpen ? "on" : ""}" id="tipToggle" aria-expanded="${tipOpen}" aria-controls="tipPanel">💡 알아두기</button>
         <div class="tip-panel" id="tipPanel" ${tipOpen ? "" : "hidden"}>${tips.map((t, k) => tipHTML(lang, t, k, k === tips.findIndex(x => !x.see))).join("")}</div>` : ""}
       <article class="card" id="card">
+        ${starButton(starKey(lang, sec.id, p.pattern, f.text))}
         <p class="sentence" lang="${lang}">${sentenceHTML(p.pattern, f.text)}</p>
         <div class="${H()}">
           <p class="pron">${esc(pron)}</p>
@@ -592,6 +643,7 @@ async function viewPattern(lang, sec, pIdx, fIdx, tipOpen = false) {
   bindWordGloss(lang, document.getElementById("card"),
     el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], fwIdx);
   bindSayTools(document.getElementById("saySentence"), lang, [sentence]);
+  bindStar(starKey(lang, sec.id, p.pattern, f.text));
   const panel = document.getElementById("tipPanel");
   if (panel) {
     const btn = document.getElementById("tipToggle");
@@ -879,7 +931,7 @@ async function viewScene(lang, sec, sIdx) {
     clearActive(); b.classList.add("active");
     const ln = s.dialogues[b.dataset.d].lines[b.dataset.k];
     tts.speak(ln.text, L.voice);
-    attachInlineTools(b, lang, [ln.text, ln.kanji_text], b.classList.contains("me"));
+    attachInlineTools(b, lang, [ln.text, ln.kanji_text], b.classList.contains("me"), starKey(lang, sec.id, s.scene, ln.text));
   }));
   app.querySelectorAll("[data-play]").forEach(b => b.addEventListener("click", () => {
     const di = Number(b.dataset.play);
@@ -891,7 +943,7 @@ async function viewScene(lang, sec, sIdx) {
   app.querySelectorAll("[data-ph]").forEach(b => b.addEventListener("click", () => {
     const ph = s.phrases[b.dataset.ph];
     tts.speak(ph.text, L.voice);
-    attachInlineTools(b, lang, [ph.text, ph.kanji_text]);
+    attachInlineTools(b, lang, [ph.text, ph.kanji_text], false, starKey(lang, sec.id, s.scene, ph.text));
   }));
   bindHideToggle(() => viewScene(lang, sec, sIdx));
 }
@@ -1533,12 +1585,14 @@ async function buildPath(lang) {
   const sit = await get("situations");
   if (sit) sit.d.forEach(s => s.phrases.forEach(ph => {
     if (ph.freq === 3) sents.push({ type: "sentence", key: `ph/${s.scene}/${ph.text}`, src: `${sit.s.name} · ${s.scene}`,
-                                    text: ph.text, ko_pron: ph.ko_pron, meaning: ph.meaning, kanji_text: ph.kanji_text });
+                                    text: ph.text, ko_pron: ph.ko_pron, meaning: ph.meaning, kanji_text: ph.kanji_text,
+                                    star: starKey(lang, sit.s.id, s.scene, ph.text) });
   }));
   const pat = await get("patterns");
   if (pat) pat.d.forEach(p => p.fills.forEach(f => {
     if (p.freq === 3 && f.freq === 3) sents.push({ type: "sentence", key: `pf/${p.pattern}/${f.text}`, src: `${pat.s.name} · ${p.pattern}`,
-      text: p.pattern.replace("___", f.text), ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, pattern: p, fill: f });
+      text: p.pattern.replace("___", f.text), ko_pron: p.ko_pron.replace("___", f.ko_pron), meaning: f.meaning, pattern: p, fill: f,
+      star: starKey(lang, pat.s.id, p.pattern, f.text) });
   }));
   const jw = lang === "ja" ? await get("words") : null;
   if (jw) jw.d.forEach(c => c.items.forEach(it => {
@@ -1628,30 +1682,38 @@ async function viewPath(lang, idx) {
     app.innerHTML = `<div class="viewer">${head}${cardHTML(lang, x.it, x.star)}${navHTML(i, n)}</div>`;
     bindCard(lang, x.it, x.star, next, prev);
   } else {
-    const plain = plainText(x.text);
-    app.innerHTML = `
-      <div class="viewer">${head}
-        <article class="card" id="card">
-          <p class="sentence" lang="${lang}">${x.pattern ? sentenceHTML(x.pattern.pattern, x.fill.text) : markParticle(x.text)}</p>
-          <div class="${H()}">
-            <p class="pron">${esc(x.ko_pron)}</p>
-            <p class="meaning">${esc(x.meaning)}</p>
-          </div>
-          <button class="speak" id="speak" aria-label="문장 듣기">🔊</button>
-          ${sayToolsHTML("saySentence")}
-        </article>
-        ${navHTML(i, n)}
-      </div>`;
-    document.getElementById("speak").onclick = e => tts.speak(plain, L.voice, e.currentTarget);
-    document.getElementById("prev").onclick = prev;
-    document.getElementById("next").onclick = next;
-    addSwipe(document.getElementById("card"), next, prev);
-    bindSayTools(document.getElementById("saySentence"), lang, [plain, x.kanji_text]);
-    if (x.pattern) {
-      const pw = x.pattern.words || {}, fw = x.fill.words || {};
-      bindWordGloss(lang, document.getElementById("card"),
-        el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], await loadFwIndex(lang));
-    }
+    app.innerHTML = `<div class="viewer">${head}${sentenceCardHTML(lang, x, x.star)}${navHTML(i, n)}</div>`;
+    await bindSentenceCard(lang, x, x.star, next, prev);
   }
   bindHideToggle(() => viewPath(lang, i));
+}
+
+// ── 문장 카드 한 장 (학습 길·헷갈린 것이 같이 쓴다) ──
+// x: { text, ko_pron, meaning, kanji_text?, pattern?, fill? } — 패턴 문장이면 단어를 눌러 뜻을 본다
+function sentenceCardHTML(lang, x, key) {
+  return `
+      <article class="card" id="card">
+        ${key ? starButton(key) : ""}
+        <p class="sentence" lang="${lang}">${x.pattern ? sentenceHTML(x.pattern.pattern, x.fill.text) : markParticle(x.text)}</p>
+        <div class="${H()}">
+          <p class="pron">${esc(x.ko_pron)}</p>
+          <p class="meaning">${esc(x.meaning)}</p>
+        </div>
+        <button class="speak" id="speak" aria-label="문장 듣기">🔊</button>
+        ${sayToolsHTML("saySentence")}
+      </article>`;
+}
+async function bindSentenceCard(lang, x, key, next, prev) {
+  const plain = plainText(x.text);
+  document.getElementById("speak").onclick = e => tts.speak(plain, LANGS[lang].voice, e.currentTarget);
+  document.getElementById("prev").onclick = prev;
+  document.getElementById("next").onclick = next;
+  addSwipe(document.getElementById("card"), next, prev);
+  bindSayTools(document.getElementById("saySentence"), lang, [plain, x.kanji_text]);
+  if (key) bindStar(key);
+  if (x.pattern) {
+    const pw = x.pattern.words || {}, fw = x.fill.words || {};
+    bindWordGloss(lang, document.getElementById("card"),
+      el => el.dataset.f === "1" ? (fw[el.dataset.k] || pw[el.dataset.k]) : pw[el.dataset.k], await loadFwIndex(lang));
+  }
 }

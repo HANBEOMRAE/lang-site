@@ -5,7 +5,7 @@
 //  #/en/patterns            패턴 목록        #/en/patterns/0/3 패턴 0의 4번째 문장   #/en/patterns/vs/1  2번째 비교
 //  #/en/situations          장면 목록        #/en/situations/3 장면 3
 //  #/ja/verbs               동사 변형 표     #/ja/verbs/4      5번째 동사 상세
-//  #/ja/stars               헷갈린 단어(☆) 모아 보기   #/ja/stars/2  3번째 카드
+//  #/ja/stars               헷갈린 것(☆) 단어 탭   #/ja/stars/2  3번째 단어   #/ja/stars/s/0  문장 탭 첫 문장
 //  #/en/path                ⭐ 자주 쓰는 말부터 (묶음 목록)   #/en/path/12  13번째 항목
 //  #/en/tips                💡 알아두기 모음  #/en/tips/1       2번째 설명 (LANGS의 tips: true인 언어만)
 //  #/en/pairs               발음 연습 목록   #/en/pairs/0      짝 연습   #/en/pairs/weak  내 발음 약점
@@ -21,9 +21,9 @@ function route() {
   const [lang, secId, a, b] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (!lang || !LANGS[lang]) return viewHome();
   document.body.className = `lang-${lang}`;
-  if (secId !== "stars") starSnap = null;     // 헷갈린 단어 모아 보기에서 나가면 순서를 새로 정한다
+  if (secId !== "stars") starSnap = null;     // 헷갈린 것 모아 보기에서 나가면 순서를 새로 정한다
   if (!secId) return viewLang(lang);
-  if (secId === "stars") return viewStars(lang, a === undefined ? 0 : Number(a));
+  if (secId === "stars") return a === "s" ? viewStars(lang, "s", Number(b || 0)) : viewStars(lang, "w", a === undefined ? 0 : Number(a));
   if (secId === "path") return a === undefined ? viewPathList(lang) : viewPath(lang, Number(a));
   if (secId === "tips") return LANGS[lang].tips ? viewTips(lang, a === undefined ? undefined : Number(a)) : viewLang(lang);
   const sec = LANGS[lang].sections.find(s => s.id === secId && s.ready);
