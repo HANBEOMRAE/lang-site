@@ -132,6 +132,10 @@ function viewLang(lang) {
     </div>
     <h2 class="group">복습</h2>
     <div class="list">
+      <button class="row review-row" data-go="#/${lang}/review">
+        <span class="em" aria-hidden="true">🔁</span>
+        <span class="label"><strong>오늘의 복습</strong><small>${reviewDue(lang).length ? `오늘 볼 것 ${reviewDue(lang).length}개` : "오늘은 복습할 게 없어요"}</small></span>
+      </button>
       <button class="row star-row" data-go="#/${lang}/stars">
         <span class="em" aria-hidden="true">★</span>
         <span class="label"><strong>헷갈린 것</strong>
@@ -411,6 +415,7 @@ function bindStar(key, id = "starBtn") {
     const list = starList();
     const on = !list.includes(key);
     store.set("stars", on ? [...list, key] : list.filter(k => k !== key));
+    reviewOnStar(key, on);                                  // 오늘의 복습에 넣기/빼기 (lessons.js)
     b.classList.toggle("on", on);
     b.setAttribute("aria-pressed", on);
     b.textContent = id === "starInline" ? (on ? "★ 헷갈린 것" : "☆ 헷갈려요") : (on ? "★" : "☆");
@@ -1371,7 +1376,7 @@ async function viewParticle(lang, sec, idx) {
 // ── 비교 화면 (조사·패턴이 함께 쓴다) ──────────────
 // sides: [{ label, point | pointHTML, big?, practice?, practiceLabel? }]  examples: [{ tag, text, ko_pron, meaning, why }]
 // 쪽이 셋이면(in·on·at) 세 칸으로 나눈다.
-function renderCompare({ lang, sides, examples, next, listen = false }) {
+function renderCompare({ lang, sides, examples, next, listen = false, quiz = null }) {
   app.innerHTML = `
     <div class="tools">${listen ? listenHTML("listenCompare") : ""}${hideToggle()}</div>
     <div class="pair ${sides.length === 3 ? "three" : ""}" id="pair">
@@ -1385,7 +1390,7 @@ function renderCompare({ lang, sides, examples, next, listen = false }) {
     <div class="list">
       ${examples.map(ex => exampleRow(lang, ex, `<span class="tag" lang="${lang}">${esc(ex.tag)}</span>`)).join("")}
     </div>
-    <div class="nav"><button class="primary" data-go="${next.hash}">${esc(next.label)}</button></div>`;
+    <div class="nav">${quiz ? `<button data-go="${quiz}">✏️ 퀴즈 풀기</button>` : ""}<button class="primary" data-go="${next.hash}">${esc(next.label)}</button></div>`;
   bindSay(lang);
 }
 
@@ -1412,6 +1417,7 @@ async function viewCompare(lang, sec, k) {
     }),
     examples: c.examples.map(ex => ({ ...ex, tag: sides[exampleSide(c, ex)]?.label })),
     next: last ? { hash: base, label: `${unitOf(sec)} 목록으로` } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${data.compare[k + 1].title}` },
+    quiz: (c.quiz || []).length ? `${base}/vs/${k}/quiz` : null,
     listen: !!c.sides     // 설명이 조각으로 된 작은 말 비교만
   });
   if (c.sides) {
@@ -1443,7 +1449,8 @@ async function viewPatternCompare(lang, sec, k) {
       return { label: pt, point: c.points[i], practice: idx >= 0 ? `${base}/${idx}/0` : null };
     }),
     examples: c.examples.map(ex => ({ ...ex, tag: patternPrefix(c.pair[ex.side]) })),
-    next: last ? { hash: base, label: "패턴 목록으로" } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${cmp.compare[k + 1].title}` }
+    next: last ? { hash: base, label: "패턴 목록으로" } : { hash: `${base}/vs/${k + 1}`, label: `다음 비교: ${cmp.compare[k + 1].title}` },
+    quiz: (c.quiz || []).length ? `${base}/vs/${k}/quiz` : null
   });
   bindHideToggle(() => viewPatternCompare(lang, sec, k));
 }

@@ -10,6 +10,8 @@
 //  #/en/pairs               발음 연습 목록   #/en/pairs/0      짝 연습   #/en/pairs/weak  내 발음 약점
 //  #/en/function_words      작은 말 목록     #/en/function_words/7  8번째 말   #/en/function_words/vs/0  비교 (조사와 같은 화면)
 //  #/ja/particles           조사 목록        #/ja/particles/4  5번째 조사   #/ja/particles/vs/1  2번째 비교
+//  #/ja/particles/vs/1/quiz 비교 퀴즈 (패턴·작은 말·동사 변형 비교도 같은 모양)
+//  #/en/review              오늘의 복습 (퀴즈에서 틀리거나 ☆한 것, 1·3·7일 뒤)
 
 function route() {
   tts.stop();
@@ -17,17 +19,19 @@ function route() {
   speech.stop();
   recorder.clear();      // 화면을 떠나면 녹음을 지우고 마이크를 끈다
   window.scrollTo(0, 0);
-  const [lang, secId, a, b] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
+  const [lang, secId, a, b, c] = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (!lang || !LANGS[lang]) return viewHome();
   document.body.className = `lang-${lang}`;
   if (secId !== "stars") starSnap = null;     // 헷갈린 것 모아 보기에서 나가면 순서를 새로 정한다
   if (!secId) return viewLang(lang);
   if (secId === "stars") return a === "s" ? viewStars(lang, "s", Number(b || 0)) : viewStars(lang, "w", a === undefined ? 0 : Number(a));
+  if (secId === "review") return viewReview(lang);
   if (secId === "tips") return LANGS[lang].tips ? viewTips(lang, a === undefined ? undefined : Number(a)) : viewLang(lang);
   const sec = LANGS[lang].sections.find(s => s.id === secId && s.ready);
   if (!sec) return viewLang(lang);
   const A = a === undefined ? undefined : Number(a);
   const B = Number(b || 0);
+  if (a === "vs" && c === "quiz") return viewCompareQuiz(lang, sec, B);   // 비교 화면의 퀴즈 (lessons.js)
 
   switch (sec.type) {
     case "cards":      return A === undefined ? viewCategories(lang, sec) : viewCards(lang, sec, A, B);

@@ -21,6 +21,7 @@ const PRECACHE = [
   "js/core.js",
   "js/speech.js",
   "js/views.js",
+  "js/lessons.js",
   "js/app.js",
   "icons/icon-192.png",
   "icons/icon-512.png",

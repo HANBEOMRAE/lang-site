@@ -459,3 +459,31 @@ mark.diff { padding: 0 2px; border-radius: 4px; color: inherit; background: colo
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ── 퀴즈 (비교 퀴즈·레슨 확인 문제·오늘의 복습) ── */
+.quiz { display: flex; flex-direction: column; gap: 12px; }
+.quiz-count { margin: 0; font-size: 13px; color: var(--muted); }
+.quiz-body { padding: 18px 16px; border-radius: 16px; background: var(--surface); border: 1.5px solid var(--line); text-align: center; }
+.quiz-context { margin: 0 0 8px; font-size: 14px; color: var(--muted); }
+.quiz-ask { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+.quiz-q { margin: 0; font-family: "Jua", "Noto Sans JP", sans-serif; font-size: 26px; line-height: 1.35; word-break: keep-all; }
+.quiz-q .blank { display: inline-block; min-width: 2.4em; margin: 0 4px; padding: 0 6px; border-radius: 8px; background: var(--accent); color: #fff; }
+.quiz-speak { margin: 0 auto; }
+.quiz-opts { display: grid; gap: 10px; }
+.quiz-opt {
+  min-height: 52px; padding: 10px 14px; border-radius: 14px; cursor: pointer; text-align: left;
+  border: 2px solid var(--line); background: var(--surface); color: var(--ink); font-size: 17px; font-weight: 700;
+}
+.quiz-opt.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--surface)); }
+.quiz-opt.wrong { border-color: var(--muted); opacity: .7; }
+.quiz-after { display: flex; flex-direction: column; gap: 10px; }
+.quiz-after[hidden] { display: none; }
+.quiz-result { margin: 0; font-weight: 700; }
+.quiz-result.ok { color: var(--ok); }
+.quiz-answer { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.quiz-answer p { margin: 0; flex: 1; }
+.quiz-answer strong { display: block; font-size: 18px; }
+.quiz-answer .why { display: block; margin-top: 2px; color: var(--accent); font-size: 13px; }
+.quiz-next { height: 52px; border-radius: 14px; border: 0; cursor: pointer; background: var(--accent); color: #fff; font-size: 16px; font-weight: 700; }
+.quiz-done { font-family: "Jua", sans-serif; font-size: 26px; text-align: center; margin: 24px 0 8px; }
+.row.review-row .em { color: var(--accent); }
