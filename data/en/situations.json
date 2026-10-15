@@ -85,32 +85,38 @@
    {
     "text": "Where is the exit?",
     "ko_pron": "웨어 이즈 디 엑싯?",
-    "meaning": "출구가 어디예요?"
+    "meaning": "출구가 어디예요?",
+    "freq": 2
    },
    {
     "text": "I'm here for sightseeing.",
     "ko_pron": "아임 히어 포 사이트씽",
-    "meaning": "관광하러 왔어요."
+    "meaning": "관광하러 왔어요.",
+    "freq": 2
    },
    {
     "text": "Where can I exchange money?",
     "ko_pron": "웨어 캔 아이 익스체인지 머니?",
-    "meaning": "환전 어디서 해요?"
+    "meaning": "환전 어디서 해요?",
+    "freq": 1
    },
    {
     "text": "Is there free Wi-Fi?",
     "ko_pron": "이즈 데어 프리 와이파이?",
-    "meaning": "무료 와이파이 있어요?"
+    "meaning": "무료 와이파이 있어요?",
+    "freq": 2
    },
    {
     "text": "Where do I get a taxi?",
     "ko_pron": "웨어 두 아이 겟 어 택시?",
-    "meaning": "택시 어디서 타요?"
+    "meaning": "택시 어디서 타요?",
+    "freq": 2
    },
    {
     "text": "I'm from Korea.",
     "ko_pron": "아임 프롬 코리아",
-    "meaning": "한국에서 왔어요."
+    "meaning": "한국에서 왔어요.",
+    "freq": 2
    }
   ]
  },
@@ -200,32 +206,38 @@
    {
     "text": "How much is a ticket?",
     "ko_pron": "하우 머치 이즈 어 티킷?",
-    "meaning": "표 한 장에 얼마예요?"
+    "meaning": "표 한 장에 얼마예요?",
+    "freq": 2
    },
    {
     "text": "Where is the ticket office?",
     "ko_pron": "웨어 이즈 더 티킷 오피스?",
-    "meaning": "매표소가 어디예요?"
+    "meaning": "매표소가 어디예요?",
+    "freq": 1
    },
    {
     "text": "Which platform?",
     "ko_pron": "위치 플랫폼?",
-    "meaning": "몇 번 승강장이에요?"
+    "meaning": "몇 번 승강장이에요?",
+    "freq": 1
    },
    {
     "text": "Is this seat taken?",
     "ko_pron": "이즈 디스 씻 테이큰?",
-    "meaning": "이 자리 있어요?"
+    "meaning": "이 자리 있어요?",
+    "freq": 2
    },
    {
     "text": "Can I change my ticket?",
     "ko_pron": "캔 아이 체인지 마이 티킷?",
-    "meaning": "표 바꿀 수 있어요?"
+    "meaning": "표 바꿀 수 있어요?",
+    "freq": 1
    },
    {
     "text": "Does this train go to Boston?",
     "ko_pron": "더즈 디스 트레인 고 투 보스턴?",
-    "meaning": "이 기차 보스턴 가요?"
+    "meaning": "이 기차 보스턴 가요?",
+    "freq": 1
    }
   ]
  },
@@ -315,32 +327,38 @@
    {
     "text": "I'd like to check out.",
     "ko_pron": "아이드 라이크 투 체크 아웃",
-    "meaning": "체크아웃할게요."
+    "meaning": "체크아웃할게요.",
+    "freq": 2
    },
    {
     "text": "Can you keep my bags?",
     "ko_pron": "캔 유 킵 마이 백즈?",
-    "meaning": "짐 좀 맡아 주실래요?"
+    "meaning": "짐 좀 맡아 주실래요?",
+    "freq": 1
    },
    {
     "text": "What's the Wi-Fi password?",
     "ko_pron": "왓츠 더 와이파이 패스워드?",
-    "meaning": "와이파이 비밀번호가 뭐예요?"
+    "meaning": "와이파이 비밀번호가 뭐예요?",
+    "freq": 2
    },
    {
     "text": "I lost my key.",
     "ko_pron": "아이 로스트 마이 키",
-    "meaning": "열쇠를 잃어버렸어요."
+    "meaning": "열쇠를 잃어버렸어요.",
+    "freq": 1
    },
    {
     "text": "Is breakfast included?",
     "ko_pron": "이즈 브렉퍼스트 인클루디드?",
-    "meaning": "조식 포함이에요?"
+    "meaning": "조식 포함이에요?",
+    "freq": 1
    },
    {
     "text": "Can I have a wake-up call?",
     "ko_pron": "캔 아이 해브 어 웨이크업 콜?",
-    "meaning": "모닝콜 해 주실래요?"
+    "meaning": "모닝콜 해 주실래요?",
+    "freq": 1
    }
   ]
  },
@@ -430,32 +448,38 @@
    {
     "text": "A table for two, please.",
     "ko_pron": "어 테이블 포 투, 플리즈",
-    "meaning": "두 명 자리 주세요."
+    "meaning": "두 명 자리 주세요.",
+    "freq": 2
    },
    {
     "text": "Can I see the menu?",
     "ko_pron": "캔 아이 씨 더 메뉴?",
-    "meaning": "메뉴판 볼 수 있어요?"
+    "meaning": "메뉴판 볼 수 있어요?",
+    "freq": 2
    },
    {
     "text": "What do you recommend?",
     "ko_pron": "왓 두 유 레커멘드?",
-    "meaning": "뭐가 맛있어요?"
+    "meaning": "뭐가 맛있어요?",
+    "freq": 2
    },
    {
     "text": "No ice, please.",
     "ko_pron": "노 아이스, 플리즈",
-    "meaning": "얼음 빼 주세요."
+    "meaning": "얼음 빼 주세요.",
+    "freq": 2
    },
    {
     "text": "Not too spicy, please.",
     "ko_pron": "낫 투 스파이시, 플리즈",
-    "meaning": "너무 맵지 않게 해 주세요."
+    "meaning": "너무 맵지 않게 해 주세요.",
+    "freq": 2
    },
    {
     "text": "It's delicious.",
     "ko_pron": "잇츠 딜리셔스",
-    "meaning": "맛있어요."
+    "meaning": "맛있어요.",
+    "freq": 3
    }
   ]
  },
@@ -545,32 +569,38 @@
    {
     "text": "Do you have a smaller one?",
     "ko_pron": "두 유 해브 어 스몰러 원?",
-    "meaning": "더 작은 거 있어요?"
+    "meaning": "더 작은 거 있어요?",
+    "freq": 2
    },
    {
     "text": "Can I get a discount?",
     "ko_pron": "캔 아이 겟 어 디스카운트?",
-    "meaning": "깎아 주실 수 있어요?"
+    "meaning": "깎아 주실 수 있어요?",
+    "freq": 1
    },
    {
     "text": "Do you take credit cards?",
     "ko_pron": "두 유 테이크 크레딧 카즈?",
-    "meaning": "카드 돼요?"
+    "meaning": "카드 돼요?",
+    "freq": 2
    },
    {
     "text": "Can I get a refund?",
     "ko_pron": "캔 아이 겟 어 리펀드?",
-    "meaning": "환불 돼요?"
+    "meaning": "환불 돼요?",
+    "freq": 1
    },
    {
     "text": "Just this, please.",
     "ko_pron": "저스트 디스, 플리즈",
-    "meaning": "이것만 주세요."
+    "meaning": "이것만 주세요.",
+    "freq": 3
    },
    {
     "text": "Where is the fitting room?",
     "ko_pron": "웨어 이즈 더 피팅 룸?",
-    "meaning": "탈의실 어디예요?"
+    "meaning": "탈의실 어디예요?",
+    "freq": 1
    }
   ]
  },
@@ -654,32 +684,38 @@
    {
     "text": "Where is the bathroom?",
     "ko_pron": "웨어 이즈 더 배스룸?",
-    "meaning": "화장실 어디예요?"
+    "meaning": "화장실 어디예요?",
+    "freq": 3
    },
    {
     "text": "How do I get to the airport?",
     "ko_pron": "하우 두 아이 겟 투 디 에어포트?",
-    "meaning": "공항에 어떻게 가요?"
+    "meaning": "공항에 어떻게 가요?",
+    "freq": 2
    },
    {
     "text": "Which bus goes downtown?",
     "ko_pron": "위치 버스 고즈 다운타운?",
-    "meaning": "시내 가는 버스가 뭐예요?"
+    "meaning": "시내 가는 버스가 뭐예요?",
+    "freq": 1
    },
    {
     "text": "Is it near here?",
     "ko_pron": "이즈 잇 니어 히어?",
-    "meaning": "여기서 가까워요?"
+    "meaning": "여기서 가까워요?",
+    "freq": 2
    },
    {
     "text": "Can I walk there?",
     "ko_pron": "캔 아이 워크 데어?",
-    "meaning": "걸어갈 수 있어요?"
+    "meaning": "걸어갈 수 있어요?",
+    "freq": 2
    },
    {
     "text": "Turn left.",
     "ko_pron": "턴 레프트",
-    "meaning": "왼쪽으로 도세요."
+    "meaning": "왼쪽으로 도세요.",
+    "freq": 2
    }
   ]
  },
@@ -769,32 +805,38 @@
    {
     "text": "Good morning.",
     "ko_pron": "굿 모닝",
-    "meaning": "좋은 아침이에요."
+    "meaning": "좋은 아침이에요.",
+    "freq": 3
    },
    {
     "text": "How are you?",
     "ko_pron": "하우 아 유?",
-    "meaning": "잘 지내요?"
+    "meaning": "잘 지내요?",
+    "freq": 3
    },
    {
     "text": "I'm fine, thank you.",
     "ko_pron": "아임 파인, 땡큐",
-    "meaning": "잘 지내요, 고마워요."
+    "meaning": "잘 지내요, 고마워요.",
+    "freq": 3
    },
    {
     "text": "This is my mom.",
     "ko_pron": "디스 이즈 마이 맘",
-    "meaning": "이분은 우리 엄마예요."
+    "meaning": "이분은 우리 엄마예요.",
+    "freq": 2
    },
    {
     "text": "See you tomorrow.",
     "ko_pron": "씨 유 투모로우",
-    "meaning": "내일 봐요."
+    "meaning": "내일 봐요.",
+    "freq": 3
    },
    {
     "text": "Can we be friends?",
     "ko_pron": "캔 위 비 프렌즈?",
-    "meaning": "우리 친구 할래?"
+    "meaning": "우리 친구 할래?",
+    "freq": 2
    }
   ]
  },
@@ -890,32 +932,38 @@
    {
     "text": "Where is the bus stop?",
     "ko_pron": "웨어 이즈 더 버스 스탑?",
-    "meaning": "버스 정류장이 어디예요?"
+    "meaning": "버스 정류장이 어디예요?",
+    "freq": 2
    },
    {
     "text": "Where is the subway station?",
     "ko_pron": "웨어 이즈 더 서브웨이 스테이션?",
-    "meaning": "지하철역이 어디예요?"
+    "meaning": "지하철역이 어디예요?",
+    "freq": 2
    },
    {
     "text": "Is this the right train?",
     "ko_pron": "이즈 디스 더 라잇 트레인?",
-    "meaning": "이 기차 맞아요?"
+    "meaning": "이 기차 맞아요?",
+    "freq": 2
    },
    {
     "text": "Where do I get off?",
     "ko_pron": "웨어 두 아이 겟 오프?",
-    "meaning": "어디서 내려요?"
+    "meaning": "어디서 내려요?",
+    "freq": 2
    },
    {
     "text": "Can you open the trunk?",
     "ko_pron": "캔 유 오픈 더 트렁크?",
-    "meaning": "트렁크 열어 주실래요?"
+    "meaning": "트렁크 열어 주실래요?",
+    "freq": 1
    },
    {
     "text": "Keep the change.",
     "ko_pron": "킵 더 체인지",
-    "meaning": "거스름돈은 가지세요."
+    "meaning": "거스름돈은 가지세요.",
+    "freq": 1
    }
   ]
  },
@@ -1011,32 +1059,38 @@
    {
     "text": "One cookie, please.",
     "ko_pron": "원 쿠키, 플리즈",
-    "meaning": "쿠키 하나 주세요."
+    "meaning": "쿠키 하나 주세요.",
+    "freq": 2
    },
    {
     "text": "Less sugar, please.",
     "ko_pron": "레스 슈거, 플리즈",
-    "meaning": "설탕 조금만 넣어 주세요."
+    "meaning": "설탕 조금만 넣어 주세요.",
+    "freq": 2
    },
    {
     "text": "Can I have some water?",
     "ko_pron": "캔 아이 해브 썸 워터?",
-    "meaning": "물 좀 주실래요?"
+    "meaning": "물 좀 주실래요?",
+    "freq": 3
    },
    {
     "text": "Is it hot?",
     "ko_pron": "이즈 잇 핫?",
-    "meaning": "뜨거워요?"
+    "meaning": "뜨거워요?",
+    "freq": 2
    },
    {
     "text": "It's too sweet.",
     "ko_pron": "잇츠 투 스윗",
-    "meaning": "너무 달아요."
+    "meaning": "너무 달아요.",
+    "freq": 2
    },
    {
     "text": "Can I sit here?",
     "ko_pron": "캔 아이 싯 히어?",
-    "meaning": "여기 앉아도 돼요?"
+    "meaning": "여기 앉아도 돼요?",
+    "freq": 2
    }
   ]
  },
@@ -1126,32 +1180,38 @@
    {
     "text": "Where is the water?",
     "ko_pron": "웨어 이즈 더 워터?",
-    "meaning": "물 어디 있어요?"
+    "meaning": "물 어디 있어요?",
+    "freq": 2
    },
    {
     "text": "Do you sell batteries?",
     "ko_pron": "두 유 셀 배터리즈?",
-    "meaning": "건전지 팔아요?"
+    "meaning": "건전지 팔아요?",
+    "freq": 1
    },
    {
     "text": "Is there an ATM?",
     "ko_pron": "이즈 데어 언 에이티엠?",
-    "meaning": "현금 인출기 있어요?"
+    "meaning": "현금 인출기 있어요?",
+    "freq": 1
    },
    {
     "text": "I need a phone charger.",
     "ko_pron": "아이 니드 어 폰 차저",
-    "meaning": "휴대폰 충전기가 필요해요."
+    "meaning": "휴대폰 충전기가 필요해요.",
+    "freq": 2
    },
    {
     "text": "Can I have a receipt?",
     "ko_pron": "캔 아이 해브 어 리싯?",
-    "meaning": "영수증 주실래요?"
+    "meaning": "영수증 주실래요?",
+    "freq": 2
    },
    {
     "text": "No bag, thank you.",
     "ko_pron": "노 백, 땡큐",
-    "meaning": "봉투는 괜찮아요."
+    "meaning": "봉투는 괜찮아요.",
+    "freq": 2
    }
   ]
  },
@@ -1247,32 +1307,38 @@
    {
     "text": "I don't feel well.",
     "ko_pron": "아이 돈트 필 웰",
-    "meaning": "몸이 안 좋아요."
+    "meaning": "몸이 안 좋아요.",
+    "freq": 2
    },
    {
     "text": "It hurts here.",
     "ko_pron": "잇 헐츠 히어",
-    "meaning": "여기가 아파요."
+    "meaning": "여기가 아파요.",
+    "freq": 2
    },
    {
     "text": "I'm allergic to eggs.",
     "ko_pron": "아임 앨러직 투 에그즈",
-    "meaning": "저는 달걀 알레르기가 있어요."
+    "meaning": "저는 달걀 알레르기가 있어요.",
+    "freq": 1
    },
    {
     "text": "Where is the pharmacy?",
     "ko_pron": "웨어 이즈 더 파머시?",
-    "meaning": "약국이 어디예요?"
+    "meaning": "약국이 어디예요?",
+    "freq": 2
    },
    {
     "text": "I need a doctor.",
     "ko_pron": "아이 니드 어 닥터",
-    "meaning": "의사가 필요해요."
+    "meaning": "의사가 필요해요.",
+    "freq": 2
    },
    {
     "text": "I threw up.",
     "ko_pron": "아이 쓰루 업",
-    "meaning": "토했어요."
+    "meaning": "토했어요.",
+    "freq": 1
    }
   ]
  },
@@ -1362,32 +1428,38 @@
    {
     "text": "Help!",
     "ko_pron": "헬프!",
-    "meaning": "도와주세요!"
+    "meaning": "도와주세요!",
+    "freq": 3
    },
    {
     "text": "Call the police!",
     "ko_pron": "콜 더 폴리스!",
-    "meaning": "경찰 불러 주세요!"
+    "meaning": "경찰 불러 주세요!",
+    "freq": 1
    },
    {
     "text": "Call an ambulance!",
     "ko_pron": "콜 언 앰뷸런스!",
-    "meaning": "구급차 불러 주세요!"
+    "meaning": "구급차 불러 주세요!",
+    "freq": 1
    },
    {
     "text": "Where is the lost and found?",
     "ko_pron": "웨어 이즈 더 로스트 앤 파운드?",
-    "meaning": "분실물 센터가 어디예요?"
+    "meaning": "분실물 센터가 어디예요?",
+    "freq": 1
    },
    {
     "text": "Someone took my bag.",
     "ko_pron": "썸원 툭 마이 백",
-    "meaning": "누가 제 가방을 가져갔어요."
+    "meaning": "누가 제 가방을 가져갔어요.",
+    "freq": 1
    },
    {
     "text": "Please call this number.",
     "ko_pron": "플리즈 콜 디스 넘버",
-    "meaning": "이 번호로 전화해 주세요."
+    "meaning": "이 번호로 전화해 주세요.",
+    "freq": 1
    }
   ]
  }

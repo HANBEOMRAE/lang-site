@@ -33,6 +33,7 @@
    "text": "and",
    "ko_pron": "앤드",
    "meaning": "~와, 그리고",
+   "freq": 3,
    "forms": [
     "and"
    ],
@@ -119,6 +120,7 @@
    "text": "but",
    "ko_pron": "벗",
    "meaning": "하지만, 그런데",
+   "freq": 3,
    "forms": [
     "but"
    ],
@@ -184,6 +186,7 @@
    "text": "or",
    "ko_pron": "오어",
    "meaning": "또는, 아니면",
+   "freq": 2,
    "forms": [
     "or"
    ],
@@ -252,6 +255,7 @@
    "text": "so",
    "ko_pron": "쏘",
    "meaning": "그래서",
+   "freq": 3,
    "forms": [
     "so"
    ],
@@ -317,6 +321,7 @@
    "text": "because",
    "ko_pron": "비코즈",
    "meaning": "~때문에, 왜냐하면",
+   "freq": 2,
    "forms": [
     "because"
    ],
@@ -381,6 +386,7 @@
    "text": "when",
    "ko_pron": "웬",
    "meaning": "~할 때",
+   "freq": 2,
    "forms": [
     "when"
    ],
@@ -442,6 +448,7 @@
    "text": "if",
    "ko_pron": "이프",
    "meaning": "만약 ~하면",
+   "freq": 2,
    "forms": [
     "if"
    ],
@@ -506,6 +513,7 @@
    "text": "to",
    "ko_pron": "투",
    "meaning": "~로, ~에 / ~하기를",
+   "freq": 3,
    "forms": [
     "to"
    ],
@@ -630,6 +638,7 @@
    "text": "in",
    "ko_pron": "인",
    "meaning": "~안에, ~에",
+   "freq": 3,
    "forms": [
     "in"
    ],
@@ -720,6 +729,7 @@
    "text": "on",
    "ko_pron": "온",
    "meaning": "~위에, ~에",
+   "freq": 3,
    "forms": [
     "on"
    ],
@@ -812,6 +822,7 @@
    "text": "at",
    "ko_pron": "앳",
    "meaning": "~에서, ~에 (콕 집은 곳·시각)",
+   "freq": 3,
    "forms": [
     "at"
    ],
@@ -904,6 +915,7 @@
    "text": "for",
    "ko_pron": "포",
    "meaning": "~을 위해, ~동안",
+   "freq": 3,
    "forms": [
     "for"
    ],
@@ -1005,6 +1017,7 @@
    "text": "with",
    "ko_pron": "위드",
    "meaning": "~와 함께, ~로",
+   "freq": 3,
    "forms": [
     "with"
    ],
@@ -1093,6 +1106,7 @@
    "text": "from",
    "ko_pron": "프롬",
    "meaning": "~에서(부터)",
+   "freq": 2,
    "forms": [
     "from"
    ],
@@ -1171,6 +1185,7 @@
    "text": "of",
    "ko_pron": "오브",
    "meaning": "~의",
+   "freq": 2,
    "forms": [
     "of"
    ],
@@ -1249,6 +1264,7 @@
    "text": "by",
    "ko_pron": "바이",
    "meaning": "~로(방법), ~옆에, ~까지",
+   "freq": 2,
    "forms": [
     "by"
    ],
@@ -1346,6 +1362,7 @@
    "text": "about",
    "ko_pron": "어바웃",
    "meaning": "~에 대해",
+   "freq": 2,
    "forms": [
     "about"
    ],
@@ -1407,6 +1424,7 @@
    "text": "my",
    "ko_pron": "마이",
    "meaning": "나의, 내",
+   "freq": 3,
    "forms": [
     "my"
    ],
@@ -1477,6 +1495,7 @@
    "text": "your",
    "ko_pron": "유어",
    "meaning": "너의, 네",
+   "freq": 3,
    "forms": [
     "your"
    ],
@@ -1543,6 +1562,7 @@
    "text": "his",
    "ko_pron": "히즈",
    "meaning": "그의, 그 남자의",
+   "freq": 2,
    "forms": [
     "his"
    ],
@@ -1602,6 +1622,7 @@
    "text": "her",
    "ko_pron": "허",
    "meaning": "그녀의, 그 여자의",
+   "freq": 2,
    "forms": [
     "her"
    ],
@@ -1674,6 +1695,7 @@
    "text": "our",
    "ko_pron": "아워",
    "meaning": "우리의",
+   "freq": 2,
    "forms": [
     "our"
    ],
@@ -1731,6 +1753,7 @@
    "text": "their",
    "ko_pron": "데어",
    "meaning": "그들의",
+   "freq": 2,
    "forms": [
     "their"
    ],
@@ -1792,6 +1815,7 @@
    "text": "a",
    "ko_pron": "어",
    "meaning": "하나의 (아무거나 하나)",
+   "freq": 3,
    "forms": [
     "a"
    ],
@@ -1857,6 +1881,7 @@
    "text": "an",
    "ko_pron": "언",
    "meaning": "하나의 (모음 소리 앞)",
+   "freq": 2,
    "forms": [
     "an"
    ],
@@ -1934,6 +1959,7 @@
    "text": "the",
    "ko_pron": "더",
    "meaning": "그 (바로 그것)",
+   "freq": 3,
    "forms": [
     "the"
    ],
@@ -2019,6 +2045,7 @@
    "text": "this",
    "ko_pron": "디스",
    "meaning": "이것, 이",
+   "freq": 3,
    "forms": [
     "this"
    ],
@@ -2083,6 +2110,7 @@
    "text": "that",
    "ko_pron": "댓",
    "meaning": "저것, 저",
+   "freq": 3,
    "forms": [
     "that"
    ],
@@ -2147,6 +2175,7 @@
    "text": "these",
    "ko_pron": "디즈",
    "meaning": "이것들, 이 (여러 개)",
+   "freq": 2,
    "forms": [
     "these"
    ],
@@ -2207,6 +2236,7 @@
    "text": "those",
    "ko_pron": "도즈",
    "meaning": "저것들, 저 (여러 개)",
+   "freq": 2,
    "forms": [
     "those"
    ],
@@ -2267,6 +2297,7 @@
    "text": "I · me",
    "ko_pron": "아이 · 미",
    "meaning": "나 / 나를, 나에게",
+   "freq": 3,
    "forms": [
     "i",
     "me"
@@ -2365,6 +2396,7 @@
    "text": "you",
    "ko_pron": "유",
    "meaning": "너, 너를, 너에게",
+   "freq": 3,
    "forms": [
     "you"
    ],
@@ -2448,6 +2480,7 @@
    "text": "he · him",
    "ko_pron": "히 · 힘",
    "meaning": "그 / 그를 (남자 한 명)",
+   "freq": 2,
    "forms": [
     "he",
     "him"
@@ -2537,6 +2570,7 @@
    "text": "she · her",
    "ko_pron": "쉬 · 허",
    "meaning": "그녀 / 그녀를 (여자 한 명)",
+   "freq": 2,
    "forms": [
     "she",
     "her"
@@ -2634,6 +2668,7 @@
    "text": "we · us",
    "ko_pron": "위 · 어스",
    "meaning": "우리 / 우리를",
+   "freq": 3,
    "forms": [
     "we",
     "us"
@@ -2721,6 +2756,7 @@
    "text": "they · them",
    "ko_pron": "데이 · 뎀",
    "meaning": "그들 / 그들을",
+   "freq": 2,
    "forms": [
     "they",
     "them"

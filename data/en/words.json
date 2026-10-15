@@ -7,6 +7,7 @@
     "text": "yes",
     "ko_pron": "예스",
     "meaning": "네",
+    "freq": 3,
     "example": "Yes, please.",
     "example_meaning": "네, 주세요."
    },
@@ -14,6 +15,7 @@
     "text": "no",
     "ko_pron": "노",
     "meaning": "아니요",
+    "freq": 3,
     "example": "No, thank you.",
     "example_meaning": "아니요, 괜찮아요."
    },
@@ -21,6 +23,7 @@
     "text": "please",
     "ko_pron": "플리즈",
     "meaning": "~주세요, 제발",
+    "freq": 3,
     "example": "Water, please.",
     "example_meaning": "물 주세요."
    },
@@ -28,6 +31,7 @@
     "text": "thank you",
     "ko_pron": "땡큐",
     "meaning": "고마워요",
+    "freq": 3,
     "example": "Thank you so much.",
     "example_meaning": "정말 고마워요."
    },
@@ -35,6 +39,7 @@
     "text": "sorry",
     "ko_pron": "쏘리",
     "meaning": "미안해요",
+    "freq": 3,
     "example": "I'm sorry.",
     "example_meaning": "미안해요."
    },
@@ -42,6 +47,7 @@
     "text": "hello",
     "ko_pron": "헬로",
     "meaning": "안녕하세요",
+    "freq": 3,
     "example": "Hello, I'm Kim.",
     "example_meaning": "안녕하세요, 저는 김이에요."
    },
@@ -49,6 +55,7 @@
     "text": "bye",
     "ko_pron": "바이",
     "meaning": "안녕(헤어질 때)",
+    "freq": 3,
     "example": "Bye, see you!",
     "example_meaning": "안녕, 또 봐!"
    },
@@ -56,6 +63,7 @@
     "text": "here",
     "ko_pron": "히어",
     "meaning": "여기",
+    "freq": 3,
     "example": "Come here.",
     "example_meaning": "여기로 와."
    },
@@ -63,6 +71,7 @@
     "text": "there",
     "ko_pron": "데어",
     "meaning": "저기",
+    "freq": 3,
     "example": "It's over there.",
     "example_meaning": "저기 있어요."
    },
@@ -70,6 +79,7 @@
     "text": "this",
     "ko_pron": "디스",
     "meaning": "이것",
+    "freq": 3,
     "example": "What is this?",
     "example_meaning": "이게 뭐예요?"
    },
@@ -77,6 +87,7 @@
     "text": "that",
     "ko_pron": "댓",
     "meaning": "저것",
+    "freq": 3,
     "example": "I want that.",
     "example_meaning": "저거 갖고 싶어."
    },
@@ -84,6 +95,7 @@
     "text": "more",
     "ko_pron": "모어",
     "meaning": "더",
+    "freq": 3,
     "example": "More, please.",
     "example_meaning": "더 주세요."
    }
@@ -97,6 +109,7 @@
     "text": "mom",
     "ko_pron": "맘",
     "meaning": "엄마",
+    "freq": 3,
     "example": "I love my mom.",
     "example_meaning": "나는 엄마를 사랑해."
    },
@@ -104,6 +117,7 @@
     "text": "dad",
     "ko_pron": "대드",
     "meaning": "아빠",
+    "freq": 3,
     "example": "My dad is tall.",
     "example_meaning": "우리 아빠는 키가 커."
    },
@@ -111,6 +125,7 @@
     "text": "baby",
     "ko_pron": "베이비",
     "meaning": "아기",
+    "freq": 2,
     "example": "The baby is sleeping.",
     "example_meaning": "아기가 자고 있어."
    },
@@ -118,6 +133,7 @@
     "text": "sister",
     "ko_pron": "시스터",
     "meaning": "언니·누나·여동생",
+    "freq": 2,
     "example": "I have a sister.",
     "example_meaning": "나는 자매가 한 명 있어."
    },
@@ -125,6 +141,7 @@
     "text": "brother",
     "ko_pron": "브라더",
     "meaning": "형·오빠·남동생",
+    "freq": 2,
     "example": "My brother likes games.",
     "example_meaning": "우리 형은 게임을 좋아해."
    },
@@ -132,6 +149,7 @@
     "text": "grandma",
     "ko_pron": "그랜마",
     "meaning": "할머니",
+    "freq": 2,
     "example": "Grandma makes cookies.",
     "example_meaning": "할머니가 쿠키를 만들어."
    },
@@ -139,6 +157,7 @@
     "text": "grandpa",
     "ko_pron": "그랜파",
     "meaning": "할아버지",
+    "freq": 2,
     "example": "Grandpa reads a book.",
     "example_meaning": "할아버지가 책을 읽어."
    },
@@ -146,6 +165,7 @@
     "text": "friend",
     "ko_pron": "프렌드",
     "meaning": "친구",
+    "freq": 3,
     "example": "You are my friend.",
     "example_meaning": "너는 내 친구야."
    }
@@ -159,6 +179,7 @@
     "text": "one",
     "ko_pron": "원",
     "meaning": "하나, 1",
+    "freq": 3,
     "example": "I have one apple.",
     "example_meaning": "나는 사과가 하나 있어."
    },
@@ -166,6 +187,7 @@
     "text": "two",
     "ko_pron": "투",
     "meaning": "둘, 2",
+    "freq": 3,
     "example": "Two cats are here.",
     "example_meaning": "고양이 두 마리가 여기 있어."
    },
@@ -173,6 +195,7 @@
     "text": "three",
     "ko_pron": "쓰리",
     "meaning": "셋, 3",
+    "freq": 3,
     "example": "I am three.",
     "example_meaning": "나는 세 살이야."
    },
@@ -180,6 +203,7 @@
     "text": "four",
     "ko_pron": "포",
     "meaning": "넷, 4",
+    "freq": 3,
     "example": "A dog has four legs.",
     "example_meaning": "개는 다리가 네 개야."
    },
@@ -187,6 +211,7 @@
     "text": "five",
     "ko_pron": "파이브",
     "meaning": "다섯, 5",
+    "freq": 3,
     "example": "I am five.",
     "example_meaning": "나는 다섯 살이야."
    },
@@ -194,6 +219,7 @@
     "text": "six",
     "ko_pron": "식스",
     "meaning": "여섯, 6",
+    "freq": 2,
     "example": "I wake up at six.",
     "example_meaning": "나는 여섯 시에 일어나."
    },
@@ -201,6 +227,7 @@
     "text": "seven",
     "ko_pron": "세븐",
     "meaning": "일곱, 7",
+    "freq": 2,
     "example": "A week has seven days.",
     "example_meaning": "일주일은 7일이야."
    },
@@ -208,6 +235,7 @@
     "text": "eight",
     "ko_pron": "에잇",
     "meaning": "여덟, 8",
+    "freq": 2,
     "example": "I go to bed at eight.",
     "example_meaning": "나는 여덟 시에 자러 가."
    },
@@ -215,6 +243,7 @@
     "text": "nine",
     "ko_pron": "나인",
     "meaning": "아홉, 9",
+    "freq": 2,
     "example": "I see nine birds.",
     "example_meaning": "새 아홉 마리가 보여."
    },
@@ -222,6 +251,7 @@
     "text": "ten",
     "ko_pron": "텐",
     "meaning": "열, 10",
+    "freq": 2,
     "example": "I have ten fingers.",
     "example_meaning": "나는 손가락이 열 개야."
    }
@@ -235,6 +265,7 @@
     "text": "red",
     "ko_pron": "레드",
     "meaning": "빨간색",
+    "freq": 2,
     "example": "The apple is red.",
     "example_meaning": "사과는 빨간색이야."
    },
@@ -242,6 +273,7 @@
     "text": "blue",
     "ko_pron": "블루",
     "meaning": "파란색",
+    "freq": 2,
     "example": "The sky is blue.",
     "example_meaning": "하늘은 파란색이야."
    },
@@ -249,6 +281,7 @@
     "text": "yellow",
     "ko_pron": "옐로우",
     "meaning": "노란색",
+    "freq": 2,
     "example": "I like yellow.",
     "example_meaning": "나는 노란색이 좋아."
    },
@@ -256,6 +289,7 @@
     "text": "green",
     "ko_pron": "그린",
     "meaning": "초록색",
+    "freq": 2,
     "example": "The tree is green.",
     "example_meaning": "나무는 초록색이야."
    },
@@ -263,6 +297,7 @@
     "text": "black",
     "ko_pron": "블랙",
     "meaning": "검은색",
+    "freq": 2,
     "example": "My cat is black.",
     "example_meaning": "우리 고양이는 검은색이야."
    },
@@ -270,6 +305,7 @@
     "text": "white",
     "ko_pron": "화이트",
     "meaning": "하얀색",
+    "freq": 2,
     "example": "Snow is white.",
     "example_meaning": "눈은 하얀색이야."
    },
@@ -277,6 +313,7 @@
     "text": "pink",
     "ko_pron": "핑크",
     "meaning": "분홍색",
+    "freq": 2,
     "example": "I have a pink hat.",
     "example_meaning": "나는 분홍 모자가 있어."
    },
@@ -284,6 +321,7 @@
     "text": "orange",
     "ko_pron": "오린지",
     "meaning": "주황색, 오렌지",
+    "freq": 2,
     "example": "I want an orange.",
     "example_meaning": "오렌지 하나 먹고 싶어."
    }
@@ -297,6 +335,7 @@
     "text": "head",
     "ko_pron": "헤드",
     "meaning": "머리",
+    "freq": 2,
     "example": "My head hurts.",
     "example_meaning": "머리가 아파."
    },
@@ -304,6 +343,7 @@
     "text": "eye",
     "ko_pron": "아이",
     "meaning": "눈",
+    "freq": 2,
     "example": "Close your eyes.",
     "example_meaning": "눈을 감아."
    },
@@ -311,6 +351,7 @@
     "text": "ear",
     "ko_pron": "이어",
     "meaning": "귀",
+    "freq": 2,
     "example": "A rabbit has long ears.",
     "example_meaning": "토끼는 귀가 길어."
    },
@@ -318,6 +359,7 @@
     "text": "nose",
     "ko_pron": "노즈",
     "meaning": "코",
+    "freq": 2,
     "example": "Touch your nose.",
     "example_meaning": "코를 만져 봐."
    },
@@ -325,6 +367,7 @@
     "text": "mouth",
     "ko_pron": "마우스",
     "meaning": "입",
+    "freq": 2,
     "example": "Open your mouth.",
     "example_meaning": "입을 벌려."
    },
@@ -332,6 +375,7 @@
     "text": "hand",
     "ko_pron": "핸드",
     "meaning": "손",
+    "freq": 3,
     "example": "Wash your hands.",
     "example_meaning": "손 씻어."
    },
@@ -339,6 +383,7 @@
     "text": "foot",
     "ko_pron": "풋",
     "meaning": "발",
+    "freq": 2,
     "example": "My foot is cold.",
     "example_meaning": "발이 차가워."
    },
@@ -346,6 +391,7 @@
     "text": "leg",
     "ko_pron": "레그",
     "meaning": "다리",
+    "freq": 2,
     "example": "My legs are tired.",
     "example_meaning": "다리가 피곤해."
    }
@@ -359,6 +405,7 @@
     "text": "water",
     "ko_pron": "워터",
     "meaning": "물",
+    "freq": 3,
     "example": "I need water.",
     "example_meaning": "물이 필요해."
    },
@@ -366,6 +413,7 @@
     "text": "milk",
     "ko_pron": "밀크",
     "meaning": "우유",
+    "freq": 2,
     "example": "I drink milk.",
     "example_meaning": "나는 우유를 마셔."
    },
@@ -373,6 +421,7 @@
     "text": "bread",
     "ko_pron": "브레드",
     "meaning": "빵",
+    "freq": 2,
     "example": "I eat bread.",
     "example_meaning": "나는 빵을 먹어."
    },
@@ -380,6 +429,7 @@
     "text": "apple",
     "ko_pron": "애플",
     "meaning": "사과",
+    "freq": 2,
     "example": "I like apples.",
     "example_meaning": "나는 사과가 좋아."
    },
@@ -387,6 +437,7 @@
     "text": "egg",
     "ko_pron": "에그",
     "meaning": "달걀",
+    "freq": 2,
     "example": "I want an egg.",
     "example_meaning": "달걀 먹고 싶어."
    },
@@ -394,6 +445,7 @@
     "text": "rice",
     "ko_pron": "라이스",
     "meaning": "밥, 쌀",
+    "freq": 2,
     "example": "I eat rice every day.",
     "example_meaning": "나는 매일 밥을 먹어."
    },
@@ -401,6 +453,7 @@
     "text": "juice",
     "ko_pron": "주스",
     "meaning": "주스",
+    "freq": 2,
     "example": "Can I have juice?",
     "example_meaning": "주스 마셔도 돼요?"
    },
@@ -408,6 +461,7 @@
     "text": "cookie",
     "ko_pron": "쿠키",
     "meaning": "쿠키",
+    "freq": 2,
     "example": "One more cookie, please.",
     "example_meaning": "쿠키 하나 더 주세요."
    }
@@ -421,6 +475,7 @@
     "text": "dog",
     "ko_pron": "도그",
     "meaning": "개",
+    "freq": 2,
     "example": "I have a dog.",
     "example_meaning": "나는 개가 있어."
    },
@@ -428,6 +483,7 @@
     "text": "cat",
     "ko_pron": "캣",
     "meaning": "고양이",
+    "freq": 2,
     "example": "The cat is sleeping.",
     "example_meaning": "고양이가 자고 있어."
    },
@@ -435,6 +491,7 @@
     "text": "bird",
     "ko_pron": "버드",
     "meaning": "새",
+    "freq": 2,
     "example": "A bird can fly.",
     "example_meaning": "새는 날 수 있어."
    },
@@ -442,6 +499,7 @@
     "text": "fish",
     "ko_pron": "피시",
     "meaning": "물고기",
+    "freq": 2,
     "example": "Fish live in water.",
     "example_meaning": "물고기는 물에 살아."
    },
@@ -449,6 +507,7 @@
     "text": "bear",
     "ko_pron": "베어",
     "meaning": "곰",
+    "freq": 2,
     "example": "The bear is big.",
     "example_meaning": "곰은 커."
    },
@@ -456,6 +515,7 @@
     "text": "rabbit",
     "ko_pron": "래빗",
     "meaning": "토끼",
+    "freq": 2,
     "example": "The rabbit is fast.",
     "example_meaning": "토끼는 빨라."
    },
@@ -463,6 +523,7 @@
     "text": "horse",
     "ko_pron": "홀스",
     "meaning": "말",
+    "freq": 2,
     "example": "I want to ride a horse.",
     "example_meaning": "말 타고 싶어."
    },
@@ -470,6 +531,7 @@
     "text": "duck",
     "ko_pron": "덕",
     "meaning": "오리",
+    "freq": 2,
     "example": "The duck says quack.",
     "example_meaning": "오리는 꽥꽥 해."
    }
@@ -483,6 +545,7 @@
     "text": "happy",
     "ko_pron": "해피",
     "meaning": "행복한, 기쁜",
+    "freq": 3,
     "example": "I am happy.",
     "example_meaning": "나는 기뻐."
    },
@@ -490,6 +553,7 @@
     "text": "sad",
     "ko_pron": "새드",
     "meaning": "슬픈",
+    "freq": 2,
     "example": "Why are you sad?",
     "example_meaning": "왜 슬퍼?"
    },
@@ -497,6 +561,7 @@
     "text": "hungry",
     "ko_pron": "헝그리",
     "meaning": "배고픈",
+    "freq": 3,
     "example": "I am hungry.",
     "example_meaning": "나 배고파."
    },
@@ -504,6 +569,7 @@
     "text": "tired",
     "ko_pron": "타이어드",
     "meaning": "피곤한",
+    "freq": 3,
     "example": "I am so tired.",
     "example_meaning": "나 너무 피곤해."
    },
@@ -511,6 +577,7 @@
     "text": "hot",
     "ko_pron": "핫",
     "meaning": "더운, 뜨거운",
+    "freq": 3,
     "example": "It is hot today.",
     "example_meaning": "오늘 더워."
    },
@@ -518,6 +585,7 @@
     "text": "cold",
     "ko_pron": "콜드",
     "meaning": "추운, 차가운",
+    "freq": 3,
     "example": "I am cold.",
     "example_meaning": "나 추워."
    },
@@ -525,6 +593,7 @@
     "text": "sleepy",
     "ko_pron": "슬리피",
     "meaning": "졸린",
+    "freq": 2,
     "example": "I am sleepy.",
     "example_meaning": "나 졸려."
    },
@@ -532,6 +601,7 @@
     "text": "scared",
     "ko_pron": "스케어드",
     "meaning": "무서운, 겁먹은",
+    "freq": 2,
     "example": "Don't be scared.",
     "example_meaning": "무서워하지 마."
    }
@@ -545,6 +615,7 @@
     "text": "shirt",
     "ko_pron": "셔츠",
     "meaning": "셔츠",
+    "freq": 2,
     "example": "This shirt is nice.",
     "example_meaning": "이 셔츠 예쁘다."
    },
@@ -552,6 +623,7 @@
     "text": "pants",
     "ko_pron": "팬츠",
     "meaning": "바지",
+    "freq": 2,
     "example": "My pants are long.",
     "example_meaning": "내 바지는 길어."
    },
@@ -559,6 +631,7 @@
     "text": "shoes",
     "ko_pron": "슈즈",
     "meaning": "신발",
+    "freq": 2,
     "example": "Put on your shoes.",
     "example_meaning": "신발 신어."
    },
@@ -566,6 +639,7 @@
     "text": "socks",
     "ko_pron": "삭스",
     "meaning": "양말",
+    "freq": 2,
     "example": "My socks are wet.",
     "example_meaning": "양말이 젖었어."
    },
@@ -573,6 +647,7 @@
     "text": "hat",
     "ko_pron": "햇",
     "meaning": "모자",
+    "freq": 2,
     "example": "I like your hat.",
     "example_meaning": "네 모자 좋다."
    },
@@ -580,6 +655,7 @@
     "text": "coat",
     "ko_pron": "코트",
     "meaning": "외투",
+    "freq": 2,
     "example": "Take your coat.",
     "example_meaning": "외투 챙겨."
    },
@@ -587,6 +663,7 @@
     "text": "dress",
     "ko_pron": "드레스",
     "meaning": "원피스",
+    "freq": 2,
     "example": "She has a red dress.",
     "example_meaning": "그녀는 빨간 원피스가 있어."
    },
@@ -594,6 +671,7 @@
     "text": "bag",
     "ko_pron": "백",
     "meaning": "가방, 봉투",
+    "freq": 2,
     "example": "Where is my bag?",
     "example_meaning": "내 가방 어디 있어?"
    }
@@ -607,6 +685,7 @@
     "text": "sun",
     "ko_pron": "선",
     "meaning": "해",
+    "freq": 2,
     "example": "The sun is hot.",
     "example_meaning": "해가 뜨거워."
    },
@@ -614,6 +693,7 @@
     "text": "moon",
     "ko_pron": "문",
     "meaning": "달",
+    "freq": 2,
     "example": "Look at the moon.",
     "example_meaning": "달 좀 봐."
    },
@@ -621,6 +701,7 @@
     "text": "star",
     "ko_pron": "스타",
     "meaning": "별",
+    "freq": 2,
     "example": "I see a star.",
     "example_meaning": "별이 보여."
    },
@@ -628,6 +709,7 @@
     "text": "tree",
     "ko_pron": "트리",
     "meaning": "나무",
+    "freq": 2,
     "example": "The tree is tall.",
     "example_meaning": "나무가 커."
    },
@@ -635,6 +717,7 @@
     "text": "flower",
     "ko_pron": "플라워",
     "meaning": "꽃",
+    "freq": 2,
     "example": "This flower smells good.",
     "example_meaning": "이 꽃 향기 좋다."
    },
@@ -642,6 +725,7 @@
     "text": "rain",
     "ko_pron": "레인",
     "meaning": "비",
+    "freq": 2,
     "example": "It's going to rain.",
     "example_meaning": "비가 올 거야."
    },
@@ -649,6 +733,7 @@
     "text": "snow",
     "ko_pron": "스노우",
     "meaning": "눈",
+    "freq": 2,
     "example": "I love snow.",
     "example_meaning": "나는 눈이 너무 좋아."
    },
@@ -656,6 +741,7 @@
     "text": "wind",
     "ko_pron": "윈드",
     "meaning": "바람",
+    "freq": 2,
     "example": "The wind is cold.",
     "example_meaning": "바람이 차가워."
    }
@@ -669,6 +755,7 @@
     "text": "car",
     "ko_pron": "카",
     "meaning": "자동차",
+    "freq": 2,
     "example": "Get in the car.",
     "example_meaning": "차에 타."
    },
@@ -676,6 +763,7 @@
     "text": "bus",
     "ko_pron": "버스",
     "meaning": "버스",
+    "freq": 2,
     "example": "The bus is here.",
     "example_meaning": "버스 왔다."
    },
@@ -683,6 +771,7 @@
     "text": "train",
     "ko_pron": "트레인",
     "meaning": "기차",
+    "freq": 2,
     "example": "I take the train.",
     "example_meaning": "나는 기차를 타."
    },
@@ -690,6 +779,7 @@
     "text": "plane",
     "ko_pron": "플레인",
     "meaning": "비행기",
+    "freq": 2,
     "example": "The plane is big.",
     "example_meaning": "비행기가 커."
    },
@@ -697,6 +787,7 @@
     "text": "boat",
     "ko_pron": "보트",
     "meaning": "배",
+    "freq": 2,
     "example": "Let's ride a boat.",
     "example_meaning": "배 타자."
    },
@@ -704,6 +795,7 @@
     "text": "bike",
     "ko_pron": "바이크",
     "meaning": "자전거",
+    "freq": 2,
     "example": "I can ride a bike.",
     "example_meaning": "나는 자전거 탈 수 있어."
    },
@@ -711,6 +803,7 @@
     "text": "taxi",
     "ko_pron": "택시",
     "meaning": "택시",
+    "freq": 2,
     "example": "Let's take a taxi.",
     "example_meaning": "택시 타자."
    },
@@ -718,6 +811,7 @@
     "text": "subway",
     "ko_pron": "서브웨이",
     "meaning": "지하철",
+    "freq": 2,
     "example": "Where is the subway?",
     "example_meaning": "지하철 어디예요?"
    }
@@ -731,6 +825,7 @@
     "text": "home",
     "ko_pron": "홈",
     "meaning": "집",
+    "freq": 3,
     "example": "Let's go home.",
     "example_meaning": "집에 가자."
    },
@@ -738,6 +833,7 @@
     "text": "school",
     "ko_pron": "스쿨",
     "meaning": "학교",
+    "freq": 3,
     "example": "I go to school.",
     "example_meaning": "나는 학교에 가."
    },
@@ -745,6 +841,7 @@
     "text": "store",
     "ko_pron": "스토어",
     "meaning": "가게",
+    "freq": 2,
     "example": "The store is open.",
     "example_meaning": "가게 열었어."
    },
@@ -752,6 +849,7 @@
     "text": "park",
     "ko_pron": "파크",
     "meaning": "공원",
+    "freq": 2,
     "example": "Let's play in the park.",
     "example_meaning": "공원에서 놀자."
    },
@@ -759,6 +857,7 @@
     "text": "hospital",
     "ko_pron": "하스피털",
     "meaning": "병원",
+    "freq": 1,
     "example": "He is in the hospital.",
     "example_meaning": "그는 병원에 있어."
    },
@@ -766,6 +865,7 @@
     "text": "bank",
     "ko_pron": "뱅크",
     "meaning": "은행",
+    "freq": 1,
     "example": "Where is the bank?",
     "example_meaning": "은행 어디예요?"
    },
@@ -773,6 +873,7 @@
     "text": "station",
     "ko_pron": "스테이션",
     "meaning": "역",
+    "freq": 2,
     "example": "The station is near.",
     "example_meaning": "역이 가까워."
    },
@@ -780,6 +881,7 @@
     "text": "airport",
     "ko_pron": "에어포트",
     "meaning": "공항",
+    "freq": 2,
     "example": "We are at the airport.",
     "example_meaning": "우리는 공항에 있어."
    }
@@ -793,6 +895,7 @@
     "text": "door",
     "ko_pron": "도어",
     "meaning": "문",
+    "freq": 2,
     "example": "Open the door.",
     "example_meaning": "문 열어."
    },
@@ -800,6 +903,7 @@
     "text": "window",
     "ko_pron": "윈도우",
     "meaning": "창문",
+    "freq": 2,
     "example": "Close the window.",
     "example_meaning": "창문 닫아."
    },
@@ -807,6 +911,7 @@
     "text": "bed",
     "ko_pron": "베드",
     "meaning": "침대",
+    "freq": 2,
     "example": "Go to bed.",
     "example_meaning": "자러 가."
    },
@@ -814,6 +919,7 @@
     "text": "chair",
     "ko_pron": "체어",
     "meaning": "의자",
+    "freq": 2,
     "example": "Sit on the chair.",
     "example_meaning": "의자에 앉아."
    },
@@ -821,6 +927,7 @@
     "text": "table",
     "ko_pron": "테이블",
     "meaning": "탁자, 식탁",
+    "freq": 2,
     "example": "Put it on the table.",
     "example_meaning": "식탁 위에 놓아."
    },
@@ -828,6 +935,7 @@
     "text": "bathroom",
     "ko_pron": "배스룸",
     "meaning": "화장실",
+    "freq": 3,
     "example": "Where is the bathroom?",
     "example_meaning": "화장실 어디예요?"
    },
@@ -835,6 +943,7 @@
     "text": "key",
     "ko_pron": "키",
     "meaning": "열쇠",
+    "freq": 2,
     "example": "I lost my key.",
     "example_meaning": "열쇠를 잃어버렸어."
    },
@@ -842,6 +951,7 @@
     "text": "phone",
     "ko_pron": "폰",
     "meaning": "전화기",
+    "freq": 3,
     "example": "Where is my phone?",
     "example_meaning": "내 전화기 어디 있어?"
    }
@@ -855,6 +965,7 @@
     "text": "cup",
     "ko_pron": "컵",
     "meaning": "컵",
+    "freq": 2,
     "example": "A cup of water, please.",
     "example_meaning": "물 한 컵 주세요."
    },
@@ -862,6 +973,7 @@
     "text": "plate",
     "ko_pron": "플레이트",
     "meaning": "접시",
+    "freq": 2,
     "example": "The plate is hot.",
     "example_meaning": "접시가 뜨거워요."
    },
@@ -869,6 +981,7 @@
     "text": "spoon",
     "ko_pron": "스푼",
     "meaning": "숟가락",
+    "freq": 2,
     "example": "Can I have a spoon?",
     "example_meaning": "숟가락 주실래요?"
    },
@@ -876,6 +989,7 @@
     "text": "fork",
     "ko_pron": "포크",
     "meaning": "포크",
+    "freq": 2,
     "example": "I need a fork.",
     "example_meaning": "포크가 필요해요."
    },
@@ -883,6 +997,7 @@
     "text": "knife",
     "ko_pron": "나이프",
     "meaning": "칼",
+    "freq": 1,
     "example": "Be careful with the knife.",
     "example_meaning": "칼 조심해."
    },
@@ -890,6 +1005,7 @@
     "text": "bowl",
     "ko_pron": "보울",
     "meaning": "그릇",
+    "freq": 2,
     "example": "A bowl of rice.",
     "example_meaning": "밥 한 그릇."
    },
@@ -897,6 +1013,7 @@
     "text": "chopsticks",
     "ko_pron": "찹스틱스",
     "meaning": "젓가락",
+    "freq": 1,
     "example": "I can use chopsticks.",
     "example_meaning": "나는 젓가락 쓸 수 있어."
    },
@@ -904,6 +1021,7 @@
     "text": "napkin",
     "ko_pron": "냅킨",
     "meaning": "냅킨",
+    "freq": 1,
     "example": "More napkins, please.",
     "example_meaning": "냅킨 더 주세요."
    }
@@ -917,6 +1035,7 @@
     "text": "morning",
     "ko_pron": "모닝",
     "meaning": "아침",
+    "freq": 2,
     "example": "Good morning!",
     "example_meaning": "좋은 아침!"
    },
@@ -924,6 +1043,7 @@
     "text": "night",
     "ko_pron": "나이트",
     "meaning": "밤",
+    "freq": 2,
     "example": "Good night.",
     "example_meaning": "잘 자."
    },
@@ -931,6 +1051,7 @@
     "text": "today",
     "ko_pron": "투데이",
     "meaning": "오늘",
+    "freq": 3,
     "example": "It's sunny today.",
     "example_meaning": "오늘 맑아."
    },
@@ -938,6 +1059,7 @@
     "text": "tomorrow",
     "ko_pron": "투모로우",
     "meaning": "내일",
+    "freq": 3,
     "example": "See you tomorrow.",
     "example_meaning": "내일 봐."
    },
@@ -945,6 +1067,7 @@
     "text": "yesterday",
     "ko_pron": "예스터데이",
     "meaning": "어제",
+    "freq": 2,
     "example": "I was sick yesterday.",
     "example_meaning": "어제 아팠어."
    },
@@ -952,6 +1075,7 @@
     "text": "now",
     "ko_pron": "나우",
     "meaning": "지금",
+    "freq": 3,
     "example": "Let's go now.",
     "example_meaning": "지금 가자."
    },
@@ -959,6 +1083,7 @@
     "text": "later",
     "ko_pron": "레이터",
     "meaning": "나중에",
+    "freq": 3,
     "example": "See you later.",
     "example_meaning": "나중에 봐."
    },
@@ -966,6 +1091,7 @@
     "text": "day",
     "ko_pron": "데이",
     "meaning": "날, 낮",
+    "freq": 2,
     "example": "Have a nice day.",
     "example_meaning": "좋은 하루 보내."
    }
@@ -979,6 +1105,7 @@
     "text": "big",
     "ko_pron": "빅",
     "meaning": "큰",
+    "freq": 3,
     "example": "The bear is big.",
     "example_meaning": "곰은 커."
    },
@@ -986,6 +1113,7 @@
     "text": "small",
     "ko_pron": "스몰",
     "meaning": "작은",
+    "freq": 2,
     "example": "The mouse is small.",
     "example_meaning": "쥐는 작아."
    },
@@ -993,6 +1121,7 @@
     "text": "good",
     "ko_pron": "굿",
     "meaning": "좋은",
+    "freq": 3,
     "example": "Good job!",
     "example_meaning": "잘했어!"
    },
@@ -1000,6 +1129,7 @@
     "text": "bad",
     "ko_pron": "배드",
     "meaning": "나쁜",
+    "freq": 2,
     "example": "That's not bad.",
     "example_meaning": "나쁘지 않네."
    },
@@ -1007,6 +1137,7 @@
     "text": "fast",
     "ko_pron": "패스트",
     "meaning": "빠른",
+    "freq": 2,
     "example": "The car is fast.",
     "example_meaning": "차가 빨라."
    },
@@ -1014,6 +1145,7 @@
     "text": "slow",
     "ko_pron": "슬로우",
     "meaning": "느린",
+    "freq": 2,
     "example": "Please speak slowly.",
     "example_meaning": "천천히 말해 주세요."
    },
@@ -1021,6 +1153,7 @@
     "text": "open",
     "ko_pron": "오픈",
     "meaning": "열린",
+    "freq": 2,
     "example": "The door is open.",
     "example_meaning": "문이 열려 있어."
    },
@@ -1028,6 +1161,7 @@
     "text": "closed",
     "ko_pron": "클로즈드",
     "meaning": "닫힌",
+    "freq": 2,
     "example": "The store is closed.",
     "example_meaning": "가게가 닫혔어."
    }
@@ -1041,6 +1175,7 @@
     "text": "in",
     "ko_pron": "인",
     "meaning": "~안에",
+    "freq": 3,
     "example": "The cat is in the box.",
     "example_meaning": "고양이가 상자 안에 있어."
    },
@@ -1048,6 +1183,7 @@
     "text": "on",
     "ko_pron": "온",
     "meaning": "~위에",
+    "freq": 3,
     "example": "The cup is on the table.",
     "example_meaning": "컵이 식탁 위에 있어."
    },
@@ -1055,6 +1191,7 @@
     "text": "under",
     "ko_pron": "언더",
     "meaning": "~아래에, ~밑에",
+    "freq": 2,
     "example": "The ball is under the bed.",
     "example_meaning": "공이 침대 밑에 있어."
    },
@@ -1062,6 +1199,7 @@
     "text": "behind",
     "ko_pron": "비하인드",
     "meaning": "~뒤에",
+    "freq": 1,
     "example": "Look behind you!",
     "example_meaning": "네 뒤를 봐!"
    },
@@ -1069,6 +1207,7 @@
     "text": "in front of",
     "ko_pron": "인 프런트 오브",
     "meaning": "~앞에",
+    "freq": 1,
     "example": "Stand in front of me.",
     "example_meaning": "내 앞에 서."
    },
@@ -1076,6 +1215,7 @@
     "text": "next to",
     "ko_pron": "넥스트 투",
     "meaning": "~옆에",
+    "freq": 2,
     "example": "Sit next to me.",
     "example_meaning": "내 옆에 앉아."
    },
@@ -1083,6 +1223,7 @@
     "text": "near",
     "ko_pron": "니어",
     "meaning": "가까이, 가까운",
+    "freq": 2,
     "example": "Stay near me.",
     "example_meaning": "내 가까이 있어."
    },
@@ -1090,6 +1231,7 @@
     "text": "far",
     "ko_pron": "파",
     "meaning": "멀리, 먼",
+    "freq": 2,
     "example": "Is it far?",
     "example_meaning": "멀어요?"
    },
@@ -1097,6 +1239,7 @@
     "text": "left",
     "ko_pron": "레프트",
     "meaning": "왼쪽",
+    "freq": 2,
     "example": "Turn left.",
     "example_meaning": "왼쪽으로 돌아."
    },
@@ -1104,6 +1247,7 @@
     "text": "right",
     "ko_pron": "라이트",
     "meaning": "오른쪽",
+    "freq": 2,
     "example": "It's on the right.",
     "example_meaning": "오른쪽에 있어."
    },
@@ -1111,6 +1255,7 @@
     "text": "up",
     "ko_pron": "업",
     "meaning": "위로",
+    "freq": 2,
     "example": "Look up!",
     "example_meaning": "위를 봐!"
    },
@@ -1118,6 +1263,7 @@
     "text": "down",
     "ko_pron": "다운",
     "meaning": "아래로",
+    "freq": 2,
     "example": "Sit down, please.",
     "example_meaning": "앉아 주세요."
    }
@@ -1131,6 +1277,7 @@
     "text": "what",
     "ko_pron": "왓",
     "meaning": "무엇",
+    "freq": 3,
     "example": "What is your name?",
     "example_meaning": "이름이 뭐야?"
    },
@@ -1138,6 +1285,7 @@
     "text": "where",
     "ko_pron": "웨어",
     "meaning": "어디",
+    "freq": 3,
     "example": "Where is mom?",
     "example_meaning": "엄마 어디 있어?"
    },
@@ -1145,6 +1293,7 @@
     "text": "who",
     "ko_pron": "후",
     "meaning": "누구",
+    "freq": 2,
     "example": "Who is that?",
     "example_meaning": "저 사람 누구야?"
    },
@@ -1152,6 +1301,7 @@
     "text": "when",
     "ko_pron": "웬",
     "meaning": "언제",
+    "freq": 2,
     "example": "When do we go?",
     "example_meaning": "우리 언제 가?"
    },
@@ -1159,6 +1309,7 @@
     "text": "why",
     "ko_pron": "와이",
     "meaning": "왜",
+    "freq": 2,
     "example": "Why is it dark?",
     "example_meaning": "왜 깜깜해?"
    },
@@ -1166,6 +1317,7 @@
     "text": "how",
     "ko_pron": "하우",
     "meaning": "어떻게",
+    "freq": 3,
     "example": "How do you do that?",
     "example_meaning": "그거 어떻게 해?"
    },
@@ -1173,6 +1325,7 @@
     "text": "which",
     "ko_pron": "위치",
     "meaning": "어느 것, 어떤",
+    "freq": 2,
     "example": "Which one do you want?",
     "example_meaning": "어느 거 갖고 싶어?"
    },
@@ -1180,6 +1333,7 @@
     "text": "how many",
     "ko_pron": "하우 메니",
     "meaning": "몇 개",
+    "freq": 2,
     "example": "How many apples?",
     "example_meaning": "사과 몇 개야?"
    },
@@ -1187,6 +1341,7 @@
     "text": "how much",
     "ko_pron": "하우 머치",
     "meaning": "얼마",
+    "freq": 3,
     "example": "How much is this?",
     "example_meaning": "이거 얼마예요?"
    },
@@ -1194,6 +1349,7 @@
     "text": "how old",
     "ko_pron": "하우 올드",
     "meaning": "몇 살",
+    "freq": 2,
     "example": "How old are you?",
     "example_meaning": "너 몇 살이야?"
    },
@@ -1201,6 +1357,7 @@
     "text": "what time",
     "ko_pron": "왓 타임",
     "meaning": "몇 시",
+    "freq": 2,
     "example": "What time is it?",
     "example_meaning": "지금 몇 시야?"
    }
@@ -1214,6 +1371,7 @@
     "text": "eleven",
     "ko_pron": "일레븐",
     "meaning": "열하나, 11",
+    "freq": 1,
     "example": "My brother is eleven.",
     "example_meaning": "우리 형은 열한 살이야."
    },
@@ -1221,6 +1379,7 @@
     "text": "twelve",
     "ko_pron": "트웰브",
     "meaning": "열둘, 12",
+    "freq": 1,
     "example": "A year has twelve months.",
     "example_meaning": "1년은 열두 달이야."
    },
@@ -1228,6 +1387,7 @@
     "text": "thirteen",
     "ko_pron": "써틴",
     "meaning": "열셋, 13",
+    "freq": 1,
     "example": "I see thirteen ducks.",
     "example_meaning": "오리 열세 마리가 보여."
    },
@@ -1235,6 +1395,7 @@
     "text": "fourteen",
     "ko_pron": "포틴",
     "meaning": "열넷, 14",
+    "freq": 1,
     "example": "I have fourteen crayons.",
     "example_meaning": "나는 크레용이 열네 개 있어."
    },
@@ -1242,6 +1403,7 @@
     "text": "fifteen",
     "ko_pron": "피프틴",
     "meaning": "열다섯, 15",
+    "freq": 1,
     "example": "Wait fifteen minutes.",
     "example_meaning": "15분 기다려."
    },
@@ -1249,6 +1411,7 @@
     "text": "sixteen",
     "ko_pron": "식스틴",
     "meaning": "열여섯, 16",
+    "freq": 1,
     "example": "Sixteen kids are in my class.",
     "example_meaning": "우리 반에는 아이가 열여섯 명 있어."
    },
@@ -1256,6 +1419,7 @@
     "text": "seventeen",
     "ko_pron": "세븐틴",
     "meaning": "열일곱, 17",
+    "freq": 1,
     "example": "Take bus number seventeen.",
     "example_meaning": "17번 버스를 타."
    },
@@ -1263,6 +1427,7 @@
     "text": "eighteen",
     "ko_pron": "에이틴",
     "meaning": "열여덟, 18",
+    "freq": 1,
     "example": "My cousin is eighteen.",
     "example_meaning": "내 사촌은 열여덟 살이야."
    },
@@ -1270,6 +1435,7 @@
     "text": "nineteen",
     "ko_pron": "나인틴",
     "meaning": "열아홉, 19",
+    "freq": 1,
     "example": "Nineteen, twenty! Here I come!",
     "example_meaning": "열아홉, 스물! 찾으러 간다!"
    },
@@ -1277,6 +1443,7 @@
     "text": "twenty",
     "ko_pron": "트웬티",
     "meaning": "스물, 20",
+    "freq": 1,
     "example": "I have twenty fingers and toes.",
     "example_meaning": "나는 손가락 발가락이 스무 개야."
    },
@@ -1284,6 +1451,7 @@
     "text": "thirty",
     "ko_pron": "써티",
     "meaning": "서른, 30",
+    "freq": 1,
     "example": "A month has thirty days.",
     "example_meaning": "한 달은 30일이야."
    },
@@ -1291,6 +1459,7 @@
     "text": "fifty",
     "ko_pron": "피프티",
     "meaning": "쉰, 50",
+    "freq": 1,
     "example": "I have fifty stickers.",
     "example_meaning": "나는 스티커가 50개 있어."
    },
@@ -1298,6 +1467,7 @@
     "text": "one hundred",
     "ko_pron": "원 헌드레드",
     "meaning": "백, 100",
+    "freq": 1,
     "example": "I can count to one hundred!",
     "example_meaning": "나는 100까지 셀 수 있어!"
    }
@@ -1311,6 +1481,7 @@
     "text": "Monday",
     "ko_pron": "먼데이",
     "meaning": "월요일",
+    "freq": 2,
     "example": "I go to school on Monday.",
     "example_meaning": "나는 월요일에 학교에 가."
    },
@@ -1318,6 +1489,7 @@
     "text": "Tuesday",
     "ko_pron": "튜즈데이",
     "meaning": "화요일",
+    "freq": 2,
     "example": "Today is Tuesday.",
     "example_meaning": "오늘은 화요일이야."
    },
@@ -1325,6 +1497,7 @@
     "text": "Wednesday",
     "ko_pron": "웬즈데이",
     "meaning": "수요일",
+    "freq": 2,
     "example": "See you on Wednesday.",
     "example_meaning": "수요일에 봐."
    },
@@ -1332,6 +1505,7 @@
     "text": "Thursday",
     "ko_pron": "써즈데이",
     "meaning": "목요일",
+    "freq": 2,
     "example": "I swim on Thursday.",
     "example_meaning": "나는 목요일에 수영해."
    },
@@ -1339,6 +1513,7 @@
     "text": "Friday",
     "ko_pron": "프라이데이",
     "meaning": "금요일",
+    "freq": 2,
     "example": "Yay, it's Friday!",
     "example_meaning": "야호, 금요일이다!"
    },
@@ -1346,6 +1521,7 @@
     "text": "Saturday",
     "ko_pron": "새러데이",
     "meaning": "토요일",
+    "freq": 2,
     "example": "Let's play on Saturday.",
     "example_meaning": "토요일에 놀자."
    },
@@ -1353,6 +1529,7 @@
     "text": "Sunday",
     "ko_pron": "선데이",
     "meaning": "일요일",
+    "freq": 2,
     "example": "We rest on Sunday.",
     "example_meaning": "우리는 일요일에 쉬어."
    },
@@ -1360,6 +1537,7 @@
     "text": "spring",
     "ko_pron": "스프링",
     "meaning": "봄",
+    "freq": 1,
     "example": "Flowers come out in spring.",
     "example_meaning": "봄에는 꽃이 피어."
    },
@@ -1367,6 +1545,7 @@
     "text": "summer",
     "ko_pron": "써머",
     "meaning": "여름",
+    "freq": 1,
     "example": "Summer is hot.",
     "example_meaning": "여름은 더워."
    },
@@ -1374,6 +1553,7 @@
     "text": "fall",
     "ko_pron": "폴",
     "meaning": "가을",
+    "freq": 2,
     "example": "The leaves turn red in fall.",
     "example_meaning": "가을에는 나뭇잎이 빨개져."
    },
@@ -1381,6 +1561,7 @@
     "text": "winter",
     "ko_pron": "윈터",
     "meaning": "겨울",
+    "freq": 1,
     "example": "It snows in winter.",
     "example_meaning": "겨울에는 눈이 와."
    }
@@ -1394,6 +1575,7 @@
     "text": "banana",
     "ko_pron": "바나나",
     "meaning": "바나나",
+    "freq": 2,
     "example": "Monkeys love bananas.",
     "example_meaning": "원숭이는 바나나를 좋아해."
    },
@@ -1401,6 +1583,7 @@
     "text": "strawberry",
     "ko_pron": "스트로베리",
     "meaning": "딸기",
+    "freq": 1,
     "example": "This strawberry is sweet.",
     "example_meaning": "이 딸기 달아."
    },
@@ -1408,6 +1591,7 @@
     "text": "grapes",
     "ko_pron": "그레입스",
     "meaning": "포도",
+    "freq": 1,
     "example": "I want some grapes.",
     "example_meaning": "포도 먹고 싶어."
    },
@@ -1415,6 +1599,7 @@
     "text": "watermelon",
     "ko_pron": "워터멜론",
     "meaning": "수박",
+    "freq": 1,
     "example": "Watermelon is so big.",
     "example_meaning": "수박은 정말 커."
    },
@@ -1422,6 +1607,7 @@
     "text": "peach",
     "ko_pron": "피치",
     "meaning": "복숭아",
+    "freq": 1,
     "example": "The peach is soft.",
     "example_meaning": "복숭아가 말랑해."
    },
@@ -1429,6 +1615,7 @@
     "text": "cherry",
     "ko_pron": "체리",
     "meaning": "체리",
+    "freq": 1,
     "example": "Cherries are red.",
     "example_meaning": "체리는 빨개."
    },
@@ -1436,6 +1623,7 @@
     "text": "lemon",
     "ko_pron": "레몬",
     "meaning": "레몬",
+    "freq": 1,
     "example": "Lemons are sour.",
     "example_meaning": "레몬은 셔."
    },
@@ -1443,6 +1631,7 @@
     "text": "carrot",
     "ko_pron": "캐럿",
     "meaning": "당근",
+    "freq": 1,
     "example": "Rabbits eat carrots.",
     "example_meaning": "토끼는 당근을 먹어."
    },
@@ -1450,6 +1639,7 @@
     "text": "potato",
     "ko_pron": "포테이토",
     "meaning": "감자",
+    "freq": 1,
     "example": "I like potatoes.",
     "example_meaning": "나는 감자가 좋아."
    },
@@ -1457,6 +1647,7 @@
     "text": "tomato",
     "ko_pron": "토메이토",
     "meaning": "토마토",
+    "freq": 1,
     "example": "The tomato is red.",
     "example_meaning": "토마토가 빨개."
    },
@@ -1464,6 +1655,7 @@
     "text": "corn",
     "ko_pron": "콘",
     "meaning": "옥수수",
+    "freq": 2,
     "example": "Corn is yellow.",
     "example_meaning": "옥수수는 노래."
    },
@@ -1471,6 +1663,7 @@
     "text": "cucumber",
     "ko_pron": "큐컴버",
     "meaning": "오이",
+    "freq": 1,
     "example": "I don't like cucumbers.",
     "example_meaning": "나는 오이가 싫어."
    }
@@ -1484,6 +1677,7 @@
     "text": "tea",
     "ko_pron": "티",
     "meaning": "차",
+    "freq": 2,
     "example": "Grandma drinks tea.",
     "example_meaning": "할머니는 차를 마셔."
    },
@@ -1491,6 +1685,7 @@
     "text": "coffee",
     "ko_pron": "커피",
     "meaning": "커피",
+    "freq": 2,
     "example": "Dad drinks coffee.",
     "example_meaning": "아빠는 커피를 마셔."
    },
@@ -1498,6 +1693,7 @@
     "text": "hot chocolate",
     "ko_pron": "핫 초콜릿",
     "meaning": "코코아",
+    "freq": 1,
     "example": "Hot chocolate, please.",
     "example_meaning": "코코아 주세요."
    },
@@ -1505,6 +1701,7 @@
     "text": "lemonade",
     "ko_pron": "레모네이드",
     "meaning": "레모네이드",
+    "freq": 1,
     "example": "I want lemonade.",
     "example_meaning": "레모네이드 마시고 싶어."
    },
@@ -1512,6 +1709,7 @@
     "text": "soda",
     "ko_pron": "소다",
     "meaning": "탄산음료",
+    "freq": 1,
     "example": "No soda before bed.",
     "example_meaning": "자기 전에는 탄산음료 안 돼."
    },
@@ -1519,6 +1717,7 @@
     "text": "smoothie",
     "ko_pron": "스무디",
     "meaning": "스무디",
+    "freq": 1,
     "example": "A banana smoothie, please.",
     "example_meaning": "바나나 스무디 주세요."
    },
@@ -1526,6 +1725,7 @@
     "text": "milkshake",
     "ko_pron": "밀크셰이크",
     "meaning": "밀크셰이크",
+    "freq": 1,
     "example": "This milkshake is cold.",
     "example_meaning": "이 밀크셰이크 차가워."
    },
@@ -1533,6 +1733,7 @@
     "text": "ice",
     "ko_pron": "아이스",
     "meaning": "얼음",
+    "freq": 2,
     "example": "Can I have some ice?",
     "example_meaning": "얼음 좀 주실래요?"
    },
@@ -1540,6 +1741,7 @@
     "text": "straw",
     "ko_pron": "스트로",
     "meaning": "빨대",
+    "freq": 1,
     "example": "Can I have a straw?",
     "example_meaning": "빨대 주실래요?"
    },
@@ -1547,6 +1749,7 @@
     "text": "glass",
     "ko_pron": "글래스",
     "meaning": "유리잔, 잔",
+    "freq": 2,
     "example": "A glass of milk, please.",
     "example_meaning": "우유 한 잔 주세요."
    },
@@ -1554,6 +1757,7 @@
     "text": "bottle",
     "ko_pron": "바틀",
     "meaning": "병",
+    "freq": 2,
     "example": "Where is my water bottle?",
     "example_meaning": "내 물병 어디 있어?"
    }
@@ -1567,6 +1771,7 @@
     "text": "ball",
     "ko_pron": "볼",
     "meaning": "공",
+    "freq": 2,
     "example": "Throw the ball!",
     "example_meaning": "공 던져!"
    },
@@ -1574,6 +1779,7 @@
     "text": "soccer",
     "ko_pron": "사커",
     "meaning": "축구",
+    "freq": 2,
     "example": "I play soccer.",
     "example_meaning": "나는 축구를 해."
    },
@@ -1581,6 +1787,7 @@
     "text": "basketball",
     "ko_pron": "배스킷볼",
     "meaning": "농구",
+    "freq": 1,
     "example": "My brother plays basketball.",
     "example_meaning": "우리 형은 농구를 해."
    },
@@ -1588,6 +1795,7 @@
     "text": "swim",
     "ko_pron": "스윔",
     "meaning": "수영하다",
+    "freq": 2,
     "example": "I can swim.",
     "example_meaning": "나는 수영할 수 있어."
    },
@@ -1595,6 +1803,7 @@
     "text": "jump",
     "ko_pron": "점프",
     "meaning": "뛰다, 점프하다",
+    "freq": 2,
     "example": "Jump high!",
     "example_meaning": "높이 뛰어!"
    },
@@ -1602,6 +1811,7 @@
     "text": "slide",
     "ko_pron": "슬라이드",
     "meaning": "미끄럼틀",
+    "freq": 1,
     "example": "Let's go down the slide.",
     "example_meaning": "미끄럼틀 타자."
    },
@@ -1609,6 +1819,7 @@
     "text": "swing",
     "ko_pron": "스윙",
     "meaning": "그네",
+    "freq": 1,
     "example": "Push me on the swing.",
     "example_meaning": "그네 밀어 줘."
    },
@@ -1616,6 +1827,7 @@
     "text": "hide-and-seek",
     "ko_pron": "하이드 앤 시크",
     "meaning": "숨바꼭질",
+    "freq": 1,
     "example": "Let's play hide-and-seek.",
     "example_meaning": "숨바꼭질하자."
    },
@@ -1623,6 +1835,7 @@
     "text": "tag",
     "ko_pron": "태그",
     "meaning": "술래잡기",
+    "freq": 1,
     "example": "Tag, you're it!",
     "example_meaning": "잡았다, 네가 술래야!"
    },
@@ -1630,6 +1843,7 @@
     "text": "toy",
     "ko_pron": "토이",
     "meaning": "장난감",
+    "freq": 2,
     "example": "This is my toy.",
     "example_meaning": "이건 내 장난감이야."
    },
@@ -1637,6 +1851,7 @@
     "text": "blocks",
     "ko_pron": "블락스",
     "meaning": "블록, 쌓기 나무",
+    "freq": 1,
     "example": "Let's build with blocks.",
     "example_meaning": "블록으로 만들자."
    },
@@ -1644,6 +1859,7 @@
     "text": "kite",
     "ko_pron": "카이트",
     "meaning": "연",
+    "freq": 1,
     "example": "My kite is flying!",
     "example_meaning": "내 연이 날고 있어!"
    }
@@ -1657,6 +1873,7 @@
     "text": "teacher",
     "ko_pron": "티처",
     "meaning": "선생님",
+    "freq": 2,
     "example": "My teacher is kind.",
     "example_meaning": "우리 선생님은 친절해."
    },
@@ -1664,6 +1881,7 @@
     "text": "class",
     "ko_pron": "클래스",
     "meaning": "반, 수업",
+    "freq": 2,
     "example": "Class is over.",
     "example_meaning": "수업 끝났어."
    },
@@ -1671,6 +1889,7 @@
     "text": "book",
     "ko_pron": "북",
     "meaning": "책",
+    "freq": 2,
     "example": "Read me a book.",
     "example_meaning": "책 읽어 줘."
    },
@@ -1678,6 +1897,7 @@
     "text": "pencil",
     "ko_pron": "펜슬",
     "meaning": "연필",
+    "freq": 2,
     "example": "Can I use your pencil?",
     "example_meaning": "네 연필 써도 돼?"
    },
@@ -1685,6 +1905,7 @@
     "text": "eraser",
     "ko_pron": "이레이서",
     "meaning": "지우개",
+    "freq": 1,
     "example": "I need an eraser.",
     "example_meaning": "지우개가 필요해."
    },
@@ -1692,6 +1913,7 @@
     "text": "crayon",
     "ko_pron": "크레이언",
     "meaning": "크레용",
+    "freq": 1,
     "example": "I draw with crayons.",
     "example_meaning": "나는 크레용으로 그려."
    },
@@ -1699,6 +1921,7 @@
     "text": "paper",
     "ko_pron": "페이퍼",
     "meaning": "종이",
+    "freq": 2,
     "example": "Give me some paper.",
     "example_meaning": "종이 좀 줘."
    },
@@ -1706,6 +1929,7 @@
     "text": "scissors",
     "ko_pron": "시저스",
     "meaning": "가위",
+    "freq": 1,
     "example": "Cut it with scissors.",
     "example_meaning": "가위로 잘라."
    },
@@ -1713,6 +1937,7 @@
     "text": "glue",
     "ko_pron": "글루",
     "meaning": "풀",
+    "freq": 1,
     "example": "Put glue here.",
     "example_meaning": "여기에 풀 발라."
    },
@@ -1720,6 +1945,7 @@
     "text": "desk",
     "ko_pron": "데스크",
     "meaning": "책상",
+    "freq": 1,
     "example": "Sit at your desk.",
     "example_meaning": "네 책상에 앉아."
    },
@@ -1727,6 +1953,7 @@
     "text": "backpack",
     "ko_pron": "백팩",
     "meaning": "책가방",
+    "freq": 1,
     "example": "My backpack is heavy.",
     "example_meaning": "내 책가방이 무거워."
    },
@@ -1734,6 +1961,7 @@
     "text": "notebook",
     "ko_pron": "노트북",
     "meaning": "공책",
+    "freq": 1,
     "example": "Write it in your notebook.",
     "example_meaning": "공책에 써."
    }
@@ -1747,6 +1975,7 @@
     "text": "doctor",
     "ko_pron": "닥터",
     "meaning": "의사",
+    "freq": 2,
     "example": "The doctor helps sick people.",
     "example_meaning": "의사는 아픈 사람을 도와줘."
    },
@@ -1754,6 +1983,7 @@
     "text": "nurse",
     "ko_pron": "널스",
     "meaning": "간호사",
+    "freq": 1,
     "example": "The nurse is nice.",
     "example_meaning": "간호사 선생님이 친절해."
    },
@@ -1761,6 +1991,7 @@
     "text": "police officer",
     "ko_pron": "폴리스 오피서",
     "meaning": "경찰관",
+    "freq": 1,
     "example": "Ask a police officer.",
     "example_meaning": "경찰관에게 물어봐."
    },
@@ -1768,6 +1999,7 @@
     "text": "firefighter",
     "ko_pron": "파이어파이터",
     "meaning": "소방관",
+    "freq": 1,
     "example": "Firefighters are brave.",
     "example_meaning": "소방관은 용감해."
    },
@@ -1775,6 +2007,7 @@
     "text": "chef",
     "ko_pron": "셰프",
     "meaning": "요리사",
+    "freq": 1,
     "example": "The chef makes pizza.",
     "example_meaning": "요리사가 피자를 만들어."
    },
@@ -1782,6 +2015,7 @@
     "text": "farmer",
     "ko_pron": "파머",
     "meaning": "농부",
+    "freq": 2,
     "example": "The farmer has cows.",
     "example_meaning": "농부는 소가 있어."
    },
@@ -1789,6 +2023,7 @@
     "text": "pilot",
     "ko_pron": "파일럿",
     "meaning": "조종사",
+    "freq": 1,
     "example": "The pilot flies the plane.",
     "example_meaning": "조종사가 비행기를 조종해."
    },
@@ -1796,6 +2031,7 @@
     "text": "bus driver",
     "ko_pron": "버스 드라이버",
     "meaning": "버스 기사",
+    "freq": 1,
     "example": "Say hi to the bus driver.",
     "example_meaning": "버스 기사님께 인사해."
    },
@@ -1803,6 +2039,7 @@
     "text": "singer",
     "ko_pron": "싱어",
     "meaning": "가수",
+    "freq": 1,
     "example": "I want to be a singer.",
     "example_meaning": "나는 가수가 되고 싶어."
    },
@@ -1810,6 +2047,7 @@
     "text": "dentist",
     "ko_pron": "덴티스트",
     "meaning": "치과 의사",
+    "freq": 1,
     "example": "I see the dentist today.",
     "example_meaning": "오늘 치과에 가."
    },
@@ -1817,6 +2055,7 @@
     "text": "baker",
     "ko_pron": "베이커",
     "meaning": "제빵사",
+    "freq": 1,
     "example": "The baker makes bread.",
     "example_meaning": "제빵사가 빵을 만들어."
    },
@@ -1824,6 +2063,7 @@
     "text": "vet",
     "ko_pron": "벳",
     "meaning": "수의사",
+    "freq": 1,
     "example": "The vet helps animals.",
     "example_meaning": "수의사는 동물을 도와줘."
    }
@@ -1837,6 +2077,7 @@
     "text": "sick",
     "ko_pron": "씩",
     "meaning": "아픈",
+    "freq": 2,
     "example": "I feel sick.",
     "example_meaning": "나 몸이 안 좋아."
    },
@@ -1844,6 +2085,7 @@
     "text": "hurt",
     "ko_pron": "헐트",
     "meaning": "아프다, 다치다",
+    "freq": 2,
     "example": "I hurt my knee.",
     "example_meaning": "무릎을 다쳤어."
    },
@@ -1851,6 +2093,7 @@
     "text": "ouch",
     "ko_pron": "아우치",
     "meaning": "아야",
+    "freq": 2,
     "example": "Ouch! That hurts.",
     "example_meaning": "아야! 아파."
    },
@@ -1858,6 +2101,7 @@
     "text": "fever",
     "ko_pron": "피버",
     "meaning": "열",
+    "freq": 1,
     "example": "I have a fever.",
     "example_meaning": "나 열이 나."
    },
@@ -1865,6 +2109,7 @@
     "text": "cough",
     "ko_pron": "코프",
     "meaning": "기침",
+    "freq": 1,
     "example": "I have a cough.",
     "example_meaning": "나 기침이 나."
    },
@@ -1872,6 +2117,7 @@
     "text": "sneeze",
     "ko_pron": "스니즈",
     "meaning": "재채기, 재채기하다",
+    "freq": 1,
     "example": "Cover your mouth when you sneeze.",
     "example_meaning": "재채기할 때 입을 가려."
    },
@@ -1879,6 +2125,7 @@
     "text": "headache",
     "ko_pron": "헤데이크",
     "meaning": "두통, 머리 아픔",
+    "freq": 1,
     "example": "I have a headache.",
     "example_meaning": "나 머리가 아파."
    },
@@ -1886,6 +2133,7 @@
     "text": "stomachache",
     "ko_pron": "스터먹에이크",
     "meaning": "배 아픔, 복통",
+    "freq": 1,
     "example": "I have a stomachache.",
     "example_meaning": "나 배가 아파."
    },
@@ -1893,6 +2141,7 @@
     "text": "toothache",
     "ko_pron": "투쓰에이크",
     "meaning": "이 아픔, 치통",
+    "freq": 1,
     "example": "I have a toothache.",
     "example_meaning": "나 이가 아파."
    },
@@ -1900,6 +2149,7 @@
     "text": "itchy",
     "ko_pron": "이치",
     "meaning": "가려운",
+    "freq": 1,
     "example": "My arm is itchy.",
     "example_meaning": "팔이 가려워."
    },
@@ -1907,6 +2157,7 @@
     "text": "bandage",
     "ko_pron": "밴디지",
     "meaning": "반창고, 붕대",
+    "freq": 1,
     "example": "I need a bandage.",
     "example_meaning": "반창고가 필요해."
    },
@@ -1914,6 +2165,7 @@
     "text": "medicine",
     "ko_pron": "메디슨",
     "meaning": "약",
+    "freq": 1,
     "example": "Take your medicine.",
     "example_meaning": "약 먹어."
    }
@@ -1927,6 +2179,7 @@
     "text": "money",
     "ko_pron": "머니",
     "meaning": "돈",
+    "freq": 2,
     "example": "I have no money.",
     "example_meaning": "나 돈 없어."
    },
@@ -1934,6 +2187,7 @@
     "text": "coin",
     "ko_pron": "코인",
     "meaning": "동전",
+    "freq": 1,
     "example": "I found a coin!",
     "example_meaning": "동전 찾았다!"
    },
@@ -1941,6 +2195,7 @@
     "text": "dollar",
     "ko_pron": "달러",
     "meaning": "달러",
+    "freq": 1,
     "example": "It's one dollar.",
     "example_meaning": "1달러예요."
    },
@@ -1948,6 +2203,7 @@
     "text": "wallet",
     "ko_pron": "월릿",
     "meaning": "지갑",
+    "freq": 1,
     "example": "Dad's wallet is black.",
     "example_meaning": "아빠 지갑은 검은색이야."
    },
@@ -1955,6 +2211,7 @@
     "text": "piggy bank",
     "ko_pron": "피기 뱅크",
     "meaning": "돼지 저금통",
+    "freq": 1,
     "example": "I put coins in my piggy bank.",
     "example_meaning": "돼지 저금통에 동전을 넣어."
    },
@@ -1962,6 +2219,7 @@
     "text": "card",
     "ko_pron": "카드",
     "meaning": "카드",
+    "freq": 2,
     "example": "Can I pay by card?",
     "example_meaning": "카드로 계산해도 돼요?"
    },
@@ -1969,6 +2227,7 @@
     "text": "cart",
     "ko_pron": "카트",
     "meaning": "카트",
+    "freq": 1,
     "example": "Can I push the cart?",
     "example_meaning": "내가 카트 밀어도 돼?"
    },
@@ -1976,6 +2235,7 @@
     "text": "cheap",
     "ko_pron": "칩",
     "meaning": "싼",
+    "freq": 1,
     "example": "This is cheap.",
     "example_meaning": "이거 싸다."
    },
@@ -1983,6 +2243,7 @@
     "text": "expensive",
     "ko_pron": "익스펜시브",
     "meaning": "비싼",
+    "freq": 1,
     "example": "That's too expensive.",
     "example_meaning": "그건 너무 비싸."
    },
@@ -1990,6 +2251,7 @@
     "text": "sale",
     "ko_pron": "세일",
     "meaning": "할인",
+    "freq": 1,
     "example": "Shoes are on sale.",
     "example_meaning": "신발이 할인 중이야."
    },
@@ -1997,6 +2259,7 @@
     "text": "change",
     "ko_pron": "체인지",
     "meaning": "거스름돈",
+    "freq": 1,
     "example": "Here's your change.",
     "example_meaning": "거스름돈 여기 있어요."
    }
@@ -2010,6 +2273,7 @@
     "text": "clean up",
     "ko_pron": "클린 업",
     "meaning": "치우다, 정리하다",
+    "freq": 2,
     "example": "Let's clean up.",
     "example_meaning": "같이 치우자."
    },
@@ -2017,6 +2281,7 @@
     "text": "dishes",
     "ko_pron": "디쉬즈",
     "meaning": "설거지, 그릇들",
+    "freq": 1,
     "example": "Dad does the dishes.",
     "example_meaning": "아빠가 설거지를 해."
    },
@@ -2024,6 +2289,7 @@
     "text": "laundry",
     "ko_pron": "런드리",
     "meaning": "빨래",
+    "freq": 1,
     "example": "Mom does the laundry.",
     "example_meaning": "엄마가 빨래를 해."
    },
@@ -2031,6 +2297,7 @@
     "text": "trash",
     "ko_pron": "트래시",
     "meaning": "쓰레기",
+    "freq": 1,
     "example": "Throw it in the trash.",
     "example_meaning": "쓰레기통에 버려."
    },
@@ -2038,6 +2305,7 @@
     "text": "vacuum",
     "ko_pron": "배큠",
     "meaning": "청소기, 청소기를 돌리다",
+    "freq": 1,
     "example": "Mom vacuums the floor.",
     "example_meaning": "엄마가 바닥을 청소기로 밀어."
    },
@@ -2045,6 +2313,7 @@
     "text": "broom",
     "ko_pron": "브룸",
     "meaning": "빗자루",
+    "freq": 1,
     "example": "Sweep with a broom.",
     "example_meaning": "빗자루로 쓸어."
    },
@@ -2052,6 +2321,7 @@
     "text": "mop",
     "ko_pron": "맙",
     "meaning": "대걸레, 걸레질하다",
+    "freq": 1,
     "example": "I help mop the floor.",
     "example_meaning": "나는 바닥 걸레질을 도와."
    },
@@ -2059,6 +2329,7 @@
     "text": "make the bed",
     "ko_pron": "메이크 더 베드",
     "meaning": "이불을 정리하다",
+    "freq": 1,
     "example": "Make your bed, please.",
     "example_meaning": "이불 정리해 줘."
    },
@@ -2066,6 +2337,7 @@
     "text": "set the table",
     "ko_pron": "셋 더 테이블",
     "meaning": "상을 차리다",
+    "freq": 1,
     "example": "I can set the table.",
     "example_meaning": "나는 상을 차릴 수 있어."
    },
@@ -2073,6 +2345,7 @@
     "text": "fold",
     "ko_pron": "폴드",
     "meaning": "개다, 접다",
+    "freq": 1,
     "example": "Fold your clothes.",
     "example_meaning": "옷을 개."
    },
@@ -2080,6 +2353,7 @@
     "text": "water the plants",
     "ko_pron": "워터 더 플랜츠",
     "meaning": "화분에 물을 주다",
+    "freq": 1,
     "example": "I water the plants.",
     "example_meaning": "나는 화분에 물을 줘."
    },
@@ -2087,6 +2361,7 @@
     "text": "put away",
     "ko_pron": "풋 어웨이",
     "meaning": "제자리에 두다",
+    "freq": 2,
     "example": "Put away your toys.",
     "example_meaning": "장난감 제자리에 둬."
    }
@@ -2100,6 +2375,7 @@
     "text": "kitchen",
     "ko_pron": "키친",
     "meaning": "부엌",
+    "freq": 2,
     "example": "Mom is in the kitchen.",
     "example_meaning": "엄마는 부엌에 있어."
    },
@@ -2107,6 +2383,7 @@
     "text": "living room",
     "ko_pron": "리빙 룸",
     "meaning": "거실",
+    "freq": 1,
     "example": "Let's play in the living room.",
     "example_meaning": "거실에서 놀자."
    },
@@ -2114,6 +2391,7 @@
     "text": "bedroom",
     "ko_pron": "베드룸",
     "meaning": "침실, 내 방",
+    "freq": 1,
     "example": "This is my bedroom.",
     "example_meaning": "여기가 내 방이야."
    },
@@ -2121,6 +2399,7 @@
     "text": "dining room",
     "ko_pron": "다이닝 룸",
     "meaning": "식사하는 방",
+    "freq": 1,
     "example": "We eat in the dining room.",
     "example_meaning": "우리는 식사하는 방에서 밥을 먹어."
    },
@@ -2128,6 +2407,7 @@
     "text": "playroom",
     "ko_pron": "플레이룸",
     "meaning": "놀이방",
+    "freq": 1,
     "example": "My toys are in the playroom.",
     "example_meaning": "내 장난감은 놀이방에 있어."
    },
@@ -2135,6 +2415,7 @@
     "text": "closet",
     "ko_pron": "클로짓",
     "meaning": "옷장, 벽장",
+    "freq": 1,
     "example": "My coat is in the closet.",
     "example_meaning": "내 외투는 옷장에 있어."
    },
@@ -2142,6 +2423,7 @@
     "text": "stairs",
     "ko_pron": "스테어즈",
     "meaning": "계단",
+    "freq": 1,
     "example": "Don't run on the stairs.",
     "example_meaning": "계단에서 뛰지 마."
    },
@@ -2149,6 +2431,7 @@
     "text": "hallway",
     "ko_pron": "홀웨이",
     "meaning": "복도",
+    "freq": 1,
     "example": "The hallway is dark.",
     "example_meaning": "복도가 어두워."
    },
@@ -2156,6 +2439,7 @@
     "text": "balcony",
     "ko_pron": "발코니",
     "meaning": "발코니",
+    "freq": 1,
     "example": "Let's go out to the balcony.",
     "example_meaning": "발코니에 나가자."
    },
@@ -2163,6 +2447,7 @@
     "text": "garden",
     "ko_pron": "가든",
     "meaning": "정원, 마당",
+    "freq": 2,
     "example": "Flowers grow in the garden.",
     "example_meaning": "정원에 꽃이 자라."
    },
@@ -2170,6 +2455,7 @@
     "text": "garage",
     "ko_pron": "거라지",
     "meaning": "차고",
+    "freq": 1,
     "example": "The car is in the garage.",
     "example_meaning": "차는 차고에 있어."
    },
@@ -2177,6 +2463,7 @@
     "text": "basement",
     "ko_pron": "베이스먼트",
     "meaning": "지하실",
+    "freq": 1,
     "example": "The basement is scary.",
     "example_meaning": "지하실은 무서워."
    }
@@ -2190,6 +2477,7 @@
     "text": "quick",
     "ko_pron": "퀵",
     "meaning": "재빠른, 빨리",
+    "freq": 1,
     "example": "Be quick!",
     "example_meaning": "빨리 해!"
    },
@@ -2197,6 +2485,7 @@
     "text": "quiet",
     "ko_pron": "콰이엇",
     "meaning": "조용한",
+    "freq": 2,
     "example": "Please be quiet.",
     "example_meaning": "조용히 해 주세요."
    },
@@ -2204,6 +2493,7 @@
     "text": "loud",
     "ko_pron": "라우드",
     "meaning": "시끄러운, 소리가 큰",
+    "freq": 1,
     "example": "The music is too loud.",
     "example_meaning": "음악이 너무 시끄러워."
    },
@@ -2211,6 +2501,7 @@
     "text": "careful",
     "ko_pron": "케어풀",
     "meaning": "조심하는",
+    "freq": 2,
     "example": "Be careful!",
     "example_meaning": "조심해!"
    },
@@ -2218,6 +2509,7 @@
     "text": "gentle",
     "ko_pron": "젠틀",
     "meaning": "살살 하는, 부드러운",
+    "freq": 1,
     "example": "Be gentle with the cat.",
     "example_meaning": "고양이한테 살살 해."
    },
@@ -2225,6 +2517,7 @@
     "text": "strong",
     "ko_pron": "스트롱",
     "meaning": "힘센",
+    "freq": 1,
     "example": "I am strong!",
     "example_meaning": "나는 힘이 세!"
    },
@@ -2232,6 +2525,7 @@
     "text": "weak",
     "ko_pron": "위크",
     "meaning": "약한, 힘없는",
+    "freq": 1,
     "example": "I feel weak.",
     "example_meaning": "힘이 없어."
    },
@@ -2239,6 +2533,7 @@
     "text": "busy",
     "ko_pron": "비지",
     "meaning": "바쁜",
+    "freq": 2,
     "example": "Mom is busy now.",
     "example_meaning": "엄마는 지금 바빠."
    },
@@ -2246,6 +2541,7 @@
     "text": "lazy",
     "ko_pron": "레이지",
     "meaning": "게으른",
+    "freq": 1,
     "example": "Don't be lazy.",
     "example_meaning": "게으름 피우지 마."
    },
@@ -2253,6 +2549,7 @@
     "text": "calm",
     "ko_pron": "캄",
     "meaning": "차분한",
+    "freq": 1,
     "example": "Stay calm.",
     "example_meaning": "침착해."
    },
@@ -2260,6 +2557,7 @@
     "text": "early",
     "ko_pron": "얼리",
     "meaning": "일찍, 이른",
+    "freq": 2,
     "example": "I woke up early.",
     "example_meaning": "나 일찍 일어났어."
    },
@@ -2267,6 +2565,7 @@
     "text": "brave",
     "ko_pron": "브레이브",
     "meaning": "용감한",
+    "freq": 1,
     "example": "You are so brave!",
     "example_meaning": "너 정말 용감하다!"
    }
@@ -2280,6 +2579,7 @@
     "text": "sweet",
     "ko_pron": "스윗",
     "meaning": "단",
+    "freq": 2,
     "example": "Candy is sweet.",
     "example_meaning": "사탕은 달아."
    },
@@ -2287,6 +2587,7 @@
     "text": "salty",
     "ko_pron": "솔티",
     "meaning": "짠",
+    "freq": 1,
     "example": "The soup is salty.",
     "example_meaning": "국이 짜."
    },
@@ -2294,6 +2595,7 @@
     "text": "sour",
     "ko_pron": "사워",
     "meaning": "신",
+    "freq": 1,
     "example": "This is so sour!",
     "example_meaning": "이거 너무 셔!"
    },
@@ -2301,6 +2603,7 @@
     "text": "bitter",
     "ko_pron": "비터",
     "meaning": "쓴",
+    "freq": 1,
     "example": "Medicine is bitter.",
     "example_meaning": "약은 써."
    },
@@ -2308,6 +2611,7 @@
     "text": "spicy",
     "ko_pron": "스파이시",
     "meaning": "매운",
+    "freq": 2,
     "example": "Is it spicy?",
     "example_meaning": "매워요?"
    },
@@ -2315,6 +2619,7 @@
     "text": "yummy",
     "ko_pron": "야미",
     "meaning": "맛있는",
+    "freq": 2,
     "example": "This is yummy!",
     "example_meaning": "이거 맛있어!"
    },
@@ -2322,6 +2627,7 @@
     "text": "yucky",
     "ko_pron": "야키",
     "meaning": "맛없는, 웩",
+    "freq": 1,
     "example": "Yucky! I don't like it.",
     "example_meaning": "웩! 이거 싫어."
    },
@@ -2329,6 +2635,7 @@
     "text": "juicy",
     "ko_pron": "주시",
     "meaning": "즙이 많은",
+    "freq": 1,
     "example": "The peach is juicy.",
     "example_meaning": "복숭아가 즙이 많아."
    },
@@ -2336,6 +2643,7 @@
     "text": "crunchy",
     "ko_pron": "크런치",
     "meaning": "바삭한",
+    "freq": 1,
     "example": "These chips are crunchy.",
     "example_meaning": "이 과자 바삭해."
    },
@@ -2343,6 +2651,7 @@
     "text": "chewy",
     "ko_pron": "추이",
     "meaning": "쫄깃한",
+    "freq": 1,
     "example": "The bread is chewy.",
     "example_meaning": "빵이 쫄깃해."
    },
@@ -2350,6 +2659,7 @@
     "text": "fresh",
     "ko_pron": "프레시",
     "meaning": "신선한",
+    "freq": 1,
     "example": "The fruit is fresh.",
     "example_meaning": "과일이 신선해."
    }
@@ -2363,6 +2673,7 @@
     "text": "classroom",
     "ko_pron": "클래스룸",
     "meaning": "교실",
+    "freq": 1,
     "example": "Our classroom is big.",
     "example_meaning": "우리 교실은 커."
    },
@@ -2370,6 +2681,7 @@
     "text": "playground",
     "ko_pron": "플레이그라운드",
     "meaning": "놀이터, 운동장",
+    "freq": 1,
     "example": "Let's go to the playground.",
     "example_meaning": "놀이터에 가자."
    },
@@ -2377,6 +2689,7 @@
     "text": "lunch box",
     "ko_pron": "런치 박스",
     "meaning": "도시락",
+    "freq": 1,
     "example": "I forgot my lunch box.",
     "example_meaning": "도시락을 깜빡했어."
    },
@@ -2384,6 +2697,7 @@
     "text": "recess",
     "ko_pron": "리세스",
     "meaning": "쉬는 시간",
+    "freq": 1,
     "example": "We play at recess.",
     "example_meaning": "쉬는 시간에 놀아."
    },
@@ -2391,6 +2705,7 @@
     "text": "homework",
     "ko_pron": "홈워크",
     "meaning": "숙제",
+    "freq": 2,
     "example": "I finished my homework.",
     "example_meaning": "숙제 다 했어."
    },
@@ -2398,6 +2713,7 @@
     "text": "test",
     "ko_pron": "테스트",
     "meaning": "시험",
+    "freq": 1,
     "example": "I have a test today.",
     "example_meaning": "오늘 시험이 있어."
    },
@@ -2405,6 +2721,7 @@
     "text": "library",
     "ko_pron": "라이브러리",
     "meaning": "도서관",
+    "freq": 1,
     "example": "I read books in the library.",
     "example_meaning": "도서관에서 책을 읽어."
    },
@@ -2412,6 +2729,7 @@
     "text": "gym",
     "ko_pron": "짐",
     "meaning": "체육관",
+    "freq": 1,
     "example": "We run in the gym.",
     "example_meaning": "체육관에서 달려."
    },
@@ -2419,6 +2737,7 @@
     "text": "school bus",
     "ko_pron": "스쿨 버스",
     "meaning": "학교 버스",
+    "freq": 1,
     "example": "The school bus is yellow.",
     "example_meaning": "학교 버스는 노란색이야."
    },
@@ -2426,6 +2745,7 @@
     "text": "bell",
     "ko_pron": "벨",
     "meaning": "종",
+    "freq": 2,
     "example": "The bell is ringing.",
     "example_meaning": "종이 울리고 있어."
    },
@@ -2433,6 +2753,7 @@
     "text": "field trip",
     "ko_pron": "필드 트립",
     "meaning": "현장 학습, 소풍",
+    "freq": 1,
     "example": "We have a field trip tomorrow.",
     "example_meaning": "내일 현장 학습 가."
    },
@@ -2440,6 +2761,7 @@
     "text": "show and tell",
     "ko_pron": "쇼 앤 텔",
     "meaning": "물건 보여 주며 발표하기",
+    "freq": 1,
     "example": "It's my turn for show and tell.",
     "example_meaning": "내가 발표할 차례야."
    }
@@ -2453,6 +2775,7 @@
     "text": "umbrella",
     "ko_pron": "엄브렐라",
     "meaning": "우산",
+    "freq": 1,
     "example": "Take an umbrella.",
     "example_meaning": "우산 챙겨."
    },
@@ -2460,6 +2783,7 @@
     "text": "sunglasses",
     "ko_pron": "선글래시즈",
     "meaning": "선글라스",
+    "freq": 1,
     "example": "I need sunglasses.",
     "example_meaning": "선글라스가 필요해."
    },
@@ -2467,6 +2791,7 @@
     "text": "toothpaste",
     "ko_pron": "투쓰페이스트",
     "meaning": "치약",
+    "freq": 1,
     "example": "We need toothpaste.",
     "example_meaning": "치약이 필요해."
    },
@@ -2474,6 +2799,7 @@
     "text": "shampoo",
     "ko_pron": "샴푸",
     "meaning": "샴푸",
+    "freq": 1,
     "example": "This shampoo smells good.",
     "example_meaning": "이 샴푸 냄새 좋다."
    },
@@ -2481,6 +2807,7 @@
     "text": "soap",
     "ko_pron": "솝",
     "meaning": "비누",
+    "freq": 1,
     "example": "Wash with soap.",
     "example_meaning": "비누로 씻어."
    },
@@ -2488,6 +2815,7 @@
     "text": "tissues",
     "ko_pron": "티슈즈",
     "meaning": "휴지, 티슈",
+    "freq": 1,
     "example": "Do you have tissues?",
     "example_meaning": "티슈 있어요?"
    },
@@ -2495,6 +2823,7 @@
     "text": "candy",
     "ko_pron": "캔디",
     "meaning": "사탕",
+    "freq": 2,
     "example": "Can I have some candy?",
     "example_meaning": "사탕 먹어도 돼?"
    },
@@ -2502,6 +2831,7 @@
     "text": "snack",
     "ko_pron": "스낵",
     "meaning": "간식",
+    "freq": 2,
     "example": "I want a snack.",
     "example_meaning": "간식 먹고 싶어."
    },
@@ -2509,6 +2839,7 @@
     "text": "gum",
     "ko_pron": "검",
     "meaning": "껌",
+    "freq": 1,
     "example": "No gum in class.",
     "example_meaning": "수업 시간엔 껌 안 돼."
    },
@@ -2516,6 +2847,7 @@
     "text": "battery",
     "ko_pron": "배터리",
     "meaning": "건전지",
+    "freq": 1,
     "example": "The toy needs a battery.",
     "example_meaning": "장난감에 건전지가 필요해."
    },
@@ -2523,6 +2855,7 @@
     "text": "gift",
     "ko_pron": "기프트",
     "meaning": "선물",
+    "freq": 2,
     "example": "This is a gift for you.",
     "example_meaning": "이건 너한테 주는 선물이야."
    },
@@ -2530,6 +2863,7 @@
     "text": "sticker",
     "ko_pron": "스티커",
     "meaning": "스티커",
+    "freq": 1,
     "example": "I got a sticker!",
     "example_meaning": "스티커 받았어!"
    }
@@ -2543,6 +2877,7 @@
     "text": "passport",
     "ko_pron": "패스포트",
     "meaning": "여권",
+    "freq": 1,
     "example": "Don't lose your passport.",
     "example_meaning": "여권 잃어버리지 마."
    },
@@ -2550,6 +2885,7 @@
     "text": "luggage",
     "ko_pron": "러기지",
     "meaning": "짐",
+    "freq": 1,
     "example": "Our luggage is heavy.",
     "example_meaning": "우리 짐이 무거워."
    },
@@ -2557,6 +2893,7 @@
     "text": "suitcase",
     "ko_pron": "수트케이스",
     "meaning": "여행 가방",
+    "freq": 1,
     "example": "Pack your suitcase.",
     "example_meaning": "여행 가방 싸."
    },
@@ -2564,6 +2901,7 @@
     "text": "ticket",
     "ko_pron": "티킷",
     "meaning": "표",
+    "freq": 2,
     "example": "Here is your ticket.",
     "example_meaning": "여기 네 표야."
    },
@@ -2571,6 +2909,7 @@
     "text": "map",
     "ko_pron": "맵",
     "meaning": "지도",
+    "freq": 1,
     "example": "Let's look at the map.",
     "example_meaning": "지도 보자."
    },
@@ -2578,6 +2917,7 @@
     "text": "camera",
     "ko_pron": "캐머러",
     "meaning": "카메라",
+    "freq": 1,
     "example": "Smile for the camera!",
     "example_meaning": "카메라 보고 웃어!"
    },
@@ -2585,6 +2925,7 @@
     "text": "charger",
     "ko_pron": "차저",
     "meaning": "충전기",
+    "freq": 1,
     "example": "Where is my charger?",
     "example_meaning": "내 충전기 어디 있어?"
    },
@@ -2592,6 +2933,7 @@
     "text": "sunscreen",
     "ko_pron": "선스크린",
     "meaning": "선크림",
+    "freq": 1,
     "example": "Put on sunscreen.",
     "example_meaning": "선크림 발라."
    },
@@ -2599,6 +2941,7 @@
     "text": "towel",
     "ko_pron": "타월",
     "meaning": "수건",
+    "freq": 1,
     "example": "I need a towel.",
     "example_meaning": "수건이 필요해."
    },
@@ -2606,6 +2949,7 @@
     "text": "swimsuit",
     "ko_pron": "스윔수트",
     "meaning": "수영복",
+    "freq": 1,
     "example": "I packed my swimsuit.",
     "example_meaning": "수영복 챙겼어."
    },
@@ -2613,6 +2957,7 @@
     "text": "pajamas",
     "ko_pron": "파자마즈",
     "meaning": "잠옷",
+    "freq": 1,
     "example": "Put on your pajamas.",
     "example_meaning": "잠옷 입어."
    },
@@ -2620,6 +2965,7 @@
     "text": "toothbrush",
     "ko_pron": "투쓰브러시",
     "meaning": "칫솔",
+    "freq": 1,
     "example": "Don't forget your toothbrush.",
     "example_meaning": "칫솔 잊지 마."
    }
@@ -2633,6 +2979,7 @@
     "text": "soft",
     "ko_pron": "소프트",
     "meaning": "부드러운, 폭신한",
+    "freq": 1,
     "example": "The pillow is soft.",
     "example_meaning": "베개가 폭신해."
    },
@@ -2640,6 +2987,7 @@
     "text": "hard",
     "ko_pron": "하드",
     "meaning": "딱딱한",
+    "freq": 2,
     "example": "The rock is hard.",
     "example_meaning": "돌이 딱딱해."
    },
@@ -2647,6 +2995,7 @@
     "text": "smooth",
     "ko_pron": "스무스",
     "meaning": "매끈한",
+    "freq": 1,
     "example": "My skin is smooth.",
     "example_meaning": "피부가 매끈해."
    },
@@ -2654,6 +3003,7 @@
     "text": "rough",
     "ko_pron": "러프",
     "meaning": "거친",
+    "freq": 1,
     "example": "The tree is rough.",
     "example_meaning": "나무가 거칠어."
    },
@@ -2661,6 +3011,7 @@
     "text": "sticky",
     "ko_pron": "스티키",
     "meaning": "끈적한",
+    "freq": 1,
     "example": "My hands are sticky.",
     "example_meaning": "손이 끈적거려."
    },
@@ -2668,6 +3019,7 @@
     "text": "wet",
     "ko_pron": "웻",
     "meaning": "젖은",
+    "freq": 1,
     "example": "My shoes are wet.",
     "example_meaning": "신발이 젖었어."
    },
@@ -2675,6 +3027,7 @@
     "text": "dry",
     "ko_pron": "드라이",
     "meaning": "마른",
+    "freq": 1,
     "example": "The towel is dry.",
     "example_meaning": "수건이 말랐어."
    },
@@ -2682,6 +3035,7 @@
     "text": "warm",
     "ko_pron": "웜",
     "meaning": "따뜻한",
+    "freq": 2,
     "example": "The bath is warm.",
     "example_meaning": "목욕물이 따뜻해."
    },
@@ -2689,6 +3043,7 @@
     "text": "bright",
     "ko_pron": "브라이트",
     "meaning": "밝은",
+    "freq": 1,
     "example": "The sun is bright.",
     "example_meaning": "해가 밝아."
    },
@@ -2696,6 +3051,7 @@
     "text": "dark",
     "ko_pron": "다크",
     "meaning": "어두운",
+    "freq": 1,
     "example": "It's dark outside.",
     "example_meaning": "밖이 어두워."
    },
@@ -2703,6 +3059,7 @@
     "text": "smelly",
     "ko_pron": "스멜리",
     "meaning": "냄새나는",
+    "freq": 1,
     "example": "My socks are smelly.",
     "example_meaning": "양말에서 냄새나."
    },
@@ -2710,6 +3067,7 @@
     "text": "shiny",
     "ko_pron": "샤이니",
     "meaning": "반짝이는",
+    "freq": 1,
     "example": "Look at the shiny star.",
     "example_meaning": "반짝이는 별 좀 봐."
    }
@@ -2723,6 +3081,7 @@
     "text": "circle",
     "ko_pron": "서클",
     "meaning": "동그라미",
+    "freq": 1,
     "example": "Draw a circle.",
     "example_meaning": "동그라미 그려."
    },
@@ -2730,6 +3089,7 @@
     "text": "square",
     "ko_pron": "스퀘어",
     "meaning": "네모",
+    "freq": 1,
     "example": "The box is a square.",
     "example_meaning": "상자는 네모야."
    },
@@ -2737,6 +3097,7 @@
     "text": "triangle",
     "ko_pron": "트라이앵글",
     "meaning": "세모",
+    "freq": 1,
     "example": "A triangle has three sides.",
     "example_meaning": "세모는 변이 세 개야."
    },
@@ -2744,6 +3105,7 @@
     "text": "heart",
     "ko_pron": "하트",
     "meaning": "하트",
+    "freq": 1,
     "example": "I drew a heart.",
     "example_meaning": "하트를 그렸어."
    },
@@ -2751,6 +3113,7 @@
     "text": "round",
     "ko_pron": "라운드",
     "meaning": "둥근",
+    "freq": 2,
     "example": "The ball is round.",
     "example_meaning": "공은 둥글어."
    },
@@ -2758,6 +3121,7 @@
     "text": "long",
     "ko_pron": "롱",
     "meaning": "긴",
+    "freq": 2,
     "example": "The snake is long.",
     "example_meaning": "뱀은 길어."
    },
@@ -2765,6 +3129,7 @@
     "text": "short",
     "ko_pron": "쇼트",
     "meaning": "짧은, 키가 작은",
+    "freq": 2,
     "example": "My hair is short.",
     "example_meaning": "내 머리는 짧아."
    },
@@ -2772,6 +3137,7 @@
     "text": "tall",
     "ko_pron": "톨",
     "meaning": "키가 큰, 높은",
+    "freq": 2,
     "example": "The giraffe is tall.",
     "example_meaning": "기린은 키가 커."
    },
@@ -2779,6 +3145,7 @@
     "text": "tiny",
     "ko_pron": "타이니",
     "meaning": "아주 작은",
+    "freq": 1,
     "example": "The ant is tiny.",
     "example_meaning": "개미는 아주 작아."
    },
@@ -2786,6 +3153,7 @@
     "text": "huge",
     "ko_pron": "휴지",
     "meaning": "아주 큰",
+    "freq": 1,
     "example": "The elephant is huge.",
     "example_meaning": "코끼리는 엄청 커."
    },
@@ -2793,6 +3161,7 @@
     "text": "thin",
     "ko_pron": "씬",
     "meaning": "얇은, 마른",
+    "freq": 1,
     "example": "The paper is thin.",
     "example_meaning": "종이가 얇아."
    },
@@ -2800,6 +3169,7 @@
     "text": "thick",
     "ko_pron": "씩",
     "meaning": "두꺼운",
+    "freq": 1,
     "example": "This book is thick.",
     "example_meaning": "이 책은 두꺼워."
    }

@@ -19,6 +19,7 @@
       "kanji": "買う",
       "ko_pron": "카우",
       "meaning": "사다",
+      "freq": 2,
       "note": "う로 끝나는 1형: て형은 って",
       "forms": {
         "masu": { "text": "かいます", "ko_pron": "카이마스", "meaning": "삽니다" },
@@ -36,6 +37,7 @@
       "kanji": "待つ",
       "ko_pron": "마츠",
       "meaning": "기다리다",
+      "freq": 2,
       "note": "つ로 끝나는 1형: て형은 って",
       "forms": {
         "masu": { "text": "まちます", "ko_pron": "마치마스", "meaning": "기다립니다" },
@@ -53,6 +55,7 @@
       "kanji": "帰る",
       "ko_pron": "카에루",
       "meaning": "돌아가다",
+      "freq": 3,
       "note": "る로 끝나지만 1형: て형은 って (2형처럼 て가 아님)",
       "forms": {
         "masu": { "text": "かえります", "ko_pron": "카에리마스", "meaning": "돌아갑니다" },
@@ -70,6 +73,7 @@
       "kanji": "飲む",
       "ko_pron": "노무",
       "meaning": "마시다",
+      "freq": 3,
       "note": "む로 끝나는 1형: て형은 んで",
       "forms": {
         "masu": { "text": "のみます", "ko_pron": "노미마스", "meaning": "마십니다" },
@@ -87,6 +91,7 @@
       "kanji": "読む",
       "ko_pron": "요무",
       "meaning": "읽다",
+      "freq": 2,
       "note": "む로 끝나는 1형: て형은 んで",
       "forms": {
         "masu": { "text": "よみます", "ko_pron": "요미마스", "meaning": "읽습니다" },
@@ -104,6 +109,7 @@
       "kanji": "遊ぶ",
       "ko_pron": "아소부",
       "meaning": "놀다",
+      "freq": 2,
       "note": "ぶ로 끝나는 1형: て형은 んで",
       "forms": {
         "masu": { "text": "あそびます", "ko_pron": "아소비마스", "meaning": "놉니다" },
@@ -121,6 +127,7 @@
       "kanji": "書く",
       "ko_pron": "카쿠",
       "meaning": "쓰다",
+      "freq": 2,
       "note": "く로 끝나는 1형: て형은 いて",
       "forms": {
         "masu": { "text": "かきます", "ko_pron": "카키마스", "meaning": "씁니다" },
@@ -138,6 +145,7 @@
       "kanji": "行く",
       "ko_pron": "이쿠",
       "meaning": "가다",
+      "freq": 3,
       "note": "예외: く로 끝나지만 て형은 いて가 아니라 いって",
       "forms": {
         "masu": { "text": "いきます", "ko_pron": "이키마스", "meaning": "갑니다" },
@@ -155,6 +163,7 @@
       "kanji": "泳ぐ",
       "ko_pron": "오요구",
       "meaning": "헤엄치다",
+      "freq": 1,
       "note": "ぐ로 끝나는 1형: て형은 いで",
       "forms": {
         "masu": { "text": "およぎます", "ko_pron": "오요기마스", "meaning": "헤엄칩니다" },
@@ -172,6 +181,7 @@
       "kanji": "話す",
       "ko_pron": "하나스",
       "meaning": "말하다",
+      "freq": 2,
       "note": "す로 끝나는 1형: て형은 して",
       "forms": {
         "masu": { "text": "はなします", "ko_pron": "하나시마스", "meaning": "말합니다" },
@@ -189,6 +199,7 @@
       "kanji": "食べる",
       "ko_pron": "타베루",
       "meaning": "먹다",
+      "freq": 3,
       "note": "2형: る를 떼고 붙이면 끝",
       "forms": {
         "masu": { "text": "たべます", "ko_pron": "타베마스", "meaning": "먹습니다" },
@@ -206,6 +217,7 @@
       "kanji": "見る",
       "ko_pron": "미루",
       "meaning": "보다",
+      "freq": 3,
       "note": "2형: る를 떼고 붙이면 끝",
       "forms": {
         "masu": { "text": "みます", "ko_pron": "미마스", "meaning": "봅니다" },
@@ -223,6 +235,7 @@
       "kanji": "寝る",
       "ko_pron": "네루",
       "meaning": "자다",
+      "freq": 3,
       "note": "2형: る를 떼고 붙이면 끝",
       "forms": {
         "masu": { "text": "ねます", "ko_pron": "네마스", "meaning": "잡니다" },
@@ -240,6 +253,7 @@
       "kanji": null,
       "ko_pron": "스루",
       "meaning": "하다",
+      "freq": 3,
       "note": "불규칙: 모양이 し로 바뀜 (보통 한자로 쓰지 않음)",
       "forms": {
         "masu": { "text": "します", "ko_pron": "시마스", "meaning": "합니다" },
@@ -257,6 +271,7 @@
       "kanji": "来る",
       "ko_pron": "쿠루",
       "meaning": "오다",
+      "freq": 3,
       "note": "불규칙: き로 바뀌지만 ない형만 こ",
       "forms": {
         "masu": { "text": "きます", "ko_pron": "키마스", "meaning": "옵니다" },

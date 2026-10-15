@@ -52,6 +52,35 @@ def need(obj, keys, where):
         if not str(obj.get(k, "")).strip():
             problems.append(f"{where}: '{k}' 칸이 비어 있어요")
 
+# ── 빈도 등급 freq: 3=매일 쓰는 말, 2=자주, 1=가끔 ──
+# 기준: 영어는 Dolch 단어 목록, 일본어는 JLPT N5 단어를 참고하고 일상 회화 빈도로 판단 (README "빈도 등급")
+FREQS = (1, 2, 3)
+
+def check_freq(obj, where, key="freq", upto=None, upto_name=""):
+    """freq가 1·2·3인지. upto가 있으면 그보다 높을 수 없다 (틀을 매일 안 쓰는데 그 틀 문장을 매일 쓸 수는 없다)."""
+    v = obj.get(key)
+    if v not in FREQS:
+        problems.append(f"{where}: '{key}'(빈도 등급 1·2·3)가 없거나 잘못됐어요 — {v!r}")
+    elif upto in FREQS and v > upto:
+        problems.append(f"{where}: {key} {v}가 {upto_name} 등급 {upto}보다 높아요")
+
+def dolch_words():
+    """tools/dolch.txt(한 줄에 한 단어, #은 설명)가 있을 때만 Dolch 비교를 한다. 없으면 조용히 건너뛴다."""
+    path = ROOT / "tools/dolch.txt"
+    if not path.exists():
+        return set()
+    try:
+        return {w.strip().lower() for w in path.read_text(encoding="utf-8").splitlines()
+                if w.strip() and not w.strip().startswith("#")}
+    except Exception:
+        return set()
+DOLCH = dolch_words()
+
+def warn_dolch(text, freq, where):
+    """Dolch 목록(아이 글에 가장 많이 나오는 말)에 있는데 1등급이면 경고."""
+    if freq == 1 and str(text).lower() in DOLCH:
+        warnings.append(f"{where}: Dolch 단어인데 1등급이에요 — 2 이상인지 확인해 주세요")
+
 def check_cards(data, name):
     for c in data:
         need(c, ["category"], f"{name} 주제")
@@ -59,6 +88,9 @@ def check_cards(data, name):
         for i, it in enumerate(c.get("items", [])):
             where = f"{name} > {c.get('category')} > {i + 1}번 ({it.get('text', '?')})"
             need(it, BASIC, where)
+            check_freq(it, where)
+            if name.startswith("en/"):
+                warn_dolch(it.get("text"), it.get("freq"), where)
             if it.get("example") and not it.get("example_meaning"):
                 problems.append(f"{where}: 예문 뜻(example_meaning)이 없어요")
             if "note" in it and not str(it["note"] or "").strip():
@@ -87,6 +119,8 @@ def check_ja_cards(data, name):
                 check_kanji_text(it["example"], it.get("example_kanji_text"), f"{where} > 예문", "example_kanji_text")
                 if not str(it.get("example_ko_pron", "")).strip():
                     problems.append(f"{where}: 예문 발음(example_ko_pron)이 없어요")
+                # 예문도 학습 길의 문장으로 쓴다. 예문은 그 단어보다 자주 쓸 수 없다
+                check_freq(it, f"{where} > 예문", "example_freq", it.get("freq"), "단어")
 
 def ja_word_texts():
     try:
@@ -126,6 +160,7 @@ def check_particles(data, name):
         pts[p.get("id")] = p.get("text")
         if p.get("stage") not in stages:
             problems.append(f"{where}: stage '{p.get('stage')}'이 stages에 없어요")
+        check_freq(p, where)
         uses = p.get("uses") or []
         if not uses:
             problems.append(f"{where}: 쓰임(uses)이 없어요")
@@ -138,6 +173,8 @@ def check_particles(data, name):
                 problems.append(f"{where} > {u.get('name')}: 예문이 {n}개예요 ({lo}~{hi}개)")
             for k, ex in enumerate(u.get("examples", [])):
                 sentence(ex, f"{where} > {u.get('name')} {k + 1}번", f"[{p.get('text')}]")
+                # 쓰임별 예문은 학습 길의 문장으로 쓴다 (조사 등급을 넘지 않게)
+                check_freq(ex, f"{where} > {u.get('name')} {k + 1}번", upto=p.get("freq"), upto_name="조사")
     for i, c in enumerate(data.get("compare", [])):
         where = f"{name} > 비교 {i + 1}번 ({c.get('title', '?')})"
         pair = c.get("pair", [])
@@ -271,6 +308,9 @@ def check_patterns(data, name):
     for i, p in enumerate(data):
         where = f"{name} > {i + 1}번 ({p.get('pattern', '?')})"
         need(p, ["group", "pattern", "ko_pron", "meaning"], where)
+        check_freq(p, where)
+        for j, f in enumerate(p.get("fills", [])):
+            check_freq(f, f"{where} > 바꿔 넣을 말 {j + 1}번 ({f.get('text', '?')})", upto=p.get("freq"), upto_name="틀")
         ids = p.get("tip_ids", [])
         if not isinstance(ids, list):
             problems.append(f"{where}: tip_ids는 [ ] 목록이어야 해요")
@@ -464,6 +504,9 @@ def check_function_words(data, name):
     for i, it in enumerate(data.get("items", [])):
         where = f"{name} > {i + 1}번 ({it.get('text', '?')})"
         need(it, ["id"] + BASIC, where)
+        check_freq(it, where)
+        for f in it.get("forms") or []:
+            warn_dolch(f, it.get("freq"), where)
         if it.get("id") in ids:
             problems.append(f"{where}: 중복된 id예요")
         forms = it.get("forms") or []
@@ -594,6 +637,49 @@ def check_fw_links():
                     check_fw_link(g, tok, f"en/tips.json > {t.get('title')} > {ex.get('text')}", forms, ids)
     print("검사함: 작은 말 '더 알아보기' 연결")
 
+# 영어·일본어 같은 뜻 짝: 뜻 문구가 달라 자동으로 못 찾는 단어 (일본어 text → 영어 text)
+JA_EN_WORDS = {"ありがとう": "thank you", "こんにちは": "hello", "またね": "bye", "おにいちゃん": "brother", "おねえちゃん": "sister",
+               "うれしい": "happy", "はらぺこ": "hungry", "つかれた": "tired", "ゆき": "snow", "でんしゃ": "train", "テーブル": "table",
+               "でんわ": "phone", "なか": "in", "うえ": "on", "した": "under", "まえ": "in front of", "うしろ": "behind", "となり": "next to",
+               "おかし": "snack"}
+
+def ja_en_pairs():
+    """(어디, 영어 항목, 일본어 항목) 목록.
+    단어: JA_EN_WORDS → 같은 주제에서 뜻이 같은 것 → 다른 주제에서 첫 뜻이 같은 것.
+    회화 핵심 문장: 같은 장면의 같은 순서 (두 언어 문장을 서로 옮긴 것이라 순서가 같다)."""
+    try:
+        L = lambda p: json.loads((ROOT / "data" / p).read_text(encoding="utf-8"))
+        en_w, ja_w, en_s, ja_s = L("en/words.json"), L("ja/words.json"), L("en/situations.json"), L("ja/situations.json")
+    except Exception:
+        return []
+    norm = lambda m: re.sub(r"[\s.?!,~()]", "", str(m))
+    first = lambda m: norm(str(m).split(",")[0].split("(")[0])
+    ens = [(c["category"], e) for c in en_w for e in c.get("items", [])]
+    by_text = {e.get("text"): e for _, e in ens}
+    out = []
+    for c in ja_w:
+        for j in c.get("items", []):
+            if j.get("text") in JA_EN_WORDS and JA_EN_WORDS[j["text"]] in by_text:
+                out.append((f"단어 {c['category']}", by_text[JA_EN_WORDS[j["text"]]], j)); continue
+            same = [e for cat, e in ens if cat == c["category"]]
+            cand = [e for e in same if norm(e.get("meaning")) == norm(j.get("meaning"))] or \
+                   [e for e in same if first(e.get("meaning")) == first(j.get("meaning"))] or \
+                   [e for _, e in ens if first(e.get("meaning")) == first(j.get("meaning"))]
+            if cand:
+                out.append((f"단어 {c['category']}", cand[0], j))
+    en_by_scene = {s["scene"]: s.get("phrases", []) for s in en_s}
+    for s in ja_s:
+        for e, j in zip(en_by_scene.get(s["scene"], []), s.get("phrases", [])):
+            out.append((f"문장 {s['scene']}", e, j))
+    return out
+
+def check_freq_pairs():
+    """같은 뜻의 영어·일본어 짝의 등급이 2 이상 차이 나면 경고 (두 언어의 기준이 어긋났을 수 있다)."""
+    for where, e, j in ja_en_pairs():
+        if e.get("freq") in FREQS and j.get("freq") in FREQS and abs(e["freq"] - j["freq"]) >= 2:
+            warnings.append(f"영어·일본어 등급 차이 ({where}): {e.get('text')} {e['freq']} / {j.get('text')} {j['freq']}")
+    print("검사함: 영어·일본어 같은 짝 등급")
+
 def check_situations(data, name):
     for s in data:
         need(s, ["scene"], f"{name} 장면")
@@ -606,6 +692,7 @@ def check_situations(data, name):
         for k, ph in enumerate(s.get("phrases", [])):
             w = f"{name} > {s.get('scene')} > 핵심 문장 {k + 1}번"
             need(ph, BASIC, w)
+            check_freq(ph, w)
             if name.startswith("ja/"):
                 check_kanji_text(ph.get("text"), ph.get("kanji_text"), w)
 
@@ -619,6 +706,7 @@ def check_conjugation(data, name):
     for i, v in enumerate(data.get("verbs", [])):
         where = f"{name} > {i + 1}번 ({v.get('text', '?')})"
         need(v, ["id"] + BASIC, where)
+        check_freq(v, where)
         if v.get("id") in seen:
             problems.append(f"{where}: 중복된 id예요")
         seen.add(v.get("id"))
@@ -694,6 +782,7 @@ def main():
             checker(data, name)
             print(f"검사함: {name}")
     check_fw_links()
+    check_freq_pairs()
     check_offline()
     if warnings:
         print(f"\n경고 {len(warnings)}개 (검사는 멈추지 않아요):")
